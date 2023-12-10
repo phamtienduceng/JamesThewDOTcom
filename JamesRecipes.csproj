@@ -1,0 +1,175 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-JamesRecipes-2DCC218D-62B9-4B23-9484-11F3AA43B296</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.13"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.13"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.13"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\css\site.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\site.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\banner\accordion.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\banner\banner.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\banner\banner_testmonial.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\banner\bradcam.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\banner\portfolio_bg.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\banner\study_banner.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\author.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\blog_1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\blog_2.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\blog_3.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\blog_4.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\learn_about_bg.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\single_blog_1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\single_blog_2.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\single_blog_3.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\single_blog_4.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\single_blog_5.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\blog\slide_thumb_1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\case_study\1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\case_study\2.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\case_study\3.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\case_study\4.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\case_study\5.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\case_study\6.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\case_study\case_banner.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\comment\comment_1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\comment\comment_2.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\comment\comment_3.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\a.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\a2.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\d.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\disabled-check.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\disabled-radio.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\f1.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\f2.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\f3.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\f4.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\f5.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\f6.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\f7.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\f8.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\g1.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\g2.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\g3.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\g4.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\g5.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\g6.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\g7.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\g8.jpg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\primary-check.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\primary-radio.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\success-check.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\elements\success-radio.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\favicon.ico" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\favicon.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\footer_logo.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\logo.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\offers\1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\offers\2.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\offers\3.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\pattern\patrn.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\pattern\patrn_1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\portfolio\1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\portfolio\2.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\portfolio\3.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\portfolio\4.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\portfolio\5.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\next.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\post_1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\post_10.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\post_2.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\post_3.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\post_4.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\post_5.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\post_6.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\post_7.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\post_8.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\post_9.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\post\preview.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\recepie\banner.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\recepie\recepie_details.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\recepie\recpie_1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\recepie\recpie_2.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\recepie\recpie_3.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\recepie\recpie_4.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\recepie\recpie_5.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\recepie\recpie_6.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\svg_icon\feature_1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\svg_icon\feature_2.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\svg_icon\feature_3.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\svg_icon\feature_4.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\svg_icon\feature_5.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\svg_icon\feature_6.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\svg_icon\seo_1.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\svg_icon\seo_2.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\svg_icon\seo_3.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\testmonial\1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\testmonial\2.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\testmonial\banner.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\testmonial\quote.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\testmonial\thumb.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\video\2.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\video\big.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\video\big_1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\video\sm2.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\video\small_1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\img\video\small_sm1.png" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\ajax-form.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\bootstrap.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\contact.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\gijgo.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\imagesloaded.pkgd.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\isotope.pkgd.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\jquery.ajaxchimp.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\jquery.counterup.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\jquery.form.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\jquery.magnific-popup.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\jquery.scrollUp.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\jquery.slicknav.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\jquery.validate.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\mail-script.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\main.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\nice-select.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\owl.carousel.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\plugins.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\popper.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\scrollIt.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\slick.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\vendor\jquery-1.12.4.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\vendor\modernizr-3.5.0.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\waypoints.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\js\wow.min.js" />
+      <_ContentIncludedByDefault Remove="Views\FE\Home\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\FE\Home\Privacy.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\Admin\" />
+      <Folder Include="wwwroot\FE\" />
+    </ItemGroup>
+
+<!--    <ItemGroup>
+      <Content Include="wwwroot\Admin\libs\.DS_Store" />
+    </ItemGroup>-->
+
+</Project>

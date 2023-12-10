@@ -1,0 +1,304 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+
+namespace JamesRecipes.Models;
+
+public partial class JamesrecipesContext : DbContext
+{
+    public JamesrecipesContext()
+    {
+    }
+
+    public JamesrecipesContext(DbContextOptions<JamesrecipesContext> options)
+        : base(options)
+    {
+    }
+
+    public virtual DbSet<Announcement> Announcements { get; set; }
+
+    public virtual DbSet<Book> Books { get; set; }
+
+    public virtual DbSet<CategoriesRecipe> CategoriesRecipes { get; set; }
+
+    public virtual DbSet<CategoriesTip> CategoriesTips { get; set; }
+
+    public virtual DbSet<Contest> Contests { get; set; }
+
+    public virtual DbSet<ContestEntry> ContestEntries { get; set; }
+
+    public virtual DbSet<Faq> Faqs { get; set; }
+
+    public virtual DbSet<Feedback> Feedbacks { get; set; }
+
+    public virtual DbSet<Order> Orders { get; set; }
+
+    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+
+    public virtual DbSet<Recipe> Recipes { get; set; }
+
+    public virtual DbSet<Role> Roles { get; set; }
+
+    public virtual DbSet<Tip> Tips { get; set; }
+
+    public virtual DbSet<User> Users { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=127.0.0.1,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True");
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Announcement>(entity =>
+        {
+            entity.HasKey(e => e.AnnouncementId).HasName("PK__Announce__9DE4455425844FA7");
+
+            entity.Property(e => e.AnnouncementId).HasColumnName("AnnouncementID");
+            entity.Property(e => e.ContestId).HasColumnName("ContestID");
+            entity.Property(e => e.DatePost)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.Title).HasMaxLength(100);
+
+            entity.HasOne(d => d.Contest).WithMany(p => p.Announcements)
+                .HasForeignKey(d => d.ContestId)
+                .HasConstraintName("FK__Announcem__Conte__44FF419A");
+
+            entity.HasOne(d => d.WinnerNavigation).WithMany(p => p.Announcements)
+                .HasForeignKey(d => d.Winner)
+                .HasConstraintName("FK__Announcem__Winne__440B1D61");
+        });
+
+        modelBuilder.Entity<Book>(entity =>
+        {
+            entity.HasKey(e => e.BookId).HasName("PK__Books__3DE0C227B9BE35FE");
+
+            entity.Property(e => e.BookId).HasColumnName("BookID");
+            entity.Property(e => e.Author).HasMaxLength(50);
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Title).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<CategoriesRecipe>(entity =>
+        {
+            entity.HasKey(e => e.CategoryRecipeId).HasName("PK__Categori__4A40FF87B32B2E37");
+
+            entity.Property(e => e.CategoryRecipeId).HasColumnName("CategoryRecipeID");
+            entity.Property(e => e.CategoryName).HasMaxLength(50);
+            entity.Property(e => e.Image).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<CategoriesTip>(entity =>
+        {
+            entity.HasKey(e => e.CategoryTipId).HasName("PK__Categori__EFD0B854A3DDB008");
+
+            entity.Property(e => e.CategoryTipId).HasColumnName("CategoryTipID");
+            entity.Property(e => e.CategoryName).HasMaxLength(50);
+            entity.Property(e => e.Image).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<Contest>(entity =>
+        {
+            entity.HasKey(e => e.ContestId).HasName("PK__Contests__87DE08FA63554D2E");
+
+            entity.Property(e => e.ContestId).HasColumnName("ContestID");
+            entity.Property(e => e.AdminId).HasColumnName("AdminID");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.EndDate).HasColumnType("datetime");
+            entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.IsActive)
+                .IsRequired()
+                .HasDefaultValueSql("((1))");
+            entity.Property(e => e.StartDate).HasColumnType("datetime");
+            entity.Property(e => e.Title).HasMaxLength(100);
+
+            entity.HasOne(d => d.Admin).WithMany(p => p.Contests)
+                .HasForeignKey(d => d.AdminId)
+                .HasConstraintName("FK__Contests__AdminI__398D8EEE");
+        });
+
+        modelBuilder.Entity<ContestEntry>(entity =>
+        {
+            entity.HasKey(e => e.EntryId).HasName("PK__ContestE__F57BD2D7EB377675");
+
+            entity.Property(e => e.EntryId).HasColumnName("EntryID");
+            entity.Property(e => e.ContestId).HasColumnName("ContestID");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.RecipeId).HasColumnName("RecipeID");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.Contest).WithMany(p => p.ContestEntries)
+                .HasForeignKey(d => d.ContestId)
+                .HasConstraintName("FK__ContestEn__Conte__3E52440B");
+
+            entity.HasOne(d => d.Recipe).WithMany(p => p.ContestEntries)
+                .HasForeignKey(d => d.RecipeId)
+                .HasConstraintName("FK__ContestEn__Recip__403A8C7D");
+
+            entity.HasOne(d => d.User).WithMany(p => p.ContestEntries)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__ContestEn__UserI__3F466844");
+        });
+
+        modelBuilder.Entity<Faq>(entity =>
+        {
+            entity.HasKey(e => e.Faqid).HasName("PK__FAQ__4B89D1E24EB2FCBE");
+
+            entity.ToTable("FAQ");
+
+            entity.Property(e => e.Faqid).HasColumnName("FAQID");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<Feedback>(entity =>
+        {
+            entity.HasKey(e => e.FeedbackId).HasName("PK__Feedback__6A4BEDF6E4420FF8");
+
+            entity.ToTable("Feedback");
+
+            entity.Property(e => e.FeedbackId).HasColumnName("FeedbackID");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.RecipeId).HasColumnName("RecipeID");
+            entity.Property(e => e.TipId).HasColumnName("TipID");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.Recipe).WithMany(p => p.Feedbacks)
+                .HasForeignKey(d => d.RecipeId)
+                .HasConstraintName("FK__Feedback__Recipe__571DF1D5");
+
+            entity.HasOne(d => d.Tip).WithMany(p => p.Feedbacks)
+                .HasForeignKey(d => d.TipId)
+                .HasConstraintName("FK__Feedback__TipID__5629CD9C");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Feedbacks)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Feedback__UserID__534D60F1");
+        });
+
+        modelBuilder.Entity<Order>(entity =>
+        {
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF67011B6B");
+
+            entity.Property(e => e.OrderId).HasColumnName("OrderID");
+            entity.Property(e => e.OrderDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.TotalPrice).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Orders__UserID__4BAC3F29");
+        });
+
+        modelBuilder.Entity<OrderDetail>(entity =>
+        {
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D30CCFCB8105");
+
+            entity.Property(e => e.OrderDetailId).HasColumnName("OrderDetailID");
+            entity.Property(e => e.BookId).HasColumnName("BookID");
+            entity.Property(e => e.OrderId).HasColumnName("OrderID");
+            entity.Property(e => e.Subtotal).HasColumnType("decimal(10, 2)");
+
+            entity.HasOne(d => d.Book).WithMany(p => p.OrderDetails)
+                .HasForeignKey(d => d.BookId)
+                .HasConstraintName("FK__OrderDeta__BookI__5070F446");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
+                .HasForeignKey(d => d.OrderId)
+                .HasConstraintName("FK__OrderDeta__Order__4F7CD00D");
+        });
+
+        modelBuilder.Entity<Recipe>(entity =>
+        {
+            entity.HasKey(e => e.RecipeId).HasName("PK__Recipes__FDD988D0A97768C2");
+
+            entity.Property(e => e.RecipeId).HasColumnName("RecipeID");
+            entity.Property(e => e.CategoryRecipeId).HasColumnName("CategoryRecipeID");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.Title).HasMaxLength(100);
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.CategoryRecipe).WithMany(p => p.Recipes)
+                .HasForeignKey(d => d.CategoryRecipeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Recipes__Categor__2F10007B");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Recipes)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Recipes__UserID__2E1BDC42");
+        });
+
+        modelBuilder.Entity<Role>(entity =>
+        {
+            entity.HasKey(e => e.RoleId).HasName("PK__Roles__8AFACE3A868D1970");
+
+            entity.Property(e => e.RoleId).HasColumnName("RoleID");
+            entity.Property(e => e.RoleName).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Tip>(entity =>
+        {
+            entity.HasKey(e => e.TipId).HasName("PK__Tips__2DB1A1A82C48F8F6");
+
+            entity.Property(e => e.TipId).HasColumnName("TipID");
+            entity.Property(e => e.CategoryTipId).HasColumnName("CategoryTipID");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.Title).HasMaxLength(100);
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.CategoryTip).WithMany(p => p.Tips)
+                .HasForeignKey(d => d.CategoryTipId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Tips__CategoryTi__34C8D9D1");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Tips)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Tips__UserID__33D4B598");
+        });
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC8F8C24B2");
+
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.Address).HasMaxLength(50);
+            entity.Property(e => e.Avatar).HasMaxLength(255);
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Email).HasMaxLength(50);
+            entity.Property(e => e.Password).HasMaxLength(100);
+            entity.Property(e => e.PhoneNumber).HasMaxLength(20);
+            entity.Property(e => e.RoleId).HasColumnName("RoleID");
+            entity.Property(e => e.Username).HasMaxLength(50);
+
+            entity.HasOne(d => d.Role).WithMany(p => p.Users)
+                .HasForeignKey(d => d.RoleId)
+                .HasConstraintName("FK__Users__RoleID__267ABA7A");
+        });
+
+        OnModelCreatingPartial(modelBuilder);
+    }
+
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+}
