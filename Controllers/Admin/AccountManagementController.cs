@@ -9,5 +9,11 @@ public class AccountManagementController : Controller
     public IActionResult Index()
     {
         return View("~/Views/Admin/Account/Index.cshtml");
+
+     
+
+
+
+
     }
 }
