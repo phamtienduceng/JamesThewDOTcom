@@ -1,8 +1,39 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using JamesRecipes.Data;
+using JamesRecipes.Repository.Admin;
+using JamesRecipes.Repository.FE;
+using JamesRecipes.Service.Admin;
+using JamesRecipes.Service.FE;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// DI Admin
+
+builder.Services.AddScoped<IAccountManagementRepository, AccountManagementService>();
+builder.Services.AddScoped<IAnnounceManagementRepository, AnnouncementManagementService>();
+builder.Services.AddScoped<IBookManagementRepository, BookManagementService>();
+builder.Services.AddScoped<ICommentManagementRepository, CommentManagementService>();
+builder.Services.AddScoped<IContactManagementRepository, ContactManagementService>();
+builder.Services.AddScoped<IContestManagementRepository, ContestManagementService>();
+builder.Services.AddScoped<IDashboardRepository, DashboardService>();
+builder.Services.AddScoped<IFaqManagementRepository, FaqManagementService>();
+builder.Services.AddScoped<IOrderManagementRepository, OrderManagementService>();
+builder.Services.AddScoped<IRecipeManagementRepository, RecipeManagementService>();
+builder.Services.AddScoped<ITipManagementRepository, TipManagementService>();
+
+// DI Front-end
+
+builder.Services.AddScoped<IAbout, AboutService>();
+builder.Services.AddScoped<IAccount, AccountService>();
+builder.Services.AddScoped<IAnnouncement, AnnouncementService>();
+builder.Services.AddScoped<IBook, BookService>();
+builder.Services.AddScoped<ICart, CartService>();
+builder.Services.AddScoped<IContact, ContactService>();
+builder.Services.AddScoped<IContest, ContestService>();
+builder.Services.AddScoped<IFaq, FaqService>();
+builder.Services.AddScoped<IRecipe, RecipeService>();
+builder.Services.AddScoped<ITip, TipService>();
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
