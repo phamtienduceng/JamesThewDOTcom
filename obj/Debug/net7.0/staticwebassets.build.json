@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6zdVqF4lKN7koZ52+84CLc24gILLSmGG+mzDExaTW8E=",
+  "Hash": "FSf+jeKPEjYbxH7VVfb42LiuO3QcFsfpuZACCbC9ou4=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -14295,6 +14295,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\FE\\js\\wow.min.js"
+    },
+    {
+      "Identity": "E:\\JamesRecipes\\wwwroot\\images\\img.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\JamesRecipes\\wwwroot\\",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/img.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\img.jpg"
+    },
+    {
+      "Identity": "E:\\JamesRecipes\\wwwroot\\images\\img2.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\JamesRecipes\\wwwroot\\",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/img2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\img2.jpg"
     },
     {
       "Identity": "E:\\JamesRecipes\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
