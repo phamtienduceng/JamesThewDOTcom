@@ -15,7 +15,7 @@ public partial class Book
 
     public int StockQuantity { get; set; }
 
-    public string Photo { get; set; }
+    public string? Photo { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 

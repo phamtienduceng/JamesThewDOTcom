@@ -12,11 +12,15 @@ namespace JamesRecipes.Controllers.Admin
     public class BookManagementController : Controller
     {
         private readonly JamesrecipesContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public BookManagementController(JamesrecipesContext context)
+        public BookManagementController(JamesrecipesContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
+
+
 
         // GET: BookManagement
         public async Task<IActionResult> Index()
@@ -59,10 +63,14 @@ namespace JamesRecipes.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
-                var path = Path.Combine("wwwroot/images", file.FileName);
-                var stream = new FileStream(path, FileMode.Create);
-                file.CopyToAsync(stream);
-                book.Photo = "images/" + file.FileName;
+                if (book.Photo != null) 
+                {
+                    var path = Path.Combine("wwwroot/images", file.FileName);
+                    var stream = new FileStream(path, FileMode.Create);
+                    await file.CopyToAsync(stream);
+                    book.Photo = file.FileName;
+
+                }
                 _context.Add(book);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

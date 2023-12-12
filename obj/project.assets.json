@@ -11657,19 +11657,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nhuyd\\.nuget\\packages\\": {}
+    "C:\\Users\\nguye\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\JamesRecipes\\JamesRecipes.csproj",
+      "projectUniqueName": "D:\\Project3\\JamesRecipes-Trung\\JamesRecipes.csproj",
       "projectName": "JamesRecipes",
-      "projectPath": "E:\\JamesRecipes\\JamesRecipes.csproj",
-      "packagesPath": "C:\\Users\\nhuyd\\.nuget\\packages\\",
-      "outputPath": "E:\\JamesRecipes\\obj\\",
+      "projectPath": "D:\\Project3\\JamesRecipes-Trung\\JamesRecipes.csproj",
+      "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+      "outputPath": "D:\\Project3\\JamesRecipes-Trung\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\nhuyd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11749,7 +11749,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

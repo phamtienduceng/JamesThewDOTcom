@@ -26,10 +26,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="Views\Admin\Book\Create.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Admin\Book\Delete.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Admin\Book\Details.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Admin\Book\Edit.cshtml" />
       <_ContentIncludedByDefault Remove="wwwroot\css\site.css" />
       <_ContentIncludedByDefault Remove="wwwroot\js\site.js" />
       <_ContentIncludedByDefault Remove="wwwroot\img\banner\accordion.png" />
@@ -169,31 +165,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\FE\" />
+      <Folder Include="wwwroot\FE\img\book\" />
       <Folder Include="wwwroot\images\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Update="Views\Admin\Book\Index.cshtml">
-        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <UpToDateCheckInput Remove="Views\Admin\Book\Create.cshtml" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <UpToDateCheckInput Remove="Views\Admin\Book\Delete.cshtml" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <UpToDateCheckInput Remove="Views\Admin\Book\Details.cshtml" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <UpToDateCheckInput Remove="Views\Admin\Book\Edit.cshtml" />
     </ItemGroup>
 
 <!--    <ItemGroup>
