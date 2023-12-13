@@ -59,18 +59,10 @@ namespace JamesRecipes.Controllers.Admin
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BookId,Title,Author,Price,StockQuantity,Photo,CreatedAt")] Book book, IFormFile file)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Language,ISBN,DatePublished,Price,Author,ImageUrl")] Book book)
         {
             if (ModelState.IsValid)
             {
-                if (book.Photo != null) 
-                {
-                    var path = Path.Combine("wwwroot/images", file.FileName);
-                    var stream = new FileStream(path, FileMode.Create);
-                    await file.CopyToAsync(stream);
-                    book.Photo = file.FileName;
-
-                }
                 _context.Add(book);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

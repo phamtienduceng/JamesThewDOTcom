@@ -50,6 +50,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.BookId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Back</a>
+    <a asp-action="Edit" asp-route-id="@Model.BookId" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
 </div>

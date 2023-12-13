@@ -51,8 +51,9 @@
     </dl>
     
     <form asp-action="Delete">
+        <a asp-action="Index" class="btn btn-warning"><i class="fa-solid fa-arrow-left"></i> Back</a>
         <input type="hidden" asp-for="BookId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        
     </form>
 </div>

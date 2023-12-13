@@ -6,8 +6,12 @@ using JamesRecipes.Repository.FE;
 using JamesRecipes.Service.Admin;
 using JamesRecipes.Service.FE;
 using JamesRecipes.Models;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+//Contact
+builder.Services.AddTransient<IEmailSender,SendMail>();
+
 
 // DI Admin
 

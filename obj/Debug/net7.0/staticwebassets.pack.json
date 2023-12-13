@@ -2549,6 +2549,10 @@
       "PackagePath": "staticwebassets\\FE\\css\\magnific-popup.css"
     },
     {
+      "Id": "E:\\JamesRecipes\\wwwroot\\FE\\css\\myCss.css",
+      "PackagePath": "staticwebassets\\FE\\css\\myCss.css"
+    },
+    {
       "Id": "E:\\JamesRecipes\\wwwroot\\FE\\css\\nice-select.css",
       "PackagePath": "staticwebassets\\FE\\css\\nice-select.css"
     },
@@ -3153,20 +3157,40 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "E:\\JamesRecipes\\wwwroot\\images\\img.jpg",
-      "PackagePath": "staticwebassets\\images\\img.jpg"
+      "Id": "E:\\JamesRecipes\\wwwroot\\images\\5-Ingredient-Cooking-for-Two.jpg",
+      "PackagePath": "staticwebassets\\images\\5-Ingredient-Cooking-for-Two.jpg"
     },
     {
-      "Id": "E:\\JamesRecipes\\wwwroot\\images\\img2.jpg",
-      "PackagePath": "staticwebassets\\images\\img2.jpg"
+      "Id": "E:\\JamesRecipes\\wwwroot\\images\\Bread-Street-Kitchen.jpg",
+      "PackagePath": "staticwebassets\\images\\Bread-Street-Kitchen.jpg"
     },
     {
-      "Id": "E:\\JamesRecipes\\wwwroot\\images\\img3.jpg",
-      "PackagePath": "staticwebassets\\images\\img3.jpg"
+      "Id": "E:\\JamesRecipes\\wwwroot\\images\\Gordon-Ramsay's-Ultimate-Cookery-Course.jpg",
+      "PackagePath": "staticwebassets\\images\\Gordon-Ramsay's-Ultimate-Cookery-Course.jpg"
     },
     {
-      "Id": "E:\\JamesRecipes\\wwwroot\\images\\img4.jpg",
-      "PackagePath": "staticwebassets\\images\\img4.jpg"
+      "Id": "E:\\JamesRecipes\\wwwroot\\images\\Magnolia-Table.jpg",
+      "PackagePath": "staticwebassets\\images\\Magnolia-Table.jpg"
+    },
+    {
+      "Id": "E:\\JamesRecipes\\wwwroot\\images\\Meat - The-Art-Of-Cooking-Meat.jpg",
+      "PackagePath": "staticwebassets\\images\\Meat - The-Art-Of-Cooking-Meat.jpg"
+    },
+    {
+      "Id": "E:\\JamesRecipes\\wwwroot\\images\\Once-Upon-a-Chef-Weeknight-Weekend.jpg",
+      "PackagePath": "staticwebassets\\images\\Once-Upon-a-Chef-Weeknight-Weekend.jpg"
+    },
+    {
+      "Id": "E:\\JamesRecipes\\wwwroot\\images\\Once-Upon-a-Chef-the-Cookbook.jpg",
+      "PackagePath": "staticwebassets\\images\\Once-Upon-a-Chef-the-Cookbook.jpg"
+    },
+    {
+      "Id": "E:\\JamesRecipes\\wwwroot\\images\\Restaurant-Gordon-Ramsay.jpg",
+      "PackagePath": "staticwebassets\\images\\Restaurant-Gordon-Ramsay.jpg"
+    },
+    {
+      "Id": "E:\\JamesRecipes\\wwwroot\\images\\Taste-of-Home-All - American-Cookbook.jpg",
+      "PackagePath": "staticwebassets\\images\\Taste-of-Home-All - American-Cookbook.jpg"
     },
     {
       "Id": "E:\\JamesRecipes\\wwwroot\\lib\\bootstrap\\LICENSE",
