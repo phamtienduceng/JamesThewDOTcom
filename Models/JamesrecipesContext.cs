@@ -19,6 +19,8 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<Announcement> Announcements { get; set; }
 
     public virtual DbSet<Book> Books { get; set; }
+    public virtual DbSet<Cart> Carts { get; set; }
+    public virtual DbSet<CartItem> CartItems { get; set; }
 
     public virtual DbSet<CategoriesRecipe> CategoriesRecipes { get; set; }
 
