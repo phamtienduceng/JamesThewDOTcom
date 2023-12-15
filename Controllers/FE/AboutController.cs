@@ -1,3 +1,4 @@
+using JamesRecipes.Models.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JamesRecipes.Controllers.FE;
@@ -6,6 +7,7 @@ namespace JamesRecipes.Controllers.FE;
 public class AboutController : Controller
 {
     // GET
+    [Authentication]
     public IActionResult Index()
     {
         return View("~/Views/FE/About/Index.cshtml");

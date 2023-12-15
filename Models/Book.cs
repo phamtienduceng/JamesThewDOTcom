@@ -13,7 +13,7 @@ public partial class Book
 
     public decimal Price { get; set; }
 
-    public int StockQuantity { get; set; }
+    public int StockQuantity { get; set; }        
 
     public DateTime? CreatedAt { get; set; }
 
