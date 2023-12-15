@@ -8,7 +8,6 @@ public partial class JamesrecipesContext : DbContext
 {
     public JamesrecipesContext()
     {
-
     }
 
     public JamesrecipesContext(DbContextOptions<JamesrecipesContext> options)
@@ -19,8 +18,6 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<Announcement> Announcements { get; set; }
 
     public virtual DbSet<Book> Books { get; set; }
-    public virtual DbSet<Cart> Carts { get; set; }
-    public virtual DbSet<CartItem> CartItems { get; set; }
 
     public virtual DbSet<CategoriesRecipe> CategoriesRecipes { get; set; }
 
@@ -46,11 +43,9 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-    public virtual DbSet<Contact> Contact { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-PSHNJ8T;Database=jamesrecipes;User=sa;Password=123;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=.,1500;Database=jamesrecipes;User=sa;Password=12345678;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -86,14 +81,6 @@ public partial class JamesrecipesContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Title).HasMaxLength(100);
-            entity.Property(e => e.Photo).HasMaxLength(255);
-        });
-
-        modelBuilder.Entity<Contact>(entity =>
-        {
-            entity.Property(e => e.Email).HasMaxLength(50);
-            entity.Property(e => e.Name).HasMaxLength(50);
-            entity.Property(e => e.Massage).HasMaxLength(255);
         });
 
         modelBuilder.Entity<CategoriesRecipe>(entity =>

@@ -6,12 +6,8 @@ using JamesRecipes.Repository.FE;
 using JamesRecipes.Service.Admin;
 using JamesRecipes.Service.FE;
 using JamesRecipes.Models;
-using Microsoft.AspNetCore.Identity.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-//Contact
-builder.Services.AddTransient<IEmailSender,SendMail>();
-
 
 // DI Admin
 
@@ -28,9 +24,8 @@ builder.Services.AddScoped<IRecipeManagementRepository, RecipeManagementService>
 builder.Services.AddScoped<ITipManagementRepository, TipManagementService>();
 
 // DI Front-end
-
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IAbout, AboutService>();
-builder.Services.AddScoped<IAccount, AccountService>();
 builder.Services.AddScoped<IAnnouncement, AnnouncementService>();
 builder.Services.AddScoped<IBook, BookService>();
 builder.Services.AddScoped<ICart, CartService>();
@@ -41,13 +36,14 @@ builder.Services.AddScoped<IRecipe, RecipeService>();
 builder.Services.AddScoped<ITip, TipService>();
 
 // Add services to the container.
+
+builder.Services.AddSession();
+
+builder.Services.AddDbContext<JamesrecipesContext>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
                        throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
-
-builder.Services.AddDbContext<JamesrecipesContext>();
-
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -87,6 +83,7 @@ app.MapControllerRoute(
     name: "admin",
     pattern: "admin/{controller=Dashboard}/{action=Index}/{id?}");
 
+app.UseSession();
 
 app.MapRazorPages();
 

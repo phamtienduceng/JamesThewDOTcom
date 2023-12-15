@@ -13,7 +13,7 @@ public partial class Book
 
     public int Price { get; set; }
 
-    public int StockQuantity { get; set; }
+    public int StockQuantity { get; set; }        
 
     public string? Photo { get; set; }
 

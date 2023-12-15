@@ -13,6 +13,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.13" />
+        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.13" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.13" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
@@ -165,7 +166,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\FE\img\book\" />
+      <Folder Include="wwwroot\Admin\" />
+      <Folder Include="wwwroot\FE\" />
     </ItemGroup>
 
 <!--    <ItemGroup>
