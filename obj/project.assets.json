@@ -11843,19 +11843,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\nhuyd\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\mvc\\JamesRecipes\\JamesRecipes.csproj",
+      "projectUniqueName": "E:\\JamesRecipes\\JamesRecipes.csproj",
       "projectName": "JamesRecipes",
-      "projectPath": "C:\\mvc\\JamesRecipes\\JamesRecipes.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\mvc\\JamesRecipes\\obj\\",
+      "projectPath": "E:\\JamesRecipes\\JamesRecipes.csproj",
+      "packagesPath": "C:\\Users\\nhuyd\\.nuget\\packages\\",
+      "outputPath": "E:\\JamesRecipes\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nhuyd\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
