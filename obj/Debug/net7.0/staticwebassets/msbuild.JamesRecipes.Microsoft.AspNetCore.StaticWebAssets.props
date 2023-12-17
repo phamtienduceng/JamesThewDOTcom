@@ -128,22 +128,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Admin\css\styles.min.css))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Admin\images\.DS_Store))">
-      <SourceType>Package</SourceType>
-      <SourceId>JamesRecipes</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/JamesRecipes</BasePath>
-      <RelativePath>Admin/images/.DS_Store</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Admin\images\.DS_Store))</OriginalItemSpec>
-    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Admin\images\backgrounds\rocket.png))">
       <SourceType>Package</SourceType>
       <SourceId>JamesRecipes</SourceId>
@@ -335,22 +319,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Admin\js\sidebarmenu.js))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Admin\libs\.DS_Store))">
-      <SourceType>Package</SourceType>
-      <SourceId>JamesRecipes</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/JamesRecipes</BasePath>
-      <RelativePath>Admin/libs/.DS_Store</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Admin\libs\.DS_Store))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Admin\libs\apexcharts\dist\apexcharts.amd.js))">
       <SourceType>Package</SourceType>
