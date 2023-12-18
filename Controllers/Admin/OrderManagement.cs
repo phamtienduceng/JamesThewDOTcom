@@ -1,9 +1,11 @@
+using JamesRecipes.Models.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JamesRecipes.Controllers.Admin;
 
 public class OrderManagement : Controller
 {
+    [AuthenticationAdmin]
     [HttpGet]
     public IActionResult Index()
     {
