@@ -1,16 +1,19 @@
 @model JamesRecipes.Models.User
 
 @{
+    Layout = null;
     ViewData["Title"] = "MyProfile";
 }
 
-<h1>MyProfile</h1>
+<h1>Register</h1>
 
 <h4>User</h4>
 <hr />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="MyProfile" method="post">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UserId" />
             <div class="form-group">

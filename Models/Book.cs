@@ -11,11 +11,15 @@ public partial class Book
 
     public string Author { get; set; } = null!;
 
-    public decimal Price { get; set; }
+    public int Price { get; set; }
 
     public int StockQuantity { get; set; }        
+
+    public string? Photo { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+
+    public List<CartItem>? CartItems { get; set; }
 }
