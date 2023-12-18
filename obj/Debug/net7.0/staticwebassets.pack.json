@@ -2713,6 +2713,10 @@
       "PackagePath": "staticwebassets/FE/img/comment/comment_3.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/comtam.jpg",
+      "PackagePath": "staticwebassets/FE/img/comtam.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/elements/a.jpg",
       "PackagePath": "staticwebassets/FE/img/elements/a.jpg"
     },

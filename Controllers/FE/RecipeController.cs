@@ -23,6 +23,13 @@ public class RecipeController : Controller
         return View("~/Views/FE/Recipe/Index.cshtml", _recipe.GetAllRecipes());
     }
     
+    [HttpGet("single_recipe")]
+    public IActionResult SingleRecipe(int id)
+    {
+        var rep = _recipe.GetRecipe(id);
+        return View("~/Views/FE/Recipe/SingleRecipe.cshtml", rep);
+    }
+    
     [HttpGet("create")]
     public IActionResult Create()
     {

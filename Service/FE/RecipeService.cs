@@ -17,6 +17,12 @@ public class RecipeService: IRecipe
         return _db.Recipes.ToList();
     }
 
+    public Recipe GetRecipe(int id)
+    {
+        var rep = _db.Recipes.SingleOrDefault(r => r.RecipeId == id);
+        return rep ?? null!;
+    }
+
     public void PostRecipe(Recipe newRecipe)
     {
         _db.Recipes.Add(newRecipe);
