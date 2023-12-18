@@ -182,7 +182,7 @@ public class AccountController : Controller
         return View("~/Views/FE/Account/ForgotPassword.cshtml");
     }
 
-    [HttpPost("ForgotPassword")]
+    /*[HttpPost("ForgotPassword")]
     public ActionResult ForgotPassword(string email)
     {
         // Kiểm tra xem email có tồn tại trong hệ thống hay không
@@ -196,8 +196,8 @@ public class AccountController : Controller
 
         // Nếu email không tồn tại trong hệ thống, hiển thị form quên mật khẩu lại với thông báo lỗi
         ModelState.AddModelError("", "Email không hợp lệ.");
-        return View();
-    }
+        return View("~/Views/FE/Account/ForgotPassword.cshtml");
+    }*/
     [HttpGet("ForgotPasswordConfirmation")]
     public ActionResult ForgotPasswordConfirmation()
     {

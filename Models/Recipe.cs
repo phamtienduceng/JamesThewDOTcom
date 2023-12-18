@@ -25,6 +25,12 @@ public partial class Recipe
 
     public string? Image { get; set; }
 
+    public TimeSpan? Timeneeds { get; set; }
+
+    public string? VideoUrl { get; set; }
+
+    public int? Rating { get; set; }
+
     public virtual CategoriesRecipe CategoryRecipe { get; set; } = null!;
 
     public virtual ICollection<ContestEntry> ContestEntries { get; set; } = new List<ContestEntry>();

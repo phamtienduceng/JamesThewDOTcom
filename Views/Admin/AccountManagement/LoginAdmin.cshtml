@@ -27,7 +27,7 @@
                             <div class="card-body">
                                 <img src="~/Admin/images/logos/dark-logo.svg" width="180" alt="">
                                 <p class="text-center">Your Social Campaigns</p>
-                                <form asp-action="LoginAdmin">
+                                <form asp-action="LoginAdmin" asp-controller="AccountManagement">
                                     @if (ViewData["Error"] != null && !string.IsNullOrWhiteSpace(ViewData["Error"].ToString()))
                                     {
                                         <div class="alert alert-danger">@ViewData["Error"]</div>

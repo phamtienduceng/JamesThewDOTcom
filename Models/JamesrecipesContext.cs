@@ -50,7 +50,7 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=.,1500;Database=jamesrecipes;User=sa;Password=12345678;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=.,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -236,7 +236,7 @@ public partial class JamesrecipesContext : DbContext
 
         modelBuilder.Entity<Recipe>(entity =>
         {
-            entity.HasKey(e => e.RecipeId).HasName("PK__Recipes__FDD988D0A97768C2");
+            entity.HasKey(e => e.RecipeId).HasName("PK__tmp_ms_x__FDD988D0C9C6AA59");
 
             entity.Property(e => e.RecipeId).HasColumnName("RecipeID");
             entity.Property(e => e.CategoryRecipeId).HasColumnName("CategoryRecipeID");
@@ -244,17 +244,20 @@ public partial class JamesrecipesContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.Rating).HasColumnName("rating");
+            entity.Property(e => e.Timeneeds).HasColumnName("timeneeds");
             entity.Property(e => e.Title).HasMaxLength(100);
             entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.VideoUrl).HasColumnName("videoUrl");
 
             entity.HasOne(d => d.CategoryRecipe).WithMany(p => p.Recipes)
                 .HasForeignKey(d => d.CategoryRecipeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Recipes__Categor__2F10007B");
+                .HasConstraintName("FK__Recipes__Categor__07C12930");
 
             entity.HasOne(d => d.User).WithMany(p => p.Recipes)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Recipes__UserID__2E1BDC42");
+                .HasConstraintName("FK__Recipes__UserID__06CD04F7");
         });
 
         modelBuilder.Entity<Role>(entity =>
