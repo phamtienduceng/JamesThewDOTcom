@@ -35,6 +35,7 @@ builder.Services.AddScoped<IFaq, FaqService>();
 builder.Services.AddScoped<IRecipe, RecipeService>();
 builder.Services.AddScoped<ITip, TipService>();
 builder.Services.AddScoped<ICategoriesRecipe, CategoriesRecipeService>();
+builder.Services.AddScoped<IFeedback, FeedbackService>();
 
 // Add services to the container.
 

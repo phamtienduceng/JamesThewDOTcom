@@ -1,5 +1,6 @@
 using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
+using Microsoft.EntityFrameworkCore;
 
 namespace JamesRecipes.Service.FE;
 
@@ -19,7 +20,7 @@ public class RecipeService: IRecipe
 
     public Recipe GetRecipe(int id)
     {
-        var rep = _db.Recipes.SingleOrDefault(r => r.RecipeId == id);
+        var rep = _db.Recipes.Include(r=>r.Feedbacks).SingleOrDefault(r => r.RecipeId == id);
         return rep ?? null!;
     }
 
