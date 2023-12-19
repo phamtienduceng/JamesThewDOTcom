@@ -1,127 +1,116 @@
+@model BookDisplayModel
+
 @{
-    ViewData["Title"] = "Books";
 }
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 <!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_1">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text text-center">
-                        <h3>Cookery books</h3>
-                    </div>
+<div class="bradcam_area bradcam_bg_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <h3>Contact Us</h3>
                 </div>
             </div>
         </div>
     </div>
-    <!-- /bradcam_area  -->
+</div>
+<!-- /bradcam_area  -->
+<div class="recepie_area plus_padding">
+    <div class="container">
+        <div class="row">
+            <div class="my-2">
+                <form asp-action="Index" class="row row-cols-lg-auto g-3 align-items-center">
+                    <div class="col-12">
+                        <label class="visually-hidden" for="genreId">Genres</label>
+                        <select class="form-select" id="genreId" name="genreId">
+                            <option selected>Genre</option>
+                            @if (Model != null && Model.Genres != null)
+                            {
+                                foreach (var genre in Model.Genres)
+                                {
+                                    <option selected="@(genre.Id == Model.GenreId)" value="@genre.Id">@genre.GenreName</option>
+                                }
+                            }
+                        </select>
+                    </div>
 
-    <!-- recepie_area_start  -->
-    <div class="recepie_area plus_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                        <img src="img/book/5-Ingredient Cooking for Two.jpg" alt="">
+                    <div class="col-12">
+                        <label class="visually-hidden" for="sterm">Search by title</label>
+                        <div class="input-group">
+                            <div class="input-group-text"></div>
+                            @if (Model != null)
+                            {
+                                <input type="text" class="form-control" value="@Model.STerm" id="sterm" name="sterm" placeholder="Search by title">
+                            }
+
                         </div>
-                        <h3>Egg Manchurian</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">Buy Book</a>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                        <img src="img/book/Bread Street Kitchen.jpg" alt="">
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                        <a href="/Home/Index" class="btn btn-dark">Reset</a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="w-100 mt-4 d-flex flex-wrap ">
+                @if (Model != null && Model.Genres != null)
+                {
+                    @foreach (var book in Model.Books)
+                    {
+                        <div class="card mx-3 mb-4" style="width: 11rem;">
+                            @if (string.IsNullOrEmpty(book.Image))
+                            {
+                                <img style="width:100%;height:180px" src="/images/NoImage.png" class="card-img-top" alt="...">
+
+                            }
+                            else
+                            {
+                                <img style="width:100%;height:180px" src="/images/@book.Image" class="card-img-top" alt="...">
+                            }
+                            <div class="card-body">
+                                <h5 class="card-title">@book.BookName</h5>
+                                <p class="card-text">
+                                    <b>Genre: </b>@book.GenreName <br />
+                                    <b>Author: </b>@book.AuthorName <br />
+                                    <b>Price: </b>@book.Price
+                                </p>
+                                <button type="button" onclick="add(@book.Id)" class="btn btn-primary">Add to cart</button>
+                            </div>
                         </div>
-                        <h3>Pure Vegetable Bowl</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                    <a href="#" class="line_btn">Buy Book</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                        <img src="img/book/GORDON RAMSAY'S ULTIMATE COOKERY COURSE.jpg" alt="">
-                        </div>
-                        <h3>Egg Masala Ramen</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                    <a href="#" class="line_btn">Buy Book</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                        <img src="img/book/Magnolia Table.jpg" alt="">
-                        </div>
-                        <h3>Egg Manchurian</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                        <img src="img/book/Meat - The Art Of Cooking Meat.jpg" alt="">
-                        </div>
-                        <h3>Pure Vegetable Bowl</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                    <a href="#" class="line_btn">Buy Book</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                        <img src="img/book/Once Upon a Chef  Weeknight Weekend.jpg" alt="">
-                        </div>
-                        <h3>Egg Masala Ramen</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                    <a href="#" class="line_btn">Buy Book</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                        <img src="img/book/RESTAURANT GORDON RAMSAY.jpg" alt="">
-                        </div>
-                        <h3>Egg Manchurian</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                    <a href="#" class="line_btn">Buy Book</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                        <img src="img/book/Taste of Home All-American Cookbook.jpg" alt="">
-                        </div>
-                        <h3>Pure Vegetable Bowl</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                    <a href="#" class="line_btn">Buy Book</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                        <img src="img/book/Once Upon a Chef  Weeknight Weekend.jpg" alt="">
-                        </div>
-                        <h3>Egg Masala Ramen</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                    <a href="#" class="line_btn">Buy Book</a
-                    </div>
-                </div>
+                    }
+                }
+
             </div>
         </div>
     </div>
-    <!-- /recepie_area_start  -->
+</div>
 
-    
+@section Scripts {
+    <script>
+        async function add(bookId) {
+            var usernameEl = document.getElementById("username");
+            if (usernameEl == null) {
+                window.location.href = "/Identity/Account/Login";
+                //var username=usernameEl.innerText;
+                //  if(username.length<1){
+                //      window.location.href="/Identity/Account/Login";
+                //  }
+            }
+            try {
+                var response = await fetch(`/Cart/AddItem?bookId=${bookId}`);
+                if (response.status == 200) {
+                    var result = await response.json();
+                    var cartCountEl = document.getElementById("cartCount");
+                    cartCountEl.innerHTML = result;
+                    window.location.href = "#cartCount";
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
+}

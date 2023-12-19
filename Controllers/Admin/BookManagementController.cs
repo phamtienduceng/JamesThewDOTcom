@@ -6,161 +6,45 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JamesRecipes.Models;
+using JamesRecipes.Repository.Admin;
+using System.Diagnostics;
 
 namespace JamesRecipes.Controllers.Admin
 {
     public class BookManagementController : Controller
     {
-        private readonly JamesrecipesContext _context;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly ILogger<HomeController> _logger;
+        private readonly IBookManagementRepository _bookRepository;
 
-        public BookManagementController(JamesrecipesContext context, IWebHostEnvironment webHostEnvironment)
+        public BookManagementController(ILogger<HomeController> logger, IBookManagementRepository bookRepository)
         {
-            _context = context;
-            _webHostEnvironment = webHostEnvironment;
+            _logger = logger;
+            _bookRepository = bookRepository;
         }
 
-
-
-        // GET: BookManagement
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sterm = "", int genreId = 0)
         {
-              return _context.Books != null ? 
-                          View(await _context.Books.ToListAsync()) :
-                          Problem("Entity set 'JamesrecipesContext.Books'  is null.");
-        }
-
-        // GET: BookManagement/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Books == null)
+            IEnumerable<Book> books = await _bookRepository.GetBooks(sterm, genreId);
+            IEnumerable<Genre> genres = await _bookRepository.Genres();
+            BookDisplayModel bookModel = new BookDisplayModel
             {
-                return NotFound();
-            }
-
-            var book = await _context.Books
-                .FirstOrDefaultAsync(m => m.BookId == id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-
-            return View(book);
+                Books = books,
+                Genres = genres,
+                STerm = sterm,
+                GenreId = genreId
+            };
+            return View(bookModel);
         }
 
-        // GET: BookManagement/Create
-        public IActionResult Create()
+        public IActionResult Privacy()
         {
             return View();
         }
 
-        // POST: BookManagement/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Language,ISBN,DatePublished,Price,Author,ImageUrl")] Book book)
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(book);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(book);
-        }
-
-        // GET: BookManagement/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Books == null)
-            {
-                return NotFound();
-            }
-
-            var book = await _context.Books.FindAsync(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-            return View(book);
-        }
-
-        // POST: BookManagement/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BookId,Title,Author,Price,StockQuantity,Photo,CreatedAt")] Book book)
-        {
-            if (id != book.BookId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(book);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BookExists(book.BookId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(book);
-        }
-
-        // GET: BookManagement/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Books == null)
-            {
-                return NotFound();
-            }
-
-            var book = await _context.Books
-                .FirstOrDefaultAsync(m => m.BookId == id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-
-            return View(book);
-        }
-
-        // POST: BookManagement/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Books == null)
-            {
-                return Problem("Entity set 'JamesrecipesContext.Books'  is null.");
-            }
-            var book = await _context.Books.FindAsync(id);
-            if (book != null)
-            {
-                _context.Books.Remove(book);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool BookExists(int id)
-        {
-          return (_context.Books?.Any(e => e.BookId == id)).GetValueOrDefault();
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

@@ -23,9 +23,10 @@ builder.Services.AddScoped<IContactManagementRepository, ContactManagementServic
 builder.Services.AddScoped<IContestManagementRepository, ContestManagementService>();
 builder.Services.AddScoped<IDashboardRepository, DashboardService>();
 builder.Services.AddScoped<IFaqManagementRepository, FaqManagementService>();
-builder.Services.AddScoped<IOrderManagementRepository, OrderManagementService>();
 builder.Services.AddScoped<IRecipeManagementRepository, RecipeManagementService>();
 builder.Services.AddScoped<ITipManagementRepository, TipManagementService>();
+builder.Services.AddScoped<ICartRepository, CartService>();
+builder.Services.AddScoped<IUserOrderRepository,UserOrderService>();
 
 // DI Front-end
 
@@ -33,7 +34,7 @@ builder.Services.AddScoped<IAbout, AboutService>();
 builder.Services.AddScoped<IAccount, AccountService>();
 builder.Services.AddScoped<IAnnouncement, AnnouncementService>();
 builder.Services.AddScoped<IBook, BookService>();
-builder.Services.AddScoped<ICart, CartService>();
+
 builder.Services.AddScoped<IContact, ContactService>();
 builder.Services.AddScoped<IContest, ContestService>();
 builder.Services.AddScoped<IFaq, FaqService>();

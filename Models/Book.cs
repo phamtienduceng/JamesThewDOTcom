@@ -1,23 +1,30 @@
-﻿using System;
+﻿using Humanizer.Localisation;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace JamesRecipes.Models;
-
+[Table("Book")]
 public partial class Book
 {
-    public int BookId { get; set; }
+    public int Id { get; set; }
 
-    public string Title { get; set; } = null!;
+    [Required]
+    [MaxLength(40)]
+    public string? BookName { get; set; }
+    [Required]
+    [MaxLength(40)]
+    public string? AuthorName { get; set; }
+    [Required]
+    public double Price { get; set; }
+    public string? Image { get; set; }
+    [Required]
+    public int GenreId { get; set; }
+    [NotMapped]
+    public string GenreName { get; set; }
+    public Genre Genre { get; set; }
+    public List<OrderDetail> OrderDetail { get; set; }
+    public List<CartDetail> CartDetail { get; set; }
 
-    public string Author { get; set; } = null!;
-
-    public decimal Price { get; set; }
-
-    public int StockQuantity { get; set; }
-
-    public string? Photo { get; set; }
-
-    public DateTime? CreatedAt { get; set; }
-
-    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 }

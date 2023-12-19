@@ -22,7 +22,11 @@
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.11" />
+        <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
     </ItemGroup>
 
     <ItemGroup>
@@ -165,7 +169,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\FE\img\book\" />
+      <Folder Include="Models\DTOs\" />
+      <Folder Include="Models\NewFolder\" />
     </ItemGroup>
 
 <!--    <ItemGroup>
