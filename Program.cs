@@ -20,6 +20,7 @@ builder.Services.AddScoped<IContestManagementRepository, ContestManagementServic
 builder.Services.AddScoped<IDashboardRepository, DashboardService>();
 builder.Services.AddScoped<IFaqManagementRepository, FaqManagementService>();
 builder.Services.AddScoped<IOrderManagementRepository, OrderManagementService>();
+builder.Services.AddScoped<IRecipeCategoriesManagementRepository, RecipeCategoriesManagementService>();
 builder.Services.AddScoped<IRecipeManagementRepository, RecipeManagementService>();
 builder.Services.AddScoped<ITipManagementRepository, TipManagementService>();
 
