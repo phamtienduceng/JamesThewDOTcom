@@ -1,14 +1,78 @@
+@model IEnumerable<model.Models.ViewRecipeManagement>
 @{
   Layout = "_FELayout";
   ViewData["Title"] = "Recipes";
 }
 
-<div class="container-fluid">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title fw-semibold mb-4">Recipe Management</h5>
-      <p class="mb-0">This is a recipe management page </p>
-    </div>
-  </div>
-</div>
+
+<h2 class="card-title fw-semibold mb-4">Recipe Management</h2>
+<table class="table ">
+    <thead>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Rating
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Date post
+        </th>
+        <th>
+            User
+        </th>
+        <th>
+            Role
+        </th>
+        <th>
+            Action
+        </th>
+        
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeCategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeCreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleName)
+            </td>
+            <td>
+                <a asp-action="GetRecipe" asp-controller="RecipeManagement" asp-route-id="@item.RecipeId">Detail</a> | 
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
 

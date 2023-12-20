@@ -20,10 +20,34 @@ public class RecipeController : Controller
     }
 
     [HttpGet("index")]
-    public IActionResult Index()
+    public IActionResult Index(string sortOrder, string searchString)
     {
-        return View("~/Views/FE/Recipe/Index.cshtml", _recipe.GetAllRecipes());
+        ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            TempData["SearchString"] = searchString;
+        }
+        else
+        {
+            searchString = TempData["SearchString"] as string;
+        }
+
+        ViewData["CurrentFilter"] = searchString;
+
+        var reps = _recipe.GetAllRecipes();
+
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            reps = _recipe.Search(searchString);
+        }
+
+        reps = _recipe.Sorting(reps, sortOrder);
+
+        return View("~/Views/FE/Recipe/Index.cshtml", reps);
     }
+
     
     [HttpGet("single_recipe")]
     public IActionResult SingleRecipe(int id)

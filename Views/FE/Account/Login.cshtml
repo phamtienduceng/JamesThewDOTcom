@@ -4,13 +4,9 @@
     ViewData["Title"] = "Login";
 }
 
-<h1>Login</h1>
-
-<h4>User</h4>
-<hr />
-
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 mx-auto">
+        <h1 class="text-center">Login</h1>
         <form asp-action="Login" asp-controller="Account">
             @if (ViewData["Error"] != null && !string.IsNullOrWhiteSpace(ViewData["Error"].ToString()))
             {
@@ -26,7 +22,7 @@
                 <input asp-for="Password" name="pass" class="form-control" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Login" class="btn btn-primary" />
             </div>
         </form>
     </div>

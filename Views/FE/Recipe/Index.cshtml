@@ -17,16 +17,25 @@
         <div class="col-xl-3 col-lg-3">
             <div class="sidebar">
                 <!-- Add your search and filter controls here -->
-                <h4>Search and Filter</h4>
-                <!-- Example search input -->
-                <input type="text" placeholder="Search...">
+                <h4>Search recipe: </h4>
+                <form asp-action="Index" asp-controller="Recipe" method="get">
+                    <div class="form-actions no-color">
+                        <p>
+                            <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" />
+                            <input type="submit" value="Search" class="btn btn-default" />
+                        </p>
+                    </div>
+                </form>
                 <!-- Example filter dropdown -->
-                <select>
-                    <option>Filter 1</option>
-                    <option>Filter 2</option>
-                    <!-- Add more filters as needed -->
-                </select>
-                <!-- Add additional search and filter controls as needed -->
+                <h4>Sorting</h4>
+                <ul>
+                    <li>
+                        <a asp-action="Index" asp-controller="Recipe" asp-route-sortOrder="@ViewData["NameSort"]">@Html.DisplayNameFor(model => model.Title)</a>
+                    </li>
+                    <li>
+                        <a asp-action="Index" asp-controller="Recipe" asp-route-sortOrder="@ViewData["DateSort"]">@Html.DisplayNameFor(model => model.CreatedAt)</a>
+                    </li>
+                </ul>
             </div>
         </div>
 

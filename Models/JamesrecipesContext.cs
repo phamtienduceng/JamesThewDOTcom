@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using model.Models;
 
 namespace JamesRecipes.Models;
 
@@ -49,6 +50,10 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<ViewHomepage> ViewHomepages { get; set; }
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
+    
+    public virtual DbSet<ViewRecipeManagement> ViewRecipeManagements { get; set; }
+
+    public virtual DbSet<ViewTipManagement> ViewTipManagements { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Server=.,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True");
@@ -362,6 +367,35 @@ public partial class JamesrecipesContext : DbContext
 
             entity.Property(e => e.Username).HasMaxLength(50);
         });
+        
+        modelBuilder.Entity<ViewRecipeManagement>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("ViewRecipeManagement");
+
+            entity.Property(e => e.RecipeCategoryName).HasMaxLength(50);
+            entity.Property(e => e.RecipeCreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.RecipeId).HasColumnName("RecipeID");
+            entity.Property(e => e.RecipeTitle).HasMaxLength(100);
+            entity.Property(e => e.RoleName).HasMaxLength(50);
+            entity.Property(e => e.Username).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<ViewTipManagement>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("ViewTipManagement");
+
+            entity.Property(e => e.RoleName).HasMaxLength(50);
+            entity.Property(e => e.TipCategoryName).HasMaxLength(50);
+            entity.Property(e => e.TipCreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.TipId).HasColumnName("TipID");
+            entity.Property(e => e.TipTitle).HasMaxLength(100);
+            entity.Property(e => e.Username).HasMaxLength(50);
+        });
+
 
         OnModelCreatingPartial(modelBuilder);
     }
