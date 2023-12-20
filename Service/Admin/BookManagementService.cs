@@ -1,3 +1,4 @@
+using Humanizer.Localisation;
 using JamesRecipes.Models;
 using JamesRecipes.Repository.Admin;
 using Microsoft.EntityFrameworkCore;
@@ -10,70 +11,42 @@ namespace JamesRecipes.Service.Admin;
 
 public class BookManagementService : IBookManagementRepository
 {
-    private readonly JamesrecipesContext _context;
+    private readonly JamesrecipesContext _db;
 
-    public BookManagementService(JamesrecipesContext context)
+    public BookManagementService(JamesrecipesContext db)
     {
-        this._context = context;
+        this._db = db;
     }
 
-    public async Task<Book> CreateBook(Book newBook)
+    public async Task<IEnumerable<Genre>> Genres()
     {
-        var book =  _context.Books.FirstOrDefault(book => book.BookId.Equals(newBook));
-        if (book == null)
-        {
-            await _context.Books.AddAsync(newBook);
-            await _context.SaveChangesAsync();
-
-        }
-        return newBook;
+        return await _db.Genres.ToListAsync();
     }
 
-    public async Task<bool> DeleteBook(int bookId)
+    public async Task<IEnumerable<Book>> GetBooks(string sTerm = "", int genreId = 0)
     {
-        var book = await _context.Books.FirstOrDefaultAsync(book => book.BookId == bookId);
-        if (book != null)
+        sTerm = sTerm.ToLower();
+        IEnumerable<Book> books = await (from book in _db.Books
+                                         join genre in _db.Genres
+                                         on book.GenreId equals genre.Id
+                                         where string.IsNullOrWhiteSpace(sTerm) || (book != null && book.BookName.ToLower().StartsWith(sTerm))
+                                         select new Book
+                                         {
+                                             Id = book.Id,
+                                             Image = book.Image,
+                                             AuthorName = book.AuthorName,
+                                             BookName = book.BookName,
+                                             GenreId = book.GenreId,
+                                             Price = book.Price,
+                                             GenreName = genre.GenreName
+                                         }
+                     ).ToListAsync();
+        if (genreId > 0)
         {
-            _context.Books.Remove(book);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
-    public async Task<List<Book>> GetAllBooks()
-    {
-        return await _context.Books.ToListAsync();
-        
-    }
-
-    public async Task<Book> GetBook(int bookId)
-    {
-        return await _context.Books.FindAsync(bookId);
-    }
-
-    public async Task<Book> UpdateBook(int bookId, int price, int quantity)
-    {
-        var book = await _context.Books.FirstOrDefaultAsync(book => book.BookId == bookId);
-        if (book == null)
-        {
-            book = new Book()
-            {
-                BookId = price,
-                Price = price,
-                StockQuantity = quantity,
-            };
-            _context.Books.Add(book);
+            books = books.Where(a => a.GenreId == genreId).ToList();
         }
-        else
-        {
-            book.Price = price;
-            book.StockQuantity = quantity;
-        }
-        await _context.SaveChangesAsync();
-        return book;
+        return books;
+
     }
 }
