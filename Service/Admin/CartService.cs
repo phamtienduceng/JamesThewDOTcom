@@ -84,7 +84,7 @@ namespace JamesRecipes.Service.Admin
                                     .Where(a => a.ShoppingCartId == cart.Id).ToList();
                 if (cartDetail.Count == 0)
                     throw new Exception("Cart is empty");
-                var order = new Orders
+                var order = new Order
                 {
                     UserId = userId,
                     CreateDate = DateTime.UtcNow,

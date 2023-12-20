@@ -1,182 +1,65 @@
-﻿@model BookDisplayModel
+﻿@model IEnumerable<JamesRecipes.Models.Book>
 
 @{
-<<<<<<< Updated upstream
-}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-<!-- bradcam_area  -->
-<div class="bradcam_area bradcam_bg_1">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="bradcam_text text-center">
-                    <h3>Contest</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /bradcam_area  -->
-<div class="recepie_area plus_padding">
-    <div class="container">
-        <div class="row">
-            <div class="my-2">
-                <form asp-action="Index" class="row row-cols-lg-auto g-3 align-items-center">
-                    <div class="col-12">
-                        <label class="visually-hidden" for="genreId">Genres</label>
-                        <select class="form-select" id="genreId" name="genreId">
-                            <option selected>Genre</option>
-                            @if (Model != null && Model.Genres != null)
-                            {
-                                foreach (var genre in Model.Genres)
-                                {
-                                    <option selected="@(genre.Id == Model.GenreId)" value="@genre.Id">@genre.GenreName</option>
-                                }
-                            }
-                        </select>
-                    </div>
-
-                    <div class="col-12">
-                        <label class="visually-hidden" for="sterm">Search by title</label>
-                        <div class="input-group">
-                            <div class="input-group-text"></div>
-                            @if (Model != null)
-                            {
-                                <input type="text" class="form-control" value="@Model.STerm" id="sterm" name="sterm" placeholder="Search by title">
-                            }
-
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                        <a href="/Home/Index" class="btn btn-dark">Reset</a>
-                    </div>
-                </form>
-            </div>
-
-            <div class="w-100 mt-4 d-flex flex-wrap ">
-                @if (Model != null && Model.Genres != null)
-                {
-                    @foreach (var book in Model.Books)
-                    {
-                        <div class="card mx-3 mb-4" style="width: 11rem;">
-                            @if (string.IsNullOrEmpty(book.Image))
-                            {
-                                <img style="width:100%;height:180px" src="/images/NoImage.png" class="card-img-top" alt="...">
-
-                            }
-                            else
-                            {
-                                <img style="width:100%;height:180px" src="/images/@book.Image" class="card-img-top" alt="...">
-                            }
-                            <div class="card-body">
-                                <h5 class="card-title">@book.BookName</h5>
-                                <p class="card-text">
-                                    <b>Genre: </b>@book.GenreName <br />
-                                    <b>Author: </b>@book.AuthorName <br />
-                                    <b>Price: </b>@book.Price
-                                </p>
-                                <button type="button" onclick="add(@book.Id)" class="btn btn-primary">Add to cart</button>
-                            </div>
-                        </div>
-                    }
-                }
-
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts {
-    <script>
-        async function add(bookId) {
-            var usernameEl = document.getElementById("username");
-            if (usernameEl == null) {
-                window.location.href = "/Identity/Account/Login";
-                //var username=usernameEl.innerText;
-                //  if(username.length<1){
-                //      window.location.href="/Identity/Account/Login";
-                //  }
-            }
-            try {
-                var response = await fetch(`/Cart/AddItem?bookId=${bookId}`);
-                if (response.status == 200) {
-                    var result = await response.json();
-                    var cartCountEl = document.getElementById("cartCount");
-                    cartCountEl.innerHTML = result;
-                    window.location.href = "#cartCount";
-                }
-            }
-            catch (err) {
-                console.log(err);
-            }
-        }
-    </script>
-}
-=======
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_FELayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Book Management</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary"><i class="fa-solid fa-book"></i> Add Book</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.BookName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                @Html.DisplayNameFor(model => model.AuthorName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StockQuantity)
+                @Html.DisplayNameFor(model => model.Image)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Photo)
+                @Html.DisplayNameFor(model => model.Genre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
+                @Html.DisplayNameFor(model => model.GenreName)
             </th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @Html.DisplayFor(modelItem => item.BookName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Author)
+                @Html.DisplayFor(modelItem => item.AuthorName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StockQuantity)
+                    <img src="@item.Image" style="width:110px" />
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre.GenreName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Photo)
+                @Html.DisplayFor(modelItem => item.GenreName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BookId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BookId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
-            </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success"><i class="fa-solid fa-circle-info"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                </td>
         </tr>
 }
     </tbody>
 </table>
->>>>>>> Stashed changes

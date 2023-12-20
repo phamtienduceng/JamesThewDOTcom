@@ -4,6 +4,6 @@ namespace JamesRecipes.Repository.Admin
 {
     public interface IUserOrderRepository
     {
-        Task<IEnumerable<Orders>> UserOrders();
+        Task<IEnumerable<Order>> UserOrders();
     }
 }

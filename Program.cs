@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IAccountManagementRepository, AccountManagementService>();
 builder.Services.AddScoped<IAnnounceManagementRepository, AnnouncementManagementService>();
-builder.Services.AddScoped<IBookManagementRepository, BookManagementService>();
+builder.Services.AddScoped<IBookRepository, JamesRecipes.Service.Admin.BookService>();
 builder.Services.AddScoped<ICommentManagementRepository, CommentManagementService>();
 builder.Services.AddScoped<IContactManagementRepository, ContactManagementService>();
 builder.Services.AddScoped<IContestManagementRepository, ContestManagementService>();
@@ -28,7 +28,7 @@ builder.Services.AddScoped<IUserOrderRepository,UserOrderService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IAbout, AboutService>();
 builder.Services.AddScoped<IAnnouncement, AnnouncementService>();
-builder.Services.AddScoped<IBook, BookService>();
+builder.Services.AddScoped<IBook, JamesRecipes.Service.FE.BookService>();
 
 builder.Services.AddScoped<IContact, ContactService>();
 builder.Services.AddScoped<IContest, ContestService>();

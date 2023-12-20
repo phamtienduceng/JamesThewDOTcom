@@ -19,7 +19,7 @@ namespace JamesRecipes.Service.Admin
             _userManager = userManager; 
         }
 
-        public async Task<IEnumerable<Orders>> UserOrders()
+        public async Task<IEnumerable<Order>> UserOrders()
         {
             var userId = GetUserId();
             if (string.IsNullOrEmpty(userId))
