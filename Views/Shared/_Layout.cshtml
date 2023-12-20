@@ -1,4 +1,4 @@
-﻿@model JamesRecipes.Models.User
+﻿
 @using Newtonsoft.Json
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +45,7 @@
                                     <li><a asp-action="Index" asp-controller="Tip">Tips</a></li>
                                     <li><a asp-action="Index" asp-controller="Contest">Contest</a></li>
                                     <li><a asp-action="Index" asp-controller="Announcement">Announcement</a></li>
-                                    <li><a asp-action="Index" asp-controller="Book">Book</a></li>
+                                    <li><a asp-action="Index" asp-controller="Books">Book</a></li>
                                     <li><a href="#">Jame's recipes</a>
                                         <ul class="submenu">
                                             <li><a asp-action="Index" asp-controller="About">About us</a></li>
@@ -221,6 +221,23 @@
     <script src="~/FE/js/mail-script.js"></script>
 
     <script src="~/FE/js/main.js"></script>
+    <script>
+        loadCartCount();
+        async function loadCartCount() {
+            try {
+                var response = await fetch(`/Cart/GetTotalItemInCart`);
+                console.log(response)
+                if (response.status == 200) {
+                    var result = await response.json();
+                    var cartCountEl = document.getElementById("cartCount");
+                    cartCountEl.innerHTML = result;
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
 
 @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -60,22 +60,19 @@ namespace JamesRecipes.Controllers.Admin
         {
             if (file != null)
             {
-                string path = Path.Combine("wwwroot/Fe/img", file.FileName);
+                string path = Path.Combine("wwwroot/images", file.FileName);
                 var stream = new FileStream(path, FileMode.Create);
                 file.CopyToAsync(stream);
-                book.Image = "Fe/img" + file.FileName;
-
-                if (ModelState.IsValid)
-                {
-                    _context.Add(book);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "GenreName", book.GenreId);
-                return View(book);
+                book.Image = "images/" + file.FileName;
             }
-            else { }
-            
+            if (ModelState.IsValid)
+            {
+                _context.Add(book);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "GenreName", book.GenreId);
+            return View(book);
         }
 
         // GET: BookManagement/Edit/5
@@ -164,14 +161,14 @@ namespace JamesRecipes.Controllers.Admin
             {
                 _context.Books.Remove(book);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BookExists(int id)
         {
-          return (_context.Books?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Books?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

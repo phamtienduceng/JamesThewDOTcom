@@ -11,7 +11,7 @@ public class Book
     public int Id { get; set; }
 
     [Required]
-    [MaxLength(40)]
+    [MaxLength(100)]
     public string? BookName { get; set; }
     [Required]
     [MaxLength(40)]
