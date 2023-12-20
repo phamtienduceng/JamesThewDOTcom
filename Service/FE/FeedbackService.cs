@@ -19,6 +19,13 @@ public class FeedbackService: IFeedback
             .ToList();
     }
 
+    public List<Feedback> GetFeedbacksByTipId(int tipId)
+    {
+        return _db.Feedbacks
+            .Where(f => f.TipId == tipId)
+            .ToList();
+    }
+
     public void AddFeedback(Feedback feedback)
     {
         _db.Feedbacks.Add(feedback);

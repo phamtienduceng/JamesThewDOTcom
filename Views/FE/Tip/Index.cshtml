@@ -1,127 +1,69 @@
+@using Newtonsoft.Json
+@model IEnumerable<Tip>
+
 @{
     ViewData["Title"] = "Tips";
 }
 
-<!-- bradcam_area  -->
-    <div class="bradcam_area bradcam_bg_1">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text text-center">
-                        <h3>Tips</h3>
+@{
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("user");
+}
+
+
+<div class="container" style="margin-top: 150px">
+    <div class="row">
+        <!-- Sidebar for Search and Filter -->
+        <div class="col-xl-3 col-lg-3">
+            <div class="sidebar">
+                <!-- Add your search and filter controls here -->
+                <h4>Search and Filter</h4>
+                <!-- Example search input -->
+                <input type="text" placeholder="Search...">
+                <!-- Example filter dropdown -->
+                <select>
+                    <option>Filter 1</option>
+                    <option>Filter 2</option>
+                    <!-- Add more filters as needed -->
+                </select>
+                <!-- Add additional search and filter controls as needed -->
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="col-xl-9 col-lg-9">
+            @if (!string.IsNullOrEmpty(userJson))
+            {
+                <h3><a asp-action="Create" asp-controller="Tip">Create new tip</a></h3>
+            }
+            else
+            {
+                <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own recipes.</h3>
+            }
+            
+            <!-- Recipe Display Area -->
+            <div class="recepie_area">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="single_recepie text-center">
+                                    <div class="recepie_thumb">
+                                        <img src="~/@item.Image" alt="@item.Title">
+                                    </div>
+                                    <h3>@item.Title</h3>
+                                    <span>@item.CreatedAt</span>
+                                    <p>Time Needs: </p>
+                                     <a asp-action="SingleRecipe" asp-controller="Tip" asp-route-id="@item.TipId">View recipe's detail</a>
+
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
+            <!-- /Recipe Display Area -->
         </div>
     </div>
-    <!-- /breadcam_area  -->
-
-    <!-- recepie_area_start  -->
-    <div class="recepie_area plus_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                            <img src="img/recepie/recpie_1.png" alt="">
-                        </div>
-                        <h3>Egg Manchurian</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                            <img src="img/recepie/recpie_2.png" alt="">
-                        </div>
-                        <h3>Pure Vegetable Bowl</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                            <img src="img/recepie/recpie_3.png" alt="">
-                        </div>
-                        <h3>Egg Masala Ramen</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                            <img src="img/recepie/recpie_1.png" alt="">
-                        </div>
-                        <h3>Egg Manchurian</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                            <img src="img/recepie/recpie_2.png" alt="">
-                        </div>
-                        <h3>Pure Vegetable Bowl</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                            <img src="img/recepie/recpie_3.png" alt="">
-                        </div>
-                        <h3>Egg Masala Ramen</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                            <img src="img/recepie/recpie_1.png" alt="">
-                        </div>
-                        <h3>Egg Manchurian</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                            <img src="img/recepie/recpie_2.png" alt="">
-                        </div>
-                        <h3>Pure Vegetable Bowl</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-6">
-                    <div class="single_recepie text-center">
-                        <div class="recepie_thumb">
-                            <img src="img/recepie/recpie_3.png" alt="">
-                        </div>
-                        <h3>Egg Masala Ramen</h3>
-                        <span>Appetizer</span>
-                        <p>Time Needs: 30 Mins</p>
-                        <a href="#" class="line_btn">View Full Recipe</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /recepie_area_start  -->
-
-    
+</div>

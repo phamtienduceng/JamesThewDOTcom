@@ -47,6 +47,7 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<ViewHomepage> ViewHomepages { get; set; }
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -310,6 +311,27 @@ public partial class JamesrecipesContext : DbContext
             entity.HasOne(d => d.Role).WithMany(p => p.Users)
                 .HasForeignKey(d => d.RoleId)
                 .HasConstraintName("FK__Users__RoleID__267ABA7A");
+        });
+        
+        modelBuilder.Entity<ViewHomepage>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("ViewHomepage");
+
+            entity.Property(e => e.AnnouncementImage).HasMaxLength(255);
+            entity.Property(e => e.AnnouncementTitle).HasMaxLength(100);
+            entity.Property(e => e.AnnouncementWinnerId).HasColumnName("AnnouncementWinnerID");
+            entity.Property(e => e.ContestEndDate).HasColumnType("datetime");
+            entity.Property(e => e.ContestImage).HasMaxLength(255);
+            entity.Property(e => e.ContestStartDate).HasColumnType("datetime");
+            entity.Property(e => e.ContestTitle).HasMaxLength(100);
+            entity.Property(e => e.RecipeCategoryName).HasMaxLength(50);
+            entity.Property(e => e.RecipeImage).HasMaxLength(255);
+            entity.Property(e => e.RecipeTitle).HasMaxLength(100);
+            entity.Property(e => e.TipCategoryName).HasMaxLength(50);
+            entity.Property(e => e.TipImage).HasMaxLength(255);
+            entity.Property(e => e.TipTitle).HasMaxLength(100);
         });
 
         modelBuilder.Entity<ViewUserRole>(entity =>
