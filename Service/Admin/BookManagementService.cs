@@ -18,6 +18,7 @@ public class BookManagementService : IBookManagementRepository
         this._db = db;
     }
 
+<<<<<<< Updated upstream
     public async Task<IEnumerable<Genre>> Genres()
     {
         return await _db.Genres.ToListAsync();
@@ -48,5 +49,31 @@ public class BookManagementService : IBookManagementRepository
         }
         return books;
 
+=======
+    public Task CreateBook(Book newBook)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteBook(int bookId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<IEnumerable<Book>> GetAllBooks()
+    {
+        var books = await _context.Books.ToListAsync();
+        return books;
+    }
+
+    public Task<Book> GetBook(int bookID)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task UpdateBook(Book editBook)
+    {
+        throw new NotImplementedException();
+>>>>>>> Stashed changes
     }
 }

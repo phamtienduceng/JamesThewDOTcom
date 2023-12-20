@@ -19,6 +19,14 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<Book> Books { get; set; }
 
+    public virtual DbSet<Cart> Carts { get; set; }
+
+    public virtual DbSet<CartItem> CartItems { get; set; }
+
+    public virtual DbSet<Order> Orders { get; set; }
+
+    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+
     public virtual DbSet<CategoriesRecipe> CategoriesRecipes { get; set; }
 
     public virtual DbSet<CategoriesTip> CategoriesTips { get; set; }
@@ -31,10 +39,6 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<Feedback> Feedbacks { get; set; }
 
-    public virtual DbSet<Order> Orders { get; set; }
-
-    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-
     public virtual DbSet<Recipe> Recipes { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
@@ -45,7 +49,7 @@ public partial class JamesrecipesContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.,1500;Database=jamesrecipes;User=sa;Password=123;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-PSHNJ8T;Database=jamesrecipes;User=sa;Password=123;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -81,6 +85,47 @@ public partial class JamesrecipesContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Title).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<Cart>(entity => 
+        {
+            entity.Property(e => e.Id).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<CartItem>(entity =>
+        {
+            entity.Property(e => e.Id).HasMaxLength(100);
+            entity.Property(e => e.Quantity).HasMaxLength(100);
+            entity.Property(e => e.CartId).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<Order>(entity =>
+        {
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF67011B6B");
+            entity.Property(e => e.OrderId).HasColumnName("OrderID");
+            entity.Property(e => e.OrderDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.TotalPrice).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.HasOne(d => d.User).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Orders__UserID__4BAC3F29");
+        });
+
+        modelBuilder.Entity<OrderDetail>(entity =>
+        {
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D30CCFCB8105");
+            entity.Property(e => e.OrderDetailId).HasColumnName("OrderDetailID");
+            entity.Property(e => e.BookId).HasColumnName("BookID");
+            entity.Property(e => e.OrderId).HasColumnName("OrderID");
+            entity.Property(e => e.Subtotal).HasColumnType("decimal(10, 2)");
+            entity.HasOne(d => d.Book).WithMany(p => p.OrderDetails)
+                .HasForeignKey(d => d.BookId)
+                .HasConstraintName("FK__OrderDeta__BookI__5070F446");
+            entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
+                .HasForeignKey(d => d.OrderId)
+                .HasConstraintName("FK__OrderDeta__Order__4F7CD00D");
         });
 
         modelBuilder.Entity<CategoriesRecipe>(entity =>
@@ -186,40 +231,6 @@ public partial class JamesrecipesContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__Feedback__UserID__534D60F1");
-        });
-
-        modelBuilder.Entity<Order>(entity =>
-        {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF67011B6B");
-
-            entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.OrderDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.TotalPrice).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.UserId).HasColumnName("UserID");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Orders__UserID__4BAC3F29");
-        });
-
-        modelBuilder.Entity<OrderDetail>(entity =>
-        {
-            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D30CCFCB8105");
-
-            entity.Property(e => e.OrderDetailId).HasColumnName("OrderDetailID");
-            entity.Property(e => e.BookId).HasColumnName("BookID");
-            entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.Subtotal).HasColumnType("decimal(10, 2)");
-
-            entity.HasOne(d => d.Book).WithMany(p => p.OrderDetails)
-                .HasForeignKey(d => d.BookId)
-                .HasConstraintName("FK__OrderDeta__BookI__5070F446");
-
-            entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
-                .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__OrderDeta__Order__4F7CD00D");
         });
 
         modelBuilder.Entity<Recipe>(entity =>

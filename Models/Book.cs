@@ -20,4 +20,6 @@ public partial class Book
     public DateTime? CreatedAt { get; set; }
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+
+    public List<CartItem>? CartItems { get; set; }
 }
