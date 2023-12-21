@@ -26,9 +26,6 @@ namespace JamesRecipes
             app.UseSession();
 
         }
-
-
-
     }
 }
 
