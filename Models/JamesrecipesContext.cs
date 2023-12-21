@@ -251,6 +251,7 @@ public partial class JamesrecipesContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Image).HasMaxLength(255);
             entity.Property(e => e.Rating).HasColumnName("rating");
+            entity.Property(e => e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Timeneeds).HasColumnName("timeneeds");
             entity.Property(e => e.Title).HasMaxLength(100);
             entity.Property(e => e.UserId).HasColumnName("UserID");

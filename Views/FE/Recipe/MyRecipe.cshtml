@@ -1,7 +1,6 @@
 @using Newtonsoft.Json
 @using X.PagedList.Mvc.Common
-@model X.PagedList.IPagedList<Recipe>
-@using X.PagedList.Mvc.Core
+@model IEnumerable<Recipe>
 
 @{
     ViewData["Title"] = "Recipes";
@@ -43,14 +42,7 @@
 
         <!-- Main Content Area -->
         <div class="col-xl-9 col-lg-9">
-            @if (!string.IsNullOrEmpty(userJson))
-            {
-                <h3><a asp-action="Create" asp-controller="Recipe">Create new recipe</a></h3>
-            }
-            else
-            {
-                <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own recipes.</h3>
-            }
+            <h2 class="text-center">Your recipes</h2>
             
             <!-- Recipe Display Area -->
             <div class="recepie_area">
@@ -65,7 +57,17 @@
                                     </div>
                                     <h3>@item.Title</h3>
                                     <span>@item.CreatedAt</span>
-                                    <p>Time Needs: @item.Timeneeds</p>
+                                    <p class="mb-0">Time Needs: @item.Timeneeds</p>
+                                    @if (!string.IsNullOrEmpty(userJson) )
+                                    {
+                                        var user = JsonConvert.DeserializeObject<User>(userJson);
+                                        if (user.UserId == @item.UserId)
+                                        {
+                                            <div>
+                                                Show: <input asp-for="@item.Status" type="checkbox" class="recipe-switch" id="switch-@item.RecipeId" data-recipe-id="@item.RecipeId">
+                                            </div>
+                                        }
+                                    }
                                     <a asp-action="SingleRecipe" class="line_btn" asp-controller="Recipe" asp-route-id="@item.RecipeId">View recipe's detail</a>
 
                                 </div>
@@ -74,20 +76,31 @@
                     </div>
                 </div>
             </div>
-            
-           <div class="text-center">
-               @Html.PagedListPager(Model, page => Url.Action("Index", "Recipe", new { page = page }),
-                   new PagedListRenderOptions()
-                   {
-                       LiElementClasses = new[] { "page-item" },
-                       PageClasses = new[] { "page-link" },
-                       ContainerDivClasses = new[] { "pagination", "justify-content-center" },
-                       UlElementClasses = new[] { "pagination" }
-                   })
-           </div>
-
-            
             <!-- /Recipe Display Area -->
         </div>
     </div>
 </div>
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.recipe-switch').change(function () {
+                var recipeId = $(this).data('recipe-id');
+                var isChecked = $(this).prop('checked');
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SwitchStatus", "Recipe")',
+                    data: { id: recipeId, status: isChecked },
+                    success: function () {
+                        console.log('Status updated successfully.');
+                    },
+                    error: function (error) {
+                        console.error('Error updating status:', error);
+                    }
+                });
+            });
+        });
+    </script>
+}

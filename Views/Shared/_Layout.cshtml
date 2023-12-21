@@ -80,6 +80,7 @@
                                                 else
                                                 {
                                                     var user = JsonConvert.DeserializeObject<User>(userJson);
+                                                    <li><a asp-action="GetRecipesByUser" asp-controller="Recipe" asp-route-id="@user.UserId">My Recipe</a></li>
                                                     <li><a asp-action="MyProfile" asp-controller="Account" asp-route-id="@user.UserId">My profile</a></li>
                                                     <li><a asp-action="ChangePassword" asp-controller="Account" asp-route-id="@user.UserId">Change password</a></li>
                                                     <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>

@@ -1,6 +1,7 @@
 using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace JamesRecipes.Service.FE;
 
@@ -15,13 +16,23 @@ public class RecipeService: IRecipe
 
     public List<Recipe> GetAllRecipes()
     {
-        return _db.Recipes.ToList();
+        return _db.Recipes.Where(r=>r.Status == true).ToList();
+    }
+
+    public List<Recipe> GetAllRecipesPremium()
+    {
+        return _db.Recipes.Where(r => r.IsMembershipOnly).ToList();
     }
 
     public Recipe GetRecipe(int id)
     {
         var rep = _db.Recipes.Include(r=>r.Feedbacks).SingleOrDefault(r => r.RecipeId == id);
         return rep ?? null!;
+    }
+
+    public List<Recipe> GetRecipesByUser(int id)
+    {
+        return _db.Recipes.Where(r => r.UserId == id).ToList();
     }
 
     public void PostRecipe(Recipe newRecipe)
@@ -56,5 +67,20 @@ public class RecipeService: IRecipe
     public List<Recipe> Search(string searchString)
     {
         return _db.Recipes.Where(r => r.Title.Contains(searchString)).ToList();
+    }
+
+    public void SwitchStatus(int id, bool status)
+    {
+        var rep = _db.Recipes.SingleOrDefault(r => r.RecipeId == id);
+        if (rep != null)
+        {
+            rep.Status = status;
+            _db.SaveChanges(); 
+        }
+    }
+
+    public IPagedList<Recipe> PageList(int page, int pageSize,  List<Recipe> recipes)
+    {
+        return recipes.ToPagedList(page, pageSize);
     }
 }
