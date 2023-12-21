@@ -1,0 +1,45 @@
+@using Newtonsoft.Json
+@model Tip
+
+@{
+    ViewData["Title"] = "Recipes - Create";
+}
+
+@{
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("user");
+    var user = JsonConvert.DeserializeObject<User>(userJson);
+}
+
+<div class="container mt-5"> <!-- Thêm class container để có padding và margin từ xa -->
+    <div class="row justify-content-center"> <!-- Sử dụng justify-content-center để căn giữa theo chiều ngang -->
+        <div class="col-md-6"> <!-- Điều chỉnh số cột (column) theo ý muốn -->
+            <h2>Create a New Recipe</h2>
+
+            <form asp-action="Create" asp-controller="Tip" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="UserId" value="@user.UserId"/>
+                <div class="form-group">
+                    <label asp-for="CategoryTipId" class="control-label"></label>
+                    <select asp-for="CategoryTipId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Content"></label>
+                    <textarea asp-for="Content" class="form-control"></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input asp-for="Image" type="file" name="file" class="form-control" />
+                </div>
+                <div>@ViewBag.msg</div>
+                <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -2673,6 +2673,10 @@
       "PackagePath": "staticwebassets/FE/img/blog/slide_thumb_1.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/bunbo.jpg",
+      "PackagePath": "staticwebassets/FE/img/bunbo.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/case_study/1.png",
       "PackagePath": "staticwebassets/FE/img/case_study/1.png"
     },

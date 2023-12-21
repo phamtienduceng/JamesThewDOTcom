@@ -1,0 +1,47 @@
+@model IEnumerable<JamesRecipes.Models.CategoriesRecipe>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_FELayout.cshtml";
+}
+<h2 class="card-title fw-semibold mb-4">Recipe Management</h2>
+
+<p>
+    <a asp-action="Create" asp-controller="RecipeCategoriesManagement">Create New Recipe Category</a>
+</p>
+<div><p style="color: red">@TempData["msgDelete"]</p></div>
+
+
+<table class="table ">
+    <thead>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryRecipeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-controller="RecipeCategoriesManagement" asp-route-id="@item.CategoryRecipeId">EditName</a> | 
+                <a asp-action="Delete" asp-controller="RecipeCategoriesManagement" asp-route-id="@item.CategoryRecipeId">Delete</a> | 
+                <a asp-action="GetRecipeByCategory" asp-controller="RecipeCategoriesManagement" asp-route-id="@item.CategoryRecipeId">View recipes</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

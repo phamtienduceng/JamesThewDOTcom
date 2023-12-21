@@ -20,6 +20,8 @@ builder.Services.AddScoped<IContestManagementRepository, ContestManagementServic
 builder.Services.AddScoped<IDashboardRepository, DashboardService>();
 builder.Services.AddScoped<IFaqManagementRepository, FaqManagementService>();
 builder.Services.AddScoped<IOrderManagementRepository, OrderManagementService>();
+builder.Services.AddScoped<IRecipeCategoriesManagementRepository, RecipeCategoriesManagementService>();
+builder.Services.AddScoped<ITipCategoriesManagementRepository, TipCategoriesManagementService>();
 builder.Services.AddScoped<IRecipeManagementRepository, RecipeManagementService>();
 builder.Services.AddScoped<ITipManagementRepository, TipManagementService>();
 
@@ -35,6 +37,9 @@ builder.Services.AddScoped<IFaq, FaqService>();
 builder.Services.AddScoped<IRecipe, RecipeService>();
 builder.Services.AddScoped<ITip, TipService>();
 builder.Services.AddScoped<ICategoriesRecipe, CategoriesRecipeService>();
+builder.Services.AddScoped<ICategoriesTip, CategoriesTipService>();
+builder.Services.AddScoped<IFeedback, FeedbackService>();
+builder.Services.AddScoped<IHome, HomeService>();
 
 // Add services to the container.
 

@@ -8,4 +8,8 @@ public interface IRecipe
 
     Recipe GetRecipe(int id);
     void PostRecipe(Recipe newRecipe);
+
+    List<Recipe> Sorting(List<Recipe> recipes, string sortOrder);
+    
+    List<Recipe> Search(string searchString);
 }

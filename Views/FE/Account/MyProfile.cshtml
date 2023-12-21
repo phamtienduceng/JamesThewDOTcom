@@ -1,36 +1,35 @@
 @model JamesRecipes.Models.User
 
 @{
-    Layout = null;
     ViewData["Title"] = "MyProfile";
 }
 
-<h1>Register</h1>
-
-<h4>User</h4>
-<hr />
-
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 mx-auto">
+        <h1 class="text-center">MyProfile</h1>
+        <hr />
         <form asp-action="MyProfile" asp-controller="Account" method="post">
-
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UserId" />
+
             <div class="form-group">
                 <label asp-for="Username" class="control-label"></label>
                 <input asp-for="Username" class="form-control" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="PhoneNumber" class="control-label"></label>
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
