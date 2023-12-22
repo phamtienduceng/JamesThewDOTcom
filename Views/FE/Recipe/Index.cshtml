@@ -18,28 +18,42 @@
         <!-- Sidebar for Search and Filter -->
         <div class="col-xl-3 col-lg-3">
             <div class="sidebar">
-                <!-- Add your search and filter controls here -->
-                <h4>Search recipe: </h4>
+                <h4>Filter</h4>
                 <form asp-action="Index" asp-controller="Recipe" method="get">
-                    <div class="form-actions no-color">
-                        <p>
-                            <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" />
-                            <input type="submit" value="Search" class="btn btn-default" />
-                        </p>
+                    <div class="form-group">
+                        <label for="categoryId">Category:</label>
+                        <select name="categoryId" id="categoryId" class="form-control" asp-items="ViewBag.CategoryId">
+                            <option value="" class="text-center">All Categories</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="timeMin">Time needs:</label>
+                            <input name="timeMin" id="timeMin" class="form-control" type="time">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="timeMax">to</label>
+                            <input name="timeMax" id="timeMax" class="form-control" type="time">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="ratingMin">Rating:</label>
+                            <input name="ratingMin" id="ratingMin" class="form-control" type="number">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="ratingMax">to</label>
+                            <input name="ratingMax" id="ratingMax" class="form-control" type="number">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <button type="submit" class="btn btn-danger">Filter</button>
+                        <a asp-action="Index" asp-controller="Recipe" class="btn btn-info">Reset</a>
                     </div>
                 </form>
-                <!-- Example filter dropdown -->
-                <h4>Sorting</h4>
-                <ul>
-                    <li>
-                        <a asp-action="Index" asp-controller="Recipe" asp-route-sortOrder="@ViewData["NameSort"]">Title</a>
-                    </li>
-                    <li>
-                        <a asp-action="Index" asp-controller="Recipe" asp-route-sortOrder="@ViewData["DateSort"]">Date post</a>
-                    </li>
-                </ul>
             </div>
         </div>
+
 
         <!-- Main Content Area -->
         <div class="col-xl-9 col-lg-9">
@@ -52,8 +66,29 @@
                 <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own recipes.</h3>
             }
             
+            <div class="row">
+                <div class="col-md-6">
+                    <form asp-action="Index" asp-controller="Recipe" method="get">
+                        <div class="form-actions no-color">
+                            <h3>
+                                Search:
+                                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Enter title here ..."/>
+                                <input type="submit" value="Search" class="btn btn-default"/>
+                            </h3>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 align-right" >
+                    <h3>
+                        Sorting
+                        <a asp-action="Index" asp-controller="Recipe" asp-route-sortOrder="@ViewData["NameSort"]">Title</a> |
+                        <a asp-action="Index" asp-controller="Recipe" asp-route-sortOrder="@ViewData["DateSort"]">Date post</a>
+                    </h3>
+                </div>
+            </div>
+            
             <!-- Recipe Display Area -->
-            <div class="recepie_area">
+            <div class="recepie_area pt-9">
                 <div class="container">
                     <div class="row">
                         @foreach (var item in Model)
@@ -66,6 +101,7 @@
                                     <h3>@item.Title</h3>
                                     <span>@item.CreatedAt</span>
                                     <p>Time Needs: @item.Timeneeds</p>
+                                    <p>Rating: @item.Rating</p>
                                     <a asp-action="SingleRecipe" class="line_btn" asp-controller="Recipe" asp-route-id="@item.RecipeId">View recipe's detail</a>
 
                                 </div>

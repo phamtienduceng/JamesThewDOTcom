@@ -2857,6 +2857,10 @@
       "PackagePath": "staticwebassets/FE/img/offers/3.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/padthai.jpg",
+      "PackagePath": "staticwebassets/FE/img/padthai.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pattern/patrn.png",
       "PackagePath": "staticwebassets/FE/img/pattern/patrn.png"
     },

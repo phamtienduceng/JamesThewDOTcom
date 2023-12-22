@@ -83,4 +83,42 @@ public class RecipeService: IRecipe
     {
         return recipes.ToPagedList(page, pageSize);
     }
-}
+
+    public void UpdateRatingRecipe(int id)
+    {
+        var rep = _db.Recipes.SingleOrDefault(r => r.RecipeId == id);
+        if (rep != null)
+        {
+            var averageRating = _db.Feedbacks
+                .Where(f => f.RecipeId == id && f.Rating.HasValue)
+                .Select(f => f.Rating!.Value)
+                .Average();
+
+            rep.Rating = (int)Math.Round(averageRating);
+            _db.SaveChanges();
+        }
+    }
+
+    public  List<Recipe> Filter(int? categoryId, TimeSpan? timeMin, TimeSpan? timeMax, int? ratingMin, int? ratingMax, List<Recipe> recipes)
+    {
+        var reps = recipes;
+
+        if (categoryId.HasValue)
+        {
+            reps = reps.Where(r => r.CategoryRecipeId == categoryId).ToList();
+
+        }
+
+        if (timeMin.HasValue && timeMax.HasValue)
+        {
+            reps = reps.Where(r => r.Timeneeds >= timeMin && r.Timeneeds <= timeMax).ToList();
+        }
+
+        if (ratingMin.HasValue && ratingMax.HasValue)
+        {
+            reps = reps.Where(r => r.Rating >= ratingMin && r.Rating <= ratingMax).ToList();
+
+        }
+        return reps;
+    }
+}   

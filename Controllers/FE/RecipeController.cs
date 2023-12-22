@@ -21,31 +21,41 @@ public class RecipeController : Controller
         _feedback = feedback;
     }
 
-    public IActionResult Index(string sortOrder, string searchString, int page = 1)
+    public IActionResult Index(string sortOrder, string searchString, int? categoryId, TimeSpan? timeMin, TimeSpan? timeMax, int? ratingMin, int? ratingMax, int page = 1)
     {
         ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
         ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
 
-        if (!string.IsNullOrEmpty(searchString))
-        {
-            TempData["SearchString"] = searchString;
-        }
-        else
-        {
-            searchString = TempData["SearchString"] as string;
-        }
+        // Lưu thông tin tìm kiếm
         ViewData["CurrentFilter"] = searchString;
+
+        // Lấy danh sách tất cả công thức
         var reps = _recipe.GetAllRecipes();
+
         if (!string.IsNullOrEmpty(searchString))
         {
             reps = _recipe.Search(searchString);
         }
-        reps = _recipe.Sorting(reps, sortOrder);
-        page = page < 1 ? 1 : page; 
-        var recipes = _recipe.PageList(page, 3, reps);
         
+        // Thực hiện tìm kiếm
+        ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName", categoryId);
+        if (categoryId != 0 || timeMin != null || timeMax != null || ratingMin != 0 || ratingMax != 0)
+        {
+            // Thực hiện lọc
+            reps = _recipe.Filter(categoryId, timeMin, timeMax, ratingMin, ratingMax, reps);
+        }
+
+        // Thực hiện sắp xếp
+        reps = _recipe.Sorting(reps, sortOrder);
+        
+        // Thực hiện phân trang
+        page = page < 1 ? 1 : page;
+        var recipes = _recipe.PageList(page, 3, reps);
+
         return View("~/Views/FE/Recipe/Index.cshtml", recipes);
     }
+
+
 
     
     [HttpGet("single_recipe")]
@@ -99,8 +109,9 @@ public class RecipeController : Controller
             Content = content,
             Rating = rating,
         };
-
+        
         _feedback.AddFeedback(newFeedback);
+        _recipe.UpdateRatingRecipe(recipeId);
         
         var updatedComments = _feedback.GetFeedbacksByRecipeId(recipeId).ToList();
         return PartialView("_CommentsPartial", updatedComments);

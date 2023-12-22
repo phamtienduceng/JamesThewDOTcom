@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4Y8fpK+GGPfZLw8g7OvLf0g3Fra4p6kuSuFl+D+RS4o=",
+  "Hash": "fdvVP3t+kmDnA96pOiVwy0kh0k3zEAeNfKGkzUCqEPA=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -12187,6 +12187,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/FE/img/offers/3.png"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/padthai.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/padthai.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/padthai.jpg"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pattern/patrn_1.png",

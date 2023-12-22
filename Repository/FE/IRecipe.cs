@@ -21,4 +21,8 @@ public interface IRecipe
     void SwitchStatus(int id, bool status);
 
     IPagedList<Recipe> PageList(int page, int pageSize, List<Recipe> recipes);
+
+    void UpdateRatingRecipe(int recipeId);
+
+    List<Recipe> Filter(int? categoryId, TimeSpan? timeMin, TimeSpan? timeMax, int? ratingMin, int? ratingMax, List<Recipe> recipes);
 }
