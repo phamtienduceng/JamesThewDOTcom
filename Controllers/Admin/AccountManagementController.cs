@@ -37,9 +37,6 @@ public class AccountManagementController : Controller
     [HttpPost("loginadmin")]
     public IActionResult LoginAdmin(string email, string pass)
     {
-       
-
-       
         try
         {
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(pass))
