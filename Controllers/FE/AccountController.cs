@@ -176,6 +176,10 @@ public class AccountController : Controller
         return View("~/Views/Home/Index.cshtml");
     }
 
+
+
+
+
     [HttpGet("ForgotPassword")]
     public ActionResult ForgotPassword()
     {
@@ -191,12 +195,37 @@ public class AccountController : Controller
             // Gửi email chứa đường dẫn đặt lại mật khẩu đến địa chỉ email người dùng
             SendResetPasswordEmail(email);
 
-            return RedirectToAction("ForgotPasswordConfirmation","Account");
+            return RedirectToAction("ForgotPasswordConfirmation", "Account");
         }
 
         // Nếu email không tồn tại trong hệ thống, hiển thị form quên mật khẩu lại với thông báo lỗi
         ModelState.AddModelError("", "Email không hợp lệ.");
         return View();
+    }
+    [HttpGet("ResetPassword/{email}")]
+    public ActionResult ResetPassword(string email)
+    {
+        var acc = _db.Users.SingleOrDefault(u => u.Email == email);
+        return View("~/Views/FE/Account/ResetPassword.cshtml");
+    }
+
+    [HttpPost("ResetPassword/{email}")]
+    public ActionResult ResetPassword(string email, string newpass, string conform)
+    {
+        var acc = _db.Users.SingleOrDefault(u => u.Email == email);
+        if (string.IsNullOrWhiteSpace(newpass) || string.IsNullOrWhiteSpace(conform))
+        {
+            ViewData["Error"] = "Please enter data.";
+            return View("~/Views/FE/Account/ResetPassword.cshtml");
+        }
+        else if (newpass != conform)
+        {
+            ViewData["Error"] = "The new password and conform password do not match!";
+            return View("~/Views/FE/Account/ResetPassword.cshtml");
+        }
+        acc.Password = newpass;
+        _db.SaveChanges();
+        return View("~/Views/FE/Account/ResetPassword.cshtml");
     }
     [HttpGet("ForgotPasswordConfirmation")]
     public ActionResult ForgotPasswordConfirmation()
@@ -214,7 +243,7 @@ public class AccountController : Controller
 
     private void SendResetPasswordEmail(string email)
     {
-        string resetUrl = "https://yourwebsite.com/resetpassword?email=" + email;
+        string resetUrl = Url.Action("ResetPassword", "Account", new { email = email }, Request.Scheme);
         Console.WriteLine("Đường dẫn đặt lại mật khẩu: " + resetUrl);
 
         // Set email details

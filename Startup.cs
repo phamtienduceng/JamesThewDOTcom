@@ -11,10 +11,12 @@ namespace JamesRecipes
             services.AddSession(options =>
             {
                 // Thiết lập các tùy chọn session
-                options.Cookie.Name = "YourSessionCookieName";
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                services.AddSession(options =>
+                {
+                    options.IdleTimeout = TimeSpan.FromMinutes(30); // Thời gian hết hạn của Session
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.IsEssential = true;
+                });
             });
 
             // ...

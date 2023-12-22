@@ -7,13 +7,16 @@ namespace JamesRecipes.Models.Authentication
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            if (context.HttpContext.Session.GetString("user") == null)
+            var userJson = context.HttpContext.Session.GetString("user");
+            var adminJson = context.HttpContext.Session.GetString("admin");
+
+            if (string.IsNullOrEmpty(userJson) && string.IsNullOrEmpty(adminJson))
             {
                 context.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
                     {
-                    { "Controller","Account"},
-                    {"Action","Login" },
+                { "Controller", "Account" },
+                { "Action", "Login" }
                     });
             }
         }
