@@ -1,0 +1,17 @@
+@model ICollection<JamesRecipes.Models.Feedback>
+
+<div class="container-fluid">
+    <div class="list-group mb-4">
+        @foreach (var feedback in Model)
+        {
+            <div class="list-group-item mb-4">
+                <div class="d-flex justify-content-between">
+                    <h5 class="mb-1"><strong>@feedback.UserId</strong></h5>
+                    <small>Rating: @feedback.Rating</small>
+                </div>
+                <p class="mb-1">@feedback.Content</p>
+            </div>
+        }
+    </div>
+</div>
+

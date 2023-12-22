@@ -1,0 +1,37 @@
+@model model.Models.ViewRecipeManagement
+@{
+  Layout = "_FELayout";
+  ViewData["Title"] = "Recipes";
+}
+
+<h2 class="card-title fw-semibold mb-4">Recipe Management</h2>
+<h1 class="text-center mb-4"> @Html.DisplayFor(m => m.RecipeTitle)</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3>Id: <span class="badge bg-primary">@Html.DisplayFor(m => m.RecipeId)</span></h3>
+                <h3>Category: <span class="badge bg-secondary">@Html.DisplayFor(m => m.RecipeCategoryName)</span></h3>
+                <h3>Date post: @Html.DisplayFor(m => m.RecipeCreatedAt)</h3>
+                <h3>User: @Html.DisplayFor(m => m.Username)</h3>
+                <h3>Role: <span class="badge bg-info">@Html.DisplayFor(m => m.RoleName)</span></h3>
+            </div>
+        </div>
+    </div>
+            
+            <!-- Right Column -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3>Ingredients: @Html.DisplayFor(m => m.RecipeIngredients)</h3>
+                <h3>Procedure: @Html.DisplayFor(m => m.RecipeProcedure)</h3>
+                <h3>Rating: <span class="badge bg-warning">@Html.DisplayFor(m => m.RecipeRating)</span></h3>
+                <h3>Status: <span class="badge bg-success">@Html.DisplayFor(m => m.RecipeStatus)</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

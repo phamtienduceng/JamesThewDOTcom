@@ -18,8 +18,36 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\tribu\OneDrive - DBI - VN CO., LTD\Information Technology (IT)\Term3\đồ án kỳ 3\Github\JamesRecipes
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/TipCategories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/TipCategories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/TipCategories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/TipCategories/TipByCate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xUaXBCeUNhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/AccountManagement/Index.cshtml]
@@ -74,12 +102,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3JkZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/RecipeCategories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/RecipeCategories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/RecipeCategories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/RecipeCategories/RecipeByCate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xSZWNpcGVCeUNhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/Recipe/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/Recipe/SingleRecipe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlXFNpbmdsZVJlY2lwZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/Tip/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Admin/Tip/SingleTip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwXFNpbmdsZVRpcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/FE/About/Index.cshtml]
@@ -108,6 +160,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/FE/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/FE/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/FE/Announcement/Index.cshtml]
@@ -146,8 +202,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcUmVjaXBlXFNpbmdsZVJlY2lwZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/FE/Tip/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcVGlwXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/FE/Tip/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcVGlwXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/FE/Tip/SingleTip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcVGlwXFNpbmdsZVRpcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Home/Index.cshtml]
@@ -160,6 +224,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Shared/_CommentsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db21tZW50c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesRecipes/Views/Shared/_ValidationScriptsPartial.cshtml]

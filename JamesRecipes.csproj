@@ -171,6 +171,13 @@
       <Folder Include="wwwroot\FE\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <AdditionalFiles Include="Views\Admin\TipCategories\Create.cshtml" />
+      <AdditionalFiles Include="Views\Admin\TipCategories\Edit.cshtml" />
+      <AdditionalFiles Include="Views\Admin\TipCategories\Index.cshtml" />
+      <AdditionalFiles Include="Views\Admin\TipCategories\TipByCate.cshtml" />
+    </ItemGroup>
+
 <!--    <ItemGroup>
       <Content Include="wwwroot\Admin\libs\.DS_Store" />
     </ItemGroup>-->

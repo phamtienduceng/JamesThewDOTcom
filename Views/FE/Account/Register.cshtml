@@ -4,12 +4,10 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>Register</h1>
-
-<h4>User</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 mx-auto">
+        <h1 class="text-center  ">Register</h1>
+        <hr />
         <form asp-action="Register" asp-controller="Account" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">

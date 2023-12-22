@@ -1,48 +1,111 @@
+@using Newtonsoft.Json
 @model Recipe
+@{
+  ViewData["Title"] = Model.Title;
+}
 
 @{
-    ViewData["Title"] = Model.Title;
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("user");
 }
 
 <div class="container">
-    <div class="row">
-        <!-- Cột cho Hình ảnh -->
-        <div class="col-md-6">
-            <h1>@Model.Title</h1>
+  <div class="row">
+      <!-- Cột cho Hình ảnh -->
+      <div class="col-md-6">
+          <h1>@Model.Title</h1>
 
-            <div>
-                <img class="img-fluid mb-4" src="~/@Model.Image" alt="Recipe Image" />
-            </div>
-        </div>
+          <div>
+              <img class="img-fluid mb-4" src="~/@Model.Image" alt="Recipe Image" />
+          </div>
+      </div>
 
-        <!-- Cột cho Thông tin -->
-        <div class="col-md-6">
-            <div class="mt-4">
-                <h3>Ingredients</h3>
-                <p>@Model.Ingredients</p>
-            </div>
+      <!-- Cột cho Thông tin -->
+      <div class="col-md-6">
+          <div class="mt-4">
+              <h3>Ingredients</h3>
+              <p>@Model.Ingredients</p>
+          </div>
 
-            <div class="mt-4">
-                <h3>Procedure</h3>
-                <p>@Model.Procedure</p>
-            </div>
+          <div class="mt-4">
+              <h3>Procedure</h3>
+              <p>@Model.Procedure</p>
+          </div>
 
-            <div class="mt-4">
-                <h3>Time</h3>
-                <p>@Model.Timeneeds minutes</p>
-            </div>
+          <div class="mt-4">
+              <h3>Time</h3>
+              <p>@Model.Timeneeds minutes</p>
+          </div>
 
-            <div class="mt-4">
-                <h3>Date Posted</h3>
-                <p>@Model.CreatedAt</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="@Model.VideoUrl" frameborder="0" allowfullscreen></iframe>
-                </div>
-        </div>
-    </div>
+          <div class="mt-4">
+              <h3>Date Posted</h3>
+              <p>@Model.CreatedAt</p>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+          <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="@Model.VideoUrl" frameborder="0" allowfullscreen></iframe>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-12">
+      <div class="mt-4">
+          <h3>Comments</h3>
+          <div id="commentsList">
+              @Html.Partial("_CommentsPartial", Model.Feedbacks)
+          </div>
+
+      </div>
+      
+      <div class="mt-4">
+         <h3>Add Comment and Rating</h3>
+         @if (!string.IsNullOrEmpty(userJson))
+         {
+             var user = JsonConvert.DeserializeObject<User>(userJson);
+            <form id="commentForm">
+               <input type="hidden" name="recipeId" value="@Model.RecipeId" />
+               <input type="hidden" name="userId" value="@user.UserId" />
+               <div class="form-group">
+                  <label>Content:</label>
+                  <textarea class="form-control" name="content"></textarea>
+               </div>
+               <div class="form-group">
+                  <label>Rating:</label>
+                  <input id="star-rating" type="number" class="rating" name="rating" data-min="0" data-max="5" data-step="1" data-size="md">
+               </div>
+               <button type="button" class="btn btn-primary" onclick="postComment()">Submit Feedback</button>
+            </form>
+         }
+         else
+         {
+            <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own recipes.</h3>
+         }
+      </div>
+  </div>
 </div>
+
+<script>
+   function postComment() {
+      var formData = $("#commentForm").serialize();
+
+      $.ajax({
+         url: '@Url.Action("PostFeedback", "Recipe")',
+         type: 'POST',
+         data: formData,
+         success: function (partialView) {
+            // Hiển thị Partial View mới trong phần tử có id là commentsList
+            $('#commentsList').html(partialView);
+         },
+         error: function () {
+            // Xử lý lỗi nếu có
+            alert('Error posting comment.');
+         }
+      });
+   }
+   $(document).ready(function () {
+       $('#star-rating').rating();
+   });
+</script>
+
