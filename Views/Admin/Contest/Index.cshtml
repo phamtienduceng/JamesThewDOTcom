@@ -41,38 +41,48 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Guidelines)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Admin.UserId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ContestId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ContestId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ContestId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @if (item.Guidelines.Length > 100)
+                    {
+                        @Html.Raw(item.Guidelines.Substring(0, 25) + "...")
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Guidelines)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    <img src="@Url.Content("~/"+item.Image)" alt="Contest Image" style="width:100px; height:100px;" />
+                    
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Admin.UserId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ContestId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ContestId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ContestId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

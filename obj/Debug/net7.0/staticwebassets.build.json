@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QLf7w9JfVaXotW/jsMFu28FsxhEZ5eYnKz+08AjM5fw=",
+  "Hash": "YouiVjUiZaWSvAoishp6ZpdCKORlD+z2Zk9mLYUPo3c=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -1364,6 +1364,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Admin\\images\\backgrounds\\rocket.png"
+    },
+    {
+      "Identity": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesRecipes\\wwwroot\\Admin\\images\\contest\\1.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesRecipes\\wwwroot\\",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "Admin/images/contest/1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Admin\\images\\contest\\1.jpg"
     },
     {
       "Identity": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesRecipes\\wwwroot\\Admin\\images\\logos\\dark-logo.svg",
@@ -13429,6 +13448,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\FE\\css\\themify-icons.css"
+    },
+    {
+      "Identity": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesRecipes\\wwwroot\\FE\\img\\1.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesRecipes\\wwwroot\\",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\FE\\img\\1.jpg"
     },
     {
       "Identity": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesRecipes\\wwwroot\\FE\\img\\banner\\accordion.png",

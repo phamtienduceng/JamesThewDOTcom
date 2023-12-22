@@ -1,7 +1,9 @@
 ﻿using JamesRecipes.Models;
 using JamesRecipes.Models.Authentication;
+using JamesRecipes.Repository.Admin;
 using JamesRecipes.Repository.FE;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace JamesRecipes.Controllers.Admin;
@@ -11,15 +13,21 @@ namespace JamesRecipes.Controllers.Admin;
 public class ContestManagementController : Controller
 {
     // Fields
+    
+    private readonly IContestManagementRepository _contestManagementRepository;
     private readonly JamesrecipesContext _db;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IWebHostEnvironment _webHostEnvironment;
 
     // Constructor
-    public ContestManagementController(JamesrecipesContext db, IHttpContextAccessor httpContextAccessor)
+    public ContestManagementController(JamesrecipesContext db, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment, IContestManagementRepository contestManagementRepository)
     {
         _db = db;
         _httpContextAccessor = httpContextAccessor;
+        _webHostEnvironment = webHostEnvironment;
+        _contestManagementRepository = contestManagementRepository;
     }
+
 
     // GET: Admin/ContestManagement
     [AuthenticationAdmin]
@@ -32,7 +40,7 @@ public class ContestManagementController : Controller
 
     // GET: Admin/ContestManagement/Details/5
     [AuthenticationAdmin]
-    [HttpGet]
+    [HttpGet("Create")]
     public IActionResult Create()
     {
         return View("~/Views/Admin/Contest/Create.cshtml");
@@ -40,23 +48,45 @@ public class ContestManagementController : Controller
 
     // POST: Admin/ContestManagement/Create
     [AuthenticationAdmin]
-    [HttpPost]
+    [HttpPost("Create")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Contest contest)
+    public IActionResult Create(Contest contest, IFormFile file)
     {
-        if (ModelState.IsValid)
+        try
         {
-            contest.CreatedAt = DateTime.Now;
-            _db.Contests.Add(contest);
-            await _db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if (file != null)
+            {
+                // Chỉ cần lưu đường dẫn từ sau 'wwwroot'
+                var folderPath = Path.Combine("wwwroot", "Admin", "images", "contest");
+                var pathToSave = Path.Combine(folderPath, file.FileName);
+
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+                using (var stream = new FileStream(pathToSave, FileMode.Create))
+                {
+                    // Sử dụng phương thức đồng bộ khi lưu file
+                    file.CopyTo(stream);
+                }
+                // Lưu đường dẫn tương đối vào cơ sở dữ liệu
+                contest.Image = Path.Combine("Admin", "images", "contest", file.FileName);
+                _contestManagementRepository.AddContest(contest);
+                return RedirectToAction("Index");
+            }
         }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        ViewBag.CategoryId = new SelectList(_contestManagementRepository.GetContests(), "ContestId", "ContestName");
         return View("~/Views/Admin/Contest/Create.cshtml", contest);
     }
 
     // GET: Admin/ContestManagement/Edit/5
     [AuthenticationAdmin]
-    [HttpGet]
+    [HttpGet("Edit")]
     public async Task<IActionResult> Edit(int id)
     {
         var contest = await _db.Contests.FindAsync(id);
@@ -69,9 +99,9 @@ public class ContestManagementController : Controller
 
     // POST: Admin/ContestManagement/Edit/5
     [AuthenticationAdmin]
-    [HttpPost]
+    [HttpPost("Edit")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, Contest contest)
+    public async Task<IActionResult> Edit(int id, Contest contest, IFormFile file)
     {
         if (id != contest.ContestId)
         {
@@ -82,7 +112,25 @@ public class ContestManagementController : Controller
         {
             try
             {
-                _db.Update(contest);
+                if (file != null)
+                {
+                    var folderPath = Path.Combine("wwwroot", "Admin", "images", "contest");
+                    var pathToSave = Path.Combine(folderPath, file.FileName);
+
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+
+                    using (var stream = new FileStream(pathToSave, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+
+                    contest.Image = Path.Combine("Admin", "images", "contest", file.FileName);
+                }
+
+                _contestManagementRepository.UpdateContest(contest);
                 await _db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -96,10 +144,13 @@ public class ContestManagementController : Controller
                     throw;
                 }
             }
+
             return RedirectToAction(nameof(Index));
         }
+
         return View("~/Views/Admin/Contest/Edit.cshtml", contest);
     }
+
 
     // GET: Admin/ContestManagement/Delete/5
     [AuthenticationAdmin]
@@ -112,7 +163,7 @@ public class ContestManagementController : Controller
         await _db.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
-    
+
     private async Task<bool> ContestExists(int id)
     {
         return await _db.Contests.AnyAsync(c => c.ContestId == id);
@@ -120,7 +171,7 @@ public class ContestManagementController : Controller
 
     // GET: Admin/ContestManagement/Details/5
     [AuthenticationAdmin]
-    [HttpGet]
+    [HttpGet("Details")]
     public async Task<IActionResult> Details(int id)
     {
         var contest = await _db.Contests

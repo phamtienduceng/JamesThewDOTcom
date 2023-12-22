@@ -41,6 +41,10 @@
       "PackagePath": "staticwebassets\\Admin\\images\\backgrounds\\rocket.png"
     },
     {
+      "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesRecipes\\wwwroot\\Admin\\images\\contest\\1.jpg",
+      "PackagePath": "staticwebassets\\Admin\\images\\contest\\1.jpg"
+    },
+    {
       "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesRecipes\\wwwroot\\Admin\\images\\logos\\dark-logo.svg",
       "PackagePath": "staticwebassets\\Admin\\images\\logos\\dark-logo.svg"
     },
@@ -2575,6 +2579,10 @@
     {
       "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesRecipes\\wwwroot\\FE\\css\\themify-icons.css",
       "PackagePath": "staticwebassets\\FE\\css\\themify-icons.css"
+    },
+    {
+      "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesRecipes\\wwwroot\\FE\\img\\1.jpg",
+      "PackagePath": "staticwebassets\\FE\\img\\1.jpg"
     },
     {
       "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesRecipes\\wwwroot\\FE\\img\\banh-mi-thit-bo-nuong-thumbnail-1.jpg",

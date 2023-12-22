@@ -1,0 +1,78 @@
+﻿@model JamesRecipes.Models.Contest
+@using Newtonsoft.Json
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_FELayout.cshtml";
+}
+@{
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("user");
+    User user = null;
+
+    if (!string.IsNullOrEmpty(userJson))
+    {
+        user = JsonConvert.DeserializeObject<User>(userJson);
+    }
+    else
+    {
+
+    }
+}
+<h1>Edit</h1>
+
+<h4>Contest</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-controller="ContestManagement"  enctype="multipart/form-data" method="post">
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="AdminId" value="@user?.RoleId" />
+            <input type="hidden" asp-for="ContestId" />
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Guidelines" class="control-label"></label>
+                <input asp-for="Guidelines" class="form-control" />
+                <span asp-validation-for="Guidelines" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="IsActive" class="control-label"></label>
+                <select asp-for="IsActive" class="form-control">
+                    <option value="0">Not Started</option>
+                    <option value="1">Started</option>
+                    <option value="2">Ended</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" type="file" name="file" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div>@ViewBag.msg</div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
