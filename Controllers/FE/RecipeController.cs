@@ -25,11 +25,9 @@ public class RecipeController : Controller
     {
         ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
         ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
-
-        // Lưu thông tin tìm kiếm
+        ViewData["RatingSort"] = sortOrder == "rating" ? "rating_desc" : "rating";
         ViewData["CurrentFilter"] = searchString;
 
-        // Lấy danh sách tất cả công thức
         var reps = _recipe.GetAllRecipes();
 
         if (!string.IsNullOrEmpty(searchString))
@@ -37,18 +35,13 @@ public class RecipeController : Controller
             reps = _recipe.Search(searchString);
         }
         
-        // Thực hiện tìm kiếm
         ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName", categoryId);
         if (categoryId != 0 || timeMin != null || timeMax != null || ratingMin != 0 || ratingMax != 0)
         {
-            // Thực hiện lọc
             reps = _recipe.Filter(categoryId, timeMin, timeMax, ratingMin, ratingMax, reps);
         }
-
-        // Thực hiện sắp xếp
         reps = _recipe.Sorting(reps, sortOrder);
         
-        // Thực hiện phân trang
         page = page < 1 ? 1 : page;
         var recipes = _recipe.PageList(page, 3, reps);
 
@@ -128,5 +121,11 @@ public class RecipeController : Controller
     {
         var reps = _recipe.GetRecipesByUser(id);
         return View("~/Views/FE/Recipe/MyRecipe.cshtml", reps);
+    }
+
+    public IActionResult DeleteMyRecipe(int recipeId, int userId)
+    {
+        _recipe.DeleteMyRecipe(recipeId);
+        return RedirectToAction("GetRecipesByUser", new {id = userId});
     }
 }

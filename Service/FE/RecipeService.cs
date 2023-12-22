@@ -57,8 +57,14 @@ public class RecipeService: IRecipe
             case "date_desc":
                 recipes = recipes.OrderByDescending(r => r.CreatedAt).ToList();
                 break;
+            case "rating":
+                recipes = recipes.OrderBy(r => r.Rating).ToList();
+                break;
+            case "rating_desc":
+                recipes = recipes.OrderByDescending(r => r.Rating).ToList();
+                break;
             default:
-                recipes = recipes.OrderBy(r => r.CreatedAt).ToList();
+                recipes = recipes.OrderByDescending(r => r.CreatedAt).ToList();
                 break;
         }
         return recipes;
@@ -120,5 +126,18 @@ public class RecipeService: IRecipe
 
         }
         return reps;
+    }
+
+    public void DeleteMyRecipe(int id)
+    {
+        var rep = _db.Recipes.Include(r => r.Feedbacks)
+            .SingleOrDefault(r => r.RecipeId == id);
+
+        if (rep != null)
+        {
+            _db.Feedbacks.RemoveRange(rep.Feedbacks);
+            _db.Recipes.Remove(rep);
+            _db.SaveChanges();
+        }
     }
 }   

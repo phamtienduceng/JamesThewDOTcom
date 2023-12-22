@@ -44,10 +44,20 @@ public class AccountController : Controller
 
             var user = _db.Users.SingleOrDefault(u => u.Email.Equals(email));
 
-            if (user != null && BCrypt.Net.BCrypt.Verify(pass, user.Password) && user.RoleId == 2)
+            if (user != null && BCrypt.Net.BCrypt.Verify(pass, user.Password))
             {
-                var userJson = JsonConvert.SerializeObject(user);
-                HttpContext.Session.SetString("user", userJson);
+                if (user.RoleId == 2)
+                {
+                    var userJson = JsonConvert.SerializeObject(user);
+                    HttpContext.Session.SetString("user", userJson);
+                }
+
+                if (user.RoleId == 1)
+                {
+                    var userJson = JsonConvert.SerializeObject(user);
+                    HttpContext.Session.SetString("admin", userJson);
+                }
+                
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -186,7 +196,7 @@ public class AccountController : Controller
         return View("~/Views/FE/Account/ForgotPassword.cshtml");
     }
 
-    HttpPost("ForgotPassword")]
+    [HttpPost("ForgotPassword")]
     public ActionResult ForgotPassword(string email)
     {
         // Kiểm tra xem email có tồn tại trong hệ thống hay không
@@ -200,7 +210,7 @@ public class AccountController : Controller
 
         // Nếu email không tồn tại trong hệ thống, hiển thị form quên mật khẩu lại với thông báo lỗi
         ModelState.AddModelError("", "Email không hợp lệ.");
-        return View();
+        return View("~/Views/FE/Account/ForgotPassword.cshtml");
     }
     [HttpGet("ResetPassword/{email}")]
     public ActionResult ResetPassword(string email)

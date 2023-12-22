@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fdvVP3t+kmDnA96pOiVwy0kh0k3zEAeNfKGkzUCqEPA=",
+  "Hash": "FgjZqikb2MTj4RQn6RUw599N4PKY8b54cimxKfpW9so=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -12087,6 +12087,23 @@
       "OriginalItemSpec": "wwwroot/FE/img/footer_logo.png"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/IMG_20211027_160735.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/IMG_20211027_160735.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/IMG_20211027_160735.jpg"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/knowledge_graph_logo.png",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -12663,6 +12680,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/FE/img/recepie/recpie_6.png"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/sieu-sao-1-181.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/sieu-sao-1-181.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/sieu-sao-1-181.jpg"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/svg_icon/feature_1.svg",

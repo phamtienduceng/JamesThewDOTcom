@@ -56,39 +56,42 @@
 
 
         <!-- Main Content Area -->
-        <div class="col-xl-9 col-lg-9">
-            @if (!string.IsNullOrEmpty(userJson))
-            {
-                <h3><a asp-action="Create" asp-controller="Recipe">Create new recipe</a></h3>
-            }
-            else
-            {
-                <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own recipes.</h3>
-            }
+        <div class="col-xl-9 col-lg-9 border-left">
+            <div class="mb-4">
+                @if (!string.IsNullOrEmpty(userJson))
+                {
+                    <h3><a asp-action="Create" asp-controller="Recipe">Create new recipe</a></h3>
+                }
+                else
+                {
+                    <h3>You can <a asp-action="Login" asp-controller="Account" class="text-danger">Login</a> to post your own recipes.</h3>
+                }
+            </div>
             
             <div class="row">
                 <div class="col-md-6">
                     <form asp-action="Index" asp-controller="Recipe" method="get">
                         <div class="form-actions no-color">
-                            <h3>
-                                Search:
+                            <h4>
+                                <span>Search: </span>
                                 <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Enter title here ..."/>
                                 <input type="submit" value="Search" class="btn btn-default"/>
-                            </h3>
+                            </h4>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6 align-right" >
-                    <h3>
-                        Sorting
-                        <a asp-action="Index" asp-controller="Recipe" asp-route-sortOrder="@ViewData["NameSort"]">Title</a> |
-                        <a asp-action="Index" asp-controller="Recipe" asp-route-sortOrder="@ViewData["DateSort"]">Date post</a>
-                    </h3>
+                <div class="col-md-6 d-flex justify-content-end">
+                    <h5>
+                        <span class="d-inline">Sort: </span>
+                        <h5><a asp-action="Index" asp-controller="Recipe" asp-route-sortOrder="@ViewData["NameSort"]">Title | </a> </h5>
+                        <h5><a asp-action="Index" asp-controller="Recipe" asp-route-sortOrder="@ViewData["DateSort"]"> Date post | </a> </h5>
+                        <h5><a asp-action="Index" asp-controller="Recipe" asp-route-sortOrder="@ViewData["RatingSort"]"> Rating</a></h5>
+                    </h5>
                 </div>
             </div>
-            
+
             <!-- Recipe Display Area -->
-            <div class="recepie_area pt-9">
+            <div class="recepie_area" style="margin-top: -50px">
                 <div class="container">
                     <div class="row">
                         @foreach (var item in Model)
@@ -110,19 +113,19 @@
                     </div>
                 </div>
             </div>
-            
-           <div class="text-center">
-               @Html.PagedListPager(Model, page => Url.Action("Index", "Recipe", new { page = page }),
-                   new PagedListRenderOptions()
-                   {
-                       LiElementClasses = new[] { "page-item" },
-                       PageClasses = new[] { "page-link" },
-                       ContainerDivClasses = new[] { "pagination", "justify-content-center" },
-                       UlElementClasses = new[] { "pagination" }
-                   })
-           </div>
 
-            
+            <div class="text-center">
+                @Html.PagedListPager(Model, page => Url.Action("Index", "Recipe", new { page = page }),
+                    new PagedListRenderOptions()
+                    {
+                        LiElementClasses = new[] { "page-item" },
+                        PageClasses = new[] { "page-link" },
+                        ContainerDivClasses = new[] { "pagination", "justify-content-center" },
+                        UlElementClasses = new[] { "pagination" }
+                    })
+            </div>
+
+
             <!-- /Recipe Display Area -->
         </div>
     </div>
