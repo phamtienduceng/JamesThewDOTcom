@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YTyeIFbf5gmmNhlmt+G6n64xUoEyPlxPYYvvIND/5Myb4PeHBtR4R2mHZhWSa4zXhtJlo1sTCbdWTJqvtqeAog==",
+  "dgSpecHash": "P7mnj5OdoKueTDAqRUfPSigj32CElPRLaiW4VAUsVCkqbILCJq7IX9xuMGzMAiqoqxcP1Xekcav/eMTEHv9HLA==",
   "success": true,
-  "projectFilePath": "D:\\Git\\JamesRecipes\\JamesRecipes.csproj",
+  "projectFilePath": "D:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nguye\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\nguye\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

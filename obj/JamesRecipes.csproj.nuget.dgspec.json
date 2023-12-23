@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git\\JamesRecipes\\JamesRecipes.csproj": {}
+    "D:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj": {}
   },
   "projects": {
-    "D:\\Git\\JamesRecipes\\JamesRecipes.csproj": {
+    "D:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git\\JamesRecipes\\JamesRecipes.csproj",
+        "projectUniqueName": "D:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj",
         "projectName": "JamesRecipes",
-        "projectPath": "D:\\Git\\JamesRecipes\\JamesRecipes.csproj",
+        "projectPath": "D:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj",
         "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-        "outputPath": "D:\\Git\\JamesRecipes\\obj\\",
+        "outputPath": "D:\\Git\\JamesThewDOTcom\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
