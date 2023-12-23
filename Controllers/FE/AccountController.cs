@@ -44,10 +44,20 @@ public class AccountController : Controller
 
             var user = _db.Users.SingleOrDefault(u => u.Email.Equals(email));
 
-            if (user != null && BCrypt.Net.BCrypt.Verify(pass, user.Password) && user.RoleId == 2)
+            if (user != null && BCrypt.Net.BCrypt.Verify(pass, user.Password))
             {
-                var userJson = JsonConvert.SerializeObject(user);
-                HttpContext.Session.SetString("user", userJson);
+                if (user.RoleId == 2)
+                {
+                    var userJson = JsonConvert.SerializeObject(user);
+                    HttpContext.Session.SetString("user", userJson);
+                }
+
+                if (user.RoleId == 1)
+                {
+                    var userJson = JsonConvert.SerializeObject(user);
+                    HttpContext.Session.SetString("admin", userJson);
+                }
+
                 return RedirectToAction("Index", "Home");
             }
             else

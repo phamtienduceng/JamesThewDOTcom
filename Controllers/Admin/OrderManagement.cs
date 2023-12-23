@@ -5,7 +5,7 @@ namespace JamesRecipes.Controllers.Admin;
 
 public class OrderManagement : Controller
 {
-    [AuthenticationAdmin]
+    [Authentication]
     [HttpGet]
     public IActionResult Index()
     {

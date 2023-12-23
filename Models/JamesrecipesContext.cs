@@ -39,6 +39,8 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<Feedback> Feedbacks { get; set; }
 
+    public virtual DbSet<Membership> Memberships { get; set; }
+
     public virtual DbSet<Recipe> Recipes { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
@@ -232,6 +234,24 @@ public partial class JamesrecipesContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__Feedback__UserID__534D60F1");
+        });
+
+
+        modelBuilder.Entity<Membership>(entity =>
+        {
+            entity.HasKey(e => e.MembershipId).HasName("PK__Membersh__92A785999737F810");
+
+            entity.ToTable("Membership");
+
+            entity.Property(e => e.MembershipId).HasColumnName("MembershipID");
+            entity.Property(e => e.EndDate).HasColumnType("datetime");
+            entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
+            entity.Property(e => e.StartDate).HasColumnType("datetime");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Memberships)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Memberships__UserID__2A164134");
         });
 
         modelBuilder.Entity<Recipe>(entity =>

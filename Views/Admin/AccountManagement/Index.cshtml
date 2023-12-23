@@ -61,7 +61,10 @@
                     @Html.DisplayFor(modelItem => item.CreatedAt)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Avatar)
+                   
+                     <input type="checkbox" class="lockAccountButton" data-userid="@item.UserId" />
+                       
+                   
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.RoleName)
@@ -75,4 +78,31 @@
         }
     </tbody>
 </table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.lockAccountButton').change(function () {
+            var isChecked = $(this).is(':checked');
+            var userId = $(this).data('userid');
+            var $lockAccountMessage = $(this).closest('td').find('.lockAccountMessage');
 
+            $.ajax({
+                url: '@Url.Action("LockAccount", "AccountManagement")',
+                type: 'POST',
+                data: { userId: userId, isChecked: isChecked },
+                success: function (result) {
+                    if (result.success) {
+                        if (isChecked) {
+                            $lockAccountMessage.text('This account is locked.');
+                        } else {
+                            $lockAccountMessage.text('');
+                        }
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
