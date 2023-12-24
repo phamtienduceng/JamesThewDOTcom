@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JamesRecipes.Models;
 
-public partial class OrderDetail
+[Table("OrderDetail")]
+public class OrderDetail
 {
-    public int OrderDetailId { get; set; }
-
-    public int? OrderId { get; set; }
-
-    public int? BookId { get; set; }
-
+    public int Id { get; set; }
+    [Required]
+    public int OrderId { get; set; }
+    [Required]
+    public int BookId { get; set; }
+    [Required]
     public int Quantity { get; set; }
-
-    public decimal Subtotal { get; set; }
-
-    public virtual Book? Book { get; set; }
-
-    public virtual Order? Order { get; set; }
+    [Required]
+    public double UnitPrice { get; set; }
+    public Order? Order { get; set; }
+    public Book? Book { get; set; }
 }

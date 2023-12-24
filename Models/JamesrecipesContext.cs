@@ -17,17 +17,7 @@ public partial class JamesrecipesContext : DbContext
     }
 
     public virtual DbSet<Announcement> Announcements { get; set; }
-
-    public virtual DbSet<Book> Books { get; set; }
-
-    public virtual DbSet<Cart> Carts { get; set; }
-
-    public virtual DbSet<CartItem> CartItems { get; set; }
-
-    public virtual DbSet<Order> Orders { get; set; }
-
-    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-
+    
     public virtual DbSet<CategoriesRecipe> CategoriesRecipes { get; set; }
 
     public virtual DbSet<CategoriesTip> CategoriesTips { get; set; }
@@ -39,9 +29,9 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<Faq> Faqs { get; set; }
 
     public virtual DbSet<Feedback> Feedbacks { get; set; }
-
+    
     public virtual DbSet<Membership> Memberships { get; set; }
-
+    
     public virtual DbSet<Recipe> Recipes { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
@@ -49,17 +39,32 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<Tip> Tips { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
-
+    
     public virtual DbSet<ViewHomepage> ViewHomepages { get; set; }
+    
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
     
     public virtual DbSet<ViewRecipeManagement> ViewRecipeManagements { get; set; }
 
     public virtual DbSet<ViewTipManagement> ViewTipManagements { get; set; }
 
+    public virtual DbSet<Book> Books { get; set; }
+
+    public virtual DbSet<CartDetail> CartDetails { get; set; }
+
+    public virtual DbSet<Genre> Genres { get; set; }
+
+    public virtual DbSet<Order> Orders { get; set; }
+
+    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+
+    public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
+
+    public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Server=.,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True");
-
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Announcement>(entity =>
@@ -81,60 +86,6 @@ public partial class JamesrecipesContext : DbContext
             entity.HasOne(d => d.WinnerNavigation).WithMany(p => p.Announcements)
                 .HasForeignKey(d => d.Winner)
                 .HasConstraintName("FK__Announcem__Winne__440B1D61");
-        });
-
-        modelBuilder.Entity<Book>(entity =>
-        {
-            entity.HasKey(e => e.BookId).HasName("PK__Books__3DE0C227B9BE35FE");
-
-            entity.Property(e => e.BookId).HasColumnName("BookID");
-            entity.Property(e => e.Author).HasMaxLength(50);
-            entity.Property(e => e.CreatedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.Title).HasMaxLength(100);
-        });
-
-        modelBuilder.Entity<Cart>(entity => 
-        {
-            entity.Property(e => e.Id).HasMaxLength(100);
-        });
-
-        modelBuilder.Entity<CartItem>(entity =>
-        {
-            entity.Property(e => e.Id).HasMaxLength(100);
-            entity.Property(e => e.Quantity).HasMaxLength(100);
-            entity.Property(e => e.CartId).HasMaxLength(100);
-        });
-
-        modelBuilder.Entity<Order>(entity =>
-        {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF67011B6B");
-            entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.OrderDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.TotalPrice).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.UserId).HasColumnName("UserID");
-            entity.HasOne(d => d.User).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Orders__UserID__4BAC3F29");
-        });
-
-        modelBuilder.Entity<OrderDetail>(entity =>
-        {
-            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D30CCFCB8105");
-            entity.Property(e => e.OrderDetailId).HasColumnName("OrderDetailID");
-            entity.Property(e => e.BookId).HasColumnName("BookID");
-            entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.Subtotal).HasColumnType("decimal(10, 2)");
-            entity.HasOne(d => d.Book).WithMany(p => p.OrderDetails)
-                .HasForeignKey(d => d.BookId)
-                .HasConstraintName("FK__OrderDeta__BookI__5070F446");
-            entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
-                .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__OrderDeta__Order__4F7CD00D");
         });
 
         modelBuilder.Entity<CategoriesRecipe>(entity =>
@@ -242,7 +193,6 @@ public partial class JamesrecipesContext : DbContext
                 .HasConstraintName("FK__Feedback__UserID__534D60F1");
         });
 
-
         modelBuilder.Entity<Membership>(entity =>
         {
             entity.HasKey(e => e.MembershipId).HasName("PK__Membersh__92A785999737F810");
@@ -259,7 +209,7 @@ public partial class JamesrecipesContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__Memberships__UserID__2A164134");
         });
-
+        
         modelBuilder.Entity<Recipe>(entity =>
         {
             entity.HasKey(e => e.RecipeId).HasName("PK__tmp_ms_x__FDD988D0C9C6AA59");
@@ -416,6 +366,90 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.Username).HasMaxLength(50);
         });
 
+
+        modelBuilder.Entity<Book>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Books__3214EC07FAB50451");
+
+            entity.ToTable("Book");
+
+            entity.Property(e => e.AuthorName).HasMaxLength(50);
+            entity.Property(e => e.BookName).HasMaxLength(50);
+            entity.Property(e => e.GenreName).HasMaxLength(100);
+            entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
+
+            entity.HasOne(d => d.Genre).WithMany(p => p.Books)
+                .HasForeignKey(d => d.GenreId)
+                .HasConstraintName("Books__FK");
+        });
+
+        modelBuilder.Entity<CartDetail>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__CartDeta__3214EC27B45408DE");
+
+            entity.ToTable("CartDetail");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.UnitPrice).HasColumnType("decimal(10, 2)");
+
+            entity.HasOne(d => d.Book);
+
+            entity.HasOne(d => d.ShoppingCart).WithMany(p => p.CartDetails)
+                .HasForeignKey(d => d.ShoppingCartId)
+                .HasConstraintName("CartDetail__FK");
+        });
+
+        modelBuilder.Entity<Genre>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Genre__3214EC0720730A18");
+
+            entity.ToTable("Genre");
+
+            entity.Property(e => e.GenreName).HasMaxLength(40);
+        });
+
+        modelBuilder.Entity<Order>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Orders__3214EC076B6348A9");
+
+            entity.Property(e => e.CreateDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.UserId).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<OrderDetail>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__OrderDet__3214EC276986E2F8");
+
+            entity.ToTable("OrderDetail");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.UnitPrice).HasColumnType("decimal(10, 2)");
+
+            entity.HasOne(d => d.Book);
+
+            entity.HasOne(d => d.Order);
+        });
+
+        modelBuilder.Entity<OrderStatus>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__OrderSta__3214EC07169A06F5");
+
+            entity.ToTable("OrderStatus");
+
+            entity.Property(e => e.StatusName).HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<ShoppingCart>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Shopping__3214EC07959C2834");
+
+            entity.ToTable("ShoppingCart");
+
+            entity.Property(e => e.UserId).HasMaxLength(40);
+        });
 
         OnModelCreatingPartial(modelBuilder);
     }
