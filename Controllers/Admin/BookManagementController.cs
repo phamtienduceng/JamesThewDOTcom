@@ -22,7 +22,7 @@ namespace JamesRecipes.Controllers.Admin
         public async Task<IActionResult> Index()
         {
             var jamesrecipesContext = _context.Books.Include(b => b.Genre);
-            return View(await jamesrecipesContext.ToListAsync());
+            return View("~/Views/Admin/BookManagement/Index.cshtml", await jamesrecipesContext.ToListAsync());
         }
 
         // GET: BookManagement/Details/5
@@ -41,14 +41,14 @@ namespace JamesRecipes.Controllers.Admin
                 return NotFound();
             }
 
-            return View(book);
+            return View("~/Views/Admin/BookManagement/Details.cshtml", book);
         }
 
         // GET: BookManagement/Create
         public IActionResult Create()
         {
             ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "GenreName");
-            return View();
+            return View("~/Views/Admin/BookManagement/Create.cshtml");
         }
 
         // POST: BookManagement/Create
@@ -72,7 +72,7 @@ namespace JamesRecipes.Controllers.Admin
                 return RedirectToAction(nameof(Index));
             }
             ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "GenreName", book.GenreId);
-            return View(book);
+            return View("~/Views/Admin/BookManagement/Create.cshtml", book);
         }
 
         // GET: BookManagement/Edit/5
@@ -89,7 +89,7 @@ namespace JamesRecipes.Controllers.Admin
                 return NotFound();
             }
             ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "GenreName", book.GenreId);
-            return View(book);
+            return View("~/Views/Admin/BookManagement/Edit.cshtml", book);
         }
 
         // POST: BookManagement/Edit/5
@@ -125,7 +125,7 @@ namespace JamesRecipes.Controllers.Admin
                 return RedirectToAction(nameof(Index));
             }
             ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "GenreName", book.GenreId);
-            return View(book);
+            return View("~/Views/Admin/BookManagement/Edit.cshtml", book);
         }
 
         // GET: BookManagement/Delete/5
@@ -144,7 +144,7 @@ namespace JamesRecipes.Controllers.Admin
                 return NotFound();
             }
 
-            return View(book);
+            return View("~/Views/Admin/BookManagement/Delete.cshtml", book);
         }
 
         // POST: BookManagement/Delete/5

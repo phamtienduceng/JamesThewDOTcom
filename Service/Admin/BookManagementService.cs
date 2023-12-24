@@ -9,11 +9,11 @@ using System.Security.Policy;
 
 namespace JamesRecipes.Service.Admin;
 
-public class BookService : IBookRepository
+public class BookManagementService : IBookManagementRepository
 {
     private readonly JamesrecipesContext _db;
 
-    public BookService(JamesrecipesContext db)
+    public BookManagementService(JamesrecipesContext db)
     {
         this._db = db;
     }

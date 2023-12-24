@@ -30,7 +30,7 @@ namespace JamesRecipes.Controllers.Admin
         public async Task<IActionResult> GetUserCart()
         {
             var cart = await _cartRepo.GetUserCart();
-            return View(cart);
+            return View("~/Views/FE/Cart/GetUserCart.cshtml", cart);
         }
 
         public async Task<IActionResult> GetTotalItemInCart()

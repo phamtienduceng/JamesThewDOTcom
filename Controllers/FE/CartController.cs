@@ -8,6 +8,6 @@ public class CartController : Controller
     // GET
     public IActionResult Index()
     {
-        return View("~/Views/FE/Cart/Index.cshtml");
+        return View("~/Views/FE/Cart/GetUserCart.cshtml");
     }
 }

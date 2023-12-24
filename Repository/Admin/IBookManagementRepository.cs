@@ -2,7 +2,7 @@ using JamesRecipes.Models;
 
 namespace JamesRecipes.Repository.Admin;
 
-public interface IBookRepository
+public interface IBookManagementRepository
 {
 
     Task<IEnumerable<Genre>> Genres();
