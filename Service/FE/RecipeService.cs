@@ -1,6 +1,7 @@
 using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace JamesRecipes.Service.FE;
 
@@ -15,13 +16,23 @@ public class RecipeService: IRecipe
 
     public List<Recipe> GetAllRecipes()
     {
-        return _db.Recipes.ToList();
+        return _db.Recipes.Where(r=>r.Status == true).ToList();
+    }
+
+    public List<Recipe> GetAllRecipesPremium()
+    {
+        return _db.Recipes.Where(r => r.IsMembershipOnly).ToList();
     }
 
     public Recipe GetRecipe(int id)
     {
         var rep = _db.Recipes.Include(r=>r.Feedbacks).SingleOrDefault(r => r.RecipeId == id);
         return rep ?? null!;
+    }
+
+    public List<Recipe> GetRecipesByUser(int id)
+    {
+        return _db.Recipes.Where(r => r.UserId == id).ToList();
     }
 
     public void PostRecipe(Recipe newRecipe)
@@ -46,8 +57,14 @@ public class RecipeService: IRecipe
             case "date_desc":
                 recipes = recipes.OrderByDescending(r => r.CreatedAt).ToList();
                 break;
+            case "rating":
+                recipes = recipes.OrderBy(r => r.Rating).ToList();
+                break;
+            case "rating_desc":
+                recipes = recipes.OrderByDescending(r => r.Rating).ToList();
+                break;
             default:
-                recipes = recipes.OrderBy(r => r.CreatedAt).ToList();
+                recipes = recipes.OrderByDescending(r => r.CreatedAt).ToList();
                 break;
         }
         return recipes;
@@ -57,4 +74,70 @@ public class RecipeService: IRecipe
     {
         return _db.Recipes.Where(r => r.Title.Contains(searchString)).ToList();
     }
-}
+
+    public void SwitchStatus(int id, bool status)
+    {
+        var rep = _db.Recipes.SingleOrDefault(r => r.RecipeId == id);
+        if (rep != null)
+        {
+            rep.Status = status;
+            _db.SaveChanges(); 
+        }
+    }
+
+    public IPagedList<Recipe> PageList(int page, int pageSize,  List<Recipe> recipes)
+    {
+        return recipes.ToPagedList(page, pageSize);
+    }
+
+    public void UpdateRatingRecipe(int id)
+    {
+        var rep = _db.Recipes.SingleOrDefault(r => r.RecipeId == id);
+        if (rep != null)
+        {
+            var averageRating = _db.Feedbacks
+                .Where(f => f.RecipeId == id && f.Rating.HasValue)
+                .Select(f => f.Rating!.Value)
+                .Average();
+
+            rep.Rating = (int)Math.Round(averageRating);
+            _db.SaveChanges();
+        }
+    }
+
+    public  List<Recipe> Filter(int? categoryId, TimeSpan? timeMin, TimeSpan? timeMax, int? ratingMin, int? ratingMax, List<Recipe> recipes)
+    {
+        var reps = recipes;
+
+        if (categoryId.HasValue)
+        {
+            reps = reps.Where(r => r.CategoryRecipeId == categoryId).ToList();
+
+        }
+
+        if (timeMin.HasValue && timeMax.HasValue)
+        {
+            reps = reps.Where(r => r.Timeneeds >= timeMin && r.Timeneeds <= timeMax).ToList();
+        }
+
+        if (ratingMin.HasValue && ratingMax.HasValue)
+        {
+            reps = reps.Where(r => r.Rating >= ratingMin && r.Rating <= ratingMax).ToList();
+
+        }
+        return reps;
+    }
+
+    public void DeleteMyRecipe(int id)
+    {
+        var rep = _db.Recipes.Include(r => r.Feedbacks)
+            .SingleOrDefault(r => r.RecipeId == id);
+
+        if (rep != null)
+        {
+            _db.Feedbacks.RemoveRange(rep.Feedbacks);
+            _db.Recipes.Remove(rep);
+            _db.SaveChanges();
+        }
+    }
+}   

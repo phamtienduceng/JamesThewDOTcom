@@ -2,10 +2,12 @@ using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
+using X.PagedList;
 
 namespace JamesRecipes.Controllers.FE;
 
-[Route("fe/[controller]")]
+
 public class RecipeController : Controller
 {
     private readonly IRecipe _recipe;
@@ -19,21 +21,11 @@ public class RecipeController : Controller
         _feedback = feedback;
     }
 
-    [HttpGet("index")]
-    public IActionResult Index(string sortOrder, string searchString)
+    public IActionResult Index(string sortOrder, string searchString, int? categoryId, TimeSpan? timeMin, TimeSpan? timeMax, int? ratingMin, int? ratingMax, int page = 1)
     {
         ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
         ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
-
-        if (!string.IsNullOrEmpty(searchString))
-        {
-            TempData["SearchString"] = searchString;
-        }
-        else
-        {
-            searchString = TempData["SearchString"] as string;
-        }
-
+        ViewData["RatingSort"] = sortOrder == "rating" ? "rating_desc" : "rating";
         ViewData["CurrentFilter"] = searchString;
 
         var reps = _recipe.GetAllRecipes();
@@ -42,11 +34,21 @@ public class RecipeController : Controller
         {
             reps = _recipe.Search(searchString);
         }
-
+        
+        ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName", categoryId);
+        if (categoryId != 0 || timeMin != null || timeMax != null || ratingMin != 0 || ratingMax != 0)
+        {
+            reps = _recipe.Filter(categoryId, timeMin, timeMax, ratingMin, ratingMax, reps);
+        }
         reps = _recipe.Sorting(reps, sortOrder);
+        
+        page = page < 1 ? 1 : page;
+        var recipes = _recipe.PageList(page, 3, reps);
 
-        return View("~/Views/FE/Recipe/Index.cshtml", reps);
+        return View("~/Views/FE/Recipe/Index.cshtml", recipes);
     }
+
+
 
     
     [HttpGet("single_recipe")]
@@ -100,11 +102,30 @@ public class RecipeController : Controller
             Content = content,
             Rating = rating,
         };
-
+        
         _feedback.AddFeedback(newFeedback);
+        _recipe.UpdateRatingRecipe(recipeId);
         
         var updatedComments = _feedback.GetFeedbacksByRecipeId(recipeId).ToList();
         return PartialView("_CommentsPartial", updatedComments);
     }
 
+    [HttpPost("switch_status")]
+    public IActionResult SwitchStatus(int id, bool status)
+    {
+        _recipe.SwitchStatus(id, status);
+        return RedirectToAction("GetRecipesByUser");
+    }
+
+    public IActionResult GetRecipesByUser(int id)
+    {
+        var reps = _recipe.GetRecipesByUser(id);
+        return View("~/Views/FE/Recipe/MyRecipe.cshtml", reps);
+    }
+
+    public IActionResult DeleteMyRecipe(int recipeId, int userId)
+    {
+        _recipe.DeleteMyRecipe(recipeId);
+        return RedirectToAction("GetRecipesByUser", new {id = userId});
+    }
 }

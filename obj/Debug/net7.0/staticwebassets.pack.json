@@ -2597,6 +2597,10 @@
       "PackagePath": "staticwebassets/FE/img/.DS_Store"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/IMG_20211027_160735.jpg",
+      "PackagePath": "staticwebassets/FE/img/IMG_20211027_160735.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banh-mi-thit-bo-nuong-thumbnail-1.jpg",
       "PackagePath": "staticwebassets/FE/img/banh-mi-thit-bo-nuong-thumbnail-1.jpg"
     },
@@ -2857,6 +2861,10 @@
       "PackagePath": "staticwebassets/FE/img/offers/3.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/padthai.jpg",
+      "PackagePath": "staticwebassets/FE/img/padthai.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pattern/patrn.png",
       "PackagePath": "staticwebassets/FE/img/pattern/patrn.png"
     },
@@ -2963,6 +2971,10 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/recepie/recpie_6.png",
       "PackagePath": "staticwebassets/FE/img/recepie/recpie_6.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/sieu-sao-1-181.jpg",
+      "PackagePath": "staticwebassets/FE/img/sieu-sao-1-181.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/svg_icon/feature_1.svg",
