@@ -29,9 +29,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.CreatedAt)
             </th>
-            <th>
+         @*    <th>
                 @Html.DisplayNameFor(model => model.Avatar)
-            </th>
+            </th> *@
             <th>
                Role
             </th>
@@ -60,12 +60,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CreatedAt)
                 </td>
-                <td>
+                @* <td>
                    
                      <input type="checkbox" class="lockAccountButton" data-userid="@item.UserId" />
                        
                    
-                </td>
+                </td> *@
                 <td>
                     @Html.DisplayFor(modelItem => item.RoleName)
                 </td>
@@ -78,7 +78,7 @@
         }
     </tbody>
 </table>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
         $('.lockAccountButton').change(function () {
@@ -106,3 +106,4 @@
         });
     });
 </script>
+ *@

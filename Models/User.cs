@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace JamesRecipes.Models;
 
@@ -8,15 +9,15 @@ public partial class User
     public int UserId { get; set; }
 
     public string Username { get; set; } = null!;
-
+    //[RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$", ErrorMessage = "Password must be at least 5 characters long and contain at least one letter and one digit.")]
     public string Password { get; set; } = null!;
-
-    public string? Email { get; set; }
-
+    //[EmailAddress(ErrorMessage = "Invalid email address.")]
+     public string? Email { get; set; }
+    //[RegularExpression(@"^\d{10}$", ErrorMessage = "Invalid phone number. Phone number must be 10 digits.")]
     public string? PhoneNumber { get; set; }
 
     public string? Address { get; set; }
-
+    
     public int? RoleId { get; set; }
 
     public DateTime? CreatedAt { get; set; }

@@ -6,25 +6,26 @@ using System.Net;
 using System.Net.Http;
 using JamesRecipes.Models.Authentication;
 using JamesRecipes.Repository.FE;
+using JamesRecipes.Repository.Admin;
 
 namespace JamesRecipes.Controllers.Admin;
 
 [Route("admin/[controller]")]
 public class AccountManagementController : Controller
 {
-    private readonly JamesrecipesContext _db;
+    private readonly IAccountManagementRepository _accountRepository;
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public AccountManagementController(JamesrecipesContext db, IHttpContextAccessor httpContextAccessor)
+    public AccountManagementController(IAccountManagementRepository accountRepository , IHttpContextAccessor httpContextAccessor)
     {
-        _db = db;
+        _accountRepository = accountRepository;
         _httpContextAccessor = httpContextAccessor;
     }
-    [AuthenticationAdmin]
+    [Authentication]
     [HttpGet("Index")]
     public IActionResult Index()
     {
-        var users = _db.ViewUserRoles.OrderByDescending(u => u.UserId).ToList();
+        var users = _accountRepository.GetAllUsers();
         return View("~/Views/Admin/AccountManagement/Index.cshtml", users);
     }
  
@@ -39,15 +40,14 @@ public class AccountManagementController : Controller
     {
         if (ModelState.IsValid)
         {
-            var existingAdmin = _db.Users.SingleOrDefault(a => a.Email.Equals(newAdmin.Email));
+            var Admin = _accountRepository.GetAdminByEmail(newAdmin.Email);
 
-            if (existingAdmin == null)
+            if (Admin == null)
             {
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newAdmin.Password);
                 newAdmin.Password = hashedPassword;
                 newAdmin.RoleId = 1;
-                _db.Users.Add(newAdmin);
-                _db.SaveChanges();
+                _accountRepository.AddAdmin(newAdmin);
                 return RedirectToAction("Index", "AccountManagement");
             }
             else
@@ -57,21 +57,6 @@ public class AccountManagementController : Controller
         }
 
         return View("~/Views/Admin/AccountManagement/Registeradmin.cshtml");
-    }
-    public ActionResult LockAccount(int id)
-    {
-        // L?y thông tin tài kho?n t? ngu?n d? li?u (ví d?: c? s? d? li?u)
-        User user = _db.Users.FirstOrDefault(u => u.UserId == id);
-
-        if (user != null)
-        {
-            user.Avatar = "true";
-            _db.SaveChanges();
-
-            return Json(new { success = true });
-        }
-
-        return Json(new { success = false });
     }
 
     [HttpGet("logoutadmin")]

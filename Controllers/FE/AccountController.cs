@@ -10,19 +10,18 @@ using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.Data.SqlClient;
 using System.Net.Mail;
 using MailKit.Net.Smtp;
-
-
+using JamesRecipes.Repository.FE;
 
 namespace JamesRecipes.Controllers.FE;
 
 [Route("fe/[controller]")]
 public class AccountController : Controller
 {
-    JamesrecipesContext _db;
+    private readonly IAccount _account;
 
-    public AccountController(JamesrecipesContext db)
+    public AccountController(IAccount account)
     {
-        _db = db;
+        _account = account;
     }
 
     [HttpGet("login")]
@@ -42,9 +41,9 @@ public class AccountController : Controller
                 return View("~/Views/FE/Account/Login.cshtml");
             }
 
-            var user = _db.Users.SingleOrDefault(u => u.Email.Equals(email));
+            var user = _account.GetUserByEmail(email);
 
-            if (user != null && BCrypt.Net.BCrypt.Verify(pass, user.Password))
+            if (user != null && _account.VerifyPassword(pass, user.Password))
             {
                 if (user.RoleId == 2)
                 {
@@ -82,58 +81,69 @@ public class AccountController : Controller
     }
 
     [HttpPost("register")]
-    public IActionResult Register(User newUsers)
+    public IActionResult Register(User newUser)
     {
-        if (ModelState.IsValid)
+        try
         {
-            var existingUser = _db.Users.SingleOrDefault(u => u.Email.Equals(newUsers.Email));
+            if (ModelState.IsValid)
+            {
+                var existingUser = _account.GetUserByEmail(newUser.Email);
 
-            if (existingUser == null)
-            {
-                // Mã hóa mật khẩu bằng bcrypt
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newUsers.Password);
-                newUsers.Password = hashedPassword;
-                newUsers.RoleId = 2;
-                _db.Users.Add(newUsers);
-                _db.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                ModelState.AddModelError("", "Email is already registered.");
+                if (existingUser == null)
+                {
+                    string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newUser.Password);
+                    newUser.Password = hashedPassword;
+                    newUser.RoleId = 2;
+                    _account.AddUser(newUser);
+                    return RedirectToAction("Login", "Account");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Email is already registered.");
+                }
             }
         }
+        catch (Exception ex)
+        {
+            // Xử lý ngoại lệ tại đây, ví dụ ghi log lỗi
+            ModelState.AddModelError("", "An error occurred during registration.");
+        }
 
-        return View("~/Views/Home/Index.cshtml");
+        return View("~/Views/FE/Account/Register.cshtml");
     }
 
     [HttpGet("MyProfile/{id}")]
     public IActionResult MyProfile(int id)
     {
-        var acc = _db.Users.SingleOrDefault(u => u.UserId == id);
-        var userJson = HttpContext.Session.GetString("user");
-        var user = JsonConvert.DeserializeObject<User>(userJson);
-        var model = new User
-        {
-            Username = acc.Username,
-            PhoneNumber = acc.PhoneNumber,
-            Address = acc.Address
-        };
+        var user = _account.GetUserById(id);
 
-        return View("~/Views/FE/Account/MyProfile.cshtml", model);
+        if (user != null)
+        {
+            var model = new User
+            {
+                Username = user.Username,
+                PhoneNumber = user.PhoneNumber,
+                Address = user.Address
+            };
+
+            return View("~/Views/FE/Account/MyProfile.cshtml", model);
+        }
+
+        return RedirectToAction("Index", "Home");
     }
 
     [HttpPost("MyProfile/{id}")]
     public IActionResult MyProfile(int id, User model)
     {
-        var acc = _db.Users.Find(id);
-        if (acc != null)
+        var user = _account.GetUserById(id);
+
+        if (user != null)
         {
-            acc.Username = model.Username;
-            acc.PhoneNumber = model.PhoneNumber;
-            acc.Address = model.Address;
-            _db.SaveChanges();
-            HttpContext.Session.SetString("user", JsonConvert.SerializeObject(acc));
+            user.Username = model.Username;
+            user.PhoneNumber = model.PhoneNumber;
+            user.Address = model.Address;
+            _account.UpdateUser(user);
+            HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
         }
 
         return View("~/Views/FE/Account/MyProfile.cshtml");
@@ -142,39 +152,51 @@ public class AccountController : Controller
     [HttpGet("changepassword/{id}")]
     public IActionResult ChangePassword(int id)
     {
-        var acc = _db.Users.SingleOrDefault(u => u.UserId == id);
-        var model = new User
-        {
-            Password = acc.Password,
-        };
+        var user = _account.GetUserById(id);
 
-        return View("~/Views/FE/Account/ChangePassword.cshtml", model);
+        if (user != null)
+        {
+            var model = new User
+            {
+                Password = user.Password
+            };
+
+            return View("~/Views/FE/Account/ChangePassword.cshtml", model);
+        }
+
+        return RedirectToAction("Index", "Home");
     }
 
     [HttpPost("changepassword/{id}")]
-    public IActionResult ChangePassword(int id, string newpass, string conform)
+    public IActionResult ChangePassword(int id, string newPassword, string confirm, string oldpass)
     {
-        var acc = _db.Users.Find(id);
-        if (string.IsNullOrWhiteSpace(newpass) || string.IsNullOrWhiteSpace(conform) || string.IsNullOrWhiteSpace(acc.Password))
+        var user = _account.GetUserById(id);
+
+        if (!_account.VerifyPassword(oldpass, user.Password))
+        {
+            ViewData["Error"] = "The old password is incorrect!";
+            return View("~/Views/FE/Account/ChangePassword.cshtml");
+        }
+        else if (string.IsNullOrWhiteSpace(newPassword) || string.IsNullOrWhiteSpace(confirm) || string.IsNullOrWhiteSpace(oldpass))
         {
             ViewData["Error"] = "Please enter data.";
-            return View("~/Views/FE/Account/Login.cshtml");
+            return View("~/Views/FE/Account/ChangePassword.cshtml");
         }
-        else if (acc.Password == newpass)
+        else if (newPassword == oldpass)
         {
             ViewData["Error"] = "The new and old passwords cannot be the same!";
             return View("~/Views/FE/Account/ChangePassword.cshtml");
         }
-        else if (acc.Password != conform)
+        else if (newPassword != confirm)
         {
-            ViewData["Error"] = "The new password and conform password do not match!";
+            ViewData["Error"] = "The new password and confirm password do not match!";
             return View("~/Views/FE/Account/ChangePassword.cshtml");
         }
 
-        acc.Password = newpass;
-        _db.SaveChanges();
-
-        HttpContext.Session.SetString("user", JsonConvert.SerializeObject(acc));
+        string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newPassword);
+        user.Password = hashedPassword;
+        _account.UpdateUser(user);
+        HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
 
         return View("~/Views/FE/Account/ChangePassword.cshtml");
     }
@@ -185,10 +207,6 @@ public class AccountController : Controller
         HttpContext.Session.Remove("user");
         return View("~/Views/Home/Index.cshtml");
     }
-
-
-
-
 
     [HttpGet("ForgotPassword")]
     public ActionResult ForgotPassword()
@@ -215,14 +233,14 @@ public class AccountController : Controller
     [HttpGet("ResetPassword/{email}")]
     public ActionResult ResetPassword(string email)
     {
-        var acc = _db.Users.SingleOrDefault(u => u.Email == email);
+        var acc = _account.GetUserByEmail(email);
         return View("~/Views/FE/Account/ResetPassword.cshtml");
     }
 
     [HttpPost("ResetPassword/{email}")]
     public ActionResult ResetPassword(string email, string newpass, string conform)
     {
-        var acc = _db.Users.SingleOrDefault(u => u.Email == email);
+        var acc = _account.GetUserByEmail(email);
         if (string.IsNullOrWhiteSpace(newpass) || string.IsNullOrWhiteSpace(conform))
         {
             ViewData["Error"] = "Please enter data.";
@@ -233,8 +251,9 @@ public class AccountController : Controller
             ViewData["Error"] = "The new password and conform password do not match!";
             return View("~/Views/FE/Account/ResetPassword.cshtml");
         }
-        acc.Password = newpass;
-        _db.SaveChanges();
+        string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newpass);
+        acc.Password = hashedPassword;
+        _account.UpdateUser(acc);
         return View("~/Views/FE/Account/ResetPassword.cshtml");
     }
 

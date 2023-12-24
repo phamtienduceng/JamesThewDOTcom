@@ -19,7 +19,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         var model = _home.GetHomepages();
-        return View("~/Views/Home/Index.cshtml", model);;
+        return View("~/Views/Home/Index.cshtml", model); ;
     }
-    
+
 }

@@ -63,7 +63,7 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<ShoppingCart> ShoppingCarts { get; set; }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=.,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=.,1500;Database=jame;User=sa;Password=12345678;TrustServerCertificate=True");
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
