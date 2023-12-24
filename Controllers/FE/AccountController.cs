@@ -186,7 +186,7 @@ public class AccountController : Controller
         return View("~/Views/FE/Account/ForgotPassword.cshtml");
     }
 
-    HttpPost("ForgotPassword")]
+    [HttpPost("ForgotPassword")]
     public ActionResult ForgotPassword(string email)
     {
         // Kiểm tra xem email có tồn tại trong hệ thống hay không

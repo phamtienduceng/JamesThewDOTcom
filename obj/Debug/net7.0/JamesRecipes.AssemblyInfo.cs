@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JamesRecipes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0da2779b5499fa33ee107e5337001057744dd40")]
 [assembly: System.Reflection.AssemblyProductAttribute("JamesRecipes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JamesRecipes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

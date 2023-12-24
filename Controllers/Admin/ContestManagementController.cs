@@ -13,28 +13,20 @@ namespace JamesRecipes.Controllers.Admin;
 public class ContestManagementController : Controller
 {
     // Fields
-    
     private readonly IContestManagementRepository _contestManagementRepository;
-    private readonly JamesrecipesContext _db;
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    private readonly IWebHostEnvironment _webHostEnvironment;
-
+    
     // Constructor
-    public ContestManagementController(JamesrecipesContext db, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment, IContestManagementRepository contestManagementRepository)
+    public ContestManagementController(IContestManagementRepository contestManagementRepository)
     {
-        _db = db;
-        _httpContextAccessor = httpContextAccessor;
-        _webHostEnvironment = webHostEnvironment;
         _contestManagementRepository = contestManagementRepository;
     }
-
 
     // GET: Admin/ContestManagement
     [AuthenticationAdmin]
     [HttpGet("Index")]
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
-        var contests = await _db.Contests.ToListAsync();
+        var contests = _contestManagementRepository.GetContests();
         return View("~/Views/Admin/Contest/Index.cshtml", contests);
     }
 
@@ -56,7 +48,6 @@ public class ContestManagementController : Controller
         {
             if (file != null)
             {
-                // Chỉ cần lưu đường dẫn từ sau 'wwwroot'
                 var folderPath = Path.Combine("wwwroot", "Admin", "images", "contest");
                 var pathToSave = Path.Combine(folderPath, file.FileName);
 
@@ -66,10 +57,8 @@ public class ContestManagementController : Controller
                 }
                 using (var stream = new FileStream(pathToSave, FileMode.Create))
                 {
-                    // Sử dụng phương thức đồng bộ khi lưu file
                     file.CopyTo(stream);
                 }
-                // Lưu đường dẫn tương đối vào cơ sở dữ liệu
                 contest.Image = Path.Combine("Admin", "images", "contest", file.FileName);
                 _contestManagementRepository.AddContest(contest);
                 return RedirectToAction("Index");
@@ -86,10 +75,10 @@ public class ContestManagementController : Controller
 
     // GET: Admin/ContestManagement/Edit/5
     [AuthenticationAdmin]
-    [HttpGet("Edit")]
-    public async Task<IActionResult> Edit(int id)
+    [HttpGet("Edit/{id}")]
+    public IActionResult Edit(int id)
     {
-        var contest = await _db.Contests.FindAsync(id);
+        var contest = _contestManagementRepository.GetContest(id);
         if (contest == null)
         {
             return NotFound();
@@ -99,93 +88,75 @@ public class ContestManagementController : Controller
 
     // POST: Admin/ContestManagement/Edit/5
     [AuthenticationAdmin]
-    [HttpPost("Edit")]
+    [HttpPost("Edit/{id}")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, Contest contest, IFormFile file)
+    public IActionResult Edit(int id, Contest contest, IFormFile file)
     {
         if (id != contest.ContestId)
         {
             return NotFound();
         }
 
-        if (ModelState.IsValid)
+        try
         {
-            try
+            if (file != null)
             {
-                if (file != null)
+                var folderPath = Path.Combine("wwwroot", "Admin", "images", "contest");
+                var pathToSave = Path.Combine(folderPath, file.FileName);
+                if (!Directory.Exists(folderPath))
                 {
-                    var folderPath = Path.Combine("wwwroot", "Admin", "images", "contest");
-                    var pathToSave = Path.Combine(folderPath, file.FileName);
-
-                    if (!Directory.Exists(folderPath))
-                    {
-                        Directory.CreateDirectory(folderPath);
-                    }
-
-                    using (var stream = new FileStream(pathToSave, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-
-                    contest.Image = Path.Combine("Admin", "images", "contest", file.FileName);
+                    Directory.CreateDirectory(folderPath);
                 }
-
-                _contestManagementRepository.UpdateContest(contest);
-                await _db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!await ContestExists(contest.ContestId))
+                using (var stream = new FileStream(pathToSave, FileMode.Create))
                 {
-                    return NotFound();
+                    file.CopyTo(stream);
                 }
-                else
-                {
-                    throw;
-                }
+                contest.Image = Path.Combine("Admin", "images", "contest", file.FileName);
             }
 
-            return RedirectToAction(nameof(Index));
+            _contestManagementRepository.UpdateContest(id, contest);
+            return RedirectToAction("Index");
         }
-
-        return View("~/Views/Admin/Contest/Edit.cshtml", contest);
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
-
-    // GET: Admin/ContestManagement/Delete/5
-    [AuthenticationAdmin]
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int id)
+    // POST: Admin/ContestManagement/Delete/5
+    public IActionResult DeleteConfirmed(int id)
     {
-        var contest = await _db.Contests.FindAsync(id);
-        _db.Contests.Remove(contest!);
-        await _db.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        var contest = _contestManagementRepository.GetContest(id);
+        if (!_contestManagementRepository.CheckContest(contest))
+        {
+            _contestManagementRepository.DeleteContest(id);
+            TempData["msgDelete"] = "Deleted Successfully!"; // Thêm dòng này
+            return RedirectToAction("Index");
+        }
+        else
+        {
+            TempData["msgDelete"] = "Contest is already used";
+            return RedirectToAction("Index");
+        }
     }
 
-    private async Task<bool> ContestExists(int id)
+    [HttpGet("Details/{id}")]
+    public IActionResult Details(int id)
     {
-        return await _db.Contests.AnyAsync(c => c.ContestId == id);
-    }
-
-    // GET: Admin/ContestManagement/Details/5
-    [AuthenticationAdmin]
-    [HttpGet("Details")]
-    public async Task<IActionResult> Details(int id)
-    {
-        var contest = await _db.Contests
-            .Include(c => c.Announcements) // hiển thị thông tin liên quan đến Announcements
-            .Include(c => c.ContestEntries) // hiển thị thông tin liên quan đến ContestEntries
-            .FirstOrDefaultAsync(m => m.ContestId == id);
-
-        if (contest == null)
+        var contest = _contestManagementRepository.GetContest(id);
+        if(contest == null)
         {
             return NotFound();
         }
-
         return View("~/Views/Admin/Contest/Details.cshtml", contest);
     }
 
 
+    [HttpGet("get_contestentries_by_contest")]
+    public IActionResult GetContestEntriesByContest(int id)
+    {
+        var contestEntries = _contestManagementRepository.GetAllContestEntries(id);
+        return View("~/Views/Admin/Contest/ContestEntries.cshtml", contestEntries);
+    }
 }

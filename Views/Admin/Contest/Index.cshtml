@@ -10,6 +10,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<div><p style="color: red">@TempData["msgDelete"]</p></div>
 <table class="table">
     <thead>
         <tr>
@@ -80,9 +81,10 @@
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ContestId">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.ContestId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ContestId">Delete</a>
+                    <a asp-action="DeleteConfirmed" asp-controller="ContestManagement" asp-route-id="@item.ContestId">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
