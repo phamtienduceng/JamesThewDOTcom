@@ -12,8 +12,8 @@ namespace JamesRecipes.Models.Authentication
                 context.Result = new RedirectToRouteResult(
                     new RouteValueDictionary
                     {
-                    { "Controller","AccountManagement"},
-                    {"Action","LoginAdmin" },
+                        { "Controller", "Account" },
+                        { "Action", "Login" }
                     });
             }
         }

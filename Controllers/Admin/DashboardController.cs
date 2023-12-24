@@ -8,7 +8,7 @@ namespace JamesRecipes.Controllers.Admin;
 public class DashboardController : Controller
 {
 
-    [Authentication]
+    [AuthenticationAdmin]
     [HttpGet]
     public IActionResult Index()
     {

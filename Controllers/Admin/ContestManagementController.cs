@@ -153,10 +153,10 @@ public class ContestManagementController : Controller
     }
 
 
-    [HttpGet("get_contestentries_by_contest")]
+    /*[HttpGet("get_contestentries_by_contest")]
     public IActionResult GetContestEntriesByContest(int id)
     {
         var contestEntries = _contestManagementRepository.GetAllContestEntries(id);
         return View("~/Views/Admin/Contest/ContestEntries.cshtml", contestEntries);
-    }
+    }*/
 }

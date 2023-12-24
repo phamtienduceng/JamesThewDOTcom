@@ -8,7 +8,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" asp-controller="ContestManagement">Create New</a>
 </p>
 <div><p style="color: red">@TempData["msgDelete"]</p></div>
 <table class="table">
@@ -79,8 +79,8 @@
                     @Html.DisplayFor(modelItem => item.Admin.UserId)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ContestId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ContestId">Details</a> |
+                    <a asp-action="Edit" asp-controller="ContestManagement" asp-route-id="@item.ContestId">Edit</a> |
+                    <a asp-action="Details" asp-controller="ContestManagement" asp-route-id="@item.ContestId">Details</a> |
                     <a asp-action="DeleteConfirmed" asp-controller="ContestManagement" asp-route-id="@item.ContestId">Delete</a>
                 </td>
             </tr>
