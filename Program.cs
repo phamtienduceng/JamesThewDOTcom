@@ -8,6 +8,7 @@ using JamesRecipes.Service.FE;
 using JamesRecipes.Models;
 using BookService = JamesRecipes.Service.FE.BookService;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // DI Admin
@@ -55,6 +56,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
@@ -77,6 +79,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

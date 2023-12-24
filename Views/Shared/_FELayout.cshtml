@@ -212,6 +212,8 @@
 
             <div class="container-fluid">
                 @RenderBody()
+
+
             </div>
         </div>
     </div>
@@ -222,6 +224,12 @@
     <script src="~/Admin/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="~/Admin/libs/simplebar/dist/simplebar.js"></script>
     <script src="~/Admin/js/dashboard.js"></script>
+
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: false)
+    }
+
 </body>
 
 </html>

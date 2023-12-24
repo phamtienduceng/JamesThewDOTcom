@@ -47,7 +47,7 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<ViewRecipeManagement> ViewRecipeManagements { get; set; }
 
     public virtual DbSet<ViewTipManagement> ViewTipManagements { get; set; }
-
+    
     public virtual DbSet<Book> Books { get; set; }
 
     public virtual DbSet<CartDetail> CartDetails { get; set; }
