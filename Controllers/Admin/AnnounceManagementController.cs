@@ -6,7 +6,7 @@ namespace JamesRecipes.Controllers.Admin;
 [Route("admin/[controller]")]
 public class AnnounceManagementController : Controller
 {
-    [AuthenticationAdmin]
+    [Authentication]
     [HttpGet]
     public IActionResult Index()
     {

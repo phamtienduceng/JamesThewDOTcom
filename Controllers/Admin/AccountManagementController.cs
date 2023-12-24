@@ -27,45 +27,7 @@ public class AccountManagementController : Controller
         var users = _db.ViewUserRoles.OrderByDescending(u => u.UserId).ToList();
         return View("~/Views/Admin/AccountManagement/Index.cshtml", users);
     }
-
-    [HttpGet("loginadmin")]
-    public IActionResult LoginAdmin()
-    {
-        return View("~/Views/Admin/AccountManagement/LoginAdmin.cshtml");
-    }
-
-    [HttpPost("loginadmin")]
-    public IActionResult LoginAdmin(string email, string pass)
-    {
-        try
-        {
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(pass))
-            {
-                ViewData["Error"] = "Please enter email and password.";
-                return View("~/Views/Admin/AccountManagement/LoginAdmin.cshtml");
-            }
-
-            var admin = _db.Users.FirstOrDefault(u => u.Email.Equals(email) && u.RoleId == 1);
-
-            if (admin != null && BCrypt.Net.BCrypt.Verify(pass, admin.Password))
-            {
-                var adminJson = JsonConvert.SerializeObject(admin);
-                _httpContextAccessor.HttpContext.Session.SetString("admin", adminJson);
-                return RedirectToAction("Index", "Dashboard");
-            }
-            else
-            {
-                ViewData["Error"] = "Wrong email or password!";
-                return View("~/Views/Admin/AccountManagement/LoginAdmin.cshtml");
-            }
-        }
-        catch (Exception ex)
-        {
-            ModelState.AddModelError(string.Empty, ex.Message);
-        }
-        return View("~/Views/Admin/AccountManagement/LoginAdmin.cshtml");
-    }
-
+ 
     [HttpGet("registeradmin")]
     public IActionResult Registeradmin()
     {
@@ -96,12 +58,27 @@ public class AccountManagementController : Controller
 
         return View("~/Views/Admin/AccountManagement/Registeradmin.cshtml");
     }
+    public ActionResult LockAccount(int id)
+    {
+        // L?y thông tin tài kho?n t? ngu?n d? li?u (ví d?: c? s? d? li?u)
+        User user = _db.Users.FirstOrDefault(u => u.UserId == id);
+
+        if (user != null)
+        {
+            user.Avatar = "true";
+            _db.SaveChanges();
+
+            return Json(new { success = true });
+        }
+
+        return Json(new { success = false });
+    }
 
     [HttpGet("logoutadmin")]
     public IActionResult LogoutAdmin()
     {
         _httpContextAccessor.HttpContext.Session.Clear();
-        return RedirectToAction("LoginAdmin", "AccountManagement");
+        return RedirectToAction("Login", "Account");
     }
 
 

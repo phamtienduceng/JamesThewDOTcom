@@ -63,31 +63,40 @@
                                             @{
                                                 if (!string.IsNullOrEmpty(userJson))
                                                 {
-                                                    User user = JsonConvert.DeserializeObject<User>(userJson);
+                                                    var user = JsonConvert.DeserializeObject<User>(userJson);
                                                     <a href="#">@user.Username</a>
-                                                    <ul class="submenu">
-                                                        <li><a asp-action="MyProfile" asp-controller="Account" asp-route-id="@user.UserId">My profile</a></li>
-                                                        <li><a asp-action="ChangePassword" asp-controller="Account" asp-route-id="@user.UserId">Change password</a></li>
-                                                        <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
-                                                    </ul>
                                                 }
                                                 else if (!string.IsNullOrEmpty(adminJson))
                                                 {
-                                                    User admin = JsonConvert.DeserializeObject<User>(adminJson);
+                                                    var admin = JsonConvert.DeserializeObject<User>(adminJson);
                                                     <a href="#">@admin.Username</a>
-                                                    <ul class="submenu">
-                                                        <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
-                                                    </ul>
                                                 }
                                                 else
                                                 {
                                                     <a href="#">Account</a>
-                                                    <ul class="submenu">
-                                                        <li><a asp-action="Login" asp-controller="Account">Login</a></li>
-                                                        <li><a asp-action="Register" asp-controller="Account">Sign up</a></li>
-                                                    </ul>
                                                 }
                                             }
+                                            <ul class="submenu">
+                                                @if (!string.IsNullOrEmpty(userJson))
+                                                {
+                                                    var user = JsonConvert.DeserializeObject<User>(userJson);
+                                                    <li><a asp-action="GetRecipesByUser" asp-controller="Recipe" asp-route-id="@user.UserId">My Recipe</a></li>
+                                                    <li><a asp-action="MyProfile" asp-controller="Account" asp-route-id="@user.UserId">My profile</a></li>
+                                                    <li><a asp-action="ChangePassword" asp-controller="Account" asp-route-id="@user.UserId">Change password</a></li>
+                                                    <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                                                }
+                                                else if (!string.IsNullOrEmpty(adminJson))
+                                                {
+                                                    var admin = JsonConvert.DeserializeObject<User>(adminJson);
+                                                    <li><a asp-action="GetRecipesByUser" asp-controller="Recipe" asp-route-id="@admin.UserId">My Recipe</a></li>
+                                                    <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li><a asp-action="Login" asp-controller="Account">Login</a></li>
+                                                    <li><a asp-action="Register" asp-controller="Account">Sign up</a></li>
+                                                }
+                                            </ul>
                                         </li>
                                     </ul>
                                 </nav>
