@@ -1,21 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 
-namespace JamesRecipes.Models
+namespace JamesRecipes.Models;
+
+public partial class CartDetail
 {
-    [Table("CartDetail")]
-    public class CartDetail
-    {
-        public int Id { get; set; }
-        [Required]
-        public int ShoppingCartId { get; set; }
-        [Required]
-        public int BookId { get; set; }
-        [Required]
-        public int Quantity { get; set; }
-        [Required]
-        public double UnitPrice { get; set; }
-        public Book? Book { get; set; }
-        public ShoppingCart? ShoppingCart { get; set; }
-    }
+    public int CartDetailId { get; set; }
+
+    public int? CartId { get; set; }
+
+    public int? BookId { get; set; }
+
+    public int? Status { get; set; }
+
+    public int? Quantity { get; set; }
+
+    public decimal? UnitPrice { get; set; }
+
+    public virtual Book? Book { get; set; }
+
+    public virtual Cart? Cart { get; set; }
 }

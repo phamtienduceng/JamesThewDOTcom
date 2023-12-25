@@ -171,6 +171,7 @@
       <_ContentIncludedByDefault Remove="Views\Account\ResetPassword.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Books\Index.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Cart\GetUserCart.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\UserOrder\UserOrders.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -189,6 +190,7 @@
       <AdditionalFiles Include="Views\Admin\TipCategories\TipByCate.cshtml" />
       <AdditionalFiles Include="Views\FE\Books\Index.cshtml" />
       <AdditionalFiles Include="Views\FE\Cart\GetUserCart.cshtml" />
+      <AdditionalFiles Include="Views\FE\UserOrder\UserOrders.cshtml" />
     </ItemGroup>
 
 <!--    <ItemGroup>
