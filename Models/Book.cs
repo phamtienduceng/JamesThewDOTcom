@@ -19,7 +19,7 @@ public partial class Book
 
     public string? Image { get; set; }
 
-    public int? CategoryId { get; set; }
+    public int? CategoryBookId { get; set; }
 
     public virtual ICollection<CartDetail> CartDetails { get; set; } = new List<CartDetail>();
 

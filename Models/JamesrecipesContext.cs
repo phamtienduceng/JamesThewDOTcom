@@ -60,7 +60,7 @@ public partial class JamesrecipesContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=127.0.0.1,1433;Database=jamesrecipes;User=sa;Password=123;TrustServerCertificate=True; Trusted_Connection=False;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-52MJDM8\\MSSQLSERVER01;Database=jamesrecipes;User=sa;Password=123;TrustServerCertificate=True; Trusted_Connection=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -98,7 +98,7 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.Title).HasMaxLength(100);
 
             entity.HasOne(d => d.Category).WithMany(p => p.Books)
-                .HasForeignKey(d => d.CategoryId)
+                .HasForeignKey(d => d.CategoryBookId)
                 .HasConstraintName("FK_Books_Category");
         });
 
