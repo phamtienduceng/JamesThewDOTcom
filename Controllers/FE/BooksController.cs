@@ -8,30 +8,23 @@ using Microsoft.EntityFrameworkCore;
 using JamesRecipes.Models;
 using JamesRecipes.Repository.Admin;
 using System.Diagnostics;
+using JamesRecipes.Repository.FE;
 
 namespace JamesRecipes.Controllers.Admin
 {
     public class BooksController : Controller
     {
-        private readonly IBookManagementRepository _bookManagementRepository;
+        private readonly IBook _book;
 
-        public BooksController(IBookManagementRepository bookManagementRepository)
+        public BooksController(IBook book)
         {
-            _bookManagementRepository = bookManagementRepository;
+            _book = book;
         }
 
-        public async Task<IActionResult> Index(string sterm = "", int genreId = 0)
+        public IActionResult Index()
         {
-            IEnumerable<Book> books = await _bookManagementRepository.GetBooks(sterm, genreId);
-            IEnumerable<Genre> genres = await _bookManagementRepository.Genres();
-            BookDisplayModel bookModel = new BookDisplayModel
-            {
-                Books = books,
-                Genres = genres,
-                STerm = sterm,
-                GenreId = genreId
-            };
-            return View("~/Views/FE/Books/Index.cshtml", bookModel);
+            var books = _book.GetBooks();
+            return View("~/Views/FE/Books/Index.cshtml", books);
         }
     }
 }

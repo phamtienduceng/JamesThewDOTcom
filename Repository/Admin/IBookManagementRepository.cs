@@ -1,10 +1,14 @@
+using Humanizer.Localisation;
 using JamesRecipes.Models;
 
 namespace JamesRecipes.Repository.Admin;
 
 public interface IBookManagementRepository
 {
-
-    Task<IEnumerable<Genre>> Genres();
-    Task<IEnumerable<Book>> GetBooks(string sTerm = "", int genreId = 0);
+    IEnumerable<Book> GetList();
+    IEnumerable<Book> Search(string search);
+    Book BookDetail(int Id);
+    Book EditBook(int bookId, Book updatedBook);
+    Book CreateBook(Book newBook);
+    Book DeleteBook(int Id);
 }

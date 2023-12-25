@@ -18,34 +18,55 @@ public class BookManagementService : IBookManagementRepository
         this._db = db;
     }
 
-    public async Task<IEnumerable<Genre>> Genres()
+    public Book BookDetail(int Id)
     {
-        return await _db.Genres.ToListAsync();
+        var book = _db.Books.FirstOrDefault(b => b.BookId == Id);
+        return null!;
     }
 
-    public async Task<IEnumerable<Book>> GetBooks(string sTerm = "", int genreId = 0)
+    public Book CreateBook(Book newBook)
     {
-        sTerm = sTerm.ToLower();
-        IEnumerable<Book> books = await (from book in _db.Books
-                                         join genre in _db.Genres
-                                         on book.GenreId equals genre.Id
-                                         where string.IsNullOrWhiteSpace(sTerm) || (book != null && book.BookName.ToLower().StartsWith(sTerm))
-                                         select new Book
-                                         {
-                                             Id = book.Id,
-                                             Image = book.Image,
-                                             AuthorName = book.AuthorName,
-                                             BookName = book.BookName,
-                                             GenreId = book.GenreId,
-                                             Price = book.Price,
-                                             GenreName = genre.GenreName
-                                         }
-                     ).ToListAsync();
-        if (genreId > 0)
+        var book = _db.Books.Add(newBook);
+        _db.SaveChanges();
+        return book.Entity;
+    }
+
+    public Book DeleteBook(int Id)
+    {
+        var book = _db.Books.SingleOrDefault(c => c.BookId == Id);
+        if (book != null)
         {
-
-            books = books.Where(a => a.GenreId == genreId).ToList();
+            _db.Books.Remove(book);
+            _db.SaveChanges();
         }
-        return books;
+        return book!;
     }
+
+    public Book EditBook(int bookId, Book updatedBook)
+    {
+        var book = _db.Books.FirstOrDefault(b => b.BookId == bookId);
+
+        if (book != null)
+        {
+            book.Title = updatedBook.Title;
+            book.Author = updatedBook.Author;
+            book.Image = updatedBook.Image;
+            book.Price = updatedBook.Price;
+            _db.SaveChanges();
+            return book;
+        }
+        return null!;
+    }
+
+    public IEnumerable<Book> GetList()
+    {
+       return _db.Books.ToList();
+    }
+
+    public IEnumerable<Book> Search(string search)
+    {
+        var result = _db.Books.Where(b => b.Title.ToUpper().Contains(search));
+        return result.ToList();
+    }
+
 }

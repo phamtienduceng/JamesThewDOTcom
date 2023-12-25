@@ -6,7 +6,6 @@ using JamesRecipes.Repository.FE;
 using JamesRecipes.Service.Admin;
 using JamesRecipes.Service.FE;
 using JamesRecipes.Models;
-using BookService = JamesRecipes.Service.FE.BookService;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +20,6 @@ builder.Services.AddScoped<IContactManagementRepository, ContactManagementServic
 builder.Services.AddScoped<IContestManagementRepository, ContestManagementService>();
 builder.Services.AddScoped<IDashboardRepository, DashboardService>();
 builder.Services.AddScoped<IFaqManagementRepository, FaqManagementService>();
-builder.Services.AddScoped<IUserOrderRepository, UserOrderService>();
 builder.Services.AddScoped<IRecipeCategoriesManagementRepository, RecipeCategoriesManagementService>();
 builder.Services.AddScoped<ITipCategoriesManagementRepository, TipCategoriesManagementService>();
 builder.Services.AddScoped<IRecipeManagementRepository, RecipeManagementService>();
@@ -33,7 +31,7 @@ builder.Services.AddScoped<IAccount, AccountService>();
 builder.Services.AddScoped<IAbout, AboutService>();
 builder.Services.AddScoped<IAnnouncement, AnnouncementService>();
 builder.Services.AddScoped<IBook, BookService>();
-builder.Services.AddScoped<ICartRepository, CartService>();
+builder.Services.AddScoped<ICart, CartService>();
 builder.Services.AddScoped<IContact, ContactService>();
 builder.Services.AddScoped<IContest, ContestService>();
 builder.Services.AddScoped<IFaq, FaqService>();

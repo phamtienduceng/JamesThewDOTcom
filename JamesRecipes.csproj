@@ -169,7 +169,6 @@
       <_ContentIncludedByDefault Remove="Views\FE\Home\Index.cshtml" />
       <_ContentIncludedByDefault Remove="Views\FE\Home\Privacy.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Account\ResetPassword.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Books\Index.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Cart\GetUserCart.cshtml" />
       <_ContentIncludedByDefault Remove="Views\UserOrder\UserOrders.cshtml" />
     </ItemGroup>
@@ -179,18 +178,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <AdditionalFiles Include="Views\Admin\BookManagement\Create.cshtml" />
-      <AdditionalFiles Include="Views\Admin\BookManagement\Delete.cshtml" />
-      <AdditionalFiles Include="Views\Admin\BookManagement\Details.cshtml" />
-      <AdditionalFiles Include="Views\Admin\BookManagement\Edit.cshtml" />
-      <AdditionalFiles Include="Views\Admin\BookManagement\Index.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\Create.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\Edit.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\Index.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\TipByCate.cshtml" />
       <AdditionalFiles Include="Views\FE\Books\Index.cshtml" />
-      <AdditionalFiles Include="Views\FE\Cart\GetUserCart.cshtml" />
-      <AdditionalFiles Include="Views\FE\UserOrder\UserOrders.cshtml" />
     </ItemGroup>
 
 <!--    <ItemGroup>
