@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wdOTIv6x0anR/zVEHpPaVvawEklB7jLjjGWBxz1nLy4=",
+  "Hash": "m/kNOd2wm+RiqsaVPMIc8+vLtOS4Rk9kQ3coE3FxCI8=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -11150,6 +11150,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/FE/img/1.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/2023_06_09EOS+M506018.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/2023_06_09EOS+M506018.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/2023_06_09EOS+M506018.jpg"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banh-mi-thit-bo-nuong-thumbnail-1.jpg",

@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace JamesRecipes.Controllers.FE;
 
-[Route("fe/[controller]")]
 public class TipController : Controller
 {
     private readonly ITip _tip;
@@ -18,29 +17,50 @@ public class TipController : Controller
         _categoriesTip = categoriesTip;
         _feedback = feedback;
     }
-
-    [HttpGet("index")]
-    public IActionResult Index()
+    
+    public IActionResult Index(string sortOrder, string searchString, int? categoryId, int? ratingMin, int? ratingMax, int page = 1)
     {
-        return View("~/Views/FE/Tip/Index.cshtml", _tip.GetAllTips());
+        ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
+        ViewData["RatingSort"] = sortOrder == "rating" ? "rating_desc" : "rating";
+        ViewData["CurrentFilter"] = searchString;
+
+        var tips = _tip.GetAllTips();
+
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            tips = _tip.Search(searchString);
+        }
+        
+        ViewBag.CategoryId = new SelectList(_categoriesTip.GetCategoriesTips(), "CategoryTipId", "CategoryName", categoryId);
+        if (categoryId != 0 || ratingMin != 0 || ratingMax != 0)
+        {
+            tips = _tip.Filter(categoryId, ratingMin, ratingMax, tips);
+        }
+        tips = _tip.Sorting(tips, sortOrder);
+        
+        page = page < 1 ? 1 : page;
+        var ts = _tip.PageList(page, 3, tips);
+
+        return View("~/Views/FE/Tip/Index.cshtml", ts);
     }
     
-    [HttpGet("single_recipe")]
-    public IActionResult SingleRecipe(int id)
+    [HttpGet("single_tip")]
+    public IActionResult SingleTip(int id)
     {
         var tip = _tip.GetTip(id);
         tip.Feedbacks = _feedback.GetFeedbacksByTipId(id);
         return View("~/Views/FE/Tip/SingleTip.cshtml", tip);
     }
     
-    [HttpGet("create")]
+    [HttpGet("tip_create")]
     public IActionResult Create()
     {
         ViewBag.CategoryId = new SelectList(_categoriesTip.GetCategoriesTips(), "CategoryTipId", "CategoryName");
         return View("~/Views/FE/Tip/Create.cshtml");
     }
 
-    [HttpPost("create")]
+    [HttpPost("tip_create")]
     public IActionResult Create(Tip newTip, IFormFile file)
     {
         try
@@ -64,7 +84,7 @@ public class TipController : Controller
         return View("~/Views/FE/Tip/Create.cshtml");
     }
     
-    [HttpPost("post_comment")]
+    [HttpPost("post_tip_comment")]
     public IActionResult PostFeedback(int tipId, int userId, string content, int rating)
     {
         var newFeedback = new Feedback
@@ -76,8 +96,28 @@ public class TipController : Controller
         };
 
         _feedback.AddFeedback(newFeedback);
+        _tip.UpdateRatingTip(tipId);
         
         var updatedComments = _feedback.GetFeedbacksByTipId(tipId).ToList();
         return PartialView("_CommentsPartial", updatedComments);
+    }
+    
+    [HttpPost("switch_status")]
+    public IActionResult SwitchStatus(int id, bool status)
+    {
+        _tip.SwitchStatus(id, status);
+        return RedirectToAction("GetTipsByUser");
+    }
+
+    public IActionResult GetTipsByUser(int id)
+    {
+        var tips = _tip.GetTipsByUser(id);
+        return View("~/Views/FE/Tip/MyTip.cshtml", tips);
+    }
+
+    public IActionResult DeleteMyTip(int tipId, int userId)
+    {
+        _tip.DeleteMyTip(tipId);
+        return RedirectToAction("GetTipsByUser", new {id = userId});
     }
 }

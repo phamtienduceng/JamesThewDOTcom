@@ -10,8 +10,16 @@
 @{
     var httpContext = Context.Request.HttpContext;
     var userJson = httpContext.Session.GetString("user");
+    var adminJson = httpContext.Session.GetString("admin");
 }
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<style>
+    .rating {
+        color: #ffc107;
+        font-size: 18px;
+    }
+</style>
 
 <div class="container" style="margin-top: 150px">
     <div class="row">
@@ -58,7 +66,7 @@
         <!-- Main Content Area -->
         <div class="col-xl-9 col-lg-9 border-left">
             <div class="mb-4">
-                @if (!string.IsNullOrEmpty(userJson))
+                @if (!string.IsNullOrEmpty(userJson) || !string.IsNullOrEmpty(adminJson))
                 {
                     <h3><a asp-action="Create" asp-controller="Recipe">Create new recipe</a></h3>
                 }
@@ -99,14 +107,19 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single_recepie text-center">
                                     <div class="recepie_thumb">
-                                        <img style="height: 200px" src="~/@item.Image" alt="@item.Title">
+                                        <img style="height: 220px" src="~/@item.Image" alt="@item.Title">
                                     </div>
                                     <h3>@item.Title</h3>
                                     <span>@item.CreatedAt</span>
-                                    <p>Time Needs: @item.Timeneeds</p>
-                                    <p>Rating: @item.Rating</p>
+                                    <p class="mb-2">Time Needs: @item.Timeneeds</p>
+                                    <div class="rating mb-2">
+                                        @for (int i = 0; i < item.Rating; i++)
+                                        {
+                                            <i class="fas fa-star"></i>
+                                        }
+                                    </div>
+                                    
                                     <a asp-action="SingleRecipe" class="line_btn" asp-controller="Recipe" asp-route-id="@item.RecipeId">View recipe's detail</a>
-
                                 </div>
                             </div>
                         }
@@ -130,3 +143,5 @@
         </div>
     </div>
 </div>
+
+

@@ -1,0 +1,110 @@
+@using Newtonsoft.Json
+@using X.PagedList.Mvc.Common
+@model IEnumerable<Tip>
+
+@{
+    ViewData["Title"] = "Tips - My tips";
+}
+
+@{
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("user");
+}
+
+
+<div class="container" style="margin-top: 150px">
+    <div class="row">
+        <!-- Sidebar for Search and Filter -->
+        <div class="col-xl-3 col-lg-3">
+            <div class="sidebar">
+                <!-- Add your search and filter controls here -->
+                <h4>Search tip: </h4>
+                <form asp-action="Index" asp-controller="Tip" method="get">
+                    <div class="form-actions no-color">
+                        <p>
+                            <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" />
+                            <input type="submit" value="Search" class="btn btn-default" />
+                        </p>
+                    </div>
+                </form>
+                <!-- Example filter dropdown -->
+                <h4>Sorting</h4>
+                <ul>
+                    <li>
+                        <a asp-action="Index" asp-controller="Tip" asp-route-sortOrder="@ViewData["NameSort"]">Title</a>
+                    </li>
+                    <li>
+                        <a asp-action="Index" asp-controller="Tip" asp-route-sortOrder="@ViewData["DateSort"]">Date post</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="col-xl-9 col-lg-9">
+            <h2 class="text-center">Your tips</h2>
+            <div class="recepie_area">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="single_recepie text-center">
+                                    <div class="recepie_thumb">
+                                        <img style="height: 200px" src="~/@item.Image" alt="@item.Title">
+                                    </div>
+                                    <h3>@item.Title</h3>
+                                    <span>@item.CreatedAt</span>
+                                    @if (!string.IsNullOrEmpty(userJson) )
+                                    {
+                                        var user = JsonConvert.DeserializeObject<User>(userJson);
+                                        if (user.UserId == @item.UserId)
+                                        {
+                                            <div>
+                                                Show: <input asp-for="@item.Status" type="checkbox" class="tip-switch" id="switch-@item.TipId" data-tip-id="@item.TipId">
+                                            </div>
+                                        }
+                                    }
+                                    <form asp-action="DeleteMyTip" asp-controller="Tip" asp-route-tipId="@item.TipId" asp-route-userId="@item.UserId" method="post" onsubmit="return confirmDelete()">
+                                        <button type="submit" class="btn btn-danger m-2">Delete</button>
+                                    </form>
+                                    <a asp-action="SingleTip" class="line_btn" asp-controller="Tip" asp-route-id="@item.TipId">View tip's detail</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.tip-switch').change(function () {
+                var tipId = $(this).data('tip-id');
+                var isChecked = $(this).prop('checked');
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SwitchStatus", "Tip")',
+                    data: { id: tipId, status: isChecked },
+                    success: function () {
+                        console.log('Status updated successfully.');
+                    },
+                    error: function (error) {
+                        console.error('Error updating status:', error);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        function confirmDelete() {
+            var result = confirm("Are you sure you want to delete this tip?");
+            return result;
+        }
+    </script>
+}
