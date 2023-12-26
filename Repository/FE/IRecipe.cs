@@ -29,4 +29,6 @@ public interface IRecipe
     List<Recipe> Filter(int? categoryId, TimeSpan? timeMin, TimeSpan? timeMax, int? ratingMin, int? ratingMax, List<Recipe> recipes);
 
     void DeleteMyRecipe(int id);
+
+    List<Recipe> RelatedRecipes();
 }

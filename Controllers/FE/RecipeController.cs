@@ -148,4 +148,11 @@ public class RecipeController : Controller
         _recipe.DeleteMyRecipe(recipeId);
         return RedirectToAction("GetRecipesByUser", new {id = userId});
     }
+    
+    [HttpGet("post_comment")]
+    public IActionResult RelatedRecipes()
+    {
+        var reps = _recipe.RelatedRecipes();
+        return PartialView("_RelatedRecipesPartial", reps);
+    }
 }

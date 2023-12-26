@@ -151,4 +151,9 @@ public class RecipeService: IRecipe
             _db.SaveChanges();
         }
     }
+
+    public List<Recipe> RelatedRecipes()
+    {
+        return _db.Recipes.Take(10).ToList();
+    }
 }   
