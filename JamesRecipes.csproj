@@ -172,6 +172,14 @@
       <_ContentIncludedByDefault Remove="Views\Books\Index.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Cart\GetUserCart.cshtml" />
       <_ContentIncludedByDefault Remove="Views\UserOrder\UserOrders.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\BookManagement\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\BookManagement\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\BookManagement\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\BookManagement\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\BookManagement\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\FE\Books\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\FE\Cart\GetUserCart.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\FE\UserOrder\UserOrders.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -179,18 +187,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <AdditionalFiles Include="Views\Admin\BookManagement\Create.cshtml" />
-      <AdditionalFiles Include="Views\Admin\BookManagement\Delete.cshtml" />
-      <AdditionalFiles Include="Views\Admin\BookManagement\Details.cshtml" />
-      <AdditionalFiles Include="Views\Admin\BookManagement\Edit.cshtml" />
-      <AdditionalFiles Include="Views\Admin\BookManagement\Index.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\Create.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\Edit.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\Index.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\TipByCate.cshtml" />
-      <AdditionalFiles Include="Views\FE\Books\Index.cshtml" />
-      <AdditionalFiles Include="Views\FE\Cart\GetUserCart.cshtml" />
-      <AdditionalFiles Include="Views\FE\UserOrder\UserOrders.cshtml" />
     </ItemGroup>
 
 <!--    <ItemGroup>

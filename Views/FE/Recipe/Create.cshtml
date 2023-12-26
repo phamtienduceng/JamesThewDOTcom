@@ -7,8 +7,7 @@
 
 @{
     var httpContext = Context.Request.HttpContext;
-    var userJson = httpContext.Session.GetString("user");
-    var user = JsonConvert.DeserializeObject<User>(userJson);
+    var userJson = httpContext.Session.GetString("userLogged");
 }
 
 <div class="container mt-5"> <!-- Thêm class container để có padding và margin từ xa -->
@@ -22,7 +21,11 @@
                     <input asp-for="Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
-                <input type="hidden" asp-for="UserId" value="@user.UserId"/>
+                @if (!string.IsNullOrEmpty(userJson))
+                {
+                    var user = JsonConvert.DeserializeObject<User>(userJson);
+                    <input type="hidden" asp-for="UserId" value="@user.UserId" />
+                }
                 <div class="form-group">
                     <label asp-for="CategoryRecipeId" class="control-label"></label>
                     <select asp-for="CategoryRecipeId" class="form-control" asp-items="ViewBag.CategoryId"></select>
@@ -53,6 +56,17 @@
                     <label asp-for="Image"></label>
                     <input asp-for="Image" type="file" name="file" class="form-control" />
                 </div>
+                @if (!string.IsNullOrEmpty(userJson))
+                {
+                    var user = JsonConvert.DeserializeObject<User>(userJson);
+                    if (user!.RoleId == 1)
+                    {
+                        <div class="form-group">
+                            <label>For membership: </label>
+                            <input asp-for="IsMembershipOnly"/>
+                        </div>
+                    }
+                }
                 <div>@ViewBag.msg</div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

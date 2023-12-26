@@ -292,6 +292,7 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.Rating)
                 .HasDefaultValueSql("((2.5))")
                 .HasColumnName("rating");
+            entity.Property(e => e.IsMembershipOnly).HasDefaultValueSql("((0))");
             entity.Property(e => e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Timeneeds).HasColumnName("timeneeds");
             entity.Property(e => e.Title).HasMaxLength(100);
@@ -325,8 +326,11 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e=>e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Image).HasMaxLength(255);
-            /*entity.Property(e => e.Rating).HasColumnName("rating");*/
+            entity.Property(e => e.Rating)
+                .HasDefaultValueSql("((2.5))")
+                .HasColumnName("rating");
             entity.Property(e => e.Title).HasMaxLength(100);
             entity.Property(e => e.UserId).HasColumnName("UserID");
 

@@ -27,8 +27,21 @@ public class RecipeController : Controller
         ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
         ViewData["RatingSort"] = sortOrder == "rating" ? "rating_desc" : "rating";
         ViewData["CurrentFilter"] = searchString;
-
+        
+        var userJson = HttpContext.Session.GetString("userLogged");
+        
         var reps = _recipe.GetAllRecipes();
+        
+        if (!string.IsNullOrEmpty(userJson))
+        {
+            var user = JsonConvert.DeserializeObject<User>(userJson);
+            if (user!.RoleId == 1 || user.RoleId == 3)
+            {
+                reps = _recipe.GetAllRecipesPremium();
+            }
+            
+        }        
+
 
         if (!string.IsNullOrEmpty(searchString))
         {
@@ -43,7 +56,7 @@ public class RecipeController : Controller
         reps = _recipe.Sorting(reps, sortOrder);
         
         page = page < 1 ? 1 : page;
-        var recipes = _recipe.PageList(page, 3, reps);
+        var recipes = _recipe.PageList(page, 9, reps);
 
         return View("~/Views/FE/Recipe/Index.cshtml", recipes);
     }
@@ -114,6 +127,13 @@ public class RecipeController : Controller
     public IActionResult SwitchStatus(int id, bool status)
     {
         _recipe.SwitchStatus(id, status);
+        return RedirectToAction("GetRecipesByUser");
+    }
+    
+    [HttpPost("switch_premium")]
+    public IActionResult SwitchPremium(int id, bool isPre)
+    {
+        _recipe.PremiumStatus(id, isPre);
         return RedirectToAction("GetRecipesByUser");
     }
 

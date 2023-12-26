@@ -45,17 +45,8 @@ public class AccountController : Controller
 
             if (user != null && _account.VerifyPassword(pass, user.Password))
             {
-                if (user.RoleId == 2)
-                {
-                    var userJson = JsonConvert.SerializeObject(user);
-                    HttpContext.Session.SetString("user", userJson);
-                }
-
-                if (user.RoleId == 1)
-                {
-                    var userJson = JsonConvert.SerializeObject(user);
-                    HttpContext.Session.SetString("admin", userJson);
-                }
+                var userJson = JsonConvert.SerializeObject(user);
+                HttpContext.Session.SetString("userLogged", userJson);
 
                 return RedirectToAction("Index", "Home");
             }

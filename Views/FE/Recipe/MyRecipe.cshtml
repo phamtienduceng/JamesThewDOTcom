@@ -8,7 +8,7 @@
 
 @{
     var httpContext = Context.Request.HttpContext;
-    var userJson = httpContext.Session.GetString("user");
+    var userJson = httpContext.Session.GetString("userLogged");
 }
 
 
@@ -58,15 +58,25 @@
                                     <h3>@item.Title</h3>
                                     <span>@item.CreatedAt</span>
                                     <p class="mb-0">Time Needs: @item.Timeneeds</p>
-                                    @if (!string.IsNullOrEmpty(userJson) )
+                                    @if (!string.IsNullOrEmpty(userJson))
                                     {
                                         var user = JsonConvert.DeserializeObject<User>(userJson);
-                                        if (user.UserId == @item.UserId)
+                                        if (user!.RoleId == 2 || user.RoleId == 3)
                                         {
                                             <div>
                                                 Show: <input asp-for="@item.Status" type="checkbox" class="recipe-switch" id="switch-@item.RecipeId" data-recipe-id="@item.RecipeId">
                                             </div>
                                         }
+                                        else
+                                        {
+                                            <div>
+                                                Show: <input asp-for="@item.Status" type="checkbox" class="recipe-switch" id="switch-@item.RecipeId" data-recipe-id="@item.RecipeId">
+                                            </div>
+                                            <div>
+                                                Premium: <input asp-for="@item.IsMembershipOnly" type="checkbox" class="recipe-premium-switch" id="premium-switch-@item.RecipeId" data-recipe-id="@item.RecipeId">
+                                            </div>
+                                        }
+                                        
                                     }
                                     <form asp-action="DeleteMyRecipe" asp-controller="Recipe" asp-route-recipeId="@item.RecipeId" asp-route-userId="@item.UserId" method="post" onsubmit="return confirmDelete()">
                                         <button type="submit" class="btn btn-danger m-2">Delete</button>
@@ -86,6 +96,8 @@
 
 @section scripts {
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    @*Change status*@
     <script>
         $(document).ready(function () {
             $('.recipe-switch').change(function () {
@@ -98,6 +110,28 @@
                     data: { id: recipeId, status: isChecked },
                     success: function () {
                         console.log('Status updated successfully.');
+                    },
+                    error: function (error) {
+                        console.error('Error updating status:', error);
+                    }
+                });
+            });
+        });
+    </script>
+    
+    @*Change premium status*@
+    <script>
+        $(document).ready(function () {
+            $('.recipe-premium-switch').change(function () {
+                var recipeId = $(this).data('recipe-id');
+                var isChecked = $(this).prop('checked');
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SwitchPremium", "Recipe")',
+                    data: { id: recipeId, isPre: isChecked },
+                    success: function () {
+                        console.log('Change premium status successfully.');
                     },
                     error: function (error) {
                         console.error('Error updating status:', error);
