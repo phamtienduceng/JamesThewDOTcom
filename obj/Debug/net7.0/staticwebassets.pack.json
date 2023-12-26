@@ -2617,8 +2617,20 @@
       "PackagePath": "staticwebassets/FE/img/2023_06_09EOS+M506018.jpg"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/334403184_1492281827971020_5172501839841483083_n.jpg",
+      "PackagePath": "staticwebassets/FE/img/334403184_1492281827971020_5172501839841483083_n.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/Doraemon_character.png",
+      "PackagePath": "staticwebassets/FE/img/Doraemon_character.png"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/IMG_20211027_160735.jpg",
       "PackagePath": "staticwebassets/FE/img/IMG_20211027_160735.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/Kim_Chaewon_LE_SSERAFIM_220923.jpg",
+      "PackagePath": "staticwebassets/FE/img/Kim_Chaewon_LE_SSERAFIM_220923.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banh-mi-thit-bo-nuong-thumbnail-1.jpg",
@@ -2893,6 +2905,14 @@
       "PackagePath": "staticwebassets/FE/img/pattern/patrn_1.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/phone.jpg",
+      "PackagePath": "staticwebassets/FE/img/phone.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/phone1.jpg",
+      "PackagePath": "staticwebassets/FE/img/phone1.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/portfolio/1.png",
       "PackagePath": "staticwebassets/FE/img/portfolio/1.png"
     },
@@ -2959,6 +2979,10 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/post/preview.png",
       "PackagePath": "staticwebassets/FE/img/post/preview.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/ramen.jpg",
+      "PackagePath": "staticwebassets/FE/img/ramen.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/recepie/banner.png",

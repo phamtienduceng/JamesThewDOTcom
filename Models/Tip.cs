@@ -19,7 +19,7 @@ public partial class Tip
 
     public DateTime? CreatedAt { get; set; }
 
-    public bool? Status { get; set; }
+    public bool Status { get; set; }
 
     public string? Image { get; set; }
     

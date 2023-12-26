@@ -19,6 +19,8 @@ public interface IRecipe
     List<Recipe> Search(string searchString);
 
     void SwitchStatus(int id, bool status);
+    
+    void PremiumStatus(int id, bool isPre);
 
     IPagedList<Recipe> PageList(int page, int pageSize, List<Recipe> recipes);
 

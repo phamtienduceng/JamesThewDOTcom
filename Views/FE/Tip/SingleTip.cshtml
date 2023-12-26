@@ -7,6 +7,7 @@
 @{
     var httpContext = Context.Request.HttpContext;
     var userJson = httpContext.Session.GetString("user");
+    var adminJson = httpContext.Session.GetString("admin");
 }
 
 <div class="container">
@@ -39,10 +40,13 @@
       </div>
       
       <div class="mt-4">
-         <h3>Add Comment and Rating</h3>
-         @if (!string.IsNullOrEmpty(userJson))
-         {
-             var user = JsonConvert.DeserializeObject<User>(userJson);
+          <h3>Add Comment and Rating</h3>
+          @if (!string.IsNullOrEmpty(userJson) || !string.IsNullOrEmpty(adminJson))
+          {
+              var user = !string.IsNullOrEmpty(userJson)
+                  ? JsonConvert.DeserializeObject<User>(userJson)
+                  : JsonConvert.DeserializeObject<User>(adminJson);
+                     
             <form id="commentForm">
                <input type="hidden" name="tipId" value="@Model.TipId" />
                <input type="hidden" name="userId" value="@user.UserId" />

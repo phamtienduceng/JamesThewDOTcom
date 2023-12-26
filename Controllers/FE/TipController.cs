@@ -102,7 +102,7 @@ public class TipController : Controller
         return PartialView("_CommentsPartial", updatedComments);
     }
     
-    [HttpPost("switch_status")]
+    [HttpPost("tip_switch_status")]
     public IActionResult SwitchStatus(int id, bool status)
     {
         _tip.SwitchStatus(id, status);

@@ -11,6 +11,7 @@
 @{
     var httpContext = Context.Request.HttpContext;
     var userJson = httpContext.Session.GetString("user");
+    var adminJson = httpContext.Session.GetString("admin");
 }
 
 
@@ -57,7 +58,7 @@
         <!-- Main Content Area -->
         <div class="col-xl-9 col-lg-9 border-left">
             <div class="mb-4">
-                @if (!string.IsNullOrEmpty(userJson))
+                @if (!string.IsNullOrEmpty(userJson) || !string.IsNullOrEmpty(adminJson))
                 {
                     <h3><a asp-action="Create" asp-controller="Tip">Create new tip</a></h3>
                 }

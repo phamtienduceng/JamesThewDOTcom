@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "m/kNOd2wm+RiqsaVPMIc8+vLtOS4Rk9kQ3coE3FxCI8=",
+  "Hash": "E77dzogn/0mCQZJJFuEpbNlusODMR9Dn1ouaBYJb234=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -11169,6 +11169,23 @@
       "OriginalItemSpec": "wwwroot/FE/img/2023_06_09EOS+M506018.jpg"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/334403184_1492281827971020_5172501839841483083_n.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/334403184_1492281827971020_5172501839841483083_n.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/334403184_1492281827971020_5172501839841483083_n.jpg"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banh-mi-thit-bo-nuong-thumbnail-1.jpg",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -11696,6 +11713,23 @@
       "OriginalItemSpec": "wwwroot/FE/img/comtam.jpg"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/Doraemon_character.png",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/Doraemon_character.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/Doraemon_character.png"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/elements/a.jpg",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -12189,6 +12223,23 @@
       "OriginalItemSpec": "wwwroot/FE/img/IMG_20211027_160735.jpg"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/Kim_Chaewon_LE_SSERAFIM_220923.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/Kim_Chaewon_LE_SSERAFIM_220923.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/Kim_Chaewon_LE_SSERAFIM_220923.jpg"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/knowledge_graph_logo.png",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -12340,6 +12391,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/FE/img/pattern/patrn.png"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/phone.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/phone.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/phone.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/phone1.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/phone1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/phone1.jpg"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/portfolio/1.png",
@@ -12629,6 +12714,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/FE/img/post/preview.png"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/ramen.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/ramen.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/ramen.jpg"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/recepie/banner.png",
