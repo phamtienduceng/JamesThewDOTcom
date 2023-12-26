@@ -326,6 +326,7 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.IsMembershipOnly).HasDefaultValueSql("((0))");
             entity.Property(e=>e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Image).HasMaxLength(255);
             entity.Property(e => e.Rating)
