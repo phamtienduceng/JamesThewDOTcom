@@ -1,13 +1,59 @@
+﻿using JamesRecipes.Models;
+using JamesRecipes.Repository.FE;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using PagedList.EntityFramework;
+using X.PagedList;
 
 namespace JamesRecipes.Controllers.FE;
 
-[Route("fe/[controller]")]
+
 public class ContestController : Controller
 {
-    // GET
-    public IActionResult Index()
+    // Fields
+    private readonly IContest _contestRepository;
+
+    // Constructor
+    public ContestController(IContest contestRepository)
     {
-        return View("~/Views/FE/Contest/Index.cshtml");
+        _contestRepository = contestRepository;
+    }
+
+    // GET: FE/Contest
+    
+    public IActionResult Index(string sortOrder, string searchString, DateTime? startDate, DateTime? endDate, int page = 1)
+    {
+        ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
+        ViewData["CurrentFilter"] = searchString;
+        ViewData["StartDate"] = startDate;
+        ViewData["EndDate"] = endDate;
+        
+        var contests = _contestRepository.GetContests();
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            contests = _contestRepository.Search(searchString);
+        }
+        if (startDate != null && endDate != null)
+        {
+            contests = _contestRepository.Filter(startDate, endDate, contests);
+        }
+        contests = _contestRepository.Sorting(contests, sortOrder);
+        
+        page = page < 1 ? 1 : page;
+        var contest = _contestRepository.PageList(page, 2, contests);
+        return View("~/Views/FE/Contest/Index.cshtml", contest);
+    }
+
+    // GET: FE/Contest/Details/5
+    [HttpGet("Details/{id}")]
+    public IActionResult Details(int id)
+    {
+        var contest = _contestRepository.GetContest(id);
+        if (contest == null)
+        {
+            return NotFound();
+        }
+        return View("~/Views/FE/Contest/Details.cshtml", contest);
     }
 }

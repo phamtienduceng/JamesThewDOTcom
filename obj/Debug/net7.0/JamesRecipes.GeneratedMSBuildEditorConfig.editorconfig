@@ -9,233 +9,239 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = JamesRecipes
 build_property.RootNamespace = JamesRecipes
-build_property.ProjectDir = /Applications/Development/AD/JamesRecipes/
+build_property.ProjectDir = C:\Users\tribu\OneDrive - DBI - VN CO., LTD\Information Technology (IT)\Term3\đồ án kỳ 3\Github\JamesThewDOTcom\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Applications/Development/AD/JamesRecipes
+build_property.MSBuildProjectDirectory = C:\Users\tribu\OneDrive - DBI - VN CO., LTD\Information Technology (IT)\Term3\đồ án kỳ 3\Github\JamesThewDOTcom
 build_property._RazorSourceGeneratorDebug = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/TipCategories/Create.cshtml]
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/TipCategories/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vVGlwQ2F0ZWdvcmllcy9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/TipCategories/Edit.cshtml]
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/TipCategories/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vVGlwQ2F0ZWdvcmllcy9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/TipCategories/Index.cshtml]
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/TipCategories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vVGlwQ2F0ZWdvcmllcy9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/TipCategories/TipByCate.cshtml]
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/TipCategories/TipByCate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vVGlwQ2F0ZWdvcmllcy9UaXBCeUNhdGUuY3NodG1s
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xUaXBCeUNhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Areas/Identity/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/AccountManagement/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWNjb3VudE1hbmFnZW1lbnQvSW5kZXguY3NodG1s
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/AccountManagement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWNjb3VudE1hbmFnZW1lbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/AccountManagement/RegisterAdmin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWNjb3VudE1hbmFnZW1lbnQvUmVnaXN0ZXJBZG1pbi5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/AccountManagement/RegisterAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWNjb3VudE1hbmFnZW1lbnRcUmVnaXN0ZXJBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Announcement/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQW5ub3VuY2VtZW50L0luZGV4LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Announcement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQW5ub3VuY2VtZW50XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Comment/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29tbWVudC9JbmRleC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Comment/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29tbWVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Contact/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29udGFjdC9JbmRleC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Contact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Contest/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29udGVzdC9DcmVhdGUuY3NodG1s
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Contest/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29udGVzdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Contest/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29udGVzdC9EZXRhaWxzLmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Contest/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29udGVzdFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Contest/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29udGVzdC9FZGl0LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Contest/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29udGVzdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Contest/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29udGVzdC9JbmRleC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Contest/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29udGVzdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Dashboard/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRGFzaGJvYXJkL0luZGV4LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Faq/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRmFxL0luZGV4LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Faq/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRmFxXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Order/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vT3JkZXIvSW5kZXguY3NodG1s
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Order/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3JkZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Recipe/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vUmVjaXBlL0luZGV4LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/RecipeCategories/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Recipe/SingleRecipe.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vUmVjaXBlL1NpbmdsZVJlY2lwZS5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/RecipeCategories/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/RecipeCategories/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vUmVjaXBlQ2F0ZWdvcmllcy9DcmVhdGUuY3NodG1s
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/RecipeCategories/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/RecipeCategories/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vUmVjaXBlQ2F0ZWdvcmllcy9FZGl0LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/RecipeCategories/RecipeByCate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xSZWNpcGVCeUNhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/RecipeCategories/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vUmVjaXBlQ2F0ZWdvcmllcy9JbmRleC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Recipe/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/RecipeCategories/RecipeByCate.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vUmVjaXBlQ2F0ZWdvcmllcy9SZWNpcGVCeUNhdGUuY3NodG1s
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Recipe/SingleRecipe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlXFNpbmdsZVJlY2lwZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Tip/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vVGlwL0luZGV4LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Tip/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Admin/Tip/SingleTip.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vVGlwL1NpbmdsZVRpcC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Tip/SingleTip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwXFNpbmdsZVRpcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/About/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQWJvdXQvSW5kZXguY3NodG1s
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/About/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWJvdXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Account/ChangePassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQWNjb3VudC9DaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Account/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Account/ForgotPassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQWNjb3VudC9Gb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Account/ForgotPasswordConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQWNjb3VudC9Gb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Account/ForgotPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Account/MyProfile.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQWNjb3VudC9NeVByb2ZpbGUuY3NodG1s
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Account/MyProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxNeVByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Account/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Account/ResetPassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQWNjb3VudC9SZXNldFBhc3N3b3JkLmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Announcement/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQW5ub3VuY2VtZW50L0luZGV4LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Announcement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQW5ub3VuY2VtZW50XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Contact/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQ29udGFjdC9JbmRleC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Contact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Contest/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQ29udGVzdC9JbmRleC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Contest/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ29udGVzdFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Faq/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvRmFxL0luZGV4LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Contest/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ29udGVzdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Recipe/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvUmVjaXBlL0NyZWF0ZS5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Faq/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcRmFxXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Recipe/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvUmVjaXBlL0luZGV4LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Recipe/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcUmVjaXBlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Recipe/MyRecipe.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvUmVjaXBlL015UmVjaXBlLmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Recipe/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcUmVjaXBlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Recipe/SingleRecipe.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvUmVjaXBlL1NpbmdsZVJlY2lwZS5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Recipe/MyRecipe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcUmVjaXBlXE15UmVjaXBlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Tip/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvVGlwL0NyZWF0ZS5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Recipe/SingleRecipe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcUmVjaXBlXFNpbmdsZVJlY2lwZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Tip/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvVGlwL0luZGV4LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Tip/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcVGlwXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Tip/MyTip.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvVGlwL015VGlwLmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Tip/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcVGlwXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/FE/Tip/SingleTip.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvVGlwL1NpbmdsZVRpcC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Tip/MyTip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcVGlwXE15VGlwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/Tip/SingleTip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcVGlwXFNpbmdsZVRpcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Shared/_CommentsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Db21tZW50c1BhcnRpYWwuY3NodG1s
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Shared/_CommentsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db21tZW50c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Shared/_FELayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19GRUxheW91dC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = b-5cq0gffhag
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
 
-[/Applications/Development/AD/JamesRecipes/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-mviuhta3ha
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Shared/_FELayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GRUxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-tnhe0e3npy
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-0czpforg0u
