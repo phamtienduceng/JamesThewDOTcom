@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using model.Models;
 
 namespace JamesRecipes.Models;
 
@@ -51,10 +50,6 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<ViewHomepage> ViewHomepages { get; set; }
-
-    public virtual DbSet<ViewRecipeManagement> ViewRecipeManagements { get; set; }
-
-    public virtual DbSet<ViewTipManagement> ViewTipManagements { get; set; }
 
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
 
@@ -292,7 +287,6 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.Rating)
                 .HasDefaultValueSql("((2.5))")
                 .HasColumnName("rating");
-            entity.Property(e => e.IsMembershipOnly).HasDefaultValueSql("((0))");
             entity.Property(e => e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Timeneeds).HasColumnName("timeneeds");
             entity.Property(e => e.Title).HasMaxLength(100);
@@ -326,12 +320,11 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.IsMembershipOnly).HasDefaultValueSql("((0))");
-            entity.Property(e=>e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Image).HasMaxLength(255);
             entity.Property(e => e.Rating)
                 .HasDefaultValueSql("((2.5))")
                 .HasColumnName("rating");
+            entity.Property(e => e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Title).HasMaxLength(100);
             entity.Property(e => e.UserId).HasColumnName("UserID");
 
@@ -385,34 +378,6 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.TipCategoryName).HasMaxLength(50);
             entity.Property(e => e.TipImage).HasMaxLength(255);
             entity.Property(e => e.TipTitle).HasMaxLength(100);
-        });
-
-        modelBuilder.Entity<ViewRecipeManagement>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToView("ViewRecipeManagement");
-
-            entity.Property(e => e.RecipeCategoryName).HasMaxLength(50);
-            entity.Property(e => e.RecipeCreatedAt).HasColumnType("datetime");
-            entity.Property(e => e.RecipeId).HasColumnName("RecipeID");
-            entity.Property(e => e.RecipeTitle).HasMaxLength(100);
-            entity.Property(e => e.RoleName).HasMaxLength(50);
-            entity.Property(e => e.Username).HasMaxLength(50);
-        });
-
-        modelBuilder.Entity<ViewTipManagement>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToView("ViewTipManagement");
-
-            entity.Property(e => e.RoleName).HasMaxLength(50);
-            entity.Property(e => e.TipCategoryName).HasMaxLength(50);
-            entity.Property(e => e.TipCreatedAt).HasColumnType("datetime");
-            entity.Property(e => e.TipId).HasColumnName("TipID");
-            entity.Property(e => e.TipTitle).HasMaxLength(100);
-            entity.Property(e => e.Username).HasMaxLength(50);
         });
 
         modelBuilder.Entity<ViewUserRole>(entity =>

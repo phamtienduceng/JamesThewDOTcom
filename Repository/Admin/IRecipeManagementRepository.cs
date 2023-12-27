@@ -1,10 +1,10 @@
-using model.Models;
+using JamesRecipes.Models;
 
 namespace JamesRecipes.Repository.Admin;
 
 public interface IRecipeManagementRepository
 {
-    List<ViewRecipeManagement> GetAllRecipes();
+    List<Recipe> GetAllRecipes();
 
-    ViewRecipeManagement GetRecipe(int id);
+    Recipe GetRecipe(int id);
 }

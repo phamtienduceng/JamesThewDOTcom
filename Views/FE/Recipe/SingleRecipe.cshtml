@@ -50,41 +50,66 @@
           </div>
       </div>
   </div>
-  <div class="col-md-12">
-      <div class="mt-4">
-          <h3>Comments</h3>
-          <div id="commentsList">
-              @Html.Partial("_CommentsPartial", Model.Feedbacks)
-          </div>
+    <div class="col-md-12">
+        <div class="mt-4">
+            <h3>Comments</h3>
+            <div id="commentsList">
+                @Html.Partial("_CommentsPartial", Model.Feedbacks)
+            </div>
 
-      </div>
+        </div>
       
-      <div class="mt-4">
-         <h3>Add Comment and Rating</h3>
-          @if (!string.IsNullOrEmpty(userJson))
-          {
-              var user = JsonConvert.DeserializeObject<User>(userJson);
-            <form id="commentForm">
-               <input type="hidden" name="recipeId" value="@Model.RecipeId" />
-               <input type="hidden" name="userId" value="@user.UserId" />
-               <div class="form-group">
-                  <label>Content:</label>
-                  <textarea class="form-control" name="content"></textarea>
-               </div>
-               <div class="form-group">
-                  <label>Rating:</label>
-                  <input id="star-rating" type="number" class="rating" name="rating" data-min="0" data-max="5" data-step="1" data-size="md">
-               </div>
-               <button type="button" class="btn btn-primary" onclick="postComment()">Submit Feedback</button>
-            </form>
-         }
-         else
-         {
-            <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own recipes.</h3>
-         }
-      </div>
-  </div>
-    
+        <div class="mt-4">
+            <h3>Add Comment and Rating</h3>
+            @if (!string.IsNullOrEmpty(userJson))
+            {
+                var user = JsonConvert.DeserializeObject<User>(userJson);
+                <form id="commentForm">
+                    <input type="hidden" name="recipeId" value="@Model.RecipeId" />
+                    <input type="hidden" name="userId" value="@user.UserId" />
+                    <div class="form-group">
+                        <label>Content:</label>
+                        <textarea class="form-control" name="content"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Rating:</label>
+                        <input id="star-rating" type="number" class="rating" name="rating" data-min="0" data-max="5" data-step="1" data-size="md">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="postComment()">Submit Feedback</button>
+                </form>
+            }
+            else
+            {
+                <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own recipes.</h3>
+            }
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model.CategoryRecipe.Recipes)
+        {
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
+                <div class="card recipe-card">
+                    @if (item.IsMembershipOnly)
+                    {
+                        <div class="membership-label">Membership</div>
+                    }
+                    <img class="card-img-top" src="~/@item.Image" alt="@item.Title">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text"><small class="text-muted">Created At: @item.CreatedAt</small></p>
+                        <p class="card-text">Time Needs: @item.Timeneeds</p>
+                        <div class="rating mb-2">
+                            @for (int i = 0; i < item.Rating; i++)
+                            {
+                                <i class="fas fa-star"></i>
+                            }
+                        </div>
+                        <a href="@Url.Action("SingleRecipe", "Recipe", new { id = item.RecipeId })" class="btn btn-primary">View Recipe's Detail</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
 
 <script>

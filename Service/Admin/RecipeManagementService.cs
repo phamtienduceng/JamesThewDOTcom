@@ -1,6 +1,6 @@
 using JamesRecipes.Models;
 using JamesRecipes.Repository.Admin;
-using model.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace JamesRecipes.Service.Admin;
 
@@ -13,13 +13,19 @@ public class RecipeManagementService: IRecipeManagementRepository
     {
         _db = db;
     }
-    public List<ViewRecipeManagement> GetAllRecipes()
+    public List<Recipe> GetAllRecipes()
     {
-        return _db.ViewRecipeManagements.ToList();
+        return _db.Recipes.Include(f=>f.User)
+            .ThenInclude(f=>f!.Role)
+            .Include(f=>f.CategoryRecipe).ToList();
     }
 
-    public ViewRecipeManagement GetRecipe(int id)
+    public Recipe GetRecipe(int id)
     {
-        return _db.ViewRecipeManagements.SingleOrDefault(r => r.RecipeId == id)!;
+        return _db.Recipes.Include(r=>r.Feedbacks)
+            .ThenInclude(f=>f.User)
+            .ThenInclude(f=>f.Role)
+            .Include(f=>f.CategoryRecipe)
+            .SingleOrDefault(r => r.RecipeId == id)!;
     }
 }

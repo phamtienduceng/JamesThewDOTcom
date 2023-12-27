@@ -19,10 +19,10 @@ public partial class Tip
 
     public DateTime? CreatedAt { get; set; }
 
-    public bool Status { get; set; }
+    public bool? Status { get; set; }
 
     public string? Image { get; set; }
-    
+
     public int? Rating { get; set; }
 
     public virtual CategoriesTip CategoryTip { get; set; } = null!;

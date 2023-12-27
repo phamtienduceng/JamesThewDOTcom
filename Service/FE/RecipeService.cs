@@ -26,7 +26,11 @@ public class RecipeService: IRecipe
 
     public Recipe GetRecipe(int id)
     {
-        var rep = _db.Recipes.Include(r=>r.Feedbacks).SingleOrDefault(r => r.RecipeId == id);
+        var rep = _db.Recipes
+            .Include(r=>r.Feedbacks)
+            .Include(f=>f.CategoryRecipe)
+            .ThenInclude(f=>f.Recipes)
+            .SingleOrDefault(r => r.RecipeId == id);
         return rep ?? null!;
     }
 

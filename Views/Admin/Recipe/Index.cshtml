@@ -1,4 +1,4 @@
-@model IEnumerable<model.Models.ViewRecipeManagement>
+@model IEnumerable<Recipe>
 @{
   Layout = "_FELayout";
   ViewData["Title"] = "Recipes";
@@ -9,34 +9,15 @@
 <table class="table ">
     <thead>
     <tr>
-        <th>
-            Id
-        </th>
-        <th>
-            Title
-        </th>
-        <th>
-            Category
-        </th>
-        <th>
-            Rating
-        </th>
-        <th>
-            Status
-        </th>
-        <th>
-            Date post
-        </th>
-        <th>
-            User
-        </th>
-        <th>
-            Role
-        </th>
-        <th>
-            Action
-        </th>
-        
+        <th>Id</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Rating</th>
+        <th>Status</th>
+        <th>Date post</th>
+        <th>User</th>
+        <th>Role</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -47,25 +28,25 @@
                 @Html.DisplayFor(modelItem => item.RecipeId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RecipeTitle)
+                @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RecipeCategoryName)
+                @Html.DisplayFor(modelItem => item.CategoryRecipe.CategoryName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RecipeRating)
+                @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RecipeStatus)
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RecipeCreatedAt)
+                @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Username)
+                @Html.DisplayFor(modelItem => item.User!.Username)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoleName)
+            <td class="@(item.User!.RoleId == 1 ? "text-danger" : "")">
+                @Html.DisplayFor(modelItem => item.User!.Role!.RoleName)
             </td>
             <td>
                 <a asp-action="GetRecipe" asp-controller="RecipeManagement" asp-route-id="@item.RecipeId">Detail</a> | 
