@@ -9,7 +9,6 @@
 3. Phạm Tiến Đức(Student1414248)
 4. Hoàng Ngọc Phú(Student1396925)
 ==============================================
-Link:
 Github: https://github.com/phamtienduceng/JamesThewDOTcom
 ==============================================
 Mirror: https://shorturl.at/dQSX0
