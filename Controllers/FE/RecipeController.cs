@@ -157,7 +157,7 @@ public class RecipeController : Controller
         return View("~/Views/FE/Recipe/Update.cshtml", rep);
     }
     
-    [HttpPost("update_recipe")]
+    /*[HttpPost("update_recipe")]
     public IActionResult UpdateRecipe(int id, Recipe newRecipe, IFormFile file)
     {
         var rep = _recipe.get
@@ -182,8 +182,8 @@ public class RecipeController : Controller
                 }
             }
         }
-        
+            
         
         return View("~/Views/FE/Recipe/Update.cshtml");
-    }
+    }*/
 }

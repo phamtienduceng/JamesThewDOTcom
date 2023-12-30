@@ -1,4 +1,7 @@
-@model IEnumerable<Recipe>
+@using X.PagedList.Mvc.Common
+@model X.PagedList.IPagedList<Recipe>
+@using X.PagedList.Mvc.Core
+
 @{
   Layout = "_FELayout";
   ViewData["Title"] = "Recipes";
@@ -37,7 +40,9 @@
                 @Html.DisplayFor(modelItem => item.Rating)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                <div>
+                    <input asp-for="@item.Status" type="checkbox" class="recipe-switch" id="switch-@item.RecipeId" data-recipe-id="@item.RecipeId">
+                </div>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedAt)
@@ -55,5 +60,38 @@
     }
     </tbody>
 </table>
+
+<div class="text-center">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "RecipeManagement", new { page = page }),
+        new PagedListRenderOptions()
+        {
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" },
+            ContainerDivClasses = new[] { "pagination", "justify-content-center" },
+            UlElementClasses = new[] { "pagination" }
+        })
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.recipe-switch').change(function () {
+            var recipeId = $(this).data('recipe-id');
+            var isChecked = $(this).prop('checked');
+            
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("SwitchStatus", "Recipe")',
+                data: { id: recipeId, status: isChecked },
+                success: function () {
+                    console.log('Status updated successfully.');
+                },
+                error: function (error) {
+                    console.error('Error updating status:', error);
+                }
+            });
+        });
+    });
+</script>
+
 
 

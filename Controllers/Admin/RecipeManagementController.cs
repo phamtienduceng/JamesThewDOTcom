@@ -1,10 +1,10 @@
 using JamesRecipes.Models.Authentication;
 using JamesRecipes.Repository.Admin;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace JamesRecipes.Controllers.Admin;
 
-[Route("admin/[controller]")]
 public class RecipeManagementController : Controller
 {
     private readonly IRecipeManagementRepository _recipeManagement;
@@ -15,11 +15,11 @@ public class RecipeManagementController : Controller
     }
 
     [AuthenticationAdmin]
-    [HttpGet("index")]
-    public IActionResult Index()
+    public IActionResult Index(int page = 1)
     {
         var reps = _recipeManagement.GetAllRecipes();
-        return View("~/Views/Admin/Recipe/Index.cshtml", reps);
+        var recipes = _recipeManagement.PagedList(page, 10, reps);
+        return View("~/Views/Admin/Recipe/Index.cshtml", recipes);
     }
     
     [HttpGet("get_recipe")]
