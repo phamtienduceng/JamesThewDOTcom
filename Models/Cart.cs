@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using JamesRecipes.Models;
 
 namespace JamesRecipes.Models;
 

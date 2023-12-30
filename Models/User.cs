@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace JamesRecipes.Models;
 
@@ -9,15 +8,15 @@ public partial class User
     public int UserId { get; set; }
 
     public string Username { get; set; } = null!;
-    //[RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$", ErrorMessage = "Password must be at least 5 characters long and contain at least one letter and one digit.")]
+
     public string Password { get; set; } = null!;
-    //[EmailAddress(ErrorMessage = "Invalid email address.")]
-     public string? Email { get; set; }
-    //[RegularExpression(@"^\d{10}$", ErrorMessage = "Invalid phone number. Phone number must be 10 digits.")]
+
+    public string? Email { get; set; }
+
     public string? PhoneNumber { get; set; }
 
     public string? Address { get; set; }
-    
+
     public int? RoleId { get; set; }
 
     public DateTime? CreatedAt { get; set; }
@@ -26,6 +25,8 @@ public partial class User
 
     public virtual ICollection<Announcement> Announcements { get; set; } = new List<Announcement>();
 
+    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
+
     public virtual ICollection<ContestEntry> ContestEntries { get; set; } = new List<ContestEntry>();
 
     public virtual ICollection<Contest> Contests { get; set; } = new List<Contest>();
@@ -33,9 +34,8 @@ public partial class User
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual ICollection<Membership> Memberships { get; set; } = new List<Membership>();
+
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
-    
-    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 
     public virtual ICollection<Recipe> Recipes { get; set; } = new List<Recipe>();
 

@@ -4,7 +4,7 @@ namespace JamesRecipes.Repository.Admin;
 
 public interface IRecipeManagementRepository
 {
-    List<ViewRecipeManagement> GetAllRecipes();
+    /*List<ViewRecipeManagement> GetAllRecipes();
 
-    ViewRecipeManagement GetRecipe(int id);
+    ViewRecipeManagement GetRecipe(int id);*/
 }

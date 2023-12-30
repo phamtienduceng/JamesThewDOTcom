@@ -4,7 +4,7 @@ namespace JamesRecipes.Repository.Admin;
 
 public interface ITipManagementRepository
 {
-    List<ViewTipManagement> GetAllTips();
+    /*List<ViewTipManagement> GetAllTips();
     
-    ViewTipManagement GetTip(int id);
+    ViewTipManagement GetTip(int id);*/
 }

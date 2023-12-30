@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using model.Models;
-using WebApplication6.Models;
 
 namespace JamesRecipes.Models;
 
@@ -55,17 +53,11 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<ViewHomepage> ViewHomepages { get; set; }
 
-    public virtual DbSet<ViewRecipeManagement> ViewRecipeManagements { get; set; }
-
-    public virtual DbSet<ViewTipManagement> ViewTipManagements { get; set; }
-
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
-
-    public virtual DbSet<ViewUserRoleMember> ViewUserRoleMembers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.,1500;Database=jame;User=sa;Password=12345678;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=127.0.0.1,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -251,7 +243,7 @@ public partial class JamesrecipesContext : DbContext
 
         modelBuilder.Entity<Membership>(entity =>
         {
-            entity.HasKey(e => e.MembershipId).HasName("PK__Membersh__92A78599CB67628F");
+            entity.HasKey(e => e.MembershipId).HasName("PK__Membersh__92A7859947D62D54");
 
             entity.ToTable("Membership");
 
@@ -263,7 +255,7 @@ public partial class JamesrecipesContext : DbContext
 
             entity.HasOne(d => d.User).WithMany(p => p.Memberships)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Membershi__UserI__3D2915A8");
+                .HasConstraintName("FK__Membershi__UserI__1B9317B3");
         });
 
         modelBuilder.Entity<Order>(entity =>
@@ -314,7 +306,6 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.Rating)
                 .HasDefaultValueSql("((2.5))")
                 .HasColumnName("rating");
-            entity.Property(e => e.IsMembershipOnly).HasDefaultValueSql("((0))");
             entity.Property(e => e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Timeneeds).HasColumnName("timeneeds");
             entity.Property(e => e.Title).HasMaxLength(100);
@@ -348,12 +339,11 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.IsMembershipOnly).HasDefaultValueSql("((0))");
-            entity.Property(e=>e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Image).HasMaxLength(255);
             entity.Property(e => e.Rating)
                 .HasDefaultValueSql("((2.5))")
                 .HasColumnName("rating");
+            entity.Property(e => e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Title).HasMaxLength(100);
             entity.Property(e => e.UserId).HasColumnName("UserID");
 
@@ -409,34 +399,6 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.TipTitle).HasMaxLength(100);
         });
 
-        modelBuilder.Entity<ViewRecipeManagement>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToView("ViewRecipeManagement");
-
-            entity.Property(e => e.RecipeCategoryName).HasMaxLength(50);
-            entity.Property(e => e.RecipeCreatedAt).HasColumnType("datetime");
-            entity.Property(e => e.RecipeId).HasColumnName("RecipeID");
-            entity.Property(e => e.RecipeTitle).HasMaxLength(100);
-            entity.Property(e => e.RoleName).HasMaxLength(50);
-            entity.Property(e => e.Username).HasMaxLength(50);
-        });
-
-        modelBuilder.Entity<ViewTipManagement>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToView("ViewTipManagement");
-
-            entity.Property(e => e.RoleName).HasMaxLength(50);
-            entity.Property(e => e.TipCategoryName).HasMaxLength(50);
-            entity.Property(e => e.TipCreatedAt).HasColumnType("datetime");
-            entity.Property(e => e.TipId).HasColumnName("TipID");
-            entity.Property(e => e.TipTitle).HasMaxLength(100);
-            entity.Property(e => e.Username).HasMaxLength(50);
-        });
-
         modelBuilder.Entity<ViewUserRole>(entity =>
         {
             entity
@@ -452,27 +414,6 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.PhoneNumber).HasMaxLength(20);
             entity.Property(e => e.RoleId).HasColumnName("RoleID");
             entity.Property(e => e.RoleName).HasMaxLength(50);
-            entity.Property(e => e.UserId).HasColumnName("UserID");
-            entity.Property(e => e.Username).HasMaxLength(50);
-        });
-
-        modelBuilder.Entity<ViewUserRoleMember>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToView("ViewUserRoleMember");
-
-            entity.Property(e => e.Address).HasMaxLength(50);
-            entity.Property(e => e.Avatar).HasMaxLength(255);
-            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
-            entity.Property(e => e.Email).HasMaxLength(50);
-            entity.Property(e => e.EndDate).HasColumnType("datetime");
-            entity.Property(e => e.MembershipId).HasColumnName("MembershipID");
-            entity.Property(e => e.Password).HasMaxLength(100);
-            entity.Property(e => e.PhoneNumber).HasMaxLength(20);
-            entity.Property(e => e.RoleId).HasColumnName("RoleID");
-            entity.Property(e => e.RoleName).HasMaxLength(50);
-            entity.Property(e => e.StartDate).HasColumnType("datetime");
             entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.Username).HasMaxLength(50);
         });

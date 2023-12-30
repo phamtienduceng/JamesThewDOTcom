@@ -13,19 +13,4 @@ public class RecipeManagementController : Controller
     {
         _recipeManagement = recipeManagement;
     }
-
-    [AuthenticationAdmin]
-    [HttpGet("index")]
-    public IActionResult Index()
-    {
-        var reps = _recipeManagement.GetAllRecipes();
-        return View("~/Views/Admin/Recipe/Index.cshtml", reps);
-    }
-    
-    [HttpGet("get_recipe")]
-    public IActionResult GetRecipe(int id)
-    {
-        var rep = _recipeManagement.GetRecipe(id);
-        return View("~/Views/Admin/Recipe/SingleRecipe.cshtml", rep);
-    }
 }

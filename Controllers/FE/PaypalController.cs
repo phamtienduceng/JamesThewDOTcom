@@ -81,12 +81,12 @@ namespace JamesRecipes.Controllers.FE
         }
 
 
-        [HttpGet("CheckMember/{ID}")]
+        /*[HttpGet("CheckMember/{ID}")]
         public IActionResult CheckMember(int ID)
         {
             var membership = _paypal.MemberById(ID);
             return View("~/Views/FE/Paypal/CheckMember.cshtml");
-        }
+        }*/
 
         [HttpPost("CheckMember/{ID}")]
         public IActionResult CheckMember(int ID, int model)
