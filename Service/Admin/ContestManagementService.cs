@@ -71,4 +71,6 @@ public class ContestManagementService : IContestManagementRepository
     {
         return _db.ContestEntries.Where(c => c.ContestId == id).ToList();
     }
+
+    
 }

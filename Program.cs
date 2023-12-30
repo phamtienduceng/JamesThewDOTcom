@@ -27,6 +27,7 @@ builder.Services.AddScoped<ITipCategoriesManagementRepository, TipCategoriesMana
 builder.Services.AddScoped<IRecipeManagementRepository, RecipeManagementService>();
 builder.Services.AddScoped<ITipManagementRepository, TipManagementService>();
 
+
 // DI Front-end
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IAccount, AccountService>();
@@ -43,6 +44,7 @@ builder.Services.AddScoped<ICategoriesRecipe, CategoriesRecipeService>();
 builder.Services.AddScoped<ICategoriesTip, CategoriesTipService>();
 builder.Services.AddScoped<IFeedback, FeedbackService>();
 builder.Services.AddScoped<IHome, HomeService>();
+builder.Services.AddScoped<IContestLogin, ContestLoginService>();
 
 // Add services to the container.
 

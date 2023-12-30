@@ -1,7 +1,20 @@
-﻿@model JamesRecipes.Models.Contest
+﻿@model JamesRecipes.Models.Contest;
+
+@using Newtonsoft.Json; 
+
 @{
     ViewData["Title"] = "Contest Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+@{
+    var userJson = Context.Session.GetString("userLogged");
+    User user = null;
+
+    if (!string.IsNullOrEmpty(userJson))
+    {
+        user = JsonConvert.DeserializeObject<User>(userJson);
+    }
 }
 
 <h1>Contest Details</h1>
@@ -38,8 +51,6 @@
             @Html.DisplayFor(model => model.EndDate)
         </dd>
 
-        @* Bỏ IsActive và Admin ra khỏi details cho người dùng *@
-
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedAt)
         </dt>
@@ -55,6 +66,29 @@
         </dd>
     </dl>
 </div>
+
+@if (user != null && (user.RoleId == 1 || user.RoleId == 2 || user.RoleId == 3))
+{
+    <div>
+         
+        <a asp-action="Create" asp-controller="Recipe" asp-route-id="ContestID">Submit New Recipe</a>
+        ||
+        <a href="@Url.Action("SubmitFromInventory", "Contest")">Submit From Inventory</a>
+    </div>
+}
+else if (user != null)
+{
+    <div>
+        Submit Your Recipe <a asp-action="Login" asp-controller="ContestLogin" class="text-danger">Here</a>
+    </div>
+}
+else
+{
+    <div>
+        <a asp-action="Login" asp-controller="ContestLogin">Please login to submit your recipe</a>
+    </div>
+}
+
 <div>
     <a asp-action="Index" asp-controller="Contest">Back to Contest List</a>
 </div>

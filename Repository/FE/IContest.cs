@@ -12,5 +12,5 @@ public interface IContest
     List<Contest> Search(string searchString);
     IPagedList<Contest> PageList(int page, int pageSize, List<Contest> contests);
     List<Contest> Filter(DateTime? startDate, DateTime? endDate, List<Contest> contests);
-
+    
 }

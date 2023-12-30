@@ -20,7 +20,7 @@ public class ContestController : Controller
     }
 
     // GET: FE/Contest
-    
+
     public IActionResult Index(string sortOrder, string searchString, DateTime? startDate, DateTime? endDate, int page = 1)
     {
         ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -28,7 +28,7 @@ public class ContestController : Controller
         ViewData["CurrentFilter"] = searchString;
         ViewData["StartDate"] = startDate;
         ViewData["EndDate"] = endDate;
-        
+
         var contests = _contestRepository.GetContests();
         if (!string.IsNullOrEmpty(searchString))
         {
@@ -39,10 +39,16 @@ public class ContestController : Controller
             contests = _contestRepository.Filter(startDate, endDate, contests);
         }
         contests = _contestRepository.Sorting(contests, sortOrder);
-        
+
         page = page < 1 ? 1 : page;
         var contest = _contestRepository.PageList(page, 2, contests);
         return View("~/Views/FE/Contest/Index.cshtml", contest);
+    }
+
+    private bool UserNeedToLogin()
+    {
+        // Trả về true nếu người dùng hiện tại chưa được xác thực
+        return !User.Identity.IsAuthenticated;
     }
 
     // GET: FE/Contest/Details/5
@@ -53,6 +59,11 @@ public class ContestController : Controller
         if (contest == null)
         {
             return NotFound();
+        }
+        // Kiểm tra nếu người dùng cần đăng nhập
+        if (UserNeedToLogin())
+        {
+            HttpContext.Session.SetInt32("LastViewedContestId", id);
         }
         return View("~/Views/FE/Contest/Details.cshtml", contest);
     }
