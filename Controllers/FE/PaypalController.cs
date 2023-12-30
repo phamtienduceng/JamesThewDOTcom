@@ -1,69 +1,111 @@
-﻿//using JamesRecipes.Models;
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.AspNetCore.Mvc;
-//using PayPalCheckoutSdk.Orders;
-//using PayPalHttp;
+﻿using JamesRecipes.Models;
+using JamesRecipes.Repository.FE;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-//    public class PaypalController : Controller
-//    {
-//        private readonly JamesrecipesContext _db;
+namespace JamesRecipes.Controllers.FE
+{
+    [Route("fe/[controller]")]
+    public class PaypalController : Controller
+    {
+        private readonly IAccount _account;
+        private readonly IPaypal _paypal;
 
-//        public PaypalController(JamesrecipesContext db)
-//        {
-//            _db = db;
-//        }
+        public PaypalController(IAccount account,IPaypal paypal)
+        {
+            _account = account;
+            _paypal = paypal;
+        }
 
-//    [HttpGet]
-//    public IActionResult Register()
-//    {
-//        return View();
-//    }
+        [HttpGet("Register/{ID}")]
+        public IActionResult Register(int ID)
+        {
+            var user = _account.GetUserById(ID);
+            if (user != null)
+            {
+                return View("~/Views/FE/Paypal/Register.cshtml");
+            }
+            return RedirectToAction("Login", "Account");
 
-//    [HttpPost]
-//    public IActionResult Register(Membership model, string membershipType)
-//    {
-//        if (ModelState.IsValid)
-//        {
-//            // Xử lý đăng ký thành viên theo membershipType
-//            if (membershipType == "Monthly")
-//            {
-//                model.StartDate = DateTime.Now;
-//                model.EndDate = model.StartDate.AddMonths(1);
-//                model.MembershipFee = 10.0m; // Giá thành viên hàng tháng (USD)
-//            }
-//            else if (membershipType == "Yearly")
-//            {
-//                model.StartDate = DateTime.Now;
-//                model.EndDate = model.StartDate.AddYears(1);
-//                model.MembershipFee = 100.0m; // Giá thành viên hàng năm (USD)
-//            }
+        }
 
-//            // Tạo đơn hàng PayPal
-//            OrderRequest orderRequest = CreatePayPalOrder(model.MembershipFee);
+        [HttpPost("Register/{ID}")]
+        public IActionResult Register(int ID, int price)
+        {
+            if (price == 10)
+            {
+                var membership = _paypal.MemberById(ID);
+                if (membership != null)
+                {
+                    membership.EndDate = membership.EndDate?.AddMonths(1);
+                    _paypal.UpdateMember(membership);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    var ViewRoleUserMember = new Membership { UserId = ID, IsActive = true, StartDate = DateTime.Now, EndDate = DateTime.Now.AddMonths(1) };
+                    _paypal.AddMember(ViewRoleUserMember);
+                    var user = _account.GetUserById(ID);
+                    if (user != null)
+                    {
+                        user.RoleId = 3;
+                        _account.UpdateUser(user);
+                        return View("~/Views/FE/Paypal/Register.cshtml");
+                    }
+                }
+            }
+            else
+            {
+                var membership = _paypal.MemberById(ID);
+                if (membership != null)
+                {
+                    membership.EndDate = membership.EndDate?.AddYears(1);
+                    _paypal.UpdateMember(membership);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    var ViewRoleUserMember = new Membership { UserId = ID, IsActive = true, StartDate = DateTime.Now, EndDate = DateTime.Now.AddYears(1) };
+                    _paypal.AddMember(ViewRoleUserMember);
+                    var user = _account.GetUserById(ID);
+                    if (user != null)
+                    {
+                        user.RoleId = 3;
+                        _account.UpdateUser(user);
+                        return View("~/Views/FE/Paypal/Register.cshtml");
+                    }
+                }
+            }
 
-//            try
-//            {
-//                // Tạo yêu cầu tạo đơn hàng PayPal
-//                OrdersCreateRequest request = new OrdersCreateRequest();
-//                request.Headers.Add("prefer", "return=representation");
-//                request.RequestBody(orderRequest);
+            return RedirectToAction("Index", "Home");
+        }
 
-//                // Gửi yêu cầu tạo đơn hàng PayPal
-//                var response = PayPalClient().Execute(request);
 
-//                // Lấy đường dẫn thanh toán từ response
-//                var approvalUrl = response.Result<PayPalCheckoutSdk.Orders.Order>().Links.Find(link => link.Rel == "approve").Href;
+        [HttpGet("CheckMember/{ID}")]
+        public IActionResult CheckMember(int ID)
+        {
+            var membership = _paypal.MemberById(ID);
+            return View("~/Views/FE/Paypal/CheckMember.cshtml");
+        }
 
-//                // Chuyển hướng đến trang thanh toán PayPal
-//                return Redirect(approvalUrl);
-//            }
-//            catch (HttpException ex)
-//            {
-//                // Xử lý lỗi tạo đơn hàng PayPal, hiển thị thông báo lỗi cho người dùng
-//                ModelState.AddModelError("", "Payment failed. Please try again.");
-//            }
-//        }
-
-//        return View(model);
-//    }
-//}
+        [HttpPost("CheckMember/{ID}")]
+        public IActionResult CheckMember(int ID, int model)
+        {
+            var membership = _paypal.MemberById(ID);
+            DateTime now = DateTime.Now;
+            DateTime endday = (DateTime)membership.EndDate;
+            if (endday < now)
+            {
+                membership.IsActive = false;
+                _paypal.UpdateMember(membership);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                membership.IsActive = true;
+                _paypal.UpdateMember(membership);
+                return RedirectToAction("Index", "Home");
+            }
+        }
+    }
+}

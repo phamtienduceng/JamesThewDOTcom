@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using model.Models;
+using WebApplication6.Models;
 
 namespace JamesRecipes.Models;
 
@@ -38,6 +39,8 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<Feedback> Feedbacks { get; set; }
 
+    public virtual DbSet<Membership> Memberships { get; set; }
+
     public virtual DbSet<Order> Orders { get; set; }
 
     public virtual DbSet<OrderDetail> OrderDetails { get; set; }
@@ -58,9 +61,11 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
 
+    public virtual DbSet<ViewUserRoleMember> ViewUserRoleMembers { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=127.0.0.1,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=.,1500;Database=jame;User=sa;Password=12345678;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -242,6 +247,23 @@ public partial class JamesrecipesContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__Feedback__UserID__534D60F1");
+        });
+
+        modelBuilder.Entity<Membership>(entity =>
+        {
+            entity.HasKey(e => e.MembershipId).HasName("PK__Membersh__92A78599CB67628F");
+
+            entity.ToTable("Membership");
+
+            entity.Property(e => e.MembershipId).HasColumnName("MembershipID");
+            entity.Property(e => e.EndDate).HasColumnType("datetime");
+            entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
+            entity.Property(e => e.StartDate).HasColumnType("datetime");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Memberships)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Membershi__UserI__3D2915A8");
         });
 
         modelBuilder.Entity<Order>(entity =>
@@ -430,6 +452,27 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.PhoneNumber).HasMaxLength(20);
             entity.Property(e => e.RoleId).HasColumnName("RoleID");
             entity.Property(e => e.RoleName).HasMaxLength(50);
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.Username).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<ViewUserRoleMember>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("ViewUserRoleMember");
+
+            entity.Property(e => e.Address).HasMaxLength(50);
+            entity.Property(e => e.Avatar).HasMaxLength(255);
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.Email).HasMaxLength(50);
+            entity.Property(e => e.EndDate).HasColumnType("datetime");
+            entity.Property(e => e.MembershipId).HasColumnName("MembershipID");
+            entity.Property(e => e.Password).HasMaxLength(100);
+            entity.Property(e => e.PhoneNumber).HasMaxLength(20);
+            entity.Property(e => e.RoleId).HasColumnName("RoleID");
+            entity.Property(e => e.RoleName).HasMaxLength(50);
+            entity.Property(e => e.StartDate).HasColumnType("datetime");
             entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.Username).HasMaxLength(50);
         });
