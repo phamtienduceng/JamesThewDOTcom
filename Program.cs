@@ -28,6 +28,7 @@ builder.Services.AddScoped<IRecipeManagementRepository, RecipeManagementService>
 builder.Services.AddScoped<ITipManagementRepository, TipManagementService>();
 
 // DI Front-end
+builder.Services.AddScoped<IPaypal, PaypalService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IAccount, AccountService>();
 builder.Services.AddScoped<IAbout, AboutService>();
