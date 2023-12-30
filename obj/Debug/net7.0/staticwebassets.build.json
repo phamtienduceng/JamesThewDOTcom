@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "E77dzogn/0mCQZJJFuEpbNlusODMR9Dn1ouaBYJb234=",
+  "Hash": "CSEChjADAlKBwMIosOg0wH9Hg+0RWxMEObgKKHZcyXk=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -11711,6 +11711,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/FE/img/comtam.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/conan.png",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/conan.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/conan.png"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/Doraemon_character.png",

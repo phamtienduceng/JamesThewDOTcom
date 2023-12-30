@@ -132,6 +132,15 @@
                                             <i class="fas fa-star"></i>
                                         }
                                     </div>
+                                    @if (!string.IsNullOrEmpty(userJson))
+                                    {
+                                        var user = JsonConvert.DeserializeObject<User>(userJson);
+                                        if (@item.UserId == user!.UserId)
+                                        {
+                                            <a asp-action="UpdateRecipe" asp-controller="Recipe" asp-route-id="@item.RecipeId"><button class="btn btn-info">Update</button></a>
+
+                                        }
+                                    }
                                     <a asp-action="SingleRecipe" class="line_btn" asp-controller="Recipe" asp-route-id="@item.RecipeId">View recipe's detail</a>
                                 </div>
                             </div>
@@ -150,9 +159,6 @@
                         UlElementClasses = new[] { "pagination" }
                     })
             </div>
-
-
-            <!-- /Recipe Display Area -->
         </div>
     </div>
 </div>

@@ -2757,6 +2757,10 @@
       "PackagePath": "staticwebassets/FE/img/comtam.jpg"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/conan.png",
+      "PackagePath": "staticwebassets/FE/img/conan.png"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/elements/a.jpg",
       "PackagePath": "staticwebassets/FE/img/elements/a.jpg"
     },

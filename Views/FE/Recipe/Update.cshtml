@@ -1,0 +1,62 @@
+@model Recipe
+
+@{
+    ViewData["Title"] = "Update Recipe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="UpdateRecipe" asp-controller="Recipe" asp-route-id="@Model.RecipeId" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryRecipeId" class="control-label"></label>
+        <select asp-for="CategoryRecipeId" asp-items="ViewBag.CategoryId" class="form-control"></select>
+        <span asp-validation-for="CategoryRecipeId" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Procedure" class="control-label"></label>
+        <textarea asp-for="Procedure" class="form-control"></textarea>
+        <span asp-validation-for="Procedure" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Ingredients" class="control-label"></label>
+        <textarea asp-for="Ingredients" class="form-control"></textarea>
+        <span asp-validation-for="Ingredients" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Timeneeds" class="control-label"></label>
+        <textarea asp-for="Timeneeds" class="form-control"></textarea>
+        <span asp-validation-for="Timeneeds" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="VideoUrl" class="control-label"></label>
+        <textarea asp-for="VideoUrl" class="form-control"></textarea>
+        <span asp-validation-for="VideoUrl" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Image" class="control-label"></label>
+        <input type="file" name="file" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
