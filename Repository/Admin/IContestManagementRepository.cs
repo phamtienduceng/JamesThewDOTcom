@@ -11,4 +11,5 @@ public interface IContestManagementRepository
     void DeleteContest(int id);
     bool CheckContest(Contest contest);
     List<ContestEntry> GetAllContestEntries(int id);
+    
 }
