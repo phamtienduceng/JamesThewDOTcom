@@ -80,6 +80,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29udGVzdC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Applications/Development/AD/JamesRecipes/Views/Admin/ContestEntries/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29udGVzdEVudHJpZXMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Applications/Development/AD/JamesRecipes/Views/Admin/ContestEntries/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29udGVzdEVudHJpZXMvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Applications/Development/AD/JamesRecipes/Views/Admin/ContestEntries/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29udGVzdEVudHJpZXMvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Applications/Development/AD/JamesRecipes/Views/Admin/ContestEntries/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29udGVzdEVudHJpZXMvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Applications/Development/AD/JamesRecipes/Views/Admin/ContestEntries/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29udGVzdEVudHJpZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Applications/Development/AD/JamesRecipes/Views/Admin/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRGFzaGJvYXJkL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -162,6 +182,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Applications/Development/AD/JamesRecipes/Views/FE/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQ29udGFjdC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Applications/Development/AD/JamesRecipes/Views/FE/Contest/ContestLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQ29udGVzdC9Db250ZXN0TG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Applications/Development/AD/JamesRecipes/Views/FE/Contest/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvQ29udGVzdC9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Applications/Development/AD/JamesRecipes/Views/FE/Contest/Index.cshtml]
