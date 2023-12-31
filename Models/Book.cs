@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace JamesRecipes.Models.Book;
+namespace JamesRecipes.Models;
 
 public partial class Book
 {
@@ -14,17 +13,17 @@ public partial class Book
 
     public decimal Price { get; set; }
 
-    public decimal Quantity { get; set; }
+    public int StockQuantity { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
     public string? Image { get; set; }
 
-    public int CategoryBookId { get; set; }
-    [NotMapped]
-    public string CategoryName { get; set; }
+    public int? CategoryId { get; set; }
+
+    public virtual ICollection<CartDetail> CartDetails { get; set; } = new List<CartDetail>();
 
     public virtual CategoriesBook? Category { get; set; }
 
-    public virtual ICollection<OrderItem> OrderDetails { get; set; } = new List<OrderItem>();
+    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 }

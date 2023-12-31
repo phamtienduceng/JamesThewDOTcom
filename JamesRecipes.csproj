@@ -184,6 +184,20 @@
       <_ContentIncludedByDefault Remove="Views\FE\Books\Index.cshtml" />
       <_ContentIncludedByDefault Remove="Views\FE\Cart\GetUserCart.cshtml" />
       <_ContentIncludedByDefault Remove="Views\FE\UserOrder\UserOrders.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\Book\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\Book\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\Book\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\Book\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\ContestEntries\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\ContestEntries\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\ContestEntries\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\ContestEntries\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\ContestEntries\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\FE\Cart\Checkout.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\FE\Cart\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\FE\Contest\ContestLogin.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\FE\Contest\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\FE\Contest\Index.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
