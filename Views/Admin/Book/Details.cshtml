@@ -1,4 +1,4 @@
-﻿@model JamesRecipes.Models.Book
+﻿@model JamesRecipes.Models.Book.Book
 
 @{
     ViewData["Title"] = "Details";
@@ -30,10 +30,10 @@
             @Html.DisplayFor(model => model.Price)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StockQuantity)
+            @Html.DisplayNameFor(model => model.Quantity)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StockQuantity)
+            @Html.DisplayFor(model => model.Quantity)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedAt)
@@ -45,17 +45,17 @@
             @Html.DisplayNameFor(model => model.Image)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
+            <img src="@Url.Content("~/"+Model.Image)" alt="Book Image" style="width:100px; height:100px;" />
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.CategoryBookId)
+            @Html.DisplayFor(model => model.CategoryName)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.BookId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-controller="BookManagement" asp-route-id="@Model?.BookId">Edit</a> |
+    <a asp-action="Index" asp-controller="BookManagement">Back to List</a>
 </div>

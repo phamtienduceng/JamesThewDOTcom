@@ -1,10 +1,10 @@
 using Humanizer.Localisation;
-using JamesRecipes.Models;
+using JamesRecipes.Models.Book;
 
 namespace JamesRecipes.Repository.FE;
 
 public interface IBook
 {
-    List<Book> Search(string searchString);
-    IEnumerable<Book> GetBooks();
+    Task<IEnumerable<Book>> GetBooks(string sTerm = "", int categoryId = 0);
+    Task<IEnumerable<CategoriesBook>> CategoriesBooks();
 }

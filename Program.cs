@@ -6,6 +6,9 @@ using JamesRecipes.Repository.FE;
 using JamesRecipes.Service.Admin;
 using JamesRecipes.Service.FE;
 using JamesRecipes.Models;
+using JamesRecipes.Data.Helper;
+using PayPalCheckoutSdk.Orders;
+using JamesRecipes.Models.Book;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,6 +45,7 @@ builder.Services.AddScoped<ICategoriesTip, CategoriesTipService>();
 builder.Services.AddScoped<IFeedback, FeedbackService>();
 builder.Services.AddScoped<IHome, HomeService>();
 
+
 // Add services to the container.
 
 builder.Services.AddSession();
@@ -57,6 +61,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 

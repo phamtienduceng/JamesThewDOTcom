@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using JamesRecipes.Models.Book;
 using Microsoft.EntityFrameworkCore;
 using model.Models;
 
-namespace JamesRecipes.Models;
+namespace JamesRecipes.Models.Book;
 
 public partial class JamesrecipesContext : DbContext
 {
@@ -22,9 +23,15 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<Cart> Carts { get; set; }
 
-    public virtual DbSet<CartDetail> CartDetails { get; set; }
+    public virtual DbSet<CartItems> CartItems { get; set; }
 
     public virtual DbSet<CategoriesBook> CategoriesBooks { get; set; }
+
+    public virtual DbSet<Customer> Customer { get; set; }
+
+    public virtual DbSet<Order> Orders { get; set; }
+
+    public virtual DbSet<OrderItem> OrderItems { get; set; }
 
     public virtual DbSet<CategoriesRecipe> CategoriesRecipes { get; set; }
 
@@ -37,10 +44,6 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<Faq> Faqs { get; set; }
 
     public virtual DbSet<Feedback> Feedbacks { get; set; }
-
-    public virtual DbSet<Order> Orders { get; set; }
-
-    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
 
     public virtual DbSet<Recipe> Recipes { get; set; }
 
@@ -57,6 +60,7 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<ViewTipManagement> ViewTipManagements { get; set; }
 
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -88,15 +92,16 @@ public partial class JamesrecipesContext : DbContext
         modelBuilder.Entity<Book>(entity =>
         {
             entity.HasKey(e => e.BookId).HasName("PK__Books__3DE0C227B9BE35FE");
-
             entity.Property(e => e.BookId).HasColumnName("BookID");
+            entity.Property(e => e.Title).HasMaxLength(100);
             entity.Property(e => e.Author).HasMaxLength(50);
+            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.Quantity).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.Title).HasMaxLength(100);
-
+            entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.CategoryName).HasMaxLength(100);
             entity.HasOne(d => d.Category).WithMany(p => p.Books)
                 .HasForeignKey(d => d.CategoryBookId)
                 .HasConstraintName("FK_Books_Category");
@@ -105,31 +110,10 @@ public partial class JamesrecipesContext : DbContext
         modelBuilder.Entity<Cart>(entity =>
         {
             entity.HasKey(e => e.CartId).HasName("PK__Cart__51BCD7B7EDE2CEEA");
-
-            entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.UserId).HasColumnName("UserID");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Carts)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Cart__UserID__6CD828CA");
-        });
-
-        modelBuilder.Entity<CartDetail>(entity =>
-        {
-            entity.HasKey(e => e.CartDetailId).HasName("PK__CartDeta__01B6A6D4D1615271");
-
-            entity.ToTable("CartDetail");
-
-            entity.Property(e => e.CartDetailId).HasColumnName("CartDetailID");
-            entity.Property(e => e.UnitPrice).HasColumnType("decimal(10, 2)");
-
-            entity.HasOne(d => d.Book).WithMany(p => p.CartDetails)
-                .HasForeignKey(d => d.BookId)
-                .HasConstraintName("FK__CartDetai__BookI__70A8B9AE");
-
-            entity.HasOne(d => d.Cart).WithMany(p => p.CartDetails)
-                .HasForeignKey(d => d.CartId)
-                .HasConstraintName("FK__CartDetai__CartI__6FB49575");
+            entity.Property(e => e.Quantity).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.OrderDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
         });
 
         modelBuilder.Entity<CategoriesBook>(entity =>
@@ -252,31 +236,6 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.OrderDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.TotalPrice).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.UserId).HasColumnName("UserID");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Orders__UserID__4BAC3F29");
-        });
-
-        modelBuilder.Entity<OrderDetail>(entity =>
-        {
-            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D30CCFCB8105");
-
-            entity.Property(e => e.OrderDetailId).HasColumnName("OrderDetailID");
-            entity.Property(e => e.BookId).HasColumnName("BookID");
-            entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.Subtotal).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.UnitPrice).HasColumnType("decimal(10, 2)");
-
-            entity.HasOne(d => d.Book).WithMany(p => p.OrderDetails)
-                .HasForeignKey(d => d.BookId)
-                .HasConstraintName("FK__OrderDeta__BookI__5070F446");
-
-            entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
-                .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__OrderDeta__Order__4F7CD00D");
         });
 
         modelBuilder.Entity<Recipe>(entity =>
@@ -434,3 +393,4 @@ public partial class JamesrecipesContext : DbContext
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
+

@@ -1,7 +1,10 @@
-using Humanizer.Localisation;
+﻿using Humanizer.Localisation;
 using JamesRecipes.Models;
+using JamesRecipes.Models.Book;
 using JamesRecipes.Repository.Admin;
+using JamesRecipes.Repository.FE;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -17,23 +20,59 @@ public class BookManagementService : IBookManagementRepository
     {
         this._db = db;
     }
-
-    public Book BookDetail(int Id)
+    public List<Book> GetBooks()
     {
-        var book = _db.Books.FirstOrDefault(b => b.BookId == Id);
-        return null!;
+        return _db.Books.ToList();
     }
 
-    public Book CreateBook(Book newBook)
+    public Book GetBook(int id)
     {
-        var book = _db.Books.Add(newBook);
+        var book = _db.Books.FirstOrDefault(c => c.BookId == id);
+        return book ?? null;
+    }
+
+    public void AddBook(Book book)
+    {
+        _db.Books.Add(book);
         _db.SaveChanges();
-        return book.Entity;
+    }
+    public void UpdateBook(int id, Book updateBook)
+    {
+        var existingBook = GetBook(id);
+        if (existingBook != null)
+        {
+            existingBook.Title = updateBook.Title;
+            existingBook.Author = updateBook.Author;
+            existingBook.Price = updateBook.Price;
+            existingBook.Quantity = updateBook.Quantity;
+            existingBook.CategoryName = updateBook.CategoryName;
+            existingBook.Image = updateBook.Image;
+
+            _db.SaveChanges();
+        }
+        else
+        {
+            throw new ArgumentException("Book with the provided id does not exist.", nameof(id));
+        }
     }
 
-    public Book DeleteBook(int Id)
+    public bool CheckBook(Book book)
     {
-        var book = _db.Books.SingleOrDefault(c => c.BookId == Id);
+        var model = _db.Books
+            .Include(b => b.Category)
+            .SingleOrDefault(b => b.BookId == book.BookId);
+
+        if (model != null && model.Category != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public Book DeleteBook(int id)
+    {
+        var book = _db.Books.SingleOrDefault(c => c.BookId == id);
         if (book != null)
         {
             _db.Books.Remove(book);
@@ -41,32 +80,4 @@ public class BookManagementService : IBookManagementRepository
         }
         return book!;
     }
-
-    public Book EditBook(int bookId, Book updatedBook)
-    {
-        var book = _db.Books.FirstOrDefault(b => b.BookId == bookId);
-
-        if (book != null)
-        {
-            book.Title = updatedBook.Title;
-            book.Author = updatedBook.Author;
-            book.Image = updatedBook.Image;
-            book.Price = updatedBook.Price;
-            _db.SaveChanges();
-            return book;
-        }
-        return null!;
-    }
-
-    public IEnumerable<Book> GetList()
-    {
-       return _db.Books.ToList();
-    }
-
-    public IEnumerable<Book> Search(string search)
-    {
-        var result = _db.Books.Where(b => b.Title.ToUpper().Contains(search));
-        return result.ToList();
-    }
-
 }

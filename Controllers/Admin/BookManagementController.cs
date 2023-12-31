@@ -5,18 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using JamesRecipes.Models;
 using JamesRecipes.Service.Admin;
 using JamesRecipes.Models.Authentication;
 using JamesRecipes.Repository.Admin;
 using JamesRecipes.Repository.FE;
 using System.Security.Policy;
+using Humanizer.Localisation;
+using JamesRecipes.Models.Book;
 
 namespace JamesRecipes.Controllers.Admin
 {
     public class BookManagementController : Controller
     {
-        private readonly IBookManagementRepository _repository ;
+        private readonly IBookManagementRepository _repository;
 
         public BookManagementController(IBookManagementRepository repository)
         {
@@ -25,59 +26,52 @@ namespace JamesRecipes.Controllers.Admin
 
         public IActionResult Index()
         {
-            var book = _repository.GetList();
-            return View("~/Views/Admin/Book/Index.cshtml", book);
+            var books = _repository.GetBooks();
+            return View("~/Views/Admin/Book/Index.cshtml", books);
         }
 
-        public IActionResult Details(int id)
-        {
-            var book = _repository.BookDetail(id);
-            if (book == null)
-            {
-                return NotFound();
-            }
-            return View("~/Views/Admin/Book/Details.cshtml", book);
-        }
-
-        // GET: BookManagement/Create
-        [HttpGet("Create")]
+        [HttpGet]
         public IActionResult Create()
         {
             return View("~/Views/Admin/Book/Create.cshtml");
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Book newBook, IFormFile file)
+        public IActionResult Create(Book book, IFormFile file)
         {
             try
             {
                 if (file != null)
                 {
-                    var path = Path.Combine("wwwroot/images", file.FileName);
-                    var stream = new FileStream(path, FileMode.Create);
-                    file.CopyToAsync(stream);
-                    newBook.Image = "images/" + file.FileName;
+                    var folderPath = Path.Combine("wwwroot/images");
+                    var pathToSave = Path.Combine(folderPath, file.FileName);
 
-                    _repository.CreateBook(newBook);
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    using (var stream = new FileStream(pathToSave, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    book.Image = Path.Combine("images", file.FileName);
+                    _repository.AddBook(book);
                     return RedirectToAction("Index");
                 }
-                else
-                {
-                    return NoContent();
-                }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                throw ex;
+                Console.WriteLine(e);
+                throw;
             }
-            return RedirectToAction("Index");
+            ViewBag.CategoryBookId = new SelectList(_repository.GetBooks(), "CategoryBookId", "CategoryName");
+            return View("~/Views/Admin/Book/Create.cshtml", book);
         }
 
         [HttpGet("Edit/{id}")]
-        public async Task<IActionResult> Edit(int id)
+        public IActionResult Edit(int id)
         {
-            var book = _repository.BookDetail(id);
+            var book = _repository.GetBook(id);
             if (book == null)
             {
                 return NotFound();
@@ -85,8 +79,7 @@ namespace JamesRecipes.Controllers.Admin
             return View("~/Views/Admin/Book/Edit.cshtml", book);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost("Edit/{id}")]
         public IActionResult Edit(int id, Book book, IFormFile file)
         {
             if (id != book.BookId)
@@ -97,13 +90,20 @@ namespace JamesRecipes.Controllers.Admin
             {
                 if (file != null)
                 {
-                    var path = Path.Combine("wwwroot/images", file.FileName);
-                    var stream = new FileStream(path, FileMode.Create);
-                    file.CopyToAsync(stream);
-                    book.Image = "images/" + file.FileName;
+                    var folderPath = Path.Combine("wwwroot/images");
+                    var pathToSave = Path.Combine(folderPath, file.FileName);
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    using (var stream = new FileStream(pathToSave, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    book.Image = Path.Combine("images", file.FileName);
                 }
 
-                _repository.EditBook(id, book);
+                _repository.UpdateBook(id, book);
                 return RedirectToAction("Index");
             }
             catch (Exception e)
@@ -113,18 +113,30 @@ namespace JamesRecipes.Controllers.Admin
             }
         }
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
-            var book = _repository.BookDetail(id);
-            if (book == null) 
+            var model = _repository.GetBook(id);
+            if (!_repository.CheckBook(model))
+            {
+                _repository.DeleteBook(id);
+                return RedirectToAction("Index", "BookManagement");
+            }
+            else
+            {
+                TempData["msgDelete"] = "Can not delete";
+                return RedirectToAction("Index", "BookManagement");
+            }
+        }
+
+        [HttpGet("Details/{id}")]
+        public IActionResult Details(int id)
+        {
+            var book = _repository.GetBook(id);
+            if (book == null)
             {
                 return NotFound();
             }
-            _repository.DeleteBook(id);
-            return RedirectToAction("Index");
+            return View("~/Views/Admin/Book/Details.cshtml", book);
         }
-
     }
 }

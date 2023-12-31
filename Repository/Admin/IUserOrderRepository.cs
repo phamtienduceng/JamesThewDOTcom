@@ -1,9 +1,0 @@
-﻿using JamesRecipes.Models;
-
-namespace JamesRecipes.Repository.Admin
-{
-    public interface IUserOrderRepository
-    {
-        Task<IEnumerable<Order>> UserOrders();
-    }
-}

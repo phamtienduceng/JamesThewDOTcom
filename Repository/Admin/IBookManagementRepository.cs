@@ -1,14 +1,14 @@
 using Humanizer.Localisation;
-using JamesRecipes.Models;
+using JamesRecipes.Models.Book;
 
 namespace JamesRecipes.Repository.Admin;
 
 public interface IBookManagementRepository
 {
-    IEnumerable<Book> GetList();
-    IEnumerable<Book> Search(string search);
-    Book BookDetail(int Id);
-    Book EditBook(int bookId, Book updatedBook);
-    Book CreateBook(Book newBook);
-    Book DeleteBook(int Id);
+    List<Book> GetBooks();
+    Book GetBook(int id);
+    void AddBook(Book book);
+    void UpdateBook(int id, Book updateBook);
+    Book DeleteBook(int id);
+    bool CheckBook(Book book);
 }
