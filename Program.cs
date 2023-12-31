@@ -6,8 +6,7 @@ using JamesRecipes.Repository.FE;
 using JamesRecipes.Service.Admin;
 using JamesRecipes.Service.FE;
 using JamesRecipes.Models;
-using JamesRecipes.Data.Helper;
-using PayPalCheckoutSdk.Orders;
+using BookService = JamesRecipes.Service.FE.BookService;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +34,8 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IAccount, AccountService>();
 builder.Services.AddScoped<IAbout, AboutService>();
 builder.Services.AddScoped<IAnnouncement, AnnouncementService>();
+builder.Services.AddScoped<IBook, BookService>();
+//builder.Services.AddScoped<ICartRepository, CartService>();
 builder.Services.AddScoped<IContact, ContactService>();
 builder.Services.AddScoped<IContest, ContestService>();
 builder.Services.AddScoped<IFaq, FaqService>();
@@ -45,7 +46,6 @@ builder.Services.AddScoped<ICategoriesTip, CategoriesTipService>();
 builder.Services.AddScoped<IFeedback, FeedbackService>();
 builder.Services.AddScoped<IHome, HomeService>();
 builder.Services.AddScoped<IContestLogin, ContestLoginService>();
-
 
 // Add services to the container.
 
@@ -62,7 +62,6 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-
 
 var app = builder.Build();
 

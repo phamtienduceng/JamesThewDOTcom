@@ -657,6 +657,3 @@ C:/mvc/JamesRecipes/bin/Debug/net7.0/runtimes/win/lib/netcoreapp2.1/System.Data.
 /Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/runtimes/win-x86/native/sni.dll
 /Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
 /Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
-/Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/PagedList.dll
-/Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/PagedList.EntityFramework.dll
-/Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/PagedList.Mvc.dll

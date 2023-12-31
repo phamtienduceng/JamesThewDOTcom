@@ -1,0 +1,70 @@
+﻿@using PagedList
+@using X.PagedList.Mvc.Common;
+@model X.PagedList.IPagedList<Contest>
+@using X.PagedList.Mvc.Core;
+@{
+    ViewData["Title"] = "Contest List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Contest List</h1>
+@using (Html.BeginForm("Index", "Contest", FormMethod.Get))
+{
+    <p>
+        Searching: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Searching" />
+    </p>
+}
+@using (Html.BeginForm("Index", "Contest", FormMethod.Get))
+{
+    <p>
+        Start Date: @Html.TextBox("startDate", ViewBag.StartDate as string, new { type = "date" })
+        End Date: @Html.TextBox("endDate", ViewBag.EndDate as string, new { type = "date" })
+        <input type="submit" value="Filter" />
+    </p>
+}
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("Title", "Index", "Contest", new { sortOrder = ViewBag.NameSort, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("StartDate", "Index", "Contest", new { sortOrder = ViewBag.DateSort, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            
+            <th>@Html.DisplayNameFor(model => model.First().EndDate)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Image)</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                <td>
+                    <img src="@Url.Content("~/" + item.Image)" alt="Contest Image" style="width:100px; height:100px;" />
+                </td>
+                <td>
+                    <a asp-action="Details" asp-controller="Contest" asp-route-id="@item.ContestId">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Thêm phân trang ở đây -->
+<div class="text-center">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "Contest", new { page = page }),
+            new PagedListRenderOptions()
+    {
+        LiElementClasses = new[] { "page-item" },
+        PageClasses = new[] { "page-link" },
+        ContainerDivClasses = new[] { "pagination", "justify-content-center" },
+        UlElementClasses = new[] { "pagination" }
+    })
+</div>

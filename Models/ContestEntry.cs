@@ -10,7 +10,7 @@ public partial class ContestEntry
     public int? ContestId { get; set; }
 
     public int? UserId { get; set; }
-
+    //public int UserID { get; internal set; }
     public int? RecipeId { get; set; }
 
     public DateTime? CreatedAt { get; set; }
