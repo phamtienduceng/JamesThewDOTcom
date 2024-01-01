@@ -1,0 +1,27 @@
+@model CategoriesBook
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_FELayout.cshtml";
+}
+
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title fw-semibold mb-4">Recipe Management</h5>
+        <form asp-action="Edit" asp-controller="BookCategoriesManagement" method="post" >
+            <div class="form-group">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="CategoryBookId" type="hidden" name="id" value="@Model.CategoryBookId" class="form-control" />
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+            </div>
+            <div><p style="color: red">@TempData["msgEdit"]</p></div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+  </div>
+</div>
+
+

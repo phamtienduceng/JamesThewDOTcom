@@ -1,0 +1,109 @@
+@using Newtonsoft.Json
+@using X.PagedList.Mvc.Common
+@model X.PagedList.IPagedList<Book>
+@using X.PagedList.Mvc.Core
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+@{
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("userLogged");
+}
+
+<div class="container" style="margin-top: 150px">
+    <div class="row">
+        <!-- Sidebar for Search and Filter -->
+        <div class="col-xl-3 col-lg-3">
+            <div class="sidebar">
+                <h4>Filter</h4>
+                <form asp-action="Index" asp-controller="Book" method="get">
+                    <div class="form-group">
+                        <label for="categoryId">Category:</label>
+                        <select name="categoryId" id="categoryId" class="form-control" asp-items="ViewBag.CategoryId">
+                            <option value="" class="text-center">All Categories</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="priceMin">Price:</label>
+                            <input name="priceMin" id="priceMin" class="form-control" type="time">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="priceMax">to</label>
+                            <input name="priceMax" id="priceMax" class="form-control" type="time">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <button type="submit" class="btn btn-danger">Filter</button>
+                        <a asp-action="Index" asp-controller="Book" class="btn btn-info">Reset</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Main Content Area -->
+        <div class="col-xl-9 col-lg-9 border-left">
+            <div class="row">
+                <div class="col-md-6">
+                    <form asp-action="Index" asp-controller="Book" method="get">
+                        <div class="form-actions no-color">
+                            <h4>
+                                <span>Search: </span>
+                                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Enter title here ..."/>
+                                <input type="submit" value="Search" class="btn btn-default"/>
+                            </h4>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end">
+                    <h5>
+                        <span class="d-inline">Sort: </span>
+                        <h5><a asp-action="Index" asp-controller="Book" asp-route-sortOrder="@ViewData["NameSort"]">Title | </a> </h5>
+                        <h5><a asp-action="Index" asp-controller="Book" asp-route-sortOrder="@ViewData["DateSort"]"> Date post | </a> </h5>
+                    </h5>
+                </div>
+            </div>
+            
+            <div class="recepie_area" style="margin-top: -50px">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xl-4 col-lg-4 col-md-6" style="position: relative;">
+                                <div class="single_recepie text-center">
+                                    <div class="recepie_thumb mt-2">
+                                        <img style="height: 220px" src="~/@item.Image" alt="@item.Title">
+                                    </div>
+                                    <h3>@item.Title</h3>
+                                    <span>@item.Author</span>
+                                    <p class="mb-2">$@item.Price</p>
+                                    <a asp-action="SingleBook" class="line_btn" asp-controller="Book" asp-route-id="@item.BookId">View book's detail</a>
+                                    <form method="post" asp-action="AddToCart" asp-controller="Cart">
+                                        <input type="hidden" name="bookId" value="@item.BookId" />
+                                        <button type="submit" class="btn btn-info">Add to cart</button>
+                                    </form>                                
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                @Html.PagedListPager(Model, page => Url.Action("Index", "Book", new { page = page }),
+                    new PagedListRenderOptions()
+                    {
+                        LiElementClasses = new[] { "page-item" },
+                        PageClasses = new[] { "page-link" },
+                        ContainerDivClasses = new[] { "pagination", "justify-content-center" },
+                        UlElementClasses = new[] { "pagination" }
+                    })
+            </div>
+        </div>
+    </div>
+</div>
+
+

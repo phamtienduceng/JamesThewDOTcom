@@ -1,0 +1,61 @@
+@model IEnumerable<JamesRecipes.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_FELayout.cshtml";
+}
+<h2 class="card-title fw-semibold mb-4">Recipe Management</h2>
+
+<p>
+    <a asp-action="Create" asp-controller="BookManagement">Create New Book</a>
+</p>
+<div><p style="color: red">@TempData["msgDelete"]</p></div>
+
+
+<table class="table ">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>StockQuantity</th>
+        <th>CategoryId</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.BookId
+            </td>
+            <td>
+                <img src="~/@item.Image" alt="@item.Title" style="height: 100px; width: auto"/>
+            </td>
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @item.Author
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                @item.StockQuantity
+            </td>
+            <td>
+                @item.CategoryId
+            </td>
+            <td>
+                <a asp-action="Edit" asp-controller="BookManagement" asp-route-id="@item.BookId">EditName</a> | 
+                <a asp-action="Delete" asp-controller="BookManagement" asp-route-id="@item.BookId">Delete</a> | 
+                <a asp-action="GetBookById" asp-controller="BookManagement" asp-route-id="@item.BookId">View recipes</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

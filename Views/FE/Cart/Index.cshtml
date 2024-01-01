@@ -1,0 +1,59 @@
+@using Newtonsoft.Json
+@model List<CartDetail>
+
+
+@{
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("userLogged");
+}
+
+<div class="container">
+    @if (!string.IsNullOrEmpty(userJson))
+    {
+        @if (Model.Any())
+        {
+            <h2>Your Cart</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Book</th>
+                    <th>Image</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(item.Book?.Title ?? "N/A")</td>
+                        <td>
+                            <img src="~/@item.Book?.Image" alt="@item.Book?.Title"/>
+                        </td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Book?.Price</td>
+                        <td>
+                            <a href="#">Remove</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+
+            <p>Total Items: @Model.Sum(cd => cd.Quantity)</p>
+                                                         
+            <form method="post" action="checkout">
+                <button type="submit">Proceed to Checkout</button>
+            </form>
+        }
+        else
+        {
+            <p>Your cart is empty</p>
+        }
+    }
+    else
+    {
+        <h3>Please login to see your cart</h3>
+    }
+</div>

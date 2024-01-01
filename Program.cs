@@ -15,7 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IAccountManagementRepository, AccountManagementService>();
 builder.Services.AddScoped<IAnnounceManagementRepository, AnnouncementManagementService>();
-//builder.Services.AddScoped<IBookManagementRepository, BookManagementService>();
+builder.Services.AddScoped<IBookCategoriesManagementRepository, BookCategoriesManagementService>();
+builder.Services.AddScoped<IBookManagementRepository, BookManagementService>();
 builder.Services.AddScoped<ICommentManagementRepository, CommentManagementService>();
 builder.Services.AddScoped<IContactManagementRepository, ContactManagementService>();
 builder.Services.AddScoped<IContestManagementRepository, ContestManagementService>();
@@ -35,7 +36,7 @@ builder.Services.AddScoped<IAccount, AccountService>();
 builder.Services.AddScoped<IAbout, AboutService>();
 builder.Services.AddScoped<IAnnouncement, AnnouncementService>();
 builder.Services.AddScoped<IBook, BookService>();
-//builder.Services.AddScoped<ICartRepository, CartService>();
+builder.Services.AddScoped<ICart, CartService>();
 builder.Services.AddScoped<IContact, ContactService>();
 builder.Services.AddScoped<IContest, ContestService>();
 builder.Services.AddScoped<IFaq, FaqService>();

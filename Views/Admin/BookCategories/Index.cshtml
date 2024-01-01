@@ -1,0 +1,47 @@
+@model IEnumerable<JamesRecipes.Models.CategoriesBook>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_FELayout.cshtml";
+}
+<h2 class="card-title fw-semibold mb-4">Recipe Management</h2>
+
+<p>
+    <a asp-action="Create" asp-controller="BookCategoriesManagement">Create New Book Category</a>
+</p>
+<div><p style="color: red">@TempData["msgDelete"]</p></div>
+
+
+<table class="table ">
+    <thead>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryBookId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-controller="BookCategoriesManagement" asp-route-id="@item.CategoryBookId">EditName</a> | 
+                <a asp-action="Delete" asp-controller="BookCategoriesManagement" asp-route-id="@item.CategoryBookId">Delete</a> | 
+                <a asp-action="GetRecipeByCategory" asp-controller="BookCategoriesManagement" asp-route-id="@item.CategoryBookId">View recipes</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
