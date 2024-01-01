@@ -72,6 +72,11 @@
                                                     <li><a asp-action="MyProfile" asp-controller="Account" asp-route-id="@user.UserId">My profile</a></li>
                                                         <li><a asp-action="Register" asp-controller="Paypal" asp-route-id="@user.UserId">Register Member</a></li>
                                                     <li><a asp-action="ChangePassword" asp-controller="Account" asp-route-id="@user.UserId">Change password</a></li>
+                                                    @if (user.RoleId == 1)
+                                                    {
+                                                        <li><a asp-action="Index" asp-controller="Dashboard">Manage</a></li>
+
+                                                    }
                                                     <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
                                                 </ul>
                                             }

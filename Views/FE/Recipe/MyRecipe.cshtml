@@ -76,6 +76,7 @@
                                                 Premium: <input asp-for="@item.IsMembershipOnly" type="checkbox" class="recipe-premium-switch" id="premium-switch-@item.RecipeId" data-recipe-id="@item.RecipeId">
                                             </div>
                                         }
+                                        <a asp-action="UpdateRecipe" asp-controller="Recipe" asp-route-id="@item.RecipeId"><button class="btn btn-info">Update</button></a>
                                         
                                     }
                                     <form asp-action="DeleteMyRecipe" asp-controller="Recipe" asp-route-recipeId="@item.RecipeId" asp-route-userId="@item.UserId" method="post" onsubmit="return confirmDelete()">

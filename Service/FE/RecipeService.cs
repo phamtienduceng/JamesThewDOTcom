@@ -26,7 +26,17 @@ public class RecipeService: IRecipe
 
     public Recipe GetRecipe(int id)
     {
-        var rep = _db.Recipes.Include(r=>r.Feedbacks).SingleOrDefault(r => r.RecipeId == id);
+        var rep = _db.Recipes
+            .Include(r=>r.Feedbacks)
+            .Include(f=>f.CategoryRecipe)
+            .ThenInclude(f=>f.Recipes)
+            .SingleOrDefault(r => r.RecipeId == id);
+        return rep ?? null!;
+    }
+
+    public Recipe GetOneRecipe(int id)
+    {
+        var rep = _db.Recipes.SingleOrDefault(r => r.RecipeId == id);
         return rep ?? null!;
     }
 
@@ -150,6 +160,20 @@ public class RecipeService: IRecipe
             _db.Recipes.Remove(rep);
             _db.SaveChanges();
         }
+    }
+
+    public void UpdateRecipe(int id, Recipe newRecipe)
+    {
+        var rep = GetOneRecipe(id);
+        rep!.Title = newRecipe.Title;
+        rep.Ingredients = newRecipe.Ingredients;
+        rep.Procedure = newRecipe.Procedure;
+        rep.Timeneeds = newRecipe.Timeneeds;
+        rep.Image = newRecipe.Image;
+        rep.VideoUrl = newRecipe.VideoUrl;
+        rep.CategoryRecipeId = newRecipe.CategoryRecipeId;
+        _db.Update(rep);
+        _db.SaveChanges();
     }
 
     public List<Recipe> RelatedRecipes()

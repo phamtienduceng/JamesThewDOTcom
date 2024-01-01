@@ -1,77 +1,71 @@
-@model IEnumerable<model.Models.ViewTipManagement>
+@model IEnumerable<Tip>
 @{
     Layout = "_FELayout";
     ViewData["Title"] = "Tips";
 }
 
-
 <h2 class="card-title fw-semibold mb-4">Tip Management</h2>
 
-<table class="table ">
+<table class="table">
     <thead>
-    <tr>
-        <th>
-            Id
-        </th>
-        <th>
-            Title
-        </th>
-        <th>
-            Category
-        </th>
-        <th>
-            Rating
-        </th>
-        <th>
-            Status
-        </th>
-        <th>
-            Date post
-        </th>
-        <th>
-            User
-        </th>
-        <th>
-            Role
-        </th>
-        <th>
-            Action
-        </th>
-        
-    </tr>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Rating</th>
+            <th>Status</th>
+            <th>Date post</th>
+            <th>User</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipCategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipCreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoleName)
-            </td>
-            @*<td>
-                <a asp-action="GetTip" asp-controller="TipManagement" asp-route-id="@item.TipId">Detail</a> | 
-            </td>*@
-        </tr>
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryTip.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @if (item.User != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.User.Username)
+                    }
+                    else
+                    {
+                        <span>N/A</span>
+                    }
+                </td>
+                <td>
+                    @if (item.User != null && item.User.Role != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.User.Role.RoleName)
+                    }
+                    else
+                    {
+                        <span>N/A</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="GetTip" asp-controller="TipManagement" asp-route-id="@item.TipId">Detail</a> |
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -288,6 +288,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvUmVjaXBlL1NpbmdsZVJlY2lwZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Applications/Development/AD/JamesRecipes/Views/FE/Recipe/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvUmVjaXBlL1VwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Applications/Development/AD/JamesRecipes/Views/FE/Tip/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvVGlwL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -318,10 +322,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Applications/Development/AD/JamesRecipes/Views/Shared/_CommentsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Db21tZW50c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Applications/Development/AD/JamesRecipes/Views/Shared/_RelatedRecipesPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19SZWxhdGVkUmVjaXBlc1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Applications/Development/AD/JamesRecipes/Views/Shared/_ValidationScriptsPartial.cshtml]

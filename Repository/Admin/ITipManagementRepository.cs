@@ -1,10 +1,10 @@
-using model.Models;
+using JamesRecipes.Models;
 
 namespace JamesRecipes.Repository.Admin;
 
 public interface ITipManagementRepository
 {
-    /*List<ViewTipManagement> GetAllTips();
+    List<Tip> GetAllTips();
     
-    ViewTipManagement GetTip(int id);*/
+    Tip GetTip(int id);
 }

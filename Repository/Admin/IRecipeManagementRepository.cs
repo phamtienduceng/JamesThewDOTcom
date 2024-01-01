@@ -1,10 +1,13 @@
-using model.Models;
+using JamesRecipes.Models;
+using X.PagedList;
 
 namespace JamesRecipes.Repository.Admin;
 
 public interface IRecipeManagementRepository
 {
-    /*List<ViewRecipeManagement> GetAllRecipes();
+    List<Recipe> GetAllRecipes();
 
-    ViewRecipeManagement GetRecipe(int id);*/
+    Recipe GetRecipe(int id);
+
+    IPagedList<Recipe> PagedList(int page, int pageSize, List<Recipe> recipes);
 }

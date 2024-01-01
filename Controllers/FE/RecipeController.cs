@@ -148,11 +148,42 @@ public class RecipeController : Controller
         _recipe.DeleteMyRecipe(recipeId);
         return RedirectToAction("GetRecipesByUser", new {id = userId});
     }
-    
-    [HttpGet("post_comment")]
-    public IActionResult RelatedRecipes()
+
+    [HttpGet("update_recipe")]
+    public IActionResult UpdateRecipe(int id)
     {
-        var reps = _recipe.RelatedRecipes();
-        return PartialView("_RelatedRecipesPartial", reps);
+        ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName");
+        var rep = _recipe.GetRecipe(id);
+        return View("~/Views/FE/Recipe/Update.cshtml", rep);
     }
+    
+    /*[HttpPost("update_recipe")]
+    public IActionResult UpdateRecipe(int id, Recipe newRecipe, IFormFile file)
+    {
+        var rep = _recipe.get
+        if (rep != null)
+        {
+            if (ModelState.IsValid)
+            {
+                if (file != null)
+                {
+                    var path = Path.Combine("wwwroot/fe/img", file.FileName);
+                    var stream = new FileStream(path, FileMode.Create);
+                    file.CopyToAsync(stream);
+                    newRecipe.Image = "fe/img/" + file.FileName;
+                    _recipe.UpdateRecipe(id, newRecipe);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    newRecipe.Image = rep.Image;
+                    _recipe.UpdateRecipe(id, newRecipe);
+                    return RedirectToAction("Index");
+                }
+            }
+        }
+            
+        
+        return View("~/Views/FE/Recipe/Update.cshtml");
+    }*/
 }

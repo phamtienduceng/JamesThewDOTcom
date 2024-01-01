@@ -1,21 +1,21 @@
-@model model.Models.ViewTipManagement
+@model Tip
 @{
   Layout = "_FELayout";
   ViewData["Title"] = "Recipes";
 }
 
 <h2 class="card-title fw-semibold mb-4">Recipe Management</h2>
-<h1 class="text-center mb-4"> @Html.DisplayFor(m => m.TipTitle)</h1>
+<h1 class="text-center mb-4"> @Html.DisplayFor(m => m.Title)</h1>
 
 <div class="row">
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
                 <h3>Id: <span class="badge bg-primary">@Html.DisplayFor(m => m.TipId)</span></h3>
-                <h3>Category: <span class="badge bg-secondary">@Html.DisplayFor(m => m.TipCategoryName)</span></h3>
-                <h3>Date post: @Html.DisplayFor(m => m.TipCreatedAt)</h3>
-                <h3>User: @Html.DisplayFor(m => m.Username)</h3>
-                <h3>Role: <span class="badge bg-info">@Html.DisplayFor(m => m.RoleName)</span></h3>
+                <h3>Category: <span class="badge bg-secondary">@Html.DisplayFor(m => m.CategoryTip.CategoryName)</span></h3>
+                <h3>Date post: @Html.DisplayFor(m => m.CreatedAt)</h3>
+                <h3>User: @Html.DisplayFor(m => m.User!.Username)</h3>
+                <h3>Role: <span class="badge bg-info">@Html.DisplayFor(m => m.User!.Role!.RoleName)</span></h3>
             </div>
         </div>
     </div>
@@ -24,10 +24,25 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <h3>Contents: @Html.DisplayFor(m => m.TipContent)</h3>
-                <h3>Rating: <span class="badge bg-warning">@Html.DisplayFor(m => m.TipRating)</span></h3>
-                <h3>Status: <span class="badge bg-success">@Html.DisplayFor(m => m.TipStatus)</span></h3>
+                <h3>Contents: @Html.DisplayFor(m => m.Content)</h3>
+                <h3>Rating: <span class="badge bg-warning">@Html.DisplayFor(m => m.Rating)</span></h3>
+                <h3>Status: <span class="badge bg-success">@Html.DisplayFor(m => m.Status)</span></h3>
             </div>
+        </div>
+    </div>
+    
+    <div class="col-md-12">
+        <div class="list-group mb-4">
+            @foreach (var feedback in Model.Feedbacks)
+            {
+                <div class="list-group-item mb-4">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="mb-1"><strong>@feedback.User!.Username</strong></h5>
+                        <small>Rating: @feedback.Rating</small>
+                    </div>
+                    <p class="mb-1">@feedback.Content</p>
+                </div>
+            }
         </div>
     </div>
 </div>
