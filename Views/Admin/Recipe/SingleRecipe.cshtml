@@ -15,7 +15,7 @@
                 <h3>Category: <span class="badge bg-secondary">@Html.DisplayFor(m => m.CategoryRecipe.CategoryName)</span></h3>
                 <h3>Date post: @Html.DisplayFor(m => m.CreatedAt)</h3>
                 <h3>User: @Html.DisplayFor(m => m.User!.Username)</h3>
-                <h3>Role: <span class="badge @(Model.User!.Role!.RoleId == 1 ? "bg-danger" : "bg-info")">@Html.DisplayFor(m => m.User!.Role!.RoleName)</span></h3>
+                @*<h3>Role: <span class="badge @(Model.User!.Role!.RoleId == 1 ? "bg-danger" : "bg-info")">@Html.DisplayFor(m => m.User!.Role!.RoleName)</span></h3>*@
             </div>
         </div>
     </div>

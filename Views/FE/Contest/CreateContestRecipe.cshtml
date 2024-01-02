@@ -1,4 +1,5 @@
-﻿@model JamesRecipes.Models.ContestEntry
+﻿@*
+@model JamesRecipes.Models.ContestEntry
 
 @{
     ViewData["Title"] = "CreateContestRecipe";
@@ -11,7 +12,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateContestRecipe">
+        <form asp-action="CreateContestRecipe" asp-controller="Contest">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label for="ContestId" class="control-label">Contest</label>
@@ -42,5 +43,6 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+*@
 
 

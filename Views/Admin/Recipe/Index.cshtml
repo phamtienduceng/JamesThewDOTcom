@@ -53,9 +53,9 @@
             <td class="@(item.User!.RoleId == 1 ? "text-danger" : "")">
                 @Html.DisplayFor(modelItem => item.User!.Role!.RoleName)
             </td>
-            @*<td>
+            <td>
                 <a asp-action="GetRecipe" asp-controller="RecipeManagement" asp-route-id="@item.RecipeId">Detail</a> | 
-            </td>*@
+            </td>
         </tr>
     }
     </tbody>

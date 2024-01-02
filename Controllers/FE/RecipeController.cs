@@ -174,11 +174,11 @@ public class RecipeController : Controller
 
 
     // đoạn mã này của anh Trí để tạo recipe riêng cho contest entries
-    public IActionResult CreateForContest(int contestId)
+    /*public IActionResult CreateForContest(int contestId)
     {
         ViewBag.ContestId = contestId;
         ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName");
         return View("~/Views/FE/Recipe/CreateForContest.cshtml");
-    }
+    }*/
 
 }

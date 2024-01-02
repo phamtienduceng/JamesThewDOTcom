@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JamesRecipes.Models;
+namespace JamesRecipes.Models.View;
 
 public partial class ViewHomepage
 {

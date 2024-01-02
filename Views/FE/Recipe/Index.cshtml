@@ -137,7 +137,7 @@
                                         var user = JsonConvert.DeserializeObject<User>(userJson);
                                         if (@item.UserId == user!.UserId)
                                         {
-                                            <a asp-action="UpdateRecipe" asp-controller="Recipe" asp-route-id="@item.RecipeId"><button class="btn btn-info">Update</button></a>
+                                            @*<a asp-action="UpdateRecipe" asp-controller="Recipe" asp-route-id="@item.RecipeId"><button class="btn btn-info">Update</button></a>*@
 
                                         }
                                     }
