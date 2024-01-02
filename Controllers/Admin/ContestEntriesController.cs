@@ -175,23 +175,39 @@ namespace JamesRecipes.Controllers.Admin
             return (_context.ContestEntries?.Any(e => e.EntryId == id)).GetValueOrDefault();
         }
 
-        // POST: ContestEntries/CreateRecipe/5
-        [HttpPost("CreateRecipe")]
-        public IActionResult CreateRecipe(int contestId, int recipeId)
+        // CreateContestRecipe
+        // GET: ContestEntries/CreateContestRecipe
+        public IActionResult CreateContestRecipe()
         {
-            var newEntry = new ContestEntry
-            {
-                ContestId = contestId,
-                RecipeId = recipeId,
-
-                CreatedAt = DateTime.Now,
-                Score = 0,
-                Image = null
-            };
-            _context.Add(newEntry);
-            _context.SaveChanges();
-            return RedirectToAction("Index");
+            ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "Title");
+            ViewData["RecipeId"] = new SelectList(_context.Recipes, "RecipeId", "Title");
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "Username");
+            return View("~/Views/fe/Contest/CreateContestRecipe.cshtml");
         }
+
+        // POST: ContestEntries/CreateContestRecipe
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateContestRecipe([Bind("EntryId,ContestId,UserId,RecipeId,CreatedAt,Score,Image")] ContestEntry contestEntry)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(contestEntry);
+                await _context.SaveChangesAsync();
+                // after saving, redirect to the home page
+                return RedirectToAction("Index", "Home");
+            }
+            ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "Title", contestEntry.ContestId);
+            ViewData["RecipeId"] = new SelectList(_context.Recipes, "RecipeId", "Title", contestEntry.RecipeId);
+            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "Username", contestEntry.UserId);
+            return View("~/Views/fe/Contest/CreateContestRecipe.cshtml", contestEntry);
+        }
+
+
+
+
+
+
 
     }
 }
