@@ -40,7 +40,7 @@ public class TipController : Controller
         tips = _tip.Sorting(tips, sortOrder);
         
         page = page < 1 ? 1 : page;
-        var ts = _tip.PageList(page, 3, tips);
+        var ts = _tip.PageList(page, 9, tips);
 
         return View("~/Views/FE/Tip/Index.cshtml", ts);
     }
@@ -108,16 +108,52 @@ public class TipController : Controller
         _tip.SwitchStatus(id, status);
         return RedirectToAction("GetTipsByUser");
     }
-
-    public IActionResult GetTipsByUser(int id)
+    
+    [HttpPost("tip_switch_premium")]
+    public IActionResult SwitchPremium(int id, bool isPre)
     {
+        _tip.PremiumStatus(id, isPre);
+        return RedirectToAction("GetTipsByUser");
+    }
+
+    public IActionResult GetTipsByUser(int id, string sortOrder, string searchString, int? categoryId, int? ratingMin, int? ratingMax, int page = 1)
+    {
+        ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
+        ViewData["RatingSort"] = sortOrder == "rating" ? "rating_desc" : "rating";
+        ViewData["CurrentFilter"] = searchString;
+
         var tips = _tip.GetTipsByUser(id);
-        return View("~/Views/FE/Tip/MyTip.cshtml", tips);
+
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            tips = _tip.Search(searchString);
+        }
+        
+        ViewBag.CategoryId = new SelectList(_categoriesTip.GetCategoriesTips(), "CategoryTipId", "CategoryName", categoryId);
+        if (categoryId != 0 || ratingMin != 0 || ratingMax != 0)
+        {
+            tips = _tip.Filter(categoryId, ratingMin, ratingMax, tips);
+        }
+        tips = _tip.Sorting(tips, sortOrder);
+        
+        page = page < 1 ? 1 : page;
+        var ts = _tip.PageList(page, 9, tips);
+
+        return View("~/Views/FE/Tip/MyTip.cshtml", ts);
     }
 
     public IActionResult DeleteMyTip(int tipId, int userId)
     {
         _tip.DeleteMyTip(tipId);
         return RedirectToAction("GetTipsByUser", new {id = userId});
+    }
+    
+    [HttpGet("update_tip")]
+    public IActionResult UpdateTip(int id)
+    {
+        ViewBag.CategoryId = new SelectList(_categoriesTip.GetCategoriesTips(), "CategoryTipId", "CategoryName");
+        var tip = _tip.GetTip(id);
+        return View("~/Views/FE/Tip/Update.cshtml", tip);
     }
 }

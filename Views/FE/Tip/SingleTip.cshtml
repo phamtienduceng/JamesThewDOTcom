@@ -6,67 +6,158 @@
 
 @{
     var httpContext = Context.Request.HttpContext;
-    var userJson = httpContext.Session.GetString("user");
-    var adminJson = httpContext.Session.GetString("admin");
+    var userJson = httpContext.Session.GetString("userLogged");
+    
 }
 
-<div class="container">
-  <div class="row">
-      <div class="col-md-6">
-          <div>
-              <img class="img-fluid mb-4" src="~/@Model.Image" alt="Recipe Image" />
-          </div>
-      </div>
-      
-      <div class="col-md-6">
-          <h1>@Model.Title</h1>
-          <div class="mt-4">
-              <h3>Content</h3>
-              <p>@Model.Content</p>
-          </div>
-          <div class="mt-4">
-              <h3>Date Posted</h3>
-              <p>@Model.CreatedAt</p>
-          </div>
-      </div>
-  </div>
-  <div class="col-md-12">
-      <div class="mt-4">
-          <h3>Comments</h3>
-          <div id="commentsList">
-              @Html.Partial("_CommentsPartial", Model.Feedbacks)
-          </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<style>
+    .rating {
+        color: #ffc107;
+        font-size: 18px;
+    }
+    .membership-label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: lightskyblue;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 10px;
+        font-weight: bold;
+    }
+</style>
 
-      </div>
+<div class="container">
+<p class="text-center text-danger" style="font-size: 50px">@Model.Title</p>
+    <div class="row" style="margin: 50px 0 20px 0">
+        <div class="col-md-6">
+            <div>
+                <img class="img-fluid mb-4" src="~/@Model.Image" alt="Tip Image" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mt-0">
+                <h3>Content</h3>
+                <p>@Model.Content</p>
+            </div>
+            <div class="mt-4">
+                <h3>Post by: @Model.User?.Username Role: @Model.User?.Role?.RoleName</h3>
+            </div>
+            <div class="mt-4">
+                <h3>Date Posted</h3>
+                <p>@Model.CreatedAt</p>
+            </div>
+        </div>
+    </div>
+<h1 class="text-center" style="margin-bottom: 30px">How to make @Model.Title?</h1>
+    
+    <div class="col-md-12">
+        <div class="mt-4">
+            <h1 class="text-center" style="margin-bottom: 30px">Comment</h1>
+            <div id="commentsList">
+                @Html.Partial("_CommentsPartial", Model.Feedbacks)
+            </div>
+
+        </div>
       
-      <div class="mt-4">
-          <h3>Add Comment and Rating</h3>
-          @if (!string.IsNullOrEmpty(userJson) || !string.IsNullOrEmpty(adminJson))
-          {
-              var user = !string.IsNullOrEmpty(userJson)
-                  ? JsonConvert.DeserializeObject<User>(userJson)
-                  : JsonConvert.DeserializeObject<User>(adminJson);
-                     
-            <form id="commentForm">
-               <input type="hidden" name="tipId" value="@Model.TipId" />
-               <input type="hidden" name="userId" value="@user.UserId" />
-               <div class="form-group">
-                  <label>Content:</label>
-                  <textarea class="form-control" name="content"></textarea>
-               </div>
-               <div class="form-group">
-                  <label>Rating:</label>
-                  <input id="star-rating" type="number" class="rating" name="rating" data-min="0" data-max="5" data-step="1" data-size="md">
-               </div>
-               <button type="button" class="btn btn-primary" onclick="postComment()">Submit Feedback</button>
-            </form>
-         }
-         else
-         {
-            <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own tips.</h3>
-         }
-      </div>
-  </div>
+        <div class="mt-4">
+            <h3>Add Comment and Rating</h3>
+            @if (!string.IsNullOrEmpty(userJson))
+            {
+                var user = JsonConvert.DeserializeObject<User>(userJson);
+                <form id="commentForm">
+                    <input type="hidden" name="tipId" value="@Model.TipId" />
+                    <input type="hidden" name="userId" value="@user?.UserId" />
+                    <div class="form-group">
+                        <label>Content:</label>
+                        <textarea class="form-control" name="content"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Rating:</label>
+                        <input id="star-rating" type="number" class="rating" name="rating" data-min="0" data-max="5" data-step="1" data-size="md">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="postComment()">Submit Feedback</button>
+                </form>
+            }
+            else
+            {
+                <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own tips.</h3>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <div class="recepie_area" style="margin-top: -50px">
+                <h1 class="text-center mb-4">Related tips</h1>
+                <div class="container">
+                    <div class="row">
+                        @if (!string.IsNullOrEmpty(userJson))
+                        {
+                            var user = JsonConvert.DeserializeObject<User>(userJson);
+                            @foreach (var item in
+                                (@user == null || (@user.RoleId == 2 ))
+                                    ? Model.CategoryTip.Tips.Where(r => r.TipId != this.Model.TipId && r.IsMembershipOnly == false).OrderBy(r => Guid.NewGuid()).Take(4)
+                                    : Model.CategoryTip.Tips.Where(r => r.TipId != this.Model.TipId).OrderBy(r => Guid.NewGuid()).Take(4))
+                            {
+                                <div class="col-xl-3 col-lg-3 col-md-6" style="position: relative;">
+                                    @if (item.IsMembershipOnly)
+                                    {
+                                        <span class="membership-label">Membership</span>
+                                    }
+                                    <div class="single_recepie text-center">
+                                        <div class="recepie_thumb mt-2">
+                                            <img style="height: 220px" src="~/@item.Image" alt="@item.Title">
+                                        </div>
+                                        <h3>@item.Title</h3>
+                                        <span>@item.CreatedAt</span>
+                                        <div class="rating mb-2">
+                                            @for (int i = 0; i < item.Rating; i++)
+                                            {
+                                                <i class="fas fa-star"></i>
+                                            }
+                                        </div>
+                                        <a asp-action="Singletip" class="line_btn" asp-controller="tip" asp-route-id="@item.TipId">View tip's detail</a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            @foreach (var item in Model.CategoryTip.Tips
+                                .Where(r => r.TipId != this.Model.TipId && r.IsMembershipOnly == false)
+                                .OrderBy(r => Guid.NewGuid())
+                                .Take(4))
+                            {
+                                <div class="col-xl-3 col-lg-3 col-md-6" style="position: relative;">
+                                    @if (item.IsMembershipOnly)
+                                    {
+                                        <span class="membership-label">Membership</span>
+                                    }
+                                    <div class="single_recepie text-center">
+                                        <div class="recepie_thumb mt-2">
+                                            <img style="height: 220px" src="~/@item.Image" alt="@item.Title">
+                                        </div>
+                                        <h3>@item.Title</h3>
+                                        <span>@item.CreatedAt</span>
+                                        <div class="rating mb-2">
+                                            @for (int i = 0; i < item.Rating; i++)
+                                            {
+                                                <i class="fas fa-star"></i>
+                                            }
+                                        </div>
+                                        <a asp-action="SingleTip" class="line_btn" asp-controller="Tip" asp-route-id="@item.TipId">View tip's detail</a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -89,4 +180,3 @@
        $('#star-rating').rating();
    });
 </script>
-

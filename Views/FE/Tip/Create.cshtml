@@ -7,7 +7,7 @@
 
 @{
     var httpContext = Context.Request.HttpContext;
-    var userJson = httpContext.Session.GetString("user");
+    var userJson = httpContext.Session.GetString("userLogged");
     var user = JsonConvert.DeserializeObject<User>(userJson);
 }
 

@@ -45,7 +45,6 @@ public class RecipeController : Controller
             
         }        
 
-
         if (!string.IsNullOrEmpty(searchString))
         {
             reps = _recipe.Search(searchString);
@@ -109,8 +108,6 @@ public class RecipeController : Controller
     [HttpPost("post_comment")]
     public IActionResult PostFeedback(int recipeId, int userId, string content, int rating)
     {
-        // Validate or perform necessary checks
-
         var newFeedback = new Feedback
         {
             RecipeId = recipeId,
@@ -140,10 +137,33 @@ public class RecipeController : Controller
         return RedirectToAction("GetRecipesByUser");
     }
 
-    public IActionResult GetRecipesByUser(int id)
+    public IActionResult GetRecipesByUser(int id, string sortOrder, string searchString, int? categoryId, TimeSpan? timeMin, TimeSpan? timeMax, int? ratingMin, int? ratingMax, int page = 1)
     {
+        ViewData["NameSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
+        ViewData["RatingSort"] = sortOrder == "rating" ? "rating_desc" : "rating";
+        ViewData["CurrentFilter"] = searchString;
+        
+        var userJson = HttpContext.Session.GetString("userLogged");
+        
         var reps = _recipe.GetRecipesByUser(id);
-        return View("~/Views/FE/Recipe/MyRecipe.cshtml", reps);
+
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            reps = _recipe.Search(searchString);
+        }
+        
+        ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName", categoryId);
+        if (categoryId != 0 || timeMin != null || timeMax != null || ratingMin != 0 || ratingMax != 0)
+        {
+            reps = _recipe.Filter(categoryId, timeMin, timeMax, ratingMin, ratingMax, reps);
+        }
+        reps = _recipe.Sorting(reps, sortOrder);
+        
+        page = page < 1 ? 1 : page;
+        var recipes = _recipe.PageList(page, 9, reps);
+        
+        return View("~/Views/FE/Recipe/MyRecipe.cshtml", recipes);
     }
 
     public IActionResult DeleteMyRecipe(int recipeId, int userId)

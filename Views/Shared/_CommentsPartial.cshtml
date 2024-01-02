@@ -6,8 +6,13 @@
         {
             <div class="list-group-item mb-4">
                 <div class="d-flex justify-content-between">
-                    <h5 class="mb-1"><strong>@feedback.UserId</strong></h5>
-                    <small>Rating: @feedback.Rating</small>
+                    <h5 class="mb-1 text-danger"><strong>@feedback.User?.Username</strong></h5>
+                    <small>
+                        @for (int i = 0; i < @feedback.Rating; i++)
+                        {
+                            <i class="fas fa-star" style="color: goldenrod"></i>
+                        }
+                    </small>
                 </div>
                 <p class="mb-1">@feedback.Content</p>
             </div>
