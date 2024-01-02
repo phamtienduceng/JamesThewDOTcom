@@ -11,6 +11,8 @@ public interface ITip
     
     Tip GetTip(int id);
 
+    Tip GetOneTip(int id);
+
     List<Tip> GetTipsByUser(int id);
     
     void PostTip(Tip newTip);
@@ -20,6 +22,8 @@ public interface ITip
     List<Tip> Search(string searchString);
 
     void SwitchStatus(int id, bool status);
+    
+    void PremiumStatus(int id, bool isPre);
 
     IPagedList<Tip> PageList(int page, int pageSize, List<Tip> tips);
 

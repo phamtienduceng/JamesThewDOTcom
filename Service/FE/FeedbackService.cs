@@ -1,5 +1,6 @@
 using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
+using Microsoft.EntityFrameworkCore;
 
 namespace JamesRecipes.Service.FE;
 
@@ -15,6 +16,7 @@ public class FeedbackService: IFeedback
     public List<Feedback> GetFeedbacksByRecipeId(int recipeId)
     {
         return _db.Feedbacks
+            .Include(r=>r.User)
             .Where(f => f.RecipeId == recipeId)
             .ToList();
     }

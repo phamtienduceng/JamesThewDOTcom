@@ -16,12 +16,20 @@ public class RecipeService: IRecipe
 
     public List<Recipe> GetAllRecipes()
     {
-        return _db.Recipes.Where(r=>r.Status == true && r.IsMembershipOnly == false).ToList();
+        return _db.Recipes
+            .Include(r=>r.User)
+            .ThenInclude(r=>r.Role)
+            .Include(r=>r.CategoryRecipe)
+            .Where(r=>r.Status == true && r.IsMembershipOnly == false).ToList();
     }
 
     public List<Recipe> GetAllRecipesPremium()
     {
-        return _db.Recipes.Where(r => r.Status == true).ToList();
+        return _db.Recipes
+            .Include(r=>r.User)
+            .ThenInclude(r=>r.Role)
+            .Include(r=>r.CategoryRecipe)
+            .Where(r => r.Status == true).ToList();
     }
 
     public Recipe GetRecipe(int id)
@@ -103,7 +111,6 @@ public class RecipeService: IRecipe
             rep.IsMembershipOnly = isPre;
             _db.SaveChanges();
         }
-
     }
 
     public IPagedList<Recipe> PageList(int page, int pageSize,  List<Recipe> recipes)

@@ -30,6 +30,11 @@ public class TipService: ITip
         return tip ?? null!;
     }
 
+    public Tip GetOneTip(int id)
+    {
+        return _db.Tips.SingleOrDefault(t => t.TipId == id)!;
+    }
+
     public List<Tip> GetTipsByUser(int id)
     {
         return _db.Tips.Where(t => t.UserId == id).ToList();
@@ -82,6 +87,16 @@ public class TipService: ITip
         {
             tip.Status = status;
             _db.SaveChanges(); 
+        }
+    }
+
+    public void PremiumStatus(int id, bool isPre)
+    {
+        var tip = _db.Tips.SingleOrDefault(t => t.TipId == id);
+        if (tip != null)
+        {
+            tip.IsMembershipOnly = isPre;
+            _db.SaveChanges();
         }
     }
 
