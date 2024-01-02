@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using JamesRecipes.Data;
 using JamesRecipes.Repository.Admin;
@@ -45,6 +45,7 @@ builder.Services.AddScoped<ICategoriesTip, CategoriesTipService>();
 builder.Services.AddScoped<IFeedback, FeedbackService>();
 builder.Services.AddScoped<IHome, HomeService>();
 builder.Services.AddScoped<IContestLogin, ContestLoginService>();
+
 
 // Add services to the container.
 

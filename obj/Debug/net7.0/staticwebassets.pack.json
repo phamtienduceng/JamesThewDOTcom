@@ -61,6 +61,30 @@
       "PackagePath": "staticwebassets\\Admin\\images\\contest\\5.png"
     },
     {
+      "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\Admin\\images\\contestentries\\1.jpg",
+      "PackagePath": "staticwebassets\\Admin\\images\\contestentries\\1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\Admin\\images\\contestentries\\2.jpg",
+      "PackagePath": "staticwebassets\\Admin\\images\\contestentries\\2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\Admin\\images\\contestentries\\3.jpg",
+      "PackagePath": "staticwebassets\\Admin\\images\\contestentries\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\Admin\\images\\contestentries\\4.png",
+      "PackagePath": "staticwebassets\\Admin\\images\\contestentries\\4.png"
+    },
+    {
+      "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\Admin\\images\\contestentries\\5.png",
+      "PackagePath": "staticwebassets\\Admin\\images\\contestentries\\5.png"
+    },
+    {
+      "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\Admin\\images\\contestentries\\scramble egg.jpg",
+      "PackagePath": "staticwebassets\\Admin\\images\\contestentries\\scramble egg.jpg"
+    },
+    {
       "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\Admin\\images\\logos\\dark-logo.svg",
       "PackagePath": "staticwebassets\\Admin\\images\\logos\\dark-logo.svg"
     },
@@ -2627,6 +2651,10 @@
     {
       "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\FE\\img\\Kim_Chaewon_LE_SSERAFIM_220923.jpg",
       "PackagePath": "staticwebassets\\FE\\img\\Kim_Chaewon_LE_SSERAFIM_220923.jpg"
+    },
+    {
+      "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\FE\\img\\Screenshot 2023-12-28 104927.png",
+      "PackagePath": "staticwebassets\\FE\\img\\Screenshot 2023-12-28 104927.png"
     },
     {
       "Id": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\FE\\img\\banh-mi-thit-bo-nuong-thumbnail-1.jpg",

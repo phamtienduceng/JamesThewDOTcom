@@ -73,7 +73,7 @@
          
         <a asp-action="Create" asp-controller="Recipe" asp-route-id="ContestID">Submit New Recipe</a>
         ||
-        <a href="@Url.Action("SubmitFromInventory", "Contest")">Submit From Inventory</a>
+        <a asp-action="CreateContestRecipe" asp-controller="ContestEntries">Submit From Inventory</a>
     </div>
 }
 else if (user != null)
@@ -91,4 +91,8 @@ else
 
 <div>
     <a asp-action="Index" asp-controller="Contest">Back to Contest List</a>
+</div>
+
+<div>
+    <a asp-action="CreateContestRecipe" asp-controller="ContestEntries">View Contest Entries</a>
 </div>

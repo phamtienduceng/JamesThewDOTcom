@@ -1,4 +1,5 @@
-using JamesRecipes.Models;
+﻿using JamesRecipes.Models;
+using JamesRecipes.Repository.Admin;
 using JamesRecipes.Repository.FE;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,12 +14,14 @@ public class RecipeController : Controller
     private readonly IRecipe _recipe;
     private readonly ICategoriesRecipe _categoriesRecipe;
     private readonly IFeedback _feedback;
+    
 
     public RecipeController(IRecipe recipe, ICategoriesRecipe categoriesRecipe, IFeedback feedback)
     {
         _recipe = recipe;
         _categoriesRecipe = categoriesRecipe;
         _feedback = feedback;
+        
     }
 
     public IActionResult Index(string sortOrder, string searchString, int? categoryId, TimeSpan? timeMin, TimeSpan? timeMax, int? ratingMin, int? ratingMax, int page = 1)
@@ -148,4 +151,14 @@ public class RecipeController : Controller
         _recipe.DeleteMyRecipe(recipeId);
         return RedirectToAction("GetRecipesByUser", new {id = userId});
     }
+
+
+    // đoạn mã này của anh Trí để tạo recipe riêng cho contest entries
+    public IActionResult CreateForContest(int contestId)
+    {
+        ViewBag.ContestId = contestId;
+        ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName");
+        return View("~/Views/FE/Recipe/CreateForContest.cshtml");
+    }
+
 }
