@@ -138,10 +138,18 @@
                                     <h3 style="font-family: sastify, sans-serif; color: indianred; ">@item.Title</h3>
                                     <span>@item.CreatedAt</span>
                                     <p class="mb-2">Time Needs: @item.Timeneeds</p>
+                                    
                                     <div class="rating mb-2">
-                                        @for (int i = 0; i < item.Rating; i++)
+                                        @if (item.Rating != null)
                                         {
-                                            <i class="fas fa-star"></i>
+                                            for (int i = 0; i < item.Rating; i++)
+                                            {
+                                                <i class="fas fa-star"></i>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <h3 style="font-size: 18px">No rated yet</h3>
                                         }
                                     </div>
                                     @if (!string.IsNullOrEmpty(userJson))

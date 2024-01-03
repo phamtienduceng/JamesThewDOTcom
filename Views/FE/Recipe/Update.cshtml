@@ -1,4 +1,3 @@
-@*
 @model Recipe
 
 @{
@@ -6,58 +5,67 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h1 class="text-center">Update</h1>
 
-<form asp-action="UpdateRecipe" asp-controller="Recipe" asp-route-id="@Model.RecipeId" method="post" enctype="multipart/form-data">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="container">
+    <form asp-action="UpdateRecipe" asp-controller="Recipe" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input asp-for="RecipeId" name="id" value="@Model.RecipeId" type="hidden"/>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Title" class="control-label">Title</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
 
-    <div class="form-group">
-        <label asp-for="Title" class="control-label"></label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
+            <div class="form-group col-md-6">
+                <label asp-for="CategoryRecipeId" class="control-label">Category</label>
+                <select asp-for="CategoryRecipeId" asp-items="ViewBag.CategoryId" class="form-control">
+                    <option value="">Select Category</option>
+                </select>
+                <span asp-validation-for="CategoryRecipeId" class="text-danger"></span>
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="CategoryRecipeId" class="control-label"></label>
-        <select asp-for="CategoryRecipeId" asp-items="ViewBag.CategoryId" class="form-control"></select>
-        <span asp-validation-for="CategoryRecipeId" class="text-danger"></span>
-    </div>
-    
-    <div class="form-group">
-        <label asp-for="Procedure" class="control-label"></label>
-        <textarea asp-for="Procedure" class="form-control"></textarea>
-        <span asp-validation-for="Procedure" class="text-danger"></span>
-    </div>
-    
-    <div class="form-group">
-        <label asp-for="Ingredients" class="control-label"></label>
-        <textarea asp-for="Ingredients" class="form-control"></textarea>
-        <span asp-validation-for="Ingredients" class="text-danger"></span>
-    </div>
-    
-    <div class="form-group">
-        <label asp-for="Timeneeds" class="control-label"></label>
-        <textarea asp-for="Timeneeds" class="form-control"></textarea>
-        <span asp-validation-for="Timeneeds" class="text-danger"></span>
-    </div>
-    
-    <div class="form-group">
-        <label asp-for="VideoUrl" class="control-label"></label>
-        <textarea asp-for="VideoUrl" class="form-control"></textarea>
-        <span asp-validation-for="VideoUrl" class="text-danger"></span>
-    </div>
-    
-    <div class="form-group">
-        <label asp-for="Image" class="control-label"></label>
-        <input type="file" name="file" class="form-control" />
-        <span asp-validation-for="Image" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Update" class="btn btn-primary" />
-    </div>
-</form>
+        <div class="form-group">
+            <label asp-for="Procedure" class="control-label">Procedure</label>
+            <textarea asp-for="Procedure" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Procedure" class="text-danger"></span>
+        </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-*@
+        <div class="form-group">
+            <label asp-for="Ingredients" class="control-label">Ingredients</label>
+            <textarea asp-for="Ingredients" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Ingredients" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Timeneeds" class="control-label">Time Needs</label>
+            <input asp-for="Timeneeds" class="form-control" />
+            <span asp-validation-for="Timeneeds" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="VideoUrl" class="control-label">Video URL</label>
+            <input asp-for="VideoUrl" class="form-control" />
+            <span asp-validation-for="VideoUrl" class="text-danger"></span>
+        </div>
+        
+        <div>
+            <img alt="@Model.Title" src="~/@Model.Image" style="height: 200px; width: auto"/>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Image" class="control-label">Image</label>
+            <div class="custom-file">
+                <input type="file" name="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>

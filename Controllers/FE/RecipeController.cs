@@ -171,6 +171,14 @@ public class RecipeController : Controller
         _recipe.DeleteMyRecipe(recipeId);
         return RedirectToAction("GetRecipesByUser", new {id = userId});
     }
+    
+    [HttpGet("update_recipe")]
+    public IActionResult UpdateRecipe(int id)
+    {
+        var rep = _recipe.GetOneRecipe(id);
+        ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName");
+        return View("~/Views/FE/Recipe/Update.cshtml", rep);
+    }
 
 
     // đoạn mã này của anh Trí để tạo recipe riêng cho contest entries

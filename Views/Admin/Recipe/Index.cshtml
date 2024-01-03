@@ -8,6 +8,31 @@
 }
 
 <h2 class="card-title fw-semibold mb-4">Recipe Management</h2>
+<div class="row">
+    <div class="col-md-3">
+        <form asp-action="Index" asp-controller="RecipeManagement" method="get">
+            <div class="input-group input-group-sm mb-3">
+                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Enter title here..." />
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-secondary">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-9 d-flex align-items-center justify-content-end">
+        <h5 class="mr-3 mb-0">Sort: </h5>
+        <div class="btn-group btn-group-sm" role="group">
+            <a asp-action="Index" asp-controller="RecipeManagement" asp-route-sortOrder="@ViewData["NameSort"]" class="btn btn-secondary">Title</a>
+            <a asp-action="Index" asp-controller="RecipeManagement" asp-route-sortOrder="@ViewData["DateSort"]" class="btn btn-secondary">Date post</a>
+            <a asp-action="Index" asp-controller="RecipeManagement" asp-route-sortOrder="@ViewData["RatingSort"]" class="btn btn-secondary">Rating</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <table class="table ">
     <thead>
     <tr>
@@ -16,7 +41,7 @@
         <th>Category</th>
         <th>Rating</th>
         <th>Status</th>
-        <th>Date post</th>
+        <th>Premium</th>
         <th>User</th>
         <th>Role</th>
         <th>Action</th>
@@ -43,17 +68,19 @@
                     <input asp-for="@item.Status" type="checkbox" class="recipe-switch" id="switch-@item.RecipeId" data-recipe-id="@item.RecipeId">
                 </div>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
+           <td>
+               <div>
+                   <input asp-for="@item.IsMembershipOnly" disabled="@(item!.User.Role.RoleId != 1 ? "disabled" : null)" type="checkbox" class="recipe-premium-switch" id="switch-@item.RecipeId" data-recipe-id="@item.RecipeId">
+               </div>
+           </td>
             <td>
                 @Html.DisplayFor(modelItem => item.User!.Username)
             </td>
-            <td class="@(item.User!.RoleId == 1 ? "text-danger" : "")">
+            <td class="@(item.User!.RoleId == 1 ? "text-danger" : (item.User!.RoleId == 3 ? "text-indigo" : ""))">
                 @Html.DisplayFor(modelItem => item.User!.Role!.RoleName)
             </td>
             <td>
-                <a asp-action="GetRecipe" asp-controller="RecipeManagement" asp-route-id="@item.RecipeId">Detail</a> | 
+                <a asp-action="GetRecipe" asp-controller="RecipeManagement" asp-route-id="@item.RecipeId">Detail</a> 
             </td>
         </tr>
     }
@@ -71,26 +98,59 @@
         })
 </div>
 
-<script>
-    $(document).ready(function () {
-        $('.recipe-switch').change(function () {
-            var recipeId = $(this).data('recipe-id');
-            var isChecked = $(this).prop('checked');
-            
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("SwitchStatus", "Recipe")',
-                data: { id: recipeId, status: isChecked },
-                success: function () {
-                    console.log('Status updated successfully.');
-                },
-                error: function (error) {
-                    console.error('Error updating status:', error);
-                }
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    @*Change status*@
+    <script>
+        $(document).ready(function () {
+            $('.recipe-switch').change(function () {
+                var recipeId = $(this).data('recipe-id');
+                var isChecked = $(this).prop('checked');
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SwitchStatus", "Recipe")',
+                    data: { id: recipeId, status: isChecked },
+                    success: function () {
+                        console.log('Status updated successfully.');
+                    },
+                    error: function (error) {
+                        console.error('Error updating status:', error);
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
+    
+    @*Change premium status*@
+    <script>
+        $(document).ready(function () {
+            $('.recipe-premium-switch').change(function () {
+                var recipeId = $(this).data('recipe-id');
+                var isChecked = $(this).prop('checked');
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SwitchPremium", "Recipe")',
+                    data: { id: recipeId, isPre: isChecked },
+                    success: function () {
+                        console.log('Change premium status successfully.');
+                    },
+                    error: function (error) {
+                        console.error('Error updating status:', error);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        function confirmDelete() {
+            var result = confirm("Are you sure you want to delete the recipe?");
+            return result;
+        }
+    </script>
+}
 
 
 

@@ -57,6 +57,7 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=127.0.0.1,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -106,6 +107,10 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.UserId).HasColumnName("UserID");
 
+            /*entity.HasOne(d => d.Order).WithMany(p => p.Carts)
+                .HasForeignKey(d => d.Or)
+                .HasConstraintName("FK__Carts__OrderId__2CBDA3B5");*/
+
             entity.HasOne(d => d.User).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__Cart__UserID__6CD828CA");
@@ -127,6 +132,10 @@ public partial class JamesrecipesContext : DbContext
             entity.HasOne(d => d.Cart).WithMany(p => p.CartDetails)
                 .HasForeignKey(d => d.CartId)
                 .HasConstraintName("FK__CartDetai__CartI__6FB49575");
+
+            /*entity.HasOne(d => d.OrderDetail).WithMany(p => p.CartDetails)
+                .HasForeignKey(d => d.OrderDetailId)
+                .HasConstraintName("FK__CartDetai__Order__2EA5EC27");*/
         });
 
         modelBuilder.Entity<CategoriesBook>(entity =>
@@ -303,9 +312,7 @@ public partial class JamesrecipesContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Image).HasMaxLength(255);
-            entity.Property(e => e.Rating)
-                .HasDefaultValueSql("((2.5))")
-                .HasColumnName("rating");
+            entity.Property(e => e.Rating).HasColumnName("rating");
             entity.Property(e => e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Timeneeds).HasColumnName("timeneeds");
             entity.Property(e => e.Title).HasMaxLength(100);
@@ -341,7 +348,6 @@ public partial class JamesrecipesContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Image).HasMaxLength(255);
             entity.Property(e => e.Rating)
-                .HasDefaultValueSql("((2.5))")
                 .HasColumnName("rating");
             entity.Property(e => e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Title).HasMaxLength(100);

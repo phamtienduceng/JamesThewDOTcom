@@ -26,8 +26,8 @@ public class RecipeManagementService: IRecipeManagementRepository
     public Recipe GetRecipe(int id)
     {
         return _db.Recipes.Include(r=>r.Feedbacks)
-            .ThenInclude(f=>f.User)
-            .ThenInclude(f=>f.Role)
+            .ThenInclude(r=>r.User)
+            .Include(f=>f.User).Include(r=>r.User!.Role)
             .Include(f=>f.CategoryRecipe)
             .SingleOrDefault(r => r.RecipeId == id)!;
     }
@@ -35,5 +35,59 @@ public class RecipeManagementService: IRecipeManagementRepository
     public IPagedList<Recipe> PagedList(int page, int pageSize, List<Recipe> recipes)
     {
         return recipes.ToPagedList(page, pageSize);
+    }
+
+    public void SwitchStatus(int id, bool status)
+    {
+        var rep = _db.Recipes.SingleOrDefault(r => r.RecipeId == id);
+        if (rep != null)
+        {
+            rep.Status = status;
+            _db.SaveChanges(); 
+        }
+    }
+
+    public void PremiumStatus(int id, bool isPre)
+    {
+        var rep = _db.Recipes.SingleOrDefault(r => r.RecipeId == id);
+        if (rep != null)
+        {
+            rep.IsMembershipOnly = isPre;
+            _db.SaveChanges();
+        }
+    }
+
+    public List<Recipe> Sorting(List<Recipe> recipes, string sortOrder)
+    {
+        switch (sortOrder)
+        {
+            case "name_desc":
+                recipes = recipes.OrderByDescending(r => r.Title).ToList();
+                break;
+            case "name_asc":
+                recipes = recipes.OrderBy(r => r.Title).ToList();
+                break;
+            case "Date":
+                recipes = recipes.OrderBy(r => r.CreatedAt).ToList();
+                break;
+            case "date_desc":
+                recipes = recipes.OrderByDescending(r => r.CreatedAt).ToList();
+                break;
+            case "rating":
+                recipes = recipes.OrderBy(r => r.Rating).ToList();
+                break;
+            case "rating_desc":
+                recipes = recipes.OrderByDescending(r => r.Rating).ToList();
+                break;
+            default:
+                recipes = recipes.OrderByDescending(r => r.CreatedAt).ToList();
+                break;
+        }
+        return recipes;
+    }
+
+    public List<Recipe> Search(string searchString)
+    {
+        return _db.Recipes.Where(r => r.Title.Contains(searchString)).ToList();
     }
 }
