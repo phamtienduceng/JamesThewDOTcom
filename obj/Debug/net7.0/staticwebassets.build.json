@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "i6V3/+c7roDLxuvJ+1k91pKS43GCRWtQoJ27GpoOQU8=",
+  "Hash": "nBYOuhcbRpgVGYDCNzCpuZ3yamrKUD7qgEmZCFj3hxg=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -11424,6 +11424,23 @@
       "OriginalItemSpec": "wwwroot/FE/img/banner/banner.png"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/books.png",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/banner/books.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/banner/books.png"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/bradcam.png",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -11439,6 +11456,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/FE/img/banner/bradcam.png"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/homepage.png",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/banner/homepage.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/banner/homepage.png"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/portfolio_bg.png",
@@ -11458,6 +11492,23 @@
       "OriginalItemSpec": "wwwroot/FE/img/banner/portfolio_bg.png"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/recipes.png",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/banner/recipes.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/banner/recipes.png"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/study_banner.png",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -11473,6 +11524,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/FE/img/banner/study_banner.png"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/tips.png",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/banner/tips.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/banner/tips.png"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/blog/author.png",
@@ -13804,6 +13872,23 @@
       "OriginalItemSpec": "wwwroot/images/Banh-Mi-Handbook.jpg"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/books.png",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/books.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/books.png"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/Bread-Street-Kitchen.jpg",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -13906,6 +13991,23 @@
       "OriginalItemSpec": "wwwroot/images/Gordon-Ramsay's-Ultimate-Cookery-Course.jpg"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/homepage.png",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/homepage.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/homepage.png"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/Magnolia-Table.jpg",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -14006,6 +14108,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/Once-Upon-a-Chef-Weeknight-Weekend.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/recipes.png",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/recipes.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/recipes.png"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/Restaurant-Gordon-Ramsay.jpg",
@@ -14142,6 +14261,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/The-Slanted-Door.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/tips.png",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/tips.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/tips.png"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/Vietnamese-Home-Cooking.jpg",

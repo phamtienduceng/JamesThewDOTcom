@@ -199,10 +199,7 @@
       <AdditionalFiles Include="Views\Admin\TipCategories\Edit.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\Index.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\TipByCate.cshtml" />
-      <AdditionalFiles Include="Views\FE\Book\Create.cshtml" />
       <AdditionalFiles Include="Views\FE\Book\Index.cshtml" />
-      <AdditionalFiles Include="Views\FE\Book\MyRecipe.cshtml" />
-      <AdditionalFiles Include="Views\FE\Book\SingleRecipe.cshtml" />
       <AdditionalFiles Include="Views\FE\Cart\Index.cshtml" />
     </ItemGroup>
 

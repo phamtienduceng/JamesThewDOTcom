@@ -2709,6 +2709,22 @@ h3 {
   background-image: url(../img/banner/bradcam.png);
 }
 
+.bradcam_homepage {
+  background-image: url(../img/banner/homepage.png);
+}
+
+.bradcam_recipes {
+  background-image: url(../img/banner/recipes.png);
+}
+
+.bradcam_tips {
+  background-image: url(../img/banner/bradcam.png);
+}
+
+.bradcam_books {
+  background-image: url(../img/banner/bradcam.png);
+}
+
 /* line 4, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_bradcam.scss */
 .breadcam_bg_2 {
   background-image: url(../img/banner/bradcam_2.png);

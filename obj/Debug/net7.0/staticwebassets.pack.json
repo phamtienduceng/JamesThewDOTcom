@@ -2693,16 +2693,32 @@
       "PackagePath": "staticwebassets/FE/img/banner/banner_testmonial.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/books.png",
+      "PackagePath": "staticwebassets/FE/img/banner/books.png"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/bradcam.png",
       "PackagePath": "staticwebassets/FE/img/banner/bradcam.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/homepage.png",
+      "PackagePath": "staticwebassets/FE/img/banner/homepage.png"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/portfolio_bg.png",
       "PackagePath": "staticwebassets/FE/img/banner/portfolio_bg.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/recipes.png",
+      "PackagePath": "staticwebassets/FE/img/banner/recipes.png"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/study_banner.png",
       "PackagePath": "staticwebassets/FE/img/banner/study_banner.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banner/tips.png",
+      "PackagePath": "staticwebassets/FE/img/banner/tips.png"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/blog/author.png",
@@ -3323,6 +3339,22 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/Vietnamese-Home-Cooking.jpg",
       "PackagePath": "staticwebassets/images/Vietnamese-Home-Cooking.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/books.png",
+      "PackagePath": "staticwebassets/images/books.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/homepage.png",
+      "PackagePath": "staticwebassets/images/homepage.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/recipes.png",
+      "PackagePath": "staticwebassets/images/recipes.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/tips.png",
+      "PackagePath": "staticwebassets/images/tips.png"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/lib/bootstrap/LICENSE",
