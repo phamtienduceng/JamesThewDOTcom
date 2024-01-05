@@ -14,13 +14,15 @@ public class RecipeController : Controller
     private readonly IRecipe _recipe;
     private readonly ICategoriesRecipe _categoriesRecipe;
     private readonly IFeedback _feedback;
+    private readonly IContest _contest;
     
 
-    public RecipeController(IRecipe recipe, ICategoriesRecipe categoriesRecipe, IFeedback feedback)
+    public RecipeController(IRecipe recipe, ICategoriesRecipe categoriesRecipe, IFeedback feedback, IContest contest)
     {
         _recipe = recipe;
         _categoriesRecipe = categoriesRecipe;
         _feedback = feedback;
+        _contest = contest;
         
     }
 
@@ -181,12 +183,84 @@ public class RecipeController : Controller
     }
 
 
-    // đoạn mã này của anh Trí để tạo recipe riêng cho contest entries
-    /*public IActionResult CreateForContest(int contestId)
-    {
-        ViewBag.ContestId = contestId;
-        ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName");
-        return View("~/Views/FE/Recipe/CreateForContest.cshtml");
-    }*/
 
+
+    // đoạn mã này của anh Trí để tạo recipe riêng cho user contest entries
+    [HttpGet("UserContestRecipeCreatePartial")]
+    public IActionResult UserContestRecipeCreatePartial()
+    {
+        // Lấy UserId từ session hoặc JSON
+        string userJson = HttpContext.Session.GetString("userLogged");
+        User currentUser;
+        int userId = 0;
+        if (!string.IsNullOrEmpty(userJson))
+        {
+            currentUser = JsonConvert.DeserializeObject<User>(userJson);
+            userId = currentUser.UserId;
+        }
+
+        // Lấy ContestId từ session
+        string contestIdSession = HttpContext.Session.GetString("contestId");
+        int? contestId = null;
+        if (!string.IsNullOrEmpty(contestIdSession))
+        {
+            contestId = int.Parse(contestIdSession);
+        }
+
+        // Lưu UserId và ContestId vào ViewData nếu muốn sử dụng trong View
+        ViewData["UserId"] = userId;
+        ViewData["ContestId"] = contestId;
+
+        ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName");
+        return View("~/Views/Shared/UserContestRecipeCreatePartial.cshtml");
+    }
+
+    [HttpPost("UserContestRecipeCreatePartial")]
+    public async Task<IActionResult> UserContestRecipeCreatePartial(Recipe newRecipe, IFormFile file)
+    {
+        try
+        {
+            // Lấy UserId và ContestId từ ViewData hoặc trực tiếp từ session
+            string userJson = HttpContext.Session.GetString("userLogged");
+            User currentUser;
+            int userId = 0;
+            if (!string.IsNullOrEmpty(userJson))
+            {
+                currentUser = JsonConvert.DeserializeObject<User>(userJson);
+                userId = currentUser.UserId;
+            }
+            string contestIdSession = HttpContext.Session.GetString("contestId");
+            int? contestId = null;
+            if (!string.IsNullOrEmpty(contestIdSession))
+            {
+                contestId = int.Parse(contestIdSession);
+            }
+
+            // Xử lý file và lưu Recipe mới
+            if (file != null)
+            {
+                var path = Path.Combine("wwwroot/fe/img", file.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                newRecipe.Image = "fe/img/" + file.FileName;
+                newRecipe.UserId = userId; // Đặt UserId cho recipe
+                
+                _recipe.PostRecipe(newRecipe);
+
+                return RedirectToAction("Index");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+        ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName");
+        return View("~/Views/FE/Recipe/UserContestRecipeCreatePartial.cshtml");
+    }
+
+    // kết thúc phần mã của anh Trí.
 }

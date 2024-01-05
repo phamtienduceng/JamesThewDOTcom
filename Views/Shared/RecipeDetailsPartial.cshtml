@@ -1,0 +1,94 @@
+﻿@using Newtonsoft.Json
+@model Recipe
+@{
+
+    ViewData["Title"] = Model.Title;
+}
+
+@{
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("userLogged");
+
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<style>
+    .rating {
+        color: #ffc107;
+        font-size: 18px;
+    }
+
+    .membership-label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: lightskyblue;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 10px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="container">
+    <p class="text-center text-danger" style="font-size: 50px">@Model.Title</p>
+    <div class="row" style="margin: 50px 0px 20px 0px">
+        <div class="col-md-6">
+            <div>
+                <img class="img-fluid mb-4" src="~/@Model.Image" alt="Recipe Image" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mt-0">
+                <h3>Ingredients</h3>
+                <p>@Model.Ingredients</p>
+            </div>
+
+            <div class="mt-4">
+                <h3>Procedure</h3>
+                <p>@Model.Procedure</p>
+            </div>
+
+            <div class="mt-4">
+                <h3>Time</h3>
+                <p>@Model.Timeneeds minutes</p>
+            </div>
+            <div class="mt-4">
+                <h3>Post by: @Model.User?.Username</h3>
+            </div>
+        </div>
+    </div>
+    <h1 class="text-center" style="margin-bottom: 30px">How to make @Model.Title?</h1>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="@Model.VideoUrl" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function postComment() {
+        var formData = $("#commentForm").serialize();
+
+        $.ajax({
+            url: '@Url.Action("PostFeedback", "Recipe")',
+            type: 'POST',
+            data: formData,
+            success: function (partialView) {
+                $('#commentsList').html(partialView);
+            },
+            error: function () {
+                alert('Error posting comment.');
+            }
+        });
+    }
+    $(document).ready(function () {
+        $('#star-rating').rating();
+    });
+</script>
+

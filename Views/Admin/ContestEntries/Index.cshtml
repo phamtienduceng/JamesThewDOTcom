@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/_FELayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Contest Entries List</h1>
 
-<p>
+@* <p>
     <a asp-action="Create" asp-controller="ContestEntries">Create New</a>
-</p>
+</p> *@
 <table class="table">
     <thead>
         <tr>
@@ -57,7 +57,7 @@
                     @Html.DisplayFor(modelItem => item.User.UserId)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-controller="ContestEntries" asp-route-id="@item.EntryId">Edit</a> |
+                    @* <a asp-action="Edit" asp-controller="ContestEntries" asp-route-id="@item.EntryId">Edit</a> | *@
                     <a asp-action="Details" asp-controller="ContestEntries" asp-route-id="@item.EntryId">Details</a> |
                     <a asp-action="Delete" asp-controller="ContestEntries" asp-route-id="@item.EntryId">Delete</a>
                 </td>
