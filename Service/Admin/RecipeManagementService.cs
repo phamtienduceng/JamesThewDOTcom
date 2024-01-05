@@ -1,3 +1,8 @@
+using System.Data;
+using ClosedXML.Excel;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 using JamesRecipes.Models;
 using JamesRecipes.Repository.Admin;
 using Microsoft.EntityFrameworkCore;
@@ -69,5 +74,26 @@ public class RecipeManagementService: IRecipeManagementRepository
     public List<Recipe> Search(string searchString)
     {
         return _db.Recipes.Where(r => r.Title.Contains(searchString)).ToList();
+    }
+
+    public byte[] GeneratedExcel(string fileName, List<Recipe> recipes)
+    {
+        DataTable dataTable = new DataTable("Recipe");
+        dataTable.Columns.AddRange(new DataColumn[]
+        {
+            new DataColumn("RecipeId"),
+            new DataColumn("Title")
+        });
+
+        foreach (var r in recipes)
+        {
+            dataTable.Rows.Add(r.RecipeId, r.Title);
+        }
+
+        using XLWorkbook wb = new XLWorkbook();
+        wb.Worksheets.Add(dataTable);
+        using MemoryStream ms = new MemoryStream();
+        wb.SaveAs(ms);
+        return ms.ToArray();
     }
 }

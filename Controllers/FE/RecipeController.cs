@@ -202,6 +202,15 @@ public class RecipeController : Controller
             }
         
     }
+    
+    [HttpGet("export-to-word/{recipeId}")]
+    public IActionResult ExportRecipeToWord(int recipeId)
+    {
+        var re = _recipe.GetOneRecipe(recipeId);
+        var wordDocumentBytes = _recipe.GeneratedWord(re);
+
+        return File(wordDocumentBytes, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", $"Recipe_{recipeId}.docx");
+    }
 
 
     // đoạn mã này của anh Trí để tạo recipe riêng cho contest entries

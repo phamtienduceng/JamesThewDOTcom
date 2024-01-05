@@ -1,3 +1,6 @@
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
 using Microsoft.EntityFrameworkCore;
@@ -189,5 +192,41 @@ public class RecipeService: IRecipe
     public List<Recipe> RelatedRecipes()
     {
         return _db.Recipes.Take(10).ToList();
+    }
+    
+    public byte[] GeneratedWord(Recipe recipe)
+    {
+        using (var memoryStream = new MemoryStream())
+        {
+            using (var wordDocument = WordprocessingDocument.Create(memoryStream, WordprocessingDocumentType.Document))
+            {
+                var mainPart = wordDocument.AddMainDocumentPart();
+                var document = new Document();
+                mainPart.Document = document;
+
+                var body = new Body();
+                document.Append(body);
+
+                var paragraph = new Paragraph(
+                    new Run(
+                        new Text($"RecipeId: {recipe.RecipeId}"),
+                        new Break(),  
+                        new Text($"Title: {recipe.Title}"),
+                        new Break(),
+                        new Text($"Ingredients: {recipe.Ingredients}"),
+                        new Break(),
+                        new Text($"Procedure: {recipe.Procedure}"),
+                        new Break(),
+                        new Text($"Time: {recipe.Timeneeds}")
+                    )
+                );
+                
+                body.Append(paragraph);
+
+                wordDocument.Save();
+            }
+
+            return memoryStream.ToArray();
+        }
     }
 }   
