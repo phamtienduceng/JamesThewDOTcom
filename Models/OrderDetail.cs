@@ -21,5 +21,7 @@ public partial class OrderDetail
 
     public virtual Book? Book { get; set; }
 
+    public virtual ICollection<CartDetail> CartDetails { get; set; } = new List<CartDetail>();
+
     public virtual Order? Order { get; set; }
 }

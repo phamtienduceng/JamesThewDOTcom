@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using JamesRecipes.Models.View;
 using Microsoft.EntityFrameworkCore;
 
 namespace JamesRecipes.Models;
@@ -18,6 +17,10 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<Announcement> Announcements { get; set; }
 
+    public virtual DbSet<AnonymousContestEntry> AnonymousContestEntries { get; set; }
+
+    public virtual DbSet<AnonymousRecipe> AnonymousRecipes { get; set; }
+
     public virtual DbSet<Book> Books { get; set; }
 
     public virtual DbSet<Cart> Carts { get; set; }
@@ -29,6 +32,10 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<CategoriesRecipe> CategoriesRecipes { get; set; }
 
     public virtual DbSet<CategoriesTip> CategoriesTips { get; set; }
+
+    public virtual DbSet<CombinedContestScore> CombinedContestScores { get; set; }
+
+    public virtual DbSet<Contact> Contacts { get; set; }
 
     public virtual DbSet<Contest> Contests { get; set; }
 
@@ -51,6 +58,8 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<Tip> Tips { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+
+    public virtual DbSet<ViewAnonymousContact> ViewAnonymousContacts { get; set; }
 
     public virtual DbSet<ViewHomepage> ViewHomepages { get; set; }
 
@@ -83,6 +92,44 @@ public partial class JamesrecipesContext : DbContext
                 .HasConstraintName("FK__Announcem__Winne__440B1D61");
         });
 
+        modelBuilder.Entity<AnonymousContestEntry>(entity =>
+        {
+            entity.HasKey(e => e.AnonymousEntryId).HasName("PK__Anonymou__D2784E4E7BF58BF3");
+
+            entity.Property(e => e.AnonymousEntryId).HasColumnName("AnonymousEntryID");
+            entity.Property(e => e.AnonymousRecipeId).HasColumnName("AnonymousRecipeID");
+            entity.Property(e => e.ContestId).HasColumnName("ContestID");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Image).HasMaxLength(255);
+
+            entity.HasOne(d => d.AnonymousRecipe).WithMany(p => p.AnonymousContestEntries)
+                .HasForeignKey(d => d.AnonymousRecipeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Anonymous__Anony__477199F1");
+
+            entity.HasOne(d => d.Contest).WithMany(p => p.AnonymousContestEntries)
+                .HasForeignKey(d => d.ContestId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Anonymous__Conte__467D75B8");
+        });
+
+        modelBuilder.Entity<AnonymousRecipe>(entity =>
+        {
+            entity.HasKey(e => e.AnonymousRecipeId).HasName("PK__Anonymou__E622E806478F0579");
+
+            entity.Property(e => e.AnonymousRecipeId).HasColumnName("AnonymousRecipeID");
+            entity.Property(e => e.AnonymousId).HasColumnName("AnonymousID");
+            entity.Property(e => e.ContactEmail).HasMaxLength(255);
+            entity.Property(e => e.ContactPhone).HasMaxLength(20);
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.Title).HasMaxLength(100);
+        });
+
         modelBuilder.Entity<Book>(entity =>
         {
             entity.HasKey(e => e.BookId).HasName("PK__Books__3DE0C227B9BE35FE");
@@ -107,9 +154,9 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.UserId).HasColumnName("UserID");
 
-            /*entity.HasOne(d => d.Order).WithMany(p => p.Carts)
-                .HasForeignKey(d => d.Or)
-                .HasConstraintName("FK__Carts__OrderId__2CBDA3B5");*/
+            entity.HasOne(d => d.Order).WithMany(p => p.Carts)
+                .HasForeignKey(d => d.OrderId)
+                .HasConstraintName("FK__Carts__OrderId__2CBDA3B5");
 
             entity.HasOne(d => d.User).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.UserId)
@@ -133,9 +180,9 @@ public partial class JamesrecipesContext : DbContext
                 .HasForeignKey(d => d.CartId)
                 .HasConstraintName("FK__CartDetai__CartI__6FB49575");
 
-            /*entity.HasOne(d => d.OrderDetail).WithMany(p => p.CartDetails)
+            entity.HasOne(d => d.OrderDetail).WithMany(p => p.CartDetails)
                 .HasForeignKey(d => d.OrderDetailId)
-                .HasConstraintName("FK__CartDetai__Order__2EA5EC27");*/
+                .HasConstraintName("FK__CartDetai__Order__2EA5EC27");
         });
 
         modelBuilder.Entity<CategoriesBook>(entity =>
@@ -161,6 +208,26 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.CategoryTipId).HasColumnName("CategoryTipID");
             entity.Property(e => e.CategoryName).HasMaxLength(50);
             entity.Property(e => e.Image).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<CombinedContestScore>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("CombinedContestScores");
+
+            entity.Property(e => e.EntryId).HasColumnName("EntryID");
+        });
+
+        modelBuilder.Entity<Contact>(entity =>
+        {
+            entity.HasKey(e => e.ContactId).HasName("PK__Contact__5C66259B278E1C0C");
+
+            entity.ToTable("Contact");
+
+            entity.Property(e => e.Email).HasMaxLength(250);
+            entity.Property(e => e.Message).HasMaxLength(50);
+            entity.Property(e => e.Name).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Contest>(entity =>
@@ -347,8 +414,7 @@ public partial class JamesrecipesContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Image).HasMaxLength(255);
-            entity.Property(e => e.Rating)
-                .HasColumnName("rating");
+            entity.Property(e => e.Rating).HasColumnName("rating");
             entity.Property(e => e.Status).HasDefaultValueSql("((1))");
             entity.Property(e => e.Title).HasMaxLength(100);
             entity.Property(e => e.UserId).HasColumnName("UserID");
@@ -382,6 +448,22 @@ public partial class JamesrecipesContext : DbContext
             entity.HasOne(d => d.Role).WithMany(p => p.Users)
                 .HasForeignKey(d => d.RoleId)
                 .HasConstraintName("FK__Users__RoleID__267ABA7A");
+        });
+
+        modelBuilder.Entity<ViewAnonymousContact>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("ViewAnonymousContacts");
+
+            entity.Property(e => e.AnonymousId).HasColumnName("AnonymousID");
+            entity.Property(e => e.AnonymousRecipeId)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("AnonymousRecipeID");
+            entity.Property(e => e.ContactEmail).HasMaxLength(255);
+            entity.Property(e => e.ContactPhone).HasMaxLength(20);
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.Title).HasMaxLength(100);
         });
 
         modelBuilder.Entity<ViewHomepage>(entity =>

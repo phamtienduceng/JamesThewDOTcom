@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace JamesRecipes.Models;
 
@@ -9,12 +10,22 @@ public partial class Recipe
 
     public int? UserId { get; set; }
 
+    [Required]
     public int CategoryRecipeId { get; set; }
 
+    [Required]
+    [MinLength(3, ErrorMessage = "Title between 3 and 250 characters")]
+    [MaxLength(250, ErrorMessage = "Title between 3 and 250 characters")]
     public string Title { get; set; } = null!;
 
+    [Required]
+    [MinLength(10, ErrorMessage = "Title between 10 and 250 characters")]
+    [MaxLength(250, ErrorMessage = "Title between 10 and 250 characters")]
     public string Ingredients { get; set; } = null!;
 
+    [Required]
+    [MinLength(10, ErrorMessage = "Title between 10 and 250 characters")]
+    [MaxLength(250, ErrorMessage = "Title between 10 and 250 characters")]
     public string Procedure { get; set; } = null!;
 
     public bool IsMembershipOnly { get; set; }
@@ -22,9 +33,10 @@ public partial class Recipe
     public DateTime? CreatedAt { get; set; }
 
     public bool Status { get; set; }
-
+    
     public string? Image { get; set; }
 
+    [Required]
     public TimeSpan? Timeneeds { get; set; }
 
     public string? VideoUrl { get; set; }

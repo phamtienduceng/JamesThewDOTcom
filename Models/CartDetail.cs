@@ -15,7 +15,11 @@ public partial class CartDetail
 
     public decimal? UnitPrice { get; set; }
 
-    public Book? Book { get; set; }
+    public int? OrderDetailId { get; set; }
+
+    public virtual Book? Book { get; set; }
 
     public virtual Cart? Cart { get; set; }
+
+    public virtual OrderDetail? OrderDetail { get; set; }
 }

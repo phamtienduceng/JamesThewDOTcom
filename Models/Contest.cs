@@ -27,5 +27,7 @@ public partial class Contest
 
     public virtual ICollection<Announcement> Announcements { get; set; } = new List<Announcement>();
 
+    public virtual ICollection<AnonymousContestEntry> AnonymousContestEntries { get; set; } = new List<AnonymousContestEntry>();
+
     public virtual ICollection<ContestEntry> ContestEntries { get; set; } = new List<ContestEntry>();
 }

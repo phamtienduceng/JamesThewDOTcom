@@ -169,18 +169,21 @@ public class RecipeService: IRecipe
         }
     }
 
-    public void UpdateRecipe(int id, Recipe newRecipe)
+    public void UpdateRecipe(int id,  Recipe newRecipe)
     {
         var rep = GetOneRecipe(id);
-        rep!.Title = newRecipe.Title;
-        rep.Ingredients = newRecipe.Ingredients;
-        rep.Procedure = newRecipe.Procedure;
-        rep.Timeneeds = newRecipe.Timeneeds;
-        rep.Image = newRecipe.Image;
-        rep.VideoUrl = newRecipe.VideoUrl;
-        rep.CategoryRecipeId = newRecipe.CategoryRecipeId;
-        _db.Update(rep);
-        _db.SaveChanges();
+        if (rep != null)
+        {
+            rep!.Title = newRecipe.Title;
+            rep.Ingredients = newRecipe.Ingredients;
+            rep.Procedure = newRecipe.Procedure;
+            rep.Timeneeds = newRecipe.Timeneeds;
+            rep.Image = newRecipe.Image;
+            rep.VideoUrl = newRecipe.VideoUrl;
+            rep.CategoryRecipeId = newRecipe.CategoryRecipeId;
+            _db.Update(rep);
+            _db.SaveChanges();
+        }
     }
 
     public List<Recipe> RelatedRecipes()

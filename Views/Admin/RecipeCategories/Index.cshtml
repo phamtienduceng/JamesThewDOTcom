@@ -22,6 +22,9 @@
             Name
         </th>
         <th>
+            Number
+        </th>
+        <th>
             Action
         </th>
     </tr>
@@ -35,6 +38,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Recipes.Count)
             </td>
             <td>
                 <a asp-action="Edit" asp-controller="RecipeCategoriesManagement" asp-route-id="@item.CategoryRecipeId">EditName</a> | 

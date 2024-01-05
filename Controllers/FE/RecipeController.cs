@@ -179,6 +179,29 @@ public class RecipeController : Controller
         ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName");
         return View("~/Views/FE/Recipe/Update.cshtml", rep);
     }
+    
+    [HttpPost("update_recipe")]
+    public IActionResult UpdateRecipe(int id, Recipe recipe, IFormFile file)
+    {
+        var existRecipe = _recipe.GetOneRecipe(id);
+
+            if (file != null)
+            {
+                var path = Path.Combine("wwwroot/fe/img", file.FileName);
+                var stream = new FileStream(path, FileMode.Create);
+                file.CopyToAsync(stream);
+                recipe.Image = "fe/img/" + file.FileName;
+                _recipe.UpdateRecipe(id,recipe);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                recipe.Image = existRecipe.Image;
+                _recipe.UpdateRecipe(id, recipe);
+                return RedirectToAction("Index");
+            }
+        
+    }
 
 
     // đoạn mã này của anh Trí để tạo recipe riêng cho contest entries

@@ -41,18 +41,4 @@ public class RecipeManagementController : Controller
         var rep = _recipeManagement.GetRecipe(id);
         return View("~/Views/Admin/Recipe/SingleRecipe.cshtml", rep);
     }
-    
-    [HttpPost("admin_switch_status")]
-    public IActionResult SwitchStatus(int id, bool status)
-    {
-        _recipeManagement.SwitchStatus(id, status);
-        return RedirectToAction("Index");
-    }
-    
-    [HttpPost("admin_switch_premium")]
-    public IActionResult SwitchPremium(int id, bool isPre)
-    {
-        _recipeManagement.PremiumStatus(id, isPre);
-        return RedirectToAction("Index");
-    }
 }

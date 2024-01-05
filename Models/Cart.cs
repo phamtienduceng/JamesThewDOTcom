@@ -11,7 +11,11 @@ public partial class Cart
 
     public int? UserId { get; set; }
 
+    public int? OrderId { get; set; }
+
     public virtual ICollection<CartDetail> CartDetails { get; set; } = new List<CartDetail>();
+
+    public virtual Order? Order { get; set; }
 
     public virtual User? User { get; set; }
 }

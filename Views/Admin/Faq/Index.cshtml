@@ -1,13 +1,79 @@
+@using X.PagedList.Mvc.Common
+@model X.PagedList.IPagedList<Faq>
+@using X.PagedList.Mvc.Core
+
 @{
-    Layout = "_FELayout";
-    ViewData["Title"] = "FAQ's";
+  Layout = "_FELayout";
+  ViewData["Title"] = "Faqs";
 }
 
-<div class="container-fluid">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title fw-semibold mb-4">FAQ's Management</h5>
-            <p class="mb-0">This is a FAQ's management page </p>
+<h2 class="card-title fw-semibold mb-4">Recipe Management</h2>
+<div class="row">
+    <div class="col-md-3">
+        <form asp-action="Index" asp-controller="FaqManagement" method="get">
+            <div class="input-group input-group-sm mb-3">
+                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Enter title here..." />
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-secondary">Search</button>
+                </div>
+            </div>
+        </form>
+        <a asp-action="Create" asp-controller="FaqManagement"><button class="btn btn-info" >Create new FAQ</button></a>
+    </div>
+    <div class="col-md-9 d-flex align-items-center justify-content-end">
+        <h5 class="mr-3 mb-0">Sort: </h5>
+        <div class="btn-group btn-group-sm" role="group">
+            <a asp-action="Index" asp-controller="FaqManagement" asp-route-sortOrder="@ViewData["DateSort"]" class="btn btn-secondary">Date post</a>
         </div>
     </div>
 </div>
+
+
+
+
+
+<table class="table ">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Question</th>
+        <th>Date post</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faqid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Question)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                <a asp-action="GetOneFaq" asp-controller="FaqManagement" asp-route-id="@item.Faqid">Detail</a> ||  
+                <a asp-action="Update" asp-controller="FaqManagement" asp-route-id="@item.Faqid">Update</a> ||  
+                <a asp-action="Delete" asp-controller="FaqManagement" asp-route-id="@item.Faqid">Delete</a> ||  
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="text-center">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "FaqManagement", new { page = page }),
+        new PagedListRenderOptions()
+        {
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" },
+            ContainerDivClasses = new[] { "pagination", "justify-content-center" },
+            UlElementClasses = new[] { "pagination" }
+        })
+</div>
+
+
+

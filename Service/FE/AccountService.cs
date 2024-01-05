@@ -1,4 +1,5 @@
-﻿using JamesRecipes.Models;
+﻿using System.Data.Entity;
+using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
 
 namespace JamesRecipes.Service.FE
@@ -30,7 +31,8 @@ namespace JamesRecipes.Service.FE
 
         public User GetUserById(int id)
         {
-            return _db.Users.SingleOrDefault(u => u.UserId == id);
+            return _db.Users.Include(u=>u.Role)
+                .SingleOrDefault(u => u.UserId == id);
         }
 
         public bool VerifyPassword(string password, string hashedPassword)

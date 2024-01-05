@@ -1,0 +1,43 @@
+@model Contact
+@{
+  Layout = "_FELayout";
+  ViewData["Title"] = "Recipes";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<style>
+    .rating {
+        color: #ffc107;
+        font-size: 25px;
+    }
+
+</style>
+
+<h2 class="card-title fw-semibold mb-4">Contact Management</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3>Id: @Html.DisplayFor(m => m.ContactId)</h3>
+                <h3>Category: <span class="badge bg-secondary">@Html.DisplayFor(m => m.Name)</span></h3>
+                <h3>Posted by: @Html.DisplayFor(m => m.Email)</h3>
+            </div>
+        </div>
+    </div>
+            
+            <!-- Right Column -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h3>Message: </h3>
+                    <p>@Html.DisplayFor(m => m.Message)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

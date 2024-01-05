@@ -2677,6 +2677,10 @@
       "PackagePath": "staticwebassets/FE/img/Screenshot 2023-12-28 104927.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/ava.png",
+      "PackagePath": "staticwebassets/FE/img/ava.png"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banh-mi-thit-bo-nuong-thumbnail-1.jpg",
       "PackagePath": "staticwebassets/FE/img/banh-mi-thit-bo-nuong-thumbnail-1.jpg"
     },

@@ -1,5 +1,5 @@
 using JamesRecipes.Models;
-using JamesRecipes.Models.View;
+using JamesRecipes.Models;
 
 namespace JamesRecipes.Repository.FE;
 

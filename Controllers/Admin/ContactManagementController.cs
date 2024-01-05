@@ -1,31 +1,33 @@
 using JamesRecipes.Models;
+using JamesRecipes.Repository.Admin;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Elfie.Serialization;
 
 namespace JamesRecipes.Controllers.Admin;
 
 [Route("admin/[controller]")]
 public class ContactManagementController : Controller
 {
-    private readonly IEmailSender _emailSender;
+    private readonly IContactManagementRepository _contact;
 
-    public ContactManagementController(IEmailSender emailSender)
+    public ContactManagementController(IContactManagementRepository contact)
     {
-        _emailSender = emailSender;
+        _contact = contact;
     }
 
     [HttpGet]
-    public IActionResult Index()
+    public IActionResult Index(int page = 1)
     {
-        return View("~/Views/Admin/Contact/Index.cshtml");
+        var cts = _contact.GetAllContact();
+        var contacts = _contact.PagedList(page, 9, cts);
+        return View("~/Views/Admin/Contact/Index.cshtml", contacts);
     }
-
-    [HttpPost]
-    public async  Task<IActionResult> Index(Contact contact)
+    
+    [HttpGet("contact_detail")]
+    public IActionResult GetContactDetail(int id)
     {
-        var msg = contact.Name + " " + contact.Massage;
-        await _emailSender.SendEmailAsync(contact.Email,"Contact Mail",contact.Massage);
-        ViewBag.ConfirmMsg = "Thanks For Your Mail";
-        return View("~/Views/Admin/Contact/Index.cshtml");
+        var ct = _contact.GetContact(id);
+        return View("~/Views/Admin/Contact/ContactDetail.cshtml", ct);
     }
 }

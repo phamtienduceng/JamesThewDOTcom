@@ -61,6 +61,9 @@ public class RecipeCategoriesManagementService: IRecipeCategoriesManagementRepos
 
     public List<Recipe> GetRecipeByCategory(int id)
     {
-        return _db.Recipes.Where(r => r.CategoryRecipeId == id).ToList();
+        return _db.Recipes
+            .Include(c=>c.CategoryRecipe)
+            .Include(c=>c.User)
+            .Where(r => r.CategoryRecipeId == id).ToList();
     }
 }

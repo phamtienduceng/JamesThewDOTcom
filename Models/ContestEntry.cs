@@ -24,5 +24,4 @@ public partial class ContestEntry
     public virtual Recipe? Recipe { get; set; }
 
     public virtual User? User { get; set; }
-
 }

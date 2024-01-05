@@ -61,7 +61,15 @@
                 @Html.DisplayFor(modelItem => item.CategoryRecipe.CategoryName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Rating)
+                @if (item.Rating != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Rating)
+
+                }
+                else
+                {
+                    <span>0</span>
+                }
             </td>
             <td>
                 <div>

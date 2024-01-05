@@ -13,7 +13,16 @@
             Id
         </th>
         <th>
+            Category
+        </th>
+        <th>
             Name
+        </th>
+        <th>
+            Posted By
+        </th>
+        <th>
+            Date Post
         </th>
         <th>
             Action
@@ -25,13 +34,22 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryRecipeId)
+                @Html.DisplayFor(modelItem => item.RecipeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryRecipe.CategoryName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.User!.Username)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                <a asp-action="GetRecipe" asp-controller="RecipeManagement" asp-route-id="@item.RecipeId">Detail</a> 
             </td>
         </tr>
     }

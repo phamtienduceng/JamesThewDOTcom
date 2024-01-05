@@ -1,0 +1,38 @@
+@model Faq
+@{
+  Layout = "_FELayout";
+  ViewData["Title"] = "FAQs";
+}
+
+<h2 class="card-title fw-semibold mb-4">FaQ's  Management</h2>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h3>Id: @Html.DisplayFor(m => m.Faqid)</h3>
+                <h3>Date post: @Model.CreatedAt</h3>
+            </div>
+        </div>
+    </div>
+            
+            <!-- Right Column -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h3>Question: </h3>
+                    <p>@Html.DisplayFor(m => m.Question)</p>
+                </div>
+                <div>
+                    <h3>Answer: </h3>
+                    <p>@Html.DisplayFor(m => m.Answer)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

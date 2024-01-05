@@ -37,26 +37,6 @@ public class RecipeManagementService: IRecipeManagementRepository
         return recipes.ToPagedList(page, pageSize);
     }
 
-    public void SwitchStatus(int id, bool status)
-    {
-        var rep = _db.Recipes.SingleOrDefault(r => r.RecipeId == id);
-        if (rep != null)
-        {
-            rep.Status = status;
-            _db.SaveChanges(); 
-        }
-    }
-
-    public void PremiumStatus(int id, bool isPre)
-    {
-        var rep = _db.Recipes.SingleOrDefault(r => r.RecipeId == id);
-        if (rep != null)
-        {
-            rep.IsMembershipOnly = isPre;
-            _db.SaveChanges();
-        }
-    }
-
     public List<Recipe> Sorting(List<Recipe> recipes, string sortOrder)
     {
         switch (sortOrder)
