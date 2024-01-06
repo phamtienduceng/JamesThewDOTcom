@@ -28,7 +28,6 @@
         font-weight: bold;
     }
 </style>
-
 <div class="container">
     <p class="text-center text-danger" style="font-size: 50px">@Model.Title</p>
 <a asp-controller="Recipe" asp-action="ExportRecipeToWord" asp-route-recipeId="@Model.RecipeId">
@@ -104,7 +103,8 @@
             }
             else
             {
-                <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own recipes.</h3>
+                <a asp-action="Login" asp-controller="Account"><button class="btn btn-info">Login</button></a>
+
             }
         </div>
     </div>

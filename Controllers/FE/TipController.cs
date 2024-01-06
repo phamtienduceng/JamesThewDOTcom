@@ -156,4 +156,35 @@ public class TipController : Controller
         var tip = _tip.GetTip(id);
         return View("~/Views/FE/Tip/Update.cshtml", tip);
     }
+    
+    [HttpPost("update_tip")]
+    public IActionResult UpdateRecipe(int id, Tip tip, IFormFile file)
+    {
+        var existRecipe = _tip.GetOneTip(id);
+
+        if (file != null)
+        {
+            var path = Path.Combine("wwwroot/fe/img", file.FileName);
+            var stream = new FileStream(path, FileMode.Create);
+            file.CopyToAsync(stream);
+            tip.Image = "fe/img/" + file.FileName;
+            _tip.UpdateTip(id,tip);
+            return RedirectToAction("Index");
+        }
+        else
+        {
+            tip.Image = existRecipe.Image;
+            _tip.UpdateTip(id, tip);
+            return RedirectToAction("Index");
+        }
+    }
+    
+    [HttpGet("export-tip-to-word/{tipId}")]
+    public IActionResult ExportRecipeToWord(int tipId)
+    {
+        var t = _tip.GetOneTip(tipId);
+        var wordDocumentBytes = _tip.GeneratedWord(t);
+
+        return File(wordDocumentBytes, "application/vnd.openxmlformats-officedocument.wordprocessingml.document", $"Recipe_{tipId}.docx");
+    }
 }

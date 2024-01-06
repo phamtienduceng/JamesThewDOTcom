@@ -32,4 +32,10 @@ public interface ITip
     List<Tip> Filter(int? categoryId, int? ratingMin, int? ratingMax, List<Tip> tips);
 
     void DeleteMyTip(int id);
+    
+    void UpdateTip(int id, Tip newTip);
+
+    List<Tip> RelatedTips();
+    
+    byte[] GeneratedWord(Tip tip);
 }

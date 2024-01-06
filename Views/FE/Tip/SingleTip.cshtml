@@ -29,8 +29,13 @@
     }
 </style>
 
+
+
 <div class="container">
-<p class="text-center text-danger" style="font-size: 50px">@Model.Title</p>
+    <p class="text-center text-danger" style="font-size: 50px">@Model.Title</p>
+    <div><a asp-controller="Tip" asp-action="ExportRecipeToWord" asp-route-tipId="@Model.TipId">
+                 <button class="btn btn-success">Download Tip</button>
+             </a></div>
     <div class="row" style="margin: 50px 0 20px 0">
         <div class="col-md-6">
             <div>
@@ -51,7 +56,6 @@
             </div>
         </div>
     </div>
-<h1 class="text-center" style="margin-bottom: 30px">How to make @Model.Title?</h1>
     
     <div class="col-md-12">
         <div class="mt-4">
@@ -85,6 +89,7 @@
             {
                 <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own tips.</h3>
             }
+            <a asp-action="Login" asp-controller="Account"><button class="btn btn-info">Login</button></a>
         </div>
     </div>
     <div class="row">
