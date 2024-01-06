@@ -5,6 +5,7 @@
 
 @{
     ViewData["Title"] = "Recipes";
+    Layout = "~/Views/Shared/_FELayout.cshtml";
 }
 
 @{
@@ -12,12 +13,13 @@
     var userJson = httpContext.Session.GetString("userLogged");
 }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <style>
     .rating {
         color: #ffc107;
         font-size: 18px;
     }
+
     .membership-label {
         position: absolute;
         top: 0;
@@ -97,15 +99,15 @@
                     <h3>You can <a asp-action="Login" asp-controller="Account" class="text-danger">Login</a> to post your own recipes.</h3>
                 }
             </div>
-            
+
             <div class="row">
                 <div class="col-md-6">
                     <form asp-action="Index" asp-controller="Recipe" method="get">
                         <div class="form-actions no-color">
                             <h4>
                                 <span>Search: </span>
-                                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Enter title here ..."/>
-                                <input type="submit" value="Search" class="btn btn-default"/>
+                                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Enter title here ..." />
+                                <input type="submit" value="Search" class="btn btn-default" />
                             </h4>
                         </div>
                     </form>
@@ -138,7 +140,7 @@
                                     <h3 style="font-family: sastify, sans-serif; color: indianred; ">@item.Title</h3>
                                     <span>@item.CreatedAt</span>
                                     <p class="mb-2">Time Needs: @item.Timeneeds</p>
-                                    
+
                                     <div class="rating mb-2">
                                         @if (item.Rating != null)
                                         {
@@ -171,13 +173,13 @@
 
             <div class="text-center">
                 @Html.PagedListPager(Model, page => Url.Action("Index", "Recipe", new { page = page }),
-                    new PagedListRenderOptions()
-                    {
-                        LiElementClasses = new[] { "page-item" },
-                        PageClasses = new[] { "page-link" },
-                        ContainerDivClasses = new[] { "pagination", "justify-content-center" },
-                        UlElementClasses = new[] { "pagination" }
-                    })
+                         new PagedListRenderOptions()
+                {
+                    LiElementClasses = new[] { "page-item" },
+                    PageClasses = new[] { "page-link" },
+                    ContainerDivClasses = new[] { "pagination", "justify-content-center" },
+                    UlElementClasses = new[] { "pagination" }
+                })
             </div>
         </div>
     </div>

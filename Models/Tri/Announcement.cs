@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JamesRecipes.Models;
+namespace JamesRecipes.Models.Tri;
 
 public partial class Announcement
 {
     public int AnnouncementId { get; set; }
 
-    public int? Winner { get; set; }
+    public int? WinnerId { get; set; }
+
+    public int? AnonymousWinnerId { get; set; }
 
     public int? ContestId { get; set; }
 
@@ -20,6 +22,4 @@ public partial class Announcement
     public string? Image { get; set; }
 
     public virtual Contest? Contest { get; set; }
-
-    public virtual User? WinnerNavigation { get; set; }
 }

@@ -90,10 +90,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWNjb3VudE1hbmFnZW1lbnRcUmVnaXN0ZXJBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Announcement/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQW5ub3VuY2VtZW50XEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/BookManagement/BookDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va01hbmFnZW1lbnRcQm9va0RldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -196,6 +192,70 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/Admin/Tip/SingleTip.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwXFNpbmdsZVRpcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnnouncementsManagement/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub3VuY2VtZW50c01hbmFnZW1lbnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnnouncementsManagement/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub3VuY2VtZW50c01hbmFnZW1lbnRcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnnouncementsManagement/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub3VuY2VtZW50c01hbmFnZW1lbnRcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnnouncementsManagement/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub3VuY2VtZW50c01hbmFnZW1lbnRcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnnouncementsManagement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub3VuY2VtZW50c01hbmFnZW1lbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnonymousContestEntries/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbnltb3VzQ29udGVzdEVudHJpZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnonymousContestEntries/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbnltb3VzQ29udGVzdEVudHJpZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnonymousContestEntries/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbnltb3VzQ29udGVzdEVudHJpZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnonymousContestEntries/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbnltb3VzQ29udGVzdEVudHJpZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnonymousContestEntries/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbnltb3VzQ29udGVzdEVudHJpZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnonymousRecipes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbnltb3VzUmVjaXBlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnonymousRecipes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbnltb3VzUmVjaXBlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnonymousRecipes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbnltb3VzUmVjaXBlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnonymousRecipes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbnltb3VzUmVjaXBlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnonymousRecipes/FECreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbnltb3VzUmVjaXBlc1xGRUNyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/AnonymousRecipes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5vbnltb3VzUmVjaXBlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tribu/OneDrive - DBI - VN CO.\, LTD/Information Technology (IT)/Term3/đồ án kỳ 3/Github/JamesThewDOTcom/Views/FE/About/Index.cshtml]

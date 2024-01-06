@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JamesRecipes.Models.Tri;
+using System;
 using System.Collections.Generic;
 
 namespace JamesRecipes.Models;
@@ -28,4 +29,8 @@ public partial class Contest
     public virtual ICollection<Announcement> Announcements { get; set; } = new List<Announcement>();
 
     public virtual ICollection<ContestEntry> ContestEntries { get; set; } = new List<ContestEntry>();
+
+    public virtual ICollection<AnonymousContestEntry> AnonymousContestEntries { get; set; } = new List<AnonymousContestEntry>();
+
+    public virtual ICollection<AnonymousRecipe> AnonymousRecipes { get; set; } = new List<AnonymousRecipe>();
 }

@@ -40,4 +40,6 @@ public partial class ViewHomepage
     public string? AnnouncementTitle { get; set; }
 
     public string? AnnouncementImage { get; set; }
+
+
 }

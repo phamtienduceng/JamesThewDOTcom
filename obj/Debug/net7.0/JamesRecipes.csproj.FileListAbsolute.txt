@@ -662,8 +662,8 @@ C:/mvc/JamesRecipes/bin/Debug/net7.0/runtimes/win/lib/netcoreapp2.1/System.Data.
 /Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/PagedList.Mvc.dll
 C:\Users\tribu\OneDrive - DBI - VN CO., LTD\Information Technology (IT)\Term3\đồ án kỳ 3\Github\JamesThewDOTcom\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\tribu\OneDrive - DBI - VN CO., LTD\Information Technology (IT)\Term3\đồ án kỳ 3\Github\JamesThewDOTcom\bin\Debug\net7.0\appsettings.json
-C:\Users\tribu\OneDrive - DBI - VN CO., LTD\Information Technology (IT)\Term3\đồ án kỳ 3\Github\JamesThewDOTcom\bin\Debug\net7.0\app.db
 C:\Users\tribu\OneDrive - DBI - VN CO., LTD\Information Technology (IT)\Term3\đồ án kỳ 3\Github\JamesThewDOTcom\bin\Debug\net7.0\JamesRecipes.staticwebassets.runtime.json
+C:\Users\tribu\OneDrive - DBI - VN CO., LTD\Information Technology (IT)\Term3\đồ án kỳ 3\Github\JamesThewDOTcom\bin\Debug\net7.0\app.db
 C:\Users\tribu\OneDrive - DBI - VN CO., LTD\Information Technology (IT)\Term3\đồ án kỳ 3\Github\JamesThewDOTcom\bin\Debug\net7.0\JamesRecipes.exe
 C:\Users\tribu\OneDrive - DBI - VN CO., LTD\Information Technology (IT)\Term3\đồ án kỳ 3\Github\JamesThewDOTcom\bin\Debug\net7.0\JamesRecipes.deps.json
 C:\Users\tribu\OneDrive - DBI - VN CO., LTD\Information Technology (IT)\Term3\đồ án kỳ 3\Github\JamesThewDOTcom\bin\Debug\net7.0\JamesRecipes.runtimeconfig.json

@@ -1,0 +1,102 @@
+﻿@model JamesRecipes.Models.Tri.AnonymousRecipe
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+<h4>AnonymousRecipe</h4>
+
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/1bk2glw8yddruo60lxpmjfsrocs45se0sdg3plyaeyhbcgn1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="FECreate" asp-controller="AnonymousRecipes">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            @Html.HiddenFor(model => model.ContestId)
+
+
+            <div class="form-group">
+                <label asp-for="Ingredients" class="control-label">Ingredients</label>
+                <textarea asp-for="Ingredients" class="form-control wysiwyg-editor"></textarea>
+                <span asp-validation-for="Ingredients" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Procedure" class="control-label">Procedure</label>
+                <textarea asp-for="Procedure" class="form-control wysiwyg-editor"></textarea>
+                <span asp-validation-for="Procedure" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image" class="control-label">Image</label>
+                <input asp-for="Image" type="file" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Timeneeds" class="control-label">Time Needs</label>
+                <input asp-for="Timeneeds" type="time" class="form-control" />
+                <span asp-validation-for="Timeneeds" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="VideoUrl" class="control-label">Video URL</label>
+                <input asp-for="VideoUrl" type="text" class="form-control" placeholder="http://example.com/video" />
+                <span asp-validation-for="VideoUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ContactEmail" class="control-label">Contact Email</label>
+                <input asp-for="ContactEmail" type="email" class="form-control" />
+                <span asp-validation-for="ContactEmail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ContactPhone" class="control-label">Contact Phone</label>
+                <input asp-for="ContactPhone" type="tel" class="form-control" />
+                <span asp-validation-for="ContactPhone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AnonymousName" class="control-label">Name</label>
+                <input asp-for="AnonymousName" class="form-control" />
+                <span asp-validation-for="AnonymousName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        mergetags_list: [
+            { value: 'First.Name', title: 'First Name' },
+            { value: 'Email', title: 'Email' },
+        ],
+        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+    });
+</script>
+

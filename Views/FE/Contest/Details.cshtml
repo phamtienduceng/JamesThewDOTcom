@@ -89,9 +89,11 @@ else
 }
 
 <div>
-    <a asp-action="Index" asp-controller="Contest">Back to Contest List</a>
+    <a asp-action="FECreate" asp-controller="AnonymousRecipes" asp-route-contestId="@Model.ContestId">Submit Your Recipe As Guest</a>
 </div>
 
 <div>
-    <a asp-action="CreateContestRecipe" asp-controller="ContestEntries">View Contest Entries</a>
+    <a asp-action="Index" asp-controller="Contest">Back to Contest List</a>
 </div>
+
+
