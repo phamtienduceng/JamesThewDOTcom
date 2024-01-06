@@ -660,11 +660,6 @@ C:/mvc/JamesRecipes/bin/Debug/net7.0/runtimes/win/lib/netcoreapp2.1/System.Data.
 /Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/PagedList.dll
 /Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/PagedList.EntityFramework.dll
 /Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/PagedList.Mvc.dll
-/Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/ClosedXML.dll
 /Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/DocumentFormat.OpenXml.dll
-/Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/ExcelNumberFormat.dll
-/Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/Irony.dll
-/Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/SixLabors.Fonts.dll
 /Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/System.IO.Packaging.dll
-/Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/XLParser.dll
 /Applications/Development/AD/JamesRecipes/bin/Debug/net7.0/DocumentFormat.OpenXml.Framework.dll
