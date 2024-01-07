@@ -140,8 +140,9 @@ public partial class JamesrecipesContext : DbContext
 
         modelBuilder.Entity<Book>(entity =>
         {
-            entity.HasKey(e => e.BookId).HasName("PK__Books__3DE0C20750AD3715");
+            entity.HasKey(e => e.BookId).HasName("PK__Books__3DE0C227B9BE35FE");
 
+            entity.Property(e => e.BookId).HasColumnName("BookID");
             entity.Property(e => e.Author).HasMaxLength(50);
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
@@ -149,11 +150,9 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Title).HasMaxLength(100);
 
-            entity.HasOne(d => d.CategoryBook) // Mỗi Book thuộc về một CategoryBook
-    .WithMany(p => p.Books) // Mỗi CategoryBook chứa nhiều Books
-    .HasForeignKey(d => d.CategoryBookId) // Sử dụng ForeignKey là CategoryBookId
-    .HasConstraintName("FK__Books__CategoryB__6B24EA82");
-
+            entity.HasOne(d => d.Category).WithMany(p => p.Books)
+                .HasForeignKey(d => d.CategoryId)
+                .HasConstraintName("FK_Books_Category");
         });
 
         modelBuilder.Entity<Cart>(entity =>
@@ -189,12 +188,11 @@ public partial class JamesrecipesContext : DbContext
 
         modelBuilder.Entity<CategoriesBook>(entity =>
         {
-            entity.HasKey(e => e.CategoryBookId).HasName("PK__Categori__69DE50469A781451");
-
-            entity.ToTable("CategoriesBook");
+            entity.HasKey(e => e.CategoryBookId).HasName("PK__Categori__69DE50466D35DD5C");
 
             entity.Property(e => e.CategoryName).HasMaxLength(40);
         });
+
 
         modelBuilder.Entity<CategoriesRecipe>(entity =>
         {
