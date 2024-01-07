@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace JamesRecipes.Models;
 
 public partial class User
 {
     public int UserId { get; set; }
-
+    [Required(ErrorMessage = "Username is required.")]
     public string Username { get; set; } = null!;
-
+    [Required(ErrorMessage = "Password is required.")]
+    [RegularExpression(@"^(?=.*[!@#$%^&*()\-_=+{}[\]|\\;:'""<>,./?])(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$", ErrorMessage = "Password must be at least 6 characters and contain at least one special character.")]
     public string Password { get; set; } = null!;
-
+    [Required(ErrorMessage = "Email is is required.")]
+    [EmailAddress(ErrorMessage = "Invalid email format.")]
     public string? Email { get; set; }
-
+    [RegularExpression(@"^[0-9]+\d{9}$", ErrorMessage = "Phone number must be 10 digits.")]
     public string? PhoneNumber { get; set; }
 
     public string? Address { get; set; }

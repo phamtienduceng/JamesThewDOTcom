@@ -11,6 +11,9 @@ using Microsoft.Data.SqlClient;
 using System.Net.Mail;
 using MailKit.Net.Smtp;
 using JamesRecipes.Repository.FE;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication;
 
 namespace JamesRecipes.Controllers.FE;
 
@@ -38,23 +41,27 @@ public class AccountController : Controller
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(pass))
             {
                 ViewData["Error"] = "Please enter email and password.";
+                ViewBag.EmailValue = email;
                 return View("~/Views/FE/Account/Login.cshtml");
-            }
-
-            var user = _account.GetUserByEmail(email);
-
-            if (user != null && _account.VerifyPassword(pass, user.Password))
-            {
-                var userJson = JsonConvert.SerializeObject(user);
-                HttpContext.Session.SetString("userLogged", userJson);
-
-                return RedirectToAction("Index", "Home");
             }
             else
             {
-                ViewData["Error"] = "Wrong email or password!";
-                return View("~/Views/FE/Account/Login.cshtml");
+                var user = _account.GetUserByEmail(email);
+                if (user != null && _account.VerifyPassword(pass, user.Password))
+                {
+                    var userJson = JsonConvert.SerializeObject(user);
+                    HttpContext.Session.SetString("userLogged", userJson);
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewData["Error"] = "Wrong email or password!";
+                    ViewBag.EmailValue = email;
+                    return View("~/Views/FE/Account/Login.cshtml");
+                }
             }
+            
         }
         catch (Exception ex)
         {
@@ -64,7 +71,6 @@ public class AccountController : Controller
         return View("~/Views/FE/Account/Login.cshtml");
     }
 
-
     [HttpGet("register")]
     public IActionResult Register()
     {
@@ -72,25 +78,32 @@ public class AccountController : Controller
     }
 
     [HttpPost("register")]
-    public IActionResult Register(User newUser)
+    public IActionResult Register(User newUser, string confirm)
     {
         try
         {
             if (ModelState.IsValid)
             {
-                var existingUser = _account.GetUserByEmail(newUser.Email);
+                var User = _account.GetUserByEmail(newUser.Email);
 
-                if (existingUser == null)
+                if (User == null)
                 {
-                    string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newUser.Password);
-                    newUser.Password = hashedPassword;
-                    newUser.RoleId = 2;
-                    _account.AddUser(newUser);
-                    return RedirectToAction("Login", "Account");
+                    if (newUser.Password == confirm)
+                    {
+                        string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newUser.Password);
+                        newUser.Password = hashedPassword;
+                        newUser.RoleId = 2;
+                        _account.AddUser(newUser);
+                        return RedirectToAction("Login", "Account");
+                    }
+                    else
+                    {
+                        ViewData["Error"] = "Password and confirm password do not match.";
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Email is already registered.");
+                    ViewData["Error"] = "Email is already registered.";
                 }
             }
         }
@@ -127,14 +140,24 @@ public class AccountController : Controller
     public IActionResult MyProfile(int id, User model)
     {
         var user = _account.GetUserById(id);
-
-        if (user != null)
+        try
         {
-            user.Username = model.Username;
-            user.PhoneNumber = model.PhoneNumber;
-            user.Address = model.Address;
-            _account.UpdateUser(user);
-            HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
+            if (ModelState.IsValid)
+            {
+                if (user != null)
+                {
+                    user.Username = model.Username;
+                    user.PhoneNumber = model.PhoneNumber;
+                    user.Address = model.Address;
+                    _account.UpdateUser(user);
+                    HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // Xử lý ngoại lệ tại đây, ví dụ ghi log lỗi
+            ModelState.AddModelError("", "An error occurred during registration.");
         }
 
         return View("~/Views/FE/Account/MyProfile.cshtml");

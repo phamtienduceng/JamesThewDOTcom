@@ -768,6 +768,22 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.Google/7.0.13": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Authorization/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -5883,6 +5899,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Authentication.Core.xml",
         "microsoft.aspnetcore.authentication.core.2.1.1.nupkg.sha512",
         "microsoft.aspnetcore.authentication.core.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.Google/7.0.13": {
+      "sha512": "auoXmLwSnmzgmbIyJdElEQ0c/Uj3WL/nrlXU0h0xpKa5ZHSozjt3ywb0O3PJ3NLge0TR4rOT9m8O/8ZSC29eKw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.google/7.0.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.dll",
+        "lib/net7.0/Microsoft.AspNetCore.Authentication.Google.xml",
+        "microsoft.aspnetcore.authentication.google.7.0.13.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.google.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authorization/2.1.1": {
@@ -13620,6 +13651,7 @@
       "BCrypt.Net >= 0.1.0",
       "EntityFramework >= 6.4.4",
       "MailKit >= 4.3.0",
+      "Microsoft.AspNetCore.Authentication.Google >= 7.0.13",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 7.0.13",
       "Microsoft.AspNetCore.Http >= 2.2.2",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.13",
@@ -13638,25 +13670,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/macbook/.nuget/packages/": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Applications/Development/AD/JamesRecipes/JamesRecipes.csproj",
+      "projectUniqueName": "C:\\mvc\\JamesRecipes\\JamesRecipes.csproj",
       "projectName": "JamesRecipes",
-      "projectPath": "/Applications/Development/AD/JamesRecipes/JamesRecipes.csproj",
-      "packagesPath": "/Users/macbook/.nuget/packages/",
-      "outputPath": "/Applications/Development/AD/JamesRecipes/obj/",
+      "projectPath": "C:\\mvc\\JamesRecipes\\JamesRecipes.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\mvc\\JamesRecipes\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/macbook/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/sdk/7.0.310/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -13686,6 +13719,10 @@
           "MailKit": {
             "target": "Package",
             "version": "[4.3.0, )"
+          },
+          "Microsoft.AspNetCore.Authentication.Google": {
+            "target": "Package",
+            "version": "[7.0.13, )"
           },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
@@ -13769,7 +13806,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.310/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   },
