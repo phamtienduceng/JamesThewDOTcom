@@ -184,6 +184,7 @@ public class RecipeController : Controller
     public IActionResult UpdateRecipe(int id, Recipe recipe, IFormFile file)
     {
         var existRecipe = _recipe.GetOneRecipe(id);
+        var userId = existRecipe.UserId;
 
             if (file != null)
             {
@@ -192,13 +193,13 @@ public class RecipeController : Controller
                 file.CopyToAsync(stream);
                 recipe.Image = "fe/img/" + file.FileName;
                 _recipe.UpdateRecipe(id,recipe);
-                return RedirectToAction("Index");
+                return RedirectToAction("GetRecipesByUser", new {id = userId});
             }
             else
             {
                 recipe.Image = existRecipe.Image;
                 _recipe.UpdateRecipe(id, recipe);
-                return RedirectToAction("Index");
+                return RedirectToAction("GetRecipesByUser", new {id = userId});
             }
         
     }

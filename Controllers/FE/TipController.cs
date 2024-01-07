@@ -161,6 +161,7 @@ public class TipController : Controller
     public IActionResult UpdateRecipe(int id, Tip tip, IFormFile file)
     {
         var existRecipe = _tip.GetOneTip(id);
+        var userId = existRecipe.UserId;
 
         if (file != null)
         {
@@ -169,13 +170,13 @@ public class TipController : Controller
             file.CopyToAsync(stream);
             tip.Image = "fe/img/" + file.FileName;
             _tip.UpdateTip(id,tip);
-            return RedirectToAction("Index");
+            return RedirectToAction("GetTipsByUser", new{id = userId});
         }
         else
         {
             tip.Image = existRecipe.Image;
             _tip.UpdateTip(id, tip);
-            return RedirectToAction("Index");
+            return RedirectToAction("GetTipsByUser", new{id = userId});
         }
     }
     

@@ -32,7 +32,7 @@
 
 
 <div class="container">
-    <p class="text-center text-danger" style="font-size: 50px">@Model.Title</p>
+    <p class="text-center text-danger" style="font-size: 50px; margin-bottom: 100px; margin-top: 150px;">@Model.Title</p>
     <div><a asp-controller="Tip" asp-action="ExportRecipeToWord" asp-route-tipId="@Model.TipId">
                  <button class="btn btn-success">Download Tip</button>
              </a></div>
@@ -87,14 +87,13 @@
             }
             else
             {
-                <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own tips.</h3>
+                <h3>You can <a asp-action="Login" asp-controller="Account"><button class="btn btn-info">Login</button></a> to post a comment</h3>
             }
-            <a asp-action="Login" asp-controller="Account"><button class="btn btn-info">Login</button></a>
         </div>
     </div>
     <div class="row">
         <div class="col-xl-12 col-lg-12">
-            <div class="recepie_area" style="margin-top: -50px">
+            <div class="recepie_area" style="padding-top: 50px">
                 <h1 class="text-center mb-4">Related tips</h1>
                 <div class="container">
                     <div class="row">

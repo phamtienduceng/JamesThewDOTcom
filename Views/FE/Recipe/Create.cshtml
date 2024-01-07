@@ -9,13 +9,11 @@
     var httpContext = Context.Request.HttpContext;
     var userJson = httpContext.Session.GetString("userLogged");
 }
-
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h2>Create a New Recipe</h2>
-
-            <form asp-action="Create" asp-controller="Recipe" method="post" enctype="multipart/form-data">
+<div class="container" style="margin-top: 150px">
+    <h2 class="text-danger text-center" style="margin-bottom: 70px">Create a New Recipe</h2>
+    <form asp-action="Create" asp-controller="Recipe" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Title"></label>
                     <input asp-for="Title" class="form-control" />
@@ -45,6 +43,8 @@
                     <textarea asp-for="Procedure" class="form-control"></textarea>
                     <span asp-validation-for="Procedure" class="text-danger"></span>
                 </div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Timeneeds"></label>
                     <input asp-for="Timeneeds" type="time" class="form-control" />
@@ -55,9 +55,8 @@
                     <input asp-for="VideoUrl" type="text" class="form-control" />
                     <span asp-validation-for="VideoUrl" class="text-danger"></span>
                 </div>
-               
 
-                <div>
+                <div class="form-group">
                     <label asp-for="Status" class="control-label"></label>
                     <select asp-for="Status" class="form-control">
                         <option value="True">Show</option>
@@ -81,9 +80,13 @@
                     }
                 }
                 <div>@ViewBag.msg</div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            </div>
         </div>
-    </div>
+        <div class="row" style="margin: 50px 0">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
 </div>
 

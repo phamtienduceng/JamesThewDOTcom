@@ -38,6 +38,8 @@ public class TipService: ITip
     public Tip GetTip(int id)
     {
         var tip = _db.Tips
+            .Include(r=>r.User)
+            .ThenInclude(r=>r.Role)
             .Include(r=>r.Feedbacks)
             .Include(f=>f.CategoryTip)
             .ThenInclude(f=>f.Tips)
@@ -176,7 +178,7 @@ public class TipService: ITip
             tip.Content = newTip.Content;
             tip.Image = newTip.Image;
             tip.CategoryTipId = newTip.CategoryTipId;
-            _db.Update(newTip);
+            _db.Update(tip);
             _db.SaveChanges();
         }
     }

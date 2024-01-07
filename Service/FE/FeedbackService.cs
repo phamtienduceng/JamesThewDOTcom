@@ -24,6 +24,7 @@ public class FeedbackService: IFeedback
     public List<Feedback> GetFeedbacksByTipId(int tipId)
     {
         return _db.Feedbacks
+            .Include(r=>r.User)
             .Where(f => f.TipId == tipId)
             .ToList();
     }
