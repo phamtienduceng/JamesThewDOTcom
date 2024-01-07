@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace model.Models;
+namespace JamesRecipes.Models;
 
 public partial class Contact
 {
