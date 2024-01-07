@@ -81,31 +81,30 @@ namespace JamesRecipes.Controllers.FE
         }
 
 
-        /*[HttpGet("CheckMember/{ID}")]
-        public IActionResult CheckMember(int ID)
-        {
-            var membership = _paypal.MemberById(ID);
-            return View("~/Views/FE/Paypal/CheckMember.cshtml");
-        }*/
+        //[HttpGet("CheckMember/{ID}")]
+        //public IActionResult CheckMember(int ID)
+        //{
+        //    var membership = _paypal.MemberById(ID);
+        //    ViewBag.IsActive = membership.IsActive; // Truyền trạng thái IsActive vào ViewBag
+        //    return View("~/Views/FE/Paypal/CheckMember.cshtml", membership);
+        //}
 
-        [HttpPost("CheckMember/{ID}")]
-        public IActionResult CheckMember(int ID, int model)
-        {
-            var membership = _paypal.MemberById(ID);
-            DateTime now = DateTime.Now;
-            DateTime endday = (DateTime)membership.EndDate;
-            if (endday < now)
-            {
-                membership.IsActive = false;
-                _paypal.UpdateMember(membership);
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                membership.IsActive = true;
-                _paypal.UpdateMember(membership);
-                return RedirectToAction("Index", "Home");
-            }
-        }
+        //[HttpPost]
+        //public IActionResult CheckMember(int id, bool isActive)
+        //{
+        //    var membership = _paypal.MemberById(id);
+        //    var currentDate = DateTime.Today;
+
+        //    // Kiểm tra ngày kết thúc có bé hơn ngày hiện tại không
+        //    if (membership.EndDate < currentDate)
+        //    {
+        //        // Ngày kết thúc bé hơn ngày hiện tại
+        //        isActive = false;
+        //    }
+        //    membership.IsActive = isActive;
+        //    _paypal.UpdateMember(membership);
+
+        //    return Json(new { isActive = isActive });
+        //}
     }
 }

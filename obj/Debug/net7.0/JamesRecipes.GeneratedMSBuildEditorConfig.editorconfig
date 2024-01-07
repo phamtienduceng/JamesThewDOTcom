@@ -336,6 +336,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvRmFxL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Applications/Development/AD/JamesRecipes/Views/FE/Paypal/CheckMember.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvUGF5cGFsL0NoZWNrTWVtYmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Applications/Development/AD/JamesRecipes/Views/FE/Paypal/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRkUvUGF5cGFsL1JlZ2lzdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
