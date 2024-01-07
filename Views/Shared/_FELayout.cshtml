@@ -82,8 +82,27 @@
                                 <span class="hide-menu">Contest Entries</span>
                             </a>
                         </li>
+
+                        @* ANONYMOUS *@
                         <li class="sidebar-item">
-                            <a class="sidebar-link" asp-controller="AnnounceManagement" asp-action="Index" aria-expanded="false">
+                            <a class="sidebar-link" asp-controller="AnonymousRecipes" asp-action="Index" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-chef-hat"></i>
+                                </span>
+                                <span class="hide-menu">Anonymous Recipes</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="AnonymousContestEntries" asp-action="Index" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-chef-hat"></i>
+                                </span>
+                                <span class="hide-menu">Anonymous Contest Entries</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="AnnouncementsManagement" asp-action="Index" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-award"></i>
                                 </span>

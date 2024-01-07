@@ -1,0 +1,96 @@
+﻿@model JamesRecipes.Models.Tri.AnonymousRecipe
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_FELayout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AnonymousRecipe</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnonymousId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnonymousId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.Ingredients)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Procedure)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.Procedure)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Timeneeds)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Timeneeds)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VideoUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VideoUrl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactEmail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ContactEmail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactPhone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ContactPhone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnonymousName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnonymousName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ContestId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ContestId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AnonymousRecipeId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+<div>
+    <a asp-action="Create" asp-controller="AnonymousContestEntries" asp-route-id="@Model?.ContestId">Score the Entries</a> |
+    <a asp-action="Index" asp-controller="ContestEntries">Back to List</a>
+</div>

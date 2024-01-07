@@ -80,7 +80,7 @@ else
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles(); // Cho phép sử dụng các file tĩnh
 
 
 

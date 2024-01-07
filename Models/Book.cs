@@ -23,7 +23,9 @@ public partial class Book
 
     public virtual ICollection<CartDetail> CartDetails { get; set; } = new List<CartDetail>();
 
-    public virtual CategoriesBook? Category { get; set; }
-
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+
+    public int? CategoryBookId { get; set; } // Khóa ngoại
+    public virtual CategoriesBook CategoryBook { get; set; } // Mối quan hệ
+
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JamesRecipes.Models;
+namespace JamesRecipes.Models.Tri;
 
 public partial class AnonymousContestEntry
 {
@@ -17,7 +17,9 @@ public partial class AnonymousContestEntry
 
     public string? Image { get; set; }
 
-    public virtual AnonymousRecipe AnonymousRecipe { get; set; } = null!;
+    //public virtual AnonymousRecipe AnonymousRecipe { get; set; } = null!;
 
-    public virtual Contest Contest { get; set; } = null!;
+    //public virtual Contest Contest { get; set; } = null!;
+
+    
 }

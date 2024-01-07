@@ -70,12 +70,11 @@
 @if (user != null && (user.RoleId == 1 || user.RoleId == 2 || user.RoleId == 3))
 {
     <div>
-         
-        <a asp-action="Create" asp-controller="Recipe" asp-route-id="ContestID">Submit New Recipe</a>
-        ||
-        <a asp-action="CreateContestRecipe" asp-controller="ContestEntries">Submit From Inventory</a>
+        <a asp-action="UserContestRecipeCreatePartial" asp-controller="Recipe" asp-route-contestId="@Model.ContestId">Create New Recipe</a> ||
+        <a asp-action="CreateContestRecipe" asp-controller="ContestEntries" asp-route-contestId="@Model.ContestId">Submit Your Recipe</a>
     </div>
 }
+
 else if (user != null)
 {
     <div>
@@ -90,9 +89,11 @@ else
 }
 
 <div>
-    <a asp-action="Index" asp-controller="Contest">Back to Contest List</a>
+    <a asp-action="FECreate" asp-controller="AnonymousRecipes" asp-route-contestId="@Model.ContestId">Submit Your Recipe As Guest</a>
 </div>
 
 <div>
-    <a asp-action="CreateContestRecipe" asp-controller="ContestEntries">View Contest Entries</a>
+    <a asp-action="Index" asp-controller="Contest">Back to Contest List</a>
 </div>
+
+

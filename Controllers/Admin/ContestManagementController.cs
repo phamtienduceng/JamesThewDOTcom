@@ -149,14 +149,12 @@ public class ContestManagementController : Controller
         {
             return NotFound();
         }
+
+        // Lưu ContestId vào session
+        HttpContext.Session.SetString("contestId", id.ToString());
+
         return View("~/Views/Admin/Contest/Details.cshtml", contest);
     }
 
 
-    /*[HttpGet("get_contestentries_by_contest")]
-    public IActionResult GetContestEntriesByContest(int id)
-    {
-        var contestEntries = _contestManagementRepository.GetAllContestEntries(id);
-        return View("~/Views/Admin/Contest/ContestEntries.cshtml", contestEntries);
-    }*/
 }

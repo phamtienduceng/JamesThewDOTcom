@@ -23,7 +23,7 @@ public partial class User
 
     public string? Avatar { get; set; }
 
-    public virtual ICollection<Announcement> Announcements { get; set; } = new List<Announcement>();
+    //public virtual ICollection<Announcement> Announcements { get; set; } = new List<Announcement>();
 
     public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 

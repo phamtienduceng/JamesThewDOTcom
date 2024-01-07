@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace JamesRecipes.Models;
+namespace JamesRecipes.Models.Tri;
 
 public partial class AnonymousRecipe
 {
@@ -27,5 +28,11 @@ public partial class AnonymousRecipe
 
     public string? ContactPhone { get; set; }
 
+    public int ContestId { get; set; }
+
+    public string AnonymousName { get; set; } = null!;
+
     public virtual ICollection<AnonymousContestEntry> AnonymousContestEntries { get; set; } = new List<AnonymousContestEntry>();
+
+    //public virtual Contest Contest { get; set; } = null!;
 }

@@ -1,0 +1,49 @@
+﻿@model JamesRecipes.Models.Tri.AnonymousContestEntry
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_FELayout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>AnonymousContestEntry</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnonymousRecipeId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnonymousRecipeId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ContestId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ContestId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AnonymousEntryId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

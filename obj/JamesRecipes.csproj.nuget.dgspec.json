@@ -1,26 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/Applications/Development/AD/JamesRecipes/JamesRecipes.csproj": {}
+    "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\JamesRecipes.csproj": {}
   },
   "projects": {
-    "/Applications/Development/AD/JamesRecipes/JamesRecipes.csproj": {
+    "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\JamesRecipes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Applications/Development/AD/JamesRecipes/JamesRecipes.csproj",
+        "projectUniqueName": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\JamesRecipes.csproj",
         "projectName": "JamesRecipes",
-        "projectPath": "/Applications/Development/AD/JamesRecipes/JamesRecipes.csproj",
-        "packagesPath": "/Users/macbook/.nuget/packages/",
-        "outputPath": "/Applications/Development/AD/JamesRecipes/obj/",
+        "projectPath": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\JamesRecipes.csproj",
+        "packagesPath": "C:\\Users\\tribu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/macbook/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\tribu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/sdk/7.0.310/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -137,7 +142,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.310/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

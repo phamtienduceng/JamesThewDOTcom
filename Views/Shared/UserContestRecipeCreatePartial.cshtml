@@ -1,0 +1,94 @@
+﻿@using Newtonsoft.Json
+@model Recipe
+
+@{
+    ViewData["Title"] = "Recipes";
+}
+
+@{
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("userLogged");
+}
+
+<div class="container mt-5">
+    <!-- Thêm class container để có padding và margin từ xa -->
+    <div class="row justify-content-center">
+        <!-- Sử dụng justify-content-center để căn giữa theo chiều ngang -->
+        <div class="col-md-6">
+            <!-- Điều chỉnh số cột (column) theo ý muốn -->
+            <h2>Create a New Recipe</h2>
+            
+
+
+            <form asp-action="UserContestRecipeCreatePartial" asp-controller="Recipe" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="ContestId" value="@ViewData["ContestId"]" />
+
+
+
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                @if (!string.IsNullOrEmpty(userJson))
+                {
+                    var user = JsonConvert.DeserializeObject<User>(userJson);
+                    <input type="hidden" asp-for="UserId" value="@user.UserId" />
+                }
+                <div class="form-group">
+                    <label asp-for="CategoryRecipeId" class="control-label"></label>
+                    <select asp-for="CategoryRecipeId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Ingredients"></label>
+                    <textarea asp-for="Ingredients" class="form-control"></textarea>
+                    <span asp-validation-for="Ingredients" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Procedure"></label>
+                    <textarea asp-for="Procedure" class="form-control"></textarea>
+                    <span asp-validation-for="Procedure" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Timeneeds"></label>
+                    <input asp-for="Timeneeds" type="time" class="form-control" />
+                    <span asp-validation-for="Timeneeds" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VideoUrl"></label>
+                    <input asp-for="VideoUrl" type="text" class="form-control" />
+                    <span asp-validation-for="VideoUrl" class="text-danger"></span>
+                </div>
+
+
+                <div>
+                    <label asp-for="Status" class="control-label"></label>
+                    <select asp-for="Status" class="form-control">
+                        <option value="True">Available</option>
+                        <option value="False">Not Available</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input asp-for="Image" type="file" name="file" class="form-control" />
+                </div>
+                @if (!string.IsNullOrEmpty(userJson))
+                {
+                    var user = JsonConvert.DeserializeObject<User>(userJson);
+                    if (user!.RoleId == 1)
+                    {
+                        <div class="form-group">
+                            <label>For membership: </label>
+                            <input asp-for="IsMembershipOnly" />
+                        </div>
+                    }
+                }
+                <div>@ViewBag.msg</div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
