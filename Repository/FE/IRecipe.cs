@@ -35,4 +35,6 @@ public interface IRecipe
     void UpdateRecipe(int id, Recipe newRecipe);
 
     List<Recipe> RelatedRecipes();
+    
+    byte[] GeneratedWord(Recipe recipe);
 }

@@ -41,4 +41,14 @@ public class RecipeManagementController : Controller
         var rep = _recipeManagement.GetRecipe(id);
         return View("~/Views/Admin/Recipe/SingleRecipe.cshtml", rep);
     }
+    
+    [HttpGet("export_to_excel")]
+    public FileResult ExportToExcel()
+    {
+        var recipes = _recipeManagement.GetAllRecipes();
+        var fileName = "recipes.xlsx";
+        byte[] excelData = _recipeManagement.GeneratedExcel(fileName, recipes);
+
+        return File(excelData, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+    }
 }

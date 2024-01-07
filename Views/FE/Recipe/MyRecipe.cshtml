@@ -30,9 +30,9 @@
         font-weight: bold;
     }
 </style>
-<h1 class="text-center">Your Recipes</h1>
+<h1 class="text-center text-danger" style="margin-top: 150px">Your Recipes</h1>
 
-<div class="container" style="margin-top: 150px">
+<div class="container" style="margin-top: 50px">
     <div class="row">
         <div class="col-xl-3 col-lg-3">
             <div class="sidebar">
@@ -88,13 +88,12 @@
             
             <div class="row">
                 <div class="col-md-6">
-                    <form asp-action="GetRecipesByUser" asp-controller="Recipe" method="get">
-                        <div class="form-actions no-color">
-                            <h4>
-                                <span>Search: </span>
-                                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Enter title here ..."/>
-                                <input type="submit" value="Search" class="btn btn-default"/>
-                            </h4>
+                    <form asp-action="GetRecipesByUser" asp-controller="Recipe" method="get" class="form-inline my-2 my-lg-0">
+                        <div class="input-group">
+                            <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Enter title here ..." aria-label="Search" />
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-success">Search</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -120,10 +119,10 @@
                                     <span class="membership-label">Membership</span>
                                 }
                                 <div class="single_recepie text-center">
-                                    <div class="recepie_thumb mt-2">
+                                    <div class="recepie_thumb mt-2" onclick="redirectToSingleRecipe('@item.RecipeId')">
                                         <img style="height: 220px" src="~/@item.Image" alt="@item.Title">
                                     </div>
-                                    <h3 style="font-family: sastify, sans-serif; color: indianred; ">@item.Title</h3>
+                                    <h3 style="font-family: sastify, sans-serif; color: indianred; " onclick="redirectToSingleRecipe('@item.RecipeId')">@item.Title</h3>
                                     <span>@item.CreatedAt</span>
                                     <p class="mb-2">Time Needs: @item.Timeneeds</p>
                                     <div class="rating mb-2">
@@ -150,13 +149,19 @@
                                                 Premium: <input asp-for="@item.IsMembershipOnly" type="checkbox" class="recipe-premium-switch" id="premium-switch-@item.RecipeId" data-recipe-id="@item.RecipeId">
                                             </div>
                                         }
-                                        <a asp-action="UpdateRecipe" asp-controller="Recipe" asp-route-id="@item.RecipeId"><button class="btn btn-info">Update</button></a>
-                                        
                                     }
-                                    <form asp-action="DeleteMyRecipe" asp-controller="Recipe" asp-route-recipeId="@item.RecipeId" asp-route-userId="@item.UserId" method="post" onsubmit="return confirmDelete()">
-                                        <button type="submit" class="btn btn-danger m-2">Delete</button>
-                                    </form>
-                                    <a asp-action="SingleRecipe" class="line_btn" asp-controller="Recipe" asp-route-id="@item.RecipeId">View recipe's detail</a>
+                                    <div class="row d-flex ">
+                                        <div class="col-md-6 justify-content-center">
+                                            <a asp-action="UpdateRecipe" asp-controller="Recipe" asp-route-id="@item.RecipeId">
+                                                <button class="btn btn-info" style="margin-top: 9px">Update</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 justify-content-center">
+                                            <form asp-action="DeleteMyRecipe" asp-controller="Recipe" asp-route-recipeId="@item.RecipeId" asp-route-userId="@item.UserId" method="post" onsubmit="return confirmDelete()">
+                                                <button type="submit" class="btn btn-danger m-2">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         }
@@ -229,5 +234,10 @@
             var result = confirm("Are you sure you want to delete the recipe?");
             return result;
         }
+    </script>
+    <script>
+            function redirectToSingleRecipe(recipeId) {
+                window.location.href = '/single_recipe?id=' + recipeId;
+            }
     </script>
 }

@@ -6,7 +6,7 @@
         {
             <div class="list-group-item mb-4">
                 <div class="d-flex justify-content-between">
-                    <h5 class="mb-1 text-danger"><strong>@feedback.User?.Username</strong></h5>
+                    <h3 class="mb-1"><strong class="text-danger">@feedback.User?.Username</strong> <span style="font-size: 12px">at @feedback.CreatedAt</span></h3>
                     <small>
                         @for (int i = 0; i < @feedback.Rating; i++)
                         {

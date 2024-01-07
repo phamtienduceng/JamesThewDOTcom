@@ -28,9 +28,20 @@
         font-weight: bold;
     }
 </style>
-
 <div class="container">
-<p class="text-center text-danger" style="font-size: 50px">@Model.Title</p>
+    <p class="text-center text-danger" style="font-size: 50px; margin-bottom: 50px; margin-top: 150px;">@Model.Title</p>
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="justify-content-end">
+                    <a asp-controller="Recipe" asp-action="ExportRecipeToWord" asp-route-recipeId="@Model.RecipeId">
+                        <button class="btn btn-success">Download Recipe</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row" style="margin: 50px 0px 20px 0px">
         <div class="col-md-6">
             <div>
@@ -39,37 +50,58 @@
         </div>
         <div class="col-md-6">
             <div class="mt-0">
-                <h3>Ingredients</h3>
+                <h3>Ingredients: </h3>
                 <p>@Model.Ingredients</p>
             </div>
 
-            <div class="mt-4">
-                <h3>Procedure</h3>
+            <div class="mt-2">
+                <h3>Procedure: </h3>
                 <p>@Model.Procedure</p>
             </div>
 
-            <div class="mt-4">
-                <h3>Time</h3>
-                <p>@Model.Timeneeds minutes</p>
+            <div class="mt-2">
+                <h3 class="d-inline">Time: </h3>
+                <h4 class="d-inline">@Model.Timeneeds minutes</h4>
             </div>
-            <div class="mt-4">
-                <h3>Post by: @Model.User?.Username Role: @Model.User?.Role?.RoleName</h3>
+            <div class="mt-2">
+                <h3 class="d-inline">Post by: </h3>
+                <h4 class="d-inline ml-2">@Model.User?.Username</h4>
             </div>
-            <div class="mt-4">
+            <div class="mt-2">
+                <h3 class="d-inline">Role: </h3>
+                <h4 class="d-inline ml-2">@Model.User?.Role?.RoleName</h4>
+            </div>
+            <div class="mt-2">
+                <h3 class="d-inline">Rating: </h3>
+                <div class="rating d-inline">
+                    @if (@Model.Rating != null)
+                    {
+                        for (int i = 0; i < @Model.Rating; i++)
+                        {
+                            <i class="fas fa-star"></i>
+                        }
+                    }
+                    else
+                    {
+                        <h3 style="font-size: 18px">No rated yet</h3>
+                    }
+                </div>
+            </div>
+            <div class="mt-2">
                 <h3>Date Posted</h3>
-                <p>@Model.CreatedAt</p>
+                <h4>@Model.CreatedAt</h4>
             </div>
         </div>
     </div>
-<h1 class="text-center" style="margin-bottom: 30px">How to make @Model.Title?</h1>
+    <h1 class="text-center" style="margin-bottom: 30px">How to make @Model.Title?</h1>
     
-  <div class="row">
-      <div class="col-md-12">
-          <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="@Model.VideoUrl" frameborder="0" allowfullscreen></iframe>
-          </div>
-      </div>
-  </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="@Model.VideoUrl" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
     <div class="col-md-12">
         <div class="mt-4">
             <h1 class="text-center" style="margin-bottom: 30px">Comment</h1>
@@ -100,13 +132,16 @@
             }
             else
             {
-                <h3>You can <a asp-action="Login" asp-controller="Account">Login</a> to post your own recipes.</h3>
+                <h3>You can <a asp-action="Login" asp-controller="Account"><button class="btn btn-info">Login</button></a> to post a comment</h3>
             }
         </div>
     </div>
-    <div class="row">
+</div>
+
+<div>
+     <div class="row">
         <div class="col-xl-12 col-lg-12">
-            <div class="recepie_area" style="margin-top: -50px">
+            <div class="recepie_area" style="padding-top: 50px">
                 <h1 class="text-center mb-4">Related Recipes</h1>
                 <div class="container">
                     <div class="row">
@@ -176,8 +211,8 @@
             </div>
         </div>
     </div>
-
 </div>
+
 
 <script>
    function postComment() {

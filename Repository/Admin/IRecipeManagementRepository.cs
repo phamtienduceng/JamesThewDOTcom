@@ -1,4 +1,5 @@
 using JamesRecipes.Models;
+using Microsoft.AspNetCore.Mvc;
 using X.PagedList;
 
 namespace JamesRecipes.Repository.Admin;
@@ -14,4 +15,6 @@ public interface IRecipeManagementRepository
     List<Recipe> Sorting(List<Recipe> recipes, string sortOrder);
     
     List<Recipe> Search(string searchString);
+
+    byte[] GeneratedExcel(string filename, List<Recipe> recipes);
 }

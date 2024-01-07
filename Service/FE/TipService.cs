@@ -1,3 +1,6 @@
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
 using Microsoft.EntityFrameworkCore;
@@ -16,23 +19,38 @@ public class TipService: ITip
 
     public List<Tip> GetAllTips()
     {
-        return _db.Tips.Where(t => t.Status == true).ToList();
+        return _db.Tips
+            .Include(r=>r.User)
+            .ThenInclude(r=>r.Role)
+            .Include(r=>r.CategoryTip)
+            .Where(r=>r.Status == true && r.IsMembershipOnly == false).ToList();
     }
 
     public List<Tip> GetAllTipsPremium()
     {
-        throw new NotImplementedException();
+        return _db.Tips
+            .Include(r=>r.User)
+            .ThenInclude(r=>r.Role)
+            .Include(r=>r.CategoryTip)
+            .Where(r => r.Status == true).ToList();
     }
 
     public Tip GetTip(int id)
     {
-        var tip = _db.Tips.Include(r=>r.Feedbacks).SingleOrDefault(t => t.TipId == id);
+        var tip = _db.Tips
+            .Include(r=>r.User)
+            .ThenInclude(r=>r.Role)
+            .Include(r=>r.Feedbacks)
+            .Include(f=>f.CategoryTip)
+            .ThenInclude(f=>f.Tips)
+            .SingleOrDefault(r => r.TipId == id);
         return tip ?? null!;
     }
 
     public Tip GetOneTip(int id)
     {
-        return _db.Tips.SingleOrDefault(t => t.TipId == id)!;
+        var rep = _db.Tips.SingleOrDefault(r => r.TipId == id);
+        return rep ?? null!;
     }
 
     public List<Tip> GetTipsByUser(int id)
@@ -148,6 +166,57 @@ public class TipService: ITip
             _db.Feedbacks.RemoveRange(tip.Feedbacks);
             _db.Tips.Remove(tip);
             _db.SaveChanges();
+        }
+    }
+
+    public void UpdateTip(int id, Tip newTip)
+    {
+        var tip = GetOneTip(id);
+        if (tip != null)
+        {
+            tip!.Title = newTip.Title;
+            tip.Content = newTip.Content;
+            tip.Image = newTip.Image;
+            tip.CategoryTipId = newTip.CategoryTipId;
+            _db.Update(tip);
+            _db.SaveChanges();
+        }
+    }
+
+    public List<Tip> RelatedTips()
+    {
+        return _db.Tips.Take(10).ToList();
+    }
+
+    public byte[] GeneratedWord(Tip tip)
+    {
+        using (var memoryStream = new MemoryStream())
+        {
+            using (var wordDocument = WordprocessingDocument.Create(memoryStream, WordprocessingDocumentType.Document))
+            {
+                var mainPart = wordDocument.AddMainDocumentPart();
+                var document = new Document();
+                mainPart.Document = document;
+
+                var body = new Body();
+                document.Append(body);
+
+                var paragraph = new Paragraph(
+                    new Run(
+                        new Text($"TipId: {tip.TipId}"),
+                        new Break(),  
+                        new Text($"Title: {tip.Title}"),
+                        new Break(),
+                        new Text($"Content: {tip.Content}")
+                    )
+                );
+                
+                body.Append(paragraph);
+
+                wordDocument.Save();
+            }
+
+            return memoryStream.ToArray();
         }
     }
 }

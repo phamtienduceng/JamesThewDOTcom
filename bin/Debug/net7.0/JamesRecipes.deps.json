@@ -9,6 +9,7 @@
       "JamesRecipes/1.0.0": {
         "dependencies": {
           "BCrypt.Net": "0.1.0",
+          "DocumentFormat.OpenXml": "3.0.0",
           "EntityFramework": "6.4.4",
           "MailKit": "4.3.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "7.0.13",
@@ -78,6 +79,28 @@
           "lib/net6.0/BouncyCastle.Cryptography.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.2.1.47552"
+          }
+        }
+      },
+      "DocumentFormat.OpenXml/3.0.0": {
+        "dependencies": {
+          "DocumentFormat.OpenXml.Framework": "3.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      },
+      "DocumentFormat.OpenXml.Framework/3.0.0": {
+        "dependencies": {
+          "System.IO.Packaging": "8.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/DocumentFormat.OpenXml.Framework.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
           }
         }
       },
@@ -2509,6 +2532,14 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.IO.Packaging/8.0.0": {
+        "runtime": {
+          "lib/net7.0/System.IO.Packaging.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.23.53103"
+          }
+        }
+      },
       "System.IO.Pipelines/6.0.3": {},
       "System.Linq/4.3.0": {
         "dependencies": {
@@ -3103,6 +3134,20 @@
       "sha512": "sha512-A6Zr52zVqJKt18ZBsTnX0qhG0kwIQftVAjLmszmkiR/trSp8H+xj1gUOzk7XHwaKgyREMSV1v9XaKrBUeIOdvQ==",
       "path": "bouncycastle.cryptography/2.2.1",
       "hashPath": "bouncycastle.cryptography.2.2.1.nupkg.sha512"
+    },
+    "DocumentFormat.OpenXml/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o2xu17+4VOT4gKwpEcL5UBNYWrP1HQGkfe+K+LHvq5/07UjpzoGMBQzWMhGimzgL1Q2lEPYAp7JgBNZWTcfGKw==",
+      "path": "documentformat.openxml/3.0.0",
+      "hashPath": "documentformat.openxml.3.0.0.nupkg.sha512"
+    },
+    "DocumentFormat.OpenXml.Framework/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kWjZuwFsdbbKA5U3o2X6tQn0yI9gr2Oy4CHWvbc5eHRUcbl5FUi1Si44I3SW3CxyK/3AcMiC4/99wjBVLOk54A==",
+      "path": "documentformat.openxml.framework/3.0.0",
+      "hashPath": "documentformat.openxml.framework.3.0.0.nupkg.sha512"
     },
     "EntityFramework/6.4.4": {
       "type": "package",
@@ -4664,6 +4709,13 @@
       "sha512": "sha512-6QOb2XFLch7bEc4lIcJH49nJN2HV+OC3fHDgsLVsBVBk3Y4hFAnOBGzJ2lUu7CyDDFo9IBWkSsnbkT6IBwwiMw==",
       "path": "system.io.filesystem.primitives/4.3.0",
       "hashPath": "system.io.filesystem.primitives.4.3.0.nupkg.sha512"
+    },
+    "System.IO.Packaging/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8g1V4YRpdGAxFcK8v9OjuMdIOJSpF30Zb1JGicwVZhly3I994WFyBdV6mQEo8d3T+URQe55/M0U0eIH0Hts1bg==",
+      "path": "system.io.packaging/8.0.0",
+      "hashPath": "system.io.packaging.8.0.0.nupkg.sha512"
     },
     "System.IO.Pipelines/6.0.3": {
       "type": "package",
