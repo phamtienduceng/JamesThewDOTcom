@@ -65,6 +65,5 @@ public class AccountManagementController : Controller
         _httpContextAccessor.HttpContext.Session.Clear();
         return RedirectToAction("Login", "Account");
     }
-
-
+    
 }

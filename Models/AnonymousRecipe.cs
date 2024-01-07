@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace JamesRecipes.Models.Tri;
+namespace JamesRecipes.Models;
 
 public partial class AnonymousRecipe
 {

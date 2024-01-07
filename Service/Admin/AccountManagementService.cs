@@ -1,6 +1,7 @@
 using JamesRecipes.Models;
-using JamesRecipes.Models.View;
+using JamesRecipes.Models;
 using JamesRecipes.Repository.Admin;
+using model.Models;
 
 namespace JamesRecipes.Service.Admin;
 

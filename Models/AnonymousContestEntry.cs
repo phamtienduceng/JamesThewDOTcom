@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JamesRecipes.Models.Tri;
+namespace JamesRecipes.Models;
 
 public partial class AnonymousContestEntry
 {

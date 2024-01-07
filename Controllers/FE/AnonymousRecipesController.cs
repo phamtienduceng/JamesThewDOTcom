@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JamesRecipes.Models;
-using JamesRecipes.Models.Tri;
+using JamesRecipes.Models;
 using Microsoft.AspNetCore.Mvc.Razor.Compilation;
 
 namespace JamesRecipes.Controllers.FE

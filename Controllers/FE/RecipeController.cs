@@ -292,7 +292,7 @@ public class RecipeController : Controller
         }
 
         ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName");
-        return View("~/Views/FE/Recipe/UserContestRecipeCreatePartial.cshtml");
+        return View("UserContestRecipeCreatePartial.cshtml");
     }
 
     // kết thúc phần mã của anh Trí.

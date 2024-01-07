@@ -1,6 +1,7 @@
 using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
 using Microsoft.AspNetCore.Mvc;
+using model.Models;
 using Newtonsoft.Json;
 
 namespace JamesRecipes.Controllers.FE;

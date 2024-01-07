@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using JamesRecipes.Models.Tri;
-using JamesRecipes.Models.View;
+using JamesRecipes.Models;
 using Microsoft.EntityFrameworkCore;
+using model.Models;
 
 namespace JamesRecipes.Models;
 
@@ -39,6 +39,7 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<CombinedContestScore> CombinedContestScores { get; set; }
 
+    public virtual DbSet<Contact> Contacts { get; set; }
     public virtual DbSet<Contest> Contests { get; set; }
 
     public virtual DbSet<ContestEntry> ContestEntries { get; set; }
@@ -62,16 +63,15 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<ViewAnonymousContact> ViewAnonymousContacts { get; set; }
 
     public virtual DbSet<ViewHomepage> ViewHomepages { get; set; }
+    
+    public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
 
     public virtual DbSet<ViewRecipeManagement> ViewRecipeManagements { get; set; }
 
     public virtual DbSet<ViewTipManagement> ViewTipManagements { get; set; }
-
-    public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
-
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("server=.;database=jamesrecipes;uid=sa;pwd=123;trustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Server=127.0.0.1,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -221,6 +221,17 @@ public partial class JamesrecipesContext : DbContext
                 .ToView("CombinedContestScores");
 
             entity.Property(e => e.EntryId).HasColumnName("EntryID");
+        });
+        
+        modelBuilder.Entity<Contact>(entity =>
+        {
+            entity.HasKey(e => e.ContactId).HasName("PK__Contact__5C66259B278E1C0C");
+
+            entity.ToTable("Contact");
+
+            entity.Property(e => e.Email).HasMaxLength(250);
+            entity.Property(e => e.Message).HasMaxLength(50);
+            entity.Property(e => e.Name).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Contest>(entity =>
@@ -483,7 +494,7 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.TipTitle).HasMaxLength(100);
             entity.Property(e => e.Username).HasMaxLength(50);
         });
-
+        
         modelBuilder.Entity<ViewUserRole>(entity =>
         {
             entity
@@ -502,7 +513,7 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.Username).HasMaxLength(50);
         });
-
+        
         OnModelCreatingPartial(modelBuilder);
     }
 

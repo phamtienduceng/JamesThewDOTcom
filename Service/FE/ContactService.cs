@@ -1,5 +1,6 @@
 using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
+using model.Models;
 
 namespace JamesRecipes.Service.FE;
 
@@ -13,7 +14,7 @@ public class ContactService: IContact
     }
     public void SendContact(Contact newContact)
     {
-        _db.Contacts.Add(newContact);
+        _db.Add(newContact);
         _db.SaveChanges();
     }
 }
