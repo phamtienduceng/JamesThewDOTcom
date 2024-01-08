@@ -12,4 +12,6 @@ public partial class Contact
     public string? Name { get; set; }
 
     public string? Email { get; set; }
+    
+    public bool Status { get; set; }
 }

@@ -2,6 +2,7 @@
 using JamesRecipes.Repository.FE;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace JamesRecipes.Controllers.FE
 {
@@ -50,6 +51,7 @@ namespace JamesRecipes.Controllers.FE
                     {
                         user.RoleId = 3;
                         _account.UpdateUser(user);
+                        HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
                         return View("~/Views/FE/Paypal/Register.cshtml");
                     }
                 }
@@ -72,6 +74,7 @@ namespace JamesRecipes.Controllers.FE
                     {
                         user.RoleId = 3;
                         _account.UpdateUser(user);
+                        HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
                         return View("~/Views/FE/Paypal/Register.cshtml");
                     }
                 }

@@ -53,4 +53,11 @@ public class ContactManagementService: IContactManagementRepository
             await client.DisconnectAsync(true);
         }
     }
+
+    public void SwitchStatus(int  id)
+    {
+        var ct = _db.Contacts.Find(id)!;
+        ct.Status = true;
+        _db.SaveChanges();
+    }
 }

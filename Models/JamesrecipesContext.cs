@@ -226,6 +226,7 @@ public partial class JamesrecipesContext : DbContext
             entity.Property(e => e.Email).HasMaxLength(250);
             entity.Property(e => e.Message).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.Status).HasDefaultValueSql("((0))");
         });
 
         modelBuilder.Entity<Contest>(entity =>

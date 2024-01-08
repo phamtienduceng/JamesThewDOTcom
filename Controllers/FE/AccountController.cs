@@ -222,7 +222,7 @@ public class AccountController : Controller
     {
         HttpContext.Session.Clear();
         HttpContext.Session.Remove("user");
-        return View("~/Views/Home/Index.cshtml");
+        return View("~/Views/FE/Account/Login.cshtml");
     }
 
     [HttpGet("ForgotPassword")]

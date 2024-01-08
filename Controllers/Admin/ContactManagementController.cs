@@ -32,13 +32,11 @@ public class ContactManagementController : Controller
     }
     
     [HttpPost("reply_contact")]
-    public async Task<IActionResult> SendEMail(ContactViewModel model)
+    public async Task<IActionResult> SendEMail(int id, ContactViewModel model)
     {
-        // Validate input data as needed
-
         await _contact.SendEmailAsync(model.ToEmail, model.Subject, model.Body);
-
-        // You can redirect or return a response as needed
+        _contact.SwitchStatus(id);
+        
         return RedirectToAction("Index");
     }
 }
