@@ -19,13 +19,10 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<Announcement> Announcements { get; set; }
 
-    public virtual DbSet<BookModel> Books { get; set; }
-
-	public virtual DbSet<CategoryModel> Categories { get; set; }
-
-	public virtual DbSet<Order> Orders { get; set; }
-
-    public virtual DbSet<OrderDetails> OrderDetails { get; set; }
+    public virtual DbSet<Book> Books { get; set; }
+    public virtual DbSet<CartItem> CartItems { get; set; }
+    public virtual DbSet<Order> Orders { get; set; }
+    public virtual DbSet<OrderItem> OrderItems { get; set; }
 
     public virtual DbSet<CategoriesRecipe> CategoriesRecipes { get; set; }
 
@@ -83,29 +80,20 @@ public partial class JamesrecipesContext : DbContext
                 .HasConstraintName("FK__Announcem__Winne__440B1D61");
         });
 
-        modelBuilder.Entity<BookModel>(entity =>
+        modelBuilder.Entity<Book>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Books__3DE0C227B9BE35FE");
             entity.Property(e => e.Id).HasColumnName("BookID");
             entity.Property(e => e.Title).HasMaxLength(100);
             entity.Property(e => e.Author).HasMaxLength(50);
+            entity.Property(e => e.ISBN).HasMaxLength(50);
             entity.Property(e => e.Description).HasMaxLength(255);
-            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.CreatedAt)
+            entity.Property(e => e.Price).HasColumnName("Price"); ;
+            entity.Property(e => e.DatePublished)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.ImageUrl).HasMaxLength(255);
         });
-
-        //modelBuilder.Entity<CustomerInfo>().HasNoKey();
-        modelBuilder.Entity<CartItem>().HasNoKey();
-
-        //modelBuilder.Entity<CategoriesBook>(entity =>
-        //{
-        //    entity.HasKey(e => e.CategoryBookId).HasName("PK__Categori__69DE50466D35DD5C");
-
-        //    entity.Property(e => e.CategoryName).HasMaxLength(40);
-        //});
 
         modelBuilder.Entity<CategoriesRecipe>(entity =>
         {
@@ -210,16 +198,6 @@ public partial class JamesrecipesContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__Feedback__UserID__534D60F1");
-        });
-
-        modelBuilder.Entity<Order>(entity =>
-        {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF67011B6B");
-
-            entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.OrderDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
         });
 
         modelBuilder.Entity<Recipe>(entity =>

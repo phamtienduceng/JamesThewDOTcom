@@ -34,9 +34,6 @@ public partial class User
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual ICollection<Membership> Memberships { get; set; } = new List<Membership>();
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
-    
-    //public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 
     public virtual ICollection<Recipe> Recipes { get; set; } = new List<Recipe>();
 

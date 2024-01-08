@@ -1,11 +1,11 @@
-﻿﻿.a-cleanup {
+﻿.a-cleanup {
     color: inherit;
 }
 
-.a-cleanup:hover {
-    text-decoration: none;
-    color: inherit;
-}
+    .a-cleanup:hover {
+        text-decoration: none;
+        color: inherit;
+    }
 
 .card-img-custom {
     width: 100%;

@@ -179,7 +179,6 @@
       <AdditionalFiles Include="Views\Admin\TipCategories\Edit.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\Index.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\TipByCate.cshtml" />
-      <AdditionalFiles Include="Views\FE\Book\Book.cshtml" />
     </ItemGroup>
 
     <ItemGroup>

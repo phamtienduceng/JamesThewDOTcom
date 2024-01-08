@@ -1,4 +1,5 @@
-﻿using JamesRecipes.Service.Admin;
+﻿using JamesRecipes.Models.Book;
+using JamesRecipes.Service.Admin;
 using JamesRecipes.Service.FE;
 using Microsoft.AspNetCore.Builder;
 
@@ -20,21 +21,26 @@ namespace JamesRecipes
                 client.BaseAddress = new Uri("https://api.example.com/");
             });
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<JamesRecipes.Models.Book.Cart>();
+
             services.AddHttpContextAccessor();
+
+            services.AddScoped<Cart>(sp => Cart.GetCart(sp));
+
             services.AddDistributedMemoryCache();
-            services.AddSession(cfg => {                    // Đăng ký dịch vụ Session
-                cfg.Cookie.Name = "Jamesrecipe";             // Đặt tên Session - tên này sử dụng ở Browser (Cookie)
-                cfg.IdleTimeout = new TimeSpan(0, 30, 0);    // Thời gian tồn tại của Session
+
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                //options.IdleTimeout = TimeSpan.FromSeconds(10);
             });
 
             services.AddLogging(builder =>
             {
                 builder.AddConsole();
             });
-
-            services.AddTransient<CartService>();
-            services.AddScoped<JamesRecipes.Service.FE.CartService>();
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,6 +49,38 @@ namespace JamesRecipes
             app.UseSession();
 
         }
+
+        public static void Main(string[] args)
+        {
+            var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                try
+                {
+                    //Initialize Roles and Users. This one will create a user with an Admin - role aswell as a separate User-role.See UserRoleInitializer.cs in Models
+                    //UserRoleInitializer.InitializeAsync(services).Wait();
+                    //Seed book data
+                    SeedData.Initialize(services);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occured while attempting to seed the database");
+                }
+            }
+
+            host.Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }
 

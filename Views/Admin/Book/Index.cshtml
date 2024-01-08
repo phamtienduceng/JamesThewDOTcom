@@ -1,60 +1,47 @@
-﻿@model IEnumerable<JamesRecipes.Models.Book.BookModel>
+﻿@using JamesRecipes.Models.Book;
+@model IEnumerable<JamesRecipes.Models.Book.Book>
 
 @{
-    ViewData["Title"] = "Book Listed";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_FELayout.cshtml";
+    string HasImage(Book book)
+    {
+        if (book.ImageUrl != "" && book.ImageUrl != null)
+        {
+            return "fa-solid fa-check";
+        }
+        else
+        {
+            return "fa-solid fa-x";
+        }
+    }
 }
 
- @{
-    // Kiểm tra xem có thông báo thành công hay không
-    var addBookMessage = TempData["AddBookMessage"] as string;
-    var deleteMessage = TempData["DeleteMessage"] as string;
-}
-
-@if (!string.IsNullOrEmpty(addBookMessage))
-{
-    <div class="alert alert-success">
-        @addBookMessage
-    </div>
-}
-else if (!string.IsNullOrEmpty(deleteMessage))
-{ 
-<div class="alert alert-danger">
-        @deleteMessage
-    </div>
-}
-
-<h1>Book Store</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create" asp-controller="BookManagement" class="btn btn-primary"><i class="fa-solid fa-book"></i> Add Book</a>
+    <a asp-action="Create" class="btn btn-primary"><i class="fa-solid fa-book"></i> Add Book</a>
 </p>
-<table class="table table-bordered table-striped">
+<table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Slug)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatePublished)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
+                Has image
             </th>
             <th></th>
         </tr>
@@ -67,39 +54,26 @@ else if (!string.IsNullOrEmpty(deleteMessage))
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Slug)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatePublished)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                    <i class="@HasImage(item)"></i>
                 </td>
                 <td>
-                    <img src="~/images/@item.Image" alt="Book Image" style="width:100px; height:100px;" />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                </td>
-
-                <td>
-                    <a asp-action="Edit" asp-controller="BookManagement" asp-route-id="@item.Id" class="btn btn-primary"> <i class="fa-solid fa-pen-to-square"></i> </a> |
-                    <a asp-action="Details" asp-controller="BookManagement" asp-route-id="@item.Id" class="btn btn-success"> <i class="fa-solid fa-circle-info"></i> </a> |
-                    <a asp-action="Delete" asp-controller="BookManagement" asp-route-id="@item.Id" class="btn btn-danger"> <i class="fa-solid fa-trash-can"></i> </a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success"><i class="fa-solid fa-circle-info"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

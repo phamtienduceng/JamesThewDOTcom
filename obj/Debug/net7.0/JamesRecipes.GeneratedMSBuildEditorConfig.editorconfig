@@ -40,12 +40,6 @@ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xU
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Git/JamesThewDOTcom/Views/FE/Book/Book.cshtml]
-build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQm9va1xCb29rLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-build_metadata.AdditionalFiles.CssScope = 
-
 [E:/Git/JamesThewDOTcom/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -64,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/Git/JamesThewDOTcom/Views/Admin/Book/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Git/JamesThewDOTcom/Views/Admin/Book/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Git/JamesThewDOTcom/Views/Admin/Book/Details.cshtml]
@@ -178,12 +176,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQW5ub3VuY2VtZW50XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Git/JamesThewDOTcom/Views/FE/Cart/Cart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ2FydFxDYXJ0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/Git/JamesThewDOTcom/Views/FE/Checkout/Checkout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ2hlY2tvdXRcQ2hlY2tvdXQuY3NodG1s
+[E:/Git/JamesThewDOTcom/Views/FE/Cart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Git/JamesThewDOTcom/Views/FE/Contact/Index.cshtml]
@@ -196,6 +190,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/Git/JamesThewDOTcom/Views/FE/Faq/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcRmFxXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Git/JamesThewDOTcom/Views/FE/Order/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcT3JkZXJcQ2hlY2tvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Git/JamesThewDOTcom/Views/FE/Order/CheckoutComplete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcT3JkZXJcQ2hlY2tvdXRDb21wbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Git/JamesThewDOTcom/Views/FE/Recipe/Create.cshtml]
@@ -212,6 +214,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/Git/JamesThewDOTcom/Views/FE/Recipe/SingleRecipe.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcUmVjaXBlXFNpbmdsZVJlY2lwZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Git/JamesThewDOTcom/Views/FE/Store/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcU3RvcmVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Git/JamesThewDOTcom/Views/FE/Store/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcU3RvcmVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Git/JamesThewDOTcom/Views/FE/Tip/Create.cshtml]

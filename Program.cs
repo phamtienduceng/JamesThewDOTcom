@@ -8,8 +8,9 @@ using JamesRecipes.Service.FE;
 using JamesRecipes.Models;
 using JamesRecipes.Data.Helper;
 using PayPalCheckoutSdk.Orders;
+using System.Configuration;
 using JamesRecipes.Models.Book;
-using JamesRecipes.Data.Helpers;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IAccountManagementRepository, AccountManagementService>();
 builder.Services.AddScoped<IAnnounceManagementRepository, AnnouncementManagementService>();
-builder.Services.AddScoped<IBookManagementRepository, BookManagementService>();
+//builder.Services.AddScoped<IBookManagementRepository, BookManagementService>();
 builder.Services.AddScoped<ICommentManagementRepository, CommentManagementService>();
 builder.Services.AddScoped<IContactManagementRepository, ContactManagementService>();
 builder.Services.AddScoped<IContestManagementRepository, ContestManagementService>();
@@ -34,7 +35,7 @@ builder.Services.AddScoped<IAccount, AccountService>();
 builder.Services.AddScoped<IAbout, AboutService>();
 builder.Services.AddScoped<IAnnouncement, AnnouncementService>();
 //builder.Services.AddScoped<IBook, BookService>();
-builder.Services.AddScoped<ICart, CartService>();
+builder.Services.AddScoped<Cart>();
 builder.Services.AddScoped<IContact, ContactService>();
 builder.Services.AddScoped<IContest, ContestService>();
 builder.Services.AddScoped<IFaq, FaqService>();
@@ -56,10 +57,11 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
 });
 
-builder.Services.AddDbContext<JamesrecipesContext>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
                        throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<JamesrecipesContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -105,7 +107,4 @@ app.MapControllerRoute(
 app.UseSession();
 
 app.MapRazorPages();
-
-var context = app.Services.CreateAsyncScope().ServiceProvider.GetRequiredService<JamesrecipesContext>();
-SeedData.SeedingData(context);
 app.Run();
