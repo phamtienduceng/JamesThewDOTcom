@@ -10,7 +10,7 @@ public partial class User
     [Required(ErrorMessage = "Username is required.")]
     public string Username { get; set; } = null!;
     [Required(ErrorMessage = "Password is required.")]
-    [RegularExpression(@"^(?=.*[!@#$%^&*()\-_=+{}[\]|\\;:'""<>,./?])(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$", ErrorMessage = "Password must be at least 6 characters and contain at least one special character.")]
+    [RegularExpression(@"^(?=.*[!@#$%^&*()\-_=+{}[\]|\\;:'""<>,./?])(?=.*[A-Z])(?=.*[a-z]).{6,}$", ErrorMessage = "Password must be at least 6 characters and contain at least one special character.")]
     public string Password { get; set; } = null!;
     [Required(ErrorMessage = "Email is is required.")]
     [EmailAddress(ErrorMessage = "Invalid email format.")]
