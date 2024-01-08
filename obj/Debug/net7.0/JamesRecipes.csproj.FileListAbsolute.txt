@@ -1198,3 +1198,8 @@ D:\Git\JamesThewDOTcom\obj\Debug\net7.0\scopedcss\projectbundle\JamesRecipes.bun
 D:\Git\JamesThewDOTcom\obj\Debug\net7.0\JamesRecipes.csproj.CopyComplete
 D:\Git\JamesThewDOTcom\obj\Debug\net7.0\JamesRecipes.genruntimeconfig.cache
 D:\Git\JamesThewDOTcom\obj\Debug\net7.0\ref\JamesRecipes.dll
+E:\Git\JamesThewDOTcom\bin\Debug\net7.0\Microsoft.Extensions.Caching.Abstractions.dll
+E:\Git\JamesThewDOTcom\bin\Debug\net7.0\Microsoft.Extensions.Caching.Memory.dll
+E:\Git\JamesThewDOTcom\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Git\JamesThewDOTcom\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Git\JamesThewDOTcom\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll

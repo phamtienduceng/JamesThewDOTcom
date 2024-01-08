@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj": {}
+    "E:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj": {}
   },
   "projects": {
-    "D:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj": {
+    "E:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj",
+        "projectUniqueName": "E:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj",
         "projectName": "JamesRecipes",
-        "projectPath": "D:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj",
-        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-        "outputPath": "D:\\Git\\JamesThewDOTcom\\obj\\",
+        "projectPath": "E:\\Git\\JamesThewDOTcom\\JamesRecipes.csproj",
+        "packagesPath": "C:\\Users\\nhuyd\\.nuget\\packages\\",
+        "outputPath": "E:\\Git\\JamesThewDOTcom\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nhuyd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,6 +64,10 @@
               "target": "Package",
               "version": "[7.0.13, )"
             },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.13, )"
@@ -81,6 +85,10 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[7.0.13, )"
+            },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -118,7 +126,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -20,64 +20,61 @@ public class BookManagementService : IBookManagementRepository
     {
         this._db = db;
     }
-    public List<Book> GetBooks()
+    public List<BookModel> GetBooks()
     {
-        return _db.Books.ToList();
+        return _db.Books.Include(b=>b.Category).ToList();
     }
 
-    public Book GetBook(int id)
+    public BookModel GetBook(int Id)
     {
-        var book = _db.Books.FirstOrDefault(c => c.BookId == id);
-        return book ?? null;
+        var book = _db.Books.FirstOrDefault(c => c.Id == Id);
+        return book!;
     }
 
-    public void AddBook(Book book)
+    public void AddBook(BookModel book)
     {
         _db.Books.Add(book);
         _db.SaveChanges();
     }
-    public void UpdateBook(int id, Book updateBook)
+
+    public void UpdateBook(int id, BookModel updateBook)
     {
+        if (updateBook == null)
+        {
+            throw new ArgumentNullException(nameof(updateBook), "The provided book for update is null.");
+        }
         var existingBook = GetBook(id);
         if (existingBook != null)
         {
             existingBook.Title = updateBook.Title;
             existingBook.Author = updateBook.Author;
             existingBook.Price = updateBook.Price;
-            existingBook.Quantity = updateBook.Quantity;
-            existingBook.CategoryName = updateBook.CategoryName;
+            existingBook.Description = updateBook.Description;
             existingBook.Image = updateBook.Image;
-
             _db.SaveChanges();
         }
         else
         {
-            throw new ArgumentException("Book with the provided id does not exist.", nameof(id));
+            throw new InvalidOperationException("Book with the provided id does not exist.");
         }
     }
 
-    public bool CheckBook(Book book)
+    public bool CheckBook(BookModel book)
     {
-        var model = _db.Books
-            .Include(b => b.Category)
-            .SingleOrDefault(b => b.BookId == book.BookId);
-
-        if (model != null && model.Category != null)
+        var model = _db.Books.SingleOrDefault(b => b.Id == book.Id);
+        if (model != null)
         {
             return true;
         }
-
         return false;
     }
-
-    public Book DeleteBook(int id)
+    public void DeleteBook(int id)
     {
-        var book = _db.Books.SingleOrDefault(c => c.BookId == id);
+        var book = _db.Books.FirstOrDefault(c => c.Id == id);
         if (book != null)
         {
             _db.Books.Remove(book);
             _db.SaveChanges();
         }
-        return book!;
     }
 }

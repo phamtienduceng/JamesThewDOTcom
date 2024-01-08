@@ -18,6 +18,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.13" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.13" />
+        <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
           <PrivateAssets>all</PrivateAssets>
@@ -25,6 +26,7 @@
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.13" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.11" />
         <PackageReference Include="PayPal" Version="1.9.1" />
         <PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
@@ -169,12 +171,7 @@
       <_ContentIncludedByDefault Remove="Views\FE\Home\Index.cshtml" />
       <_ContentIncludedByDefault Remove="Views\FE\Home\Privacy.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Account\ResetPassword.cshtml" />
-      <_ContentIncludedByDefault Remove="Views\Cart\GetUserCart.cshtml" />
       <_ContentIncludedByDefault Remove="Views\UserOrder\UserOrders.cshtml" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="wwwroot\FE\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -182,7 +179,21 @@
       <AdditionalFiles Include="Views\Admin\TipCategories\Edit.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\Index.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\TipByCate.cshtml" />
-      <AdditionalFiles Include="Views\FE\Books\Index.cshtml" />
+      <AdditionalFiles Include="Views\FE\Book\Book.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\lib\fonts\fontawesome-webfont.svg" />
+      <None Include="wwwroot\lib\fonts\glyphicons-halflings-regular.svg" />
+      <None Include="wwwroot\lib\js\bootstrap.min.js" />
+      <None Include="wwwroot\lib\js\contact.js" />
+      <None Include="wwwroot\lib\js\gmaps.js" />
+      <None Include="wwwroot\lib\js\html5shiv.js" />
+      <None Include="wwwroot\lib\js\jquery.js" />
+      <None Include="wwwroot\lib\js\jquery.prettyPhoto.js" />
+      <None Include="wwwroot\lib\js\jquery.scrollUp.min.js" />
+      <None Include="wwwroot\lib\js\main.js" />
+      <None Include="wwwroot\lib\js\price-range.js" />
     </ItemGroup>
 
 <!--    <ItemGroup>

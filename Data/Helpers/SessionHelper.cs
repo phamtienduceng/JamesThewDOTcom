@@ -4,14 +4,14 @@ namespace JamesRecipes.Data.Helper;
 
 public static class SessionHelper
 {
-    public static void SetObjectJson(ISession session, string key, object value)
+    public static T GetJson<T>(this ISession session, string key)
     {
-        session.SetString(key, JsonConvert.SerializeObject(value));
+        var data = session.GetString(key);
+        return data == null ? default(T) : JsonConvert.DeserializeObject<T>(data);
     }
 
-    public static T? GetObjectJson<T>(ISession session, string key)
+    public static void SetJson(this ISession session, string key, object value)
     {
-        var value = session.GetString(key);
-        return value == null ? default(T) : JsonConvert.DeserializeObject<T>(value);
+        session.SetString(key, JsonConvert.SerializeObject(value));
     }
 }

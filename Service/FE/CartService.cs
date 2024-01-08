@@ -1,39 +1,52 @@
 ﻿using JamesRecipes.Data;
-using JamesRecipes.Models;
 using JamesRecipes.Models.Book;
-using JamesRecipes.Repository.Admin;
+using JamesRecipes.Repository.FE;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using PayPalCheckoutSdk.Orders;
 using System.Net;
 
-namespace JamesRecipes.Service.Admin
+namespace JamesRecipes.Service.FE
 {
-    public class CartService : ICart
+    public class CartService :ICart
     {
-        private readonly JamesrecipesContext _dbContext;
+        // Key lưu chuỗi json của Cart
+        public const string CARTKEY = "cart";
+        private readonly IHttpContextAccessor _context;
+        private readonly HttpContext HttpContext;
 
-        public CartService(JamesrecipesContext dbContext)
+        public CartService(IHttpContextAccessor context)
         {
-            _dbContext = dbContext;
+            _context = context;
+            HttpContext = context.HttpContext;
         }
 
-        public Book GetBookById(int bookId)
+        public List<CartItem> GetCartItems()
         {
-            return _dbContext.Books.FirstOrDefault(book => book.BookId == bookId);
+            var session = HttpContext.Session;
+            string jsoncart = session.GetString(CARTKEY);
+            if (jsoncart != null)
+            {
+                return JsonConvert.DeserializeObject<List<CartItem>>(jsoncart);
+            }
+            return new List<CartItem>();
         }
 
-        public void UpdateBook(Book book)
+        // Xóa cart khỏi session
+        public void ClearCart()
         {
-            Book existingBook = _dbContext.Books.FirstOrDefault(b => b.BookId == book.BookId);
-            if (existingBook != null)
-            { }
-            existingBook.Title = book.Title;
-            existingBook.Author = book.Author;
-            existingBook.Quantity = book.Quantity;
-            existingBook.Price = book.Price;
-            _dbContext.SaveChanges();
+            var session = HttpContext.Session;
+            session.Remove(CARTKEY);
+        }
+
+        // Lưu Cart (Danh sách CartItem) vào session
+        public void SaveCartSession(List<CartItem> ls)
+        {
+            var session = HttpContext.Session;
+            string jsoncart = JsonConvert.SerializeObject(ls);
+            session.SetString(CARTKEY, jsoncart);
         }
     }
 }

@@ -9,7 +9,7 @@ using JamesRecipes.Models;
 using JamesRecipes.Data.Helper;
 using PayPalCheckoutSdk.Orders;
 using JamesRecipes.Models.Book;
-
+using JamesRecipes.Data.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +33,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IAccount, AccountService>();
 builder.Services.AddScoped<IAbout, AboutService>();
 builder.Services.AddScoped<IAnnouncement, AnnouncementService>();
-builder.Services.AddScoped<IBook, BookService>();
+//builder.Services.AddScoped<IBook, BookService>();
 builder.Services.AddScoped<ICart, CartService>();
 builder.Services.AddScoped<IContact, ContactService>();
 builder.Services.AddScoped<IContest, ContestService>();
@@ -48,7 +48,13 @@ builder.Services.AddScoped<IHome, HomeService>();
 
 // Add services to the container.
 
-builder.Services.AddSession();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.IsEssential = true;
+    options.Cookie.HttpOnly = true;
+});
 
 builder.Services.AddDbContext<JamesrecipesContext>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
@@ -61,7 +67,6 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-
 
 var app = builder.Build();
 
@@ -101,4 +106,6 @@ app.UseSession();
 
 app.MapRazorPages();
 
+var context = app.Services.CreateAsyncScope().ServiceProvider.GetRequiredService<JamesrecipesContext>();
+SeedData.SeedingData(context);
 app.Run();

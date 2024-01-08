@@ -9,33 +9,24 @@ using JamesRecipes.Repository.Admin;
 using System.Diagnostics;
 using JamesRecipes.Repository.FE;
 using JamesRecipes.Models.Book;
-using JamesRecipes.Models.Book.DTOs;
 
 namespace JamesRecipes.Controllers.Admin
 {
     public class BooksController : Controller
     {
-        private readonly IBook _repository;
+        private readonly JamesrecipesContext _dataContext;
         private readonly ILogger<BooksController> _logger;
 
-        public BooksController(IBook repository, ILogger<BooksController> logger)
-        {
-            _repository = repository;
-            _logger = logger;
-        }
+		public BooksController(JamesrecipesContext dataContext, ILogger<BooksController> logger)
+		{
+			_dataContext = dataContext;
+			_logger = logger;
+		}
 
-        public async Task<IActionResult> Index(string sterm = "", int categoryId = 0)
+		public IActionResult Index()
         {
-            IEnumerable<Book> books = await _repository.GetBooks(sterm, categoryId);
-            IEnumerable<CategoriesBook> categoriesBooks = await _repository.CategoriesBooks();
-            ViewBookCate bookModel = new ViewBookCate
-            {
-                Books = books,
-                CategoriesBooks = categoriesBooks,
-                STerm = sterm,
-                CategoryBookId = categoryId
-            };
-            return View("~/Views/FE/Books/Index.cshtml",bookModel);
+            var book = _dataContext.Books.ToList();
+            return View("~/Views/FE/Book/Book.cshtml",book);
         }
     }
 }

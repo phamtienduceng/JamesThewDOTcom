@@ -1,20 +1,45 @@
-﻿@model IEnumerable<JamesRecipes.Models.Book.Book>
+﻿@model IEnumerable<JamesRecipes.Models.Book.BookModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Book Listed";
     Layout = "~/Views/Shared/_FELayout.cshtml";
 }
 
-<h1>Index</h1>
+ @{
+    // Kiểm tra xem có thông báo thành công hay không
+    var addBookMessage = TempData["AddBookMessage"] as string;
+    var deleteMessage = TempData["DeleteMessage"] as string;
+}
+
+@if (!string.IsNullOrEmpty(addBookMessage))
+{
+    <div class="alert alert-success">
+        @addBookMessage
+    </div>
+}
+else if (!string.IsNullOrEmpty(deleteMessage))
+{ 
+<div class="alert alert-danger">
+        @deleteMessage
+    </div>
+}
+
+<h1>Book Store</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" asp-controller="BookManagement" class="btn btn-primary"><i class="fa-solid fa-book"></i> Add Book</a>
 </p>
-<table class="table">
+<table class="table table-bordered table-striped">
     <thead>
-        <tr
+        <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slug)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Author)
@@ -23,16 +48,13 @@
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.CreatedAt)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Image)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
+                @Html.DisplayNameFor(model => model.Category)
             </th>
             <th></th>
         </tr>
@@ -45,29 +67,39 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Slug)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Author)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.CreatedAt)
                 </td>
                 <td>
-                    <img src="@Url.Content("~/"+item.Image)" alt="Book Image" style="width:100px; height:100px;" />
+                    <img src="~/images/@item.Image" alt="Book Image" style="width:100px; height:100px;" />
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CategoryName)
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
                 </td>
+
                 <td>
-                    <a asp-action="Edit" asp-controller="BookManagement" asp-route-id="@item.BookId">Edit</a> |
-                    <a asp-action="Details" asp-controller="BookManagement" asp-route-id="@item.BookId">Details</a> |
-                    <a asp-action="Delete" asp-controller="BookManagement" asp-route-id="@item.BookId">Delete</a>
+                    <a asp-action="Edit" asp-controller="BookManagement" asp-route-id="@item.Id" class="btn btn-primary"> <i class="fa-solid fa-pen-to-square"></i> </a> |
+                    <a asp-action="Details" asp-controller="BookManagement" asp-route-id="@item.Id" class="btn btn-success"> <i class="fa-solid fa-circle-info"></i> </a> |
+                    <a asp-action="Delete" asp-controller="BookManagement" asp-route-id="@item.Id" class="btn btn-danger"> <i class="fa-solid fa-trash-can"></i> </a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

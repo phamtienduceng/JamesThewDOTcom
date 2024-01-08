@@ -9,261 +9,259 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = JamesRecipes
 build_property.RootNamespace = JamesRecipes
-build_property.ProjectDir = D:\Git\JamesThewDOTcom\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = E:\Git\JamesThewDOTcom\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Git\JamesThewDOTcom
+build_property.MSBuildProjectDirectory = E:\Git\JamesThewDOTcom
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/TipCategories/Create.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/TipCategories/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/TipCategories/Edit.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/TipCategories/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/TipCategories/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/TipCategories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/TipCategories/TipByCate.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/TipCategories/TipByCate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwQ2F0ZWdvcmllc1xUaXBCeUNhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Books/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Book/Book.cshtml]
 build_metadata.AdditionalFiles.TargetPath = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQm9va3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQm9va1xCb29rLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Areas/Identity/Pages/_ViewStart.cshtml]
+[E:/Git/JamesThewDOTcom/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/AccountManagement/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/AccountManagement/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWNjb3VudE1hbmFnZW1lbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/AccountManagement/RegisterAdmin.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/AccountManagement/RegisterAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWNjb3VudE1hbmFnZW1lbnRcUmVnaXN0ZXJBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Announcement/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Announcement/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQW5ub3VuY2VtZW50XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Book/Create.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Book/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Book/Details.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Book/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Book/Edit.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Book/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Book/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Book/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Comment/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Comment/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29tbWVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Contact/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Contest/Create.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Contest/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29udGVzdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Contest/Details.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Contest/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29udGVzdFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Contest/Edit.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Contest/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29udGVzdFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Contest/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Contest/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29udGVzdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Dashboard/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Faq/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Faq/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRmFxXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Order/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3JkZXJcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Git/JamesThewDOTcom/Views/Admin/RecipeCategories/Create.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/RecipeCategories/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/RecipeCategories/Edit.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/RecipeCategories/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/RecipeCategories/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/RecipeCategories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/RecipeCategories/RecipeByCate.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/RecipeCategories/RecipeByCate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlQ2F0ZWdvcmllc1xSZWNpcGVCeUNhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Recipe/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Recipe/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Recipe/SingleRecipe.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Recipe/SingleRecipe.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjaXBlXFNpbmdsZVJlY2lwZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Tip/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Tip/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Admin/Tip/SingleTip.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Admin/Tip/SingleTip.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGlwXFNpbmdsZVRpcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/About/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/About/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWJvdXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Account/ChangePassword.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Account/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Account/ForgotPassword.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Account/ForgotPasswordConfirmation.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Account/Login.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Account/MyProfile.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Account/MyProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxNeVByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Account/Register.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Account/ResetPassword.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Announcement/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Announcement/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQW5ub3VuY2VtZW50XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Cart/Checkout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ2FydFxDaGVja291dC5jc2h0bWw=
+[E:/Git/JamesThewDOTcom/Views/FE/Cart/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ2FydFxDYXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Cart/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ2FydFxJbmRleC5jc2h0bWw=
+[E:/Git/JamesThewDOTcom/Views/FE/Checkout/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ2hlY2tvdXRcQ2hlY2tvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Contact/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Contest/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Contest/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcQ29udGVzdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Faq/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Faq/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcRmFxXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Recipe/Create.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Recipe/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcUmVjaXBlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Recipe/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Recipe/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcUmVjaXBlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Recipe/MyRecipe.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Recipe/MyRecipe.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcUmVjaXBlXE15UmVjaXBlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Recipe/SingleRecipe.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Recipe/SingleRecipe.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcUmVjaXBlXFNpbmdsZVJlY2lwZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Tip/Create.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Tip/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcVGlwXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Tip/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Tip/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcVGlwXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/FE/Tip/SingleTip.cshtml]
+[E:/Git/JamesThewDOTcom/Views/FE/Tip/SingleTip.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRkVcVGlwXFNpbmdsZVRpcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Home/Index.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Home/Privacy.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Shared/Error.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Shared/_CommentsPartial.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Shared/_CommentsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db21tZW50c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Shared/_NotificationPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Git/JamesThewDOTcom/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/_ViewImports.cshtml]
+[E:/Git/JamesThewDOTcom/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/_ViewStart.cshtml]
+[E:/Git/JamesThewDOTcom/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Git/JamesThewDOTcom/Views/Shared/_FELayout.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Shared/_FELayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GRUxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-tnhe0e3npy
 
-[D:/Git/JamesThewDOTcom/Views/Shared/_Layout.cshtml]
+[E:/Git/JamesThewDOTcom/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-0czpforg0u

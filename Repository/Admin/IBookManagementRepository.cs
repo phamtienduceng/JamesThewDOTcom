@@ -5,10 +5,10 @@ namespace JamesRecipes.Repository.Admin;
 
 public interface IBookManagementRepository
 {
-    List<Book> GetBooks();
-    Book GetBook(int id);
-    void AddBook(Book book);
-    void UpdateBook(int id, Book updateBook);
-    Book DeleteBook(int id);
-    bool CheckBook(Book book);
+    List<BookModel> GetBooks();
+    BookModel GetBook(int id);
+    void AddBook(BookModel book);
+    void UpdateBook(int id, BookModel updateBook);
+    void DeleteBook(int id);
+    bool CheckBook(BookModel book);
 }

@@ -1,63 +1,60 @@
-﻿using JamesRecipes.Models;
-using JamesRecipes.Repository.FE;
-using Microsoft.EntityFrameworkCore;
+﻿//using JamesRecipes.Models.Book;
+//using JamesRecipes.Repository.FE;
 
-namespace JamesRecipes.Service.FE
-{
-    public class OrderService 
-    {
-        //private readonly JamesrecipesContext _context;
+//namespace JamesRecipes.Service.FE
+//{
+//    public class OrderService : IOrder
+//    {
+//        private readonly JamesrecipesContext _db;
 
-        //public OrderService(JamesrecipesContext context)
-        //{
-        //    _context = context;
-        //}
+//        public OrderService(JamesrecipesContext db)
+//        {
+//            _db = db;
+//        }
 
-        //public Order CreateOrder(Order order)
-        //{
-        //    _context.Orders.Add(order);
-        //    _context.SaveChanges();
-        //    return order;
-        //}
+//        public void ProcessOrder(int userId, List<CartItems> cartItems)
+//        {
+//            // Kiểm tra số lượng tồn kho và giảm số lượng sản phẩm
+//            foreach (var cartItem in cartItems)
+//            {
+//                var book = _db.Books.Find(cartItem.BookId);
 
-        //public Order GetOrderById(int orderId)
-        //{
-        //    return _context.Orders
-        //        .Include(o => o.OrderDetails) // Include any related entities you need
-        //        .FirstOrDefault(o => o.OrderId == orderId);
-        //}
+//                if (book != null && book.Quantity >= cartItem.Quantity)
+//                {
+//                    // Giảm số lượng tồn kho
+//                    book.Quantity -= cartItem.Quantity;
+//                }
+//                else
+//                {
+//                    // Xử lý khi không đủ số lượng tồn kho
+//                    // Ví dụ: thông báo lỗi, hủy đơn hàng, v.v.
+//                }
+//            }
 
-        //public List<Order> GetOrdersByUserId(string userId)
-        //{
-        //    return _context.Orders
-        //        .Where(o => o.UserId == userId)
-        //        .ToList();
-        //}
+//            // Tạo đơn hàng và chi tiết đơn hàng
+//            var order = new Order
+//            {
+//                UserId = userId,
+//                OrderDate = DateTime.Now,
+//            };
 
-        //public void UpdateOrderStatus(int orderId, OrderStatus newStatus)
-        //{
-        //    var order = _context.Orders.Find(orderId);
-        //    if (order != null)
-        //    {
-        //        order.Status = newStatus;
-        //        _context.SaveChanges();
-        //    }
-        //}
+//            foreach (var cartItem in cartItems)
+//            {
+//                var orderItem = new OrderItem
+//                {
+//                    Order = order,
+//                    BookId = cartItem.BookId,
+//                    Quantity = cartItem.Quantity,
+//                    Price = cartItem.Book.Price,
+//                };
 
-        //public void CancelOrder(int orderId)
-        //{
-        //    var order = _context.Orders.Find(orderId);
-        //    if (order != null)
-        //    {
-        //        // Perform any additional logic for order cancellation, if needed
-        //        _context.Orders.Remove(order);
-        //        _context.SaveChanges();
-        //    }
-        //}
+//                _db.OrderItems.Add(orderItem);
+//            }
 
-        //public List<Order> GetAllOrders()
-        //{
-        //    return _context.Orders.ToList();
-        //}
-    }
-}
+//            // Xóa giỏ hàng đã thanh toán
+//            _db.CartItems.RemoveRange(cartItems);
+//            // Lưu thay đổi vào cơ sở dữ liệu
+//            _db.SaveChanges();
+//        }
+//    }
+//}

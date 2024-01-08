@@ -19,19 +19,13 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<Announcement> Announcements { get; set; }
 
-    public virtual DbSet<Book> Books { get; set; }
+    public virtual DbSet<BookModel> Books { get; set; }
 
-    public virtual DbSet<Cart> Carts { get; set; }
+	public virtual DbSet<CategoryModel> Categories { get; set; }
 
-    public virtual DbSet<CartItems> CartItems { get; set; }
+	public virtual DbSet<Order> Orders { get; set; }
 
-    public virtual DbSet<CategoriesBook> CategoriesBooks { get; set; }
-
-    public virtual DbSet<Customer> Customer { get; set; }
-
-    public virtual DbSet<Order> Orders { get; set; }
-
-    public virtual DbSet<OrderItem> OrderItems { get; set; }
+    public virtual DbSet<OrderDetails> OrderDetails { get; set; }
 
     public virtual DbSet<CategoriesRecipe> CategoriesRecipes { get; set; }
 
@@ -64,7 +58,7 @@ public partial class JamesrecipesContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-52MJDM8\\MSSQLSERVER01;Database=jamesrecipes;User=sa;Password=123;TrustServerCertificate=True; Trusted_Connection=False;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-PSHNJ8T;Database=jamesrecipes;User=sa;Password=123;TrustServerCertificate=True; Trusted_Connection=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -89,39 +83,29 @@ public partial class JamesrecipesContext : DbContext
                 .HasConstraintName("FK__Announcem__Winne__440B1D61");
         });
 
-        modelBuilder.Entity<Book>(entity =>
+        modelBuilder.Entity<BookModel>(entity =>
         {
-            entity.HasKey(e => e.BookId).HasName("PK__Books__3DE0C227B9BE35FE");
-            entity.Property(e => e.BookId).HasColumnName("BookID");
+            entity.HasKey(e => e.Id).HasName("PK__Books__3DE0C227B9BE35FE");
+            entity.Property(e => e.Id).HasColumnName("BookID");
             entity.Property(e => e.Title).HasMaxLength(100);
             entity.Property(e => e.Author).HasMaxLength(50);
+            entity.Property(e => e.Description).HasMaxLength(255);
             entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.Quantity).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Image).HasMaxLength(255);
-            entity.Property(e => e.CategoryName).HasMaxLength(100);
-            entity.HasOne(d => d.Category).WithMany(p => p.Books)
-                .HasForeignKey(d => d.CategoryBookId)
-                .HasConstraintName("FK_Books_Category");
         });
 
-        modelBuilder.Entity<Cart>(entity =>
-        {
-            entity.HasKey(e => e.CartId).HasName("PK__Cart__51BCD7B7EDE2CEEA");
-            entity.Property(e => e.Quantity).HasColumnType("decimal(10, 2)");
-            entity.Property(e => e.OrderDate)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-        });
+        //modelBuilder.Entity<CustomerInfo>().HasNoKey();
+        modelBuilder.Entity<CartItem>().HasNoKey();
 
-        modelBuilder.Entity<CategoriesBook>(entity =>
-        {
-            entity.HasKey(e => e.CategoryBookId).HasName("PK__Categori__69DE50466D35DD5C");
+        //modelBuilder.Entity<CategoriesBook>(entity =>
+        //{
+        //    entity.HasKey(e => e.CategoryBookId).HasName("PK__Categori__69DE50466D35DD5C");
 
-            entity.Property(e => e.CategoryName).HasMaxLength(40);
-        });
+        //    entity.Property(e => e.CategoryName).HasMaxLength(40);
+        //});
 
         modelBuilder.Entity<CategoriesRecipe>(entity =>
         {

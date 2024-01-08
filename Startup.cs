@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using JamesRecipes.Service.Admin;
+using JamesRecipes.Service.FE;
+using Microsoft.AspNetCore.Builder;
 
 namespace JamesRecipes
 {
@@ -17,18 +19,22 @@ namespace JamesRecipes
                 // Ví dụ: Cấu hình BaseAddress
                 client.BaseAddress = new Uri("https://api.example.com/");
             });
-            services.AddSession(options =>
-            {
-                // Thiết lập các tùy chọn session
-                services.AddSession(options =>
-                {
-                    options.IdleTimeout = TimeSpan.FromMinutes(30); // Thời gian hết hạn của Session
-                    options.Cookie.HttpOnly = true;
-                    options.Cookie.IsEssential = true;
-                });
+
+            services.AddHttpContextAccessor();
+            services.AddDistributedMemoryCache();
+            services.AddSession(cfg => {                    // Đăng ký dịch vụ Session
+                cfg.Cookie.Name = "Jamesrecipe";             // Đặt tên Session - tên này sử dụng ở Browser (Cookie)
+                cfg.IdleTimeout = new TimeSpan(0, 30, 0);    // Thời gian tồn tại của Session
             });
 
-            // ...
+            services.AddLogging(builder =>
+            {
+                builder.AddConsole();
+            });
+
+            services.AddTransient<CartService>();
+            services.AddScoped<JamesRecipes.Service.FE.CartService>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
