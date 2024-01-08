@@ -21,7 +21,7 @@ public class AccountManagementController : Controller
         _accountRepository = accountRepository;
         _httpContextAccessor = httpContextAccessor;
     }
-    [Authentication]
+    [AuthenticationAdmin]
     [HttpGet("Index")]
     public IActionResult Index()
     {
@@ -29,6 +29,7 @@ public class AccountManagementController : Controller
         return View("~/Views/Admin/AccountManagement/Index.cshtml", users);
     }
  
+    [AuthenticationAdmin]
     [HttpGet("registeradmin")]
     public IActionResult Registeradmin()
     {
@@ -59,6 +60,7 @@ public class AccountManagementController : Controller
         return View("~/Views/Admin/AccountManagement/Registeradmin.cshtml");
     }
 
+    [AuthenticationAdmin]
     [HttpGet("logoutadmin")]
     public IActionResult LogoutAdmin()
     {

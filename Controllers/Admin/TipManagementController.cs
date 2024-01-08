@@ -36,10 +36,22 @@ public class TipManagementController : Controller
         return View("~/Views/Admin/Tip/Index.cshtml", ts);
     }
     
-    [HttpGet("get_recipe")]
+    [AuthenticationAdmin]
+    [HttpGet("get_tip")]
     public IActionResult GetTip(int id)
     {
         var tip = _tipManagement.GetTip(id);
         return View("~/Views/Admin/Tip/SingleTIp.cshtml", tip);
+    }
+    
+    [AuthenticationAdmin]
+    [HttpGet("export_tip_to_excel")]
+    public FileResult ExportToExcel()
+    {
+        var tips = _tipManagement.GetAllTip();
+        var fileName = "tips.xlsx";
+        byte[] excelData = _tipManagement.GeneratedExcel(fileName, tips);
+
+        return File(excelData, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
     }
 }

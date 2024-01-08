@@ -11,14 +11,14 @@
                     <h1 class="text-danger">MyProfile</h1>
                 </div>
                 <div class="card-body">
+                    <div>
+                        <h4 style="line-height: 0">Id: @Html.DisplayFor(u=>u.UserId)</h4><br/>
+                        <h4 style="line-height: 0">Username: @Html.DisplayFor(u=>u.Username)</h4><br/>
+                        <h4 style="line-height: 0">Email: @Html.DisplayFor(u=>u.Email)</h4><br/>
+                        <h4 style="line-height: 0">Role: @Html.DisplayFor(u=>u.Role!.RoleName)</h4><br/>
+                    </div>
                     <form asp-action="MyProfile" asp-controller="Account" method="post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div>
-                            <h4 style="line-height: 0">Id: @Html.DisplayFor(u=>u.UserId)</h4><br/>
-                            <h4 style="line-height: 0">Username: @Html.DisplayFor(u=>u.Username)</h4><br/>
-                            <h4 style="line-height: 0">Email: @Html.DisplayFor(u=>u.Email)</h4><br/>
-                            <h4 style="line-height: 0">Role: @Html.DisplayFor(u=>u.Role!.RoleName)</h4><br/>
-                        </div>
                         <input type="hidden" asp-for="UserId" name="id" />
                         <div class="form-group">
                             <label asp-for="PhoneNumber" class="control-label">Phone Number:</label>

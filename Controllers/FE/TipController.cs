@@ -2,6 +2,7 @@ using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 
 namespace JamesRecipes.Controllers.FE;
 
@@ -25,7 +26,19 @@ public class TipController : Controller
         ViewData["RatingSort"] = sortOrder == "rating" ? "rating_desc" : "rating";
         ViewData["CurrentFilter"] = searchString;
 
+        var userJson = HttpContext.Session.GetString("userLogged");
+        
         var tips = _tip.GetAllTips();
+        
+        if (!string.IsNullOrEmpty(userJson))
+        {
+            var user = JsonConvert.DeserializeObject<User>(userJson);
+            if (user!.RoleId == 1 || user.RoleId == 3)
+            {
+                tips = _tip.GetAllTipsPremium();
+            }
+            
+        }   
 
         if (!string.IsNullOrEmpty(searchString))
         {

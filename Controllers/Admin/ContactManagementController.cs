@@ -1,4 +1,5 @@
 using JamesRecipes.Models;
+using JamesRecipes.Models.Authentication;
 using JamesRecipes.Repository.Admin;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,7 @@ public class ContactManagementController : Controller
         _contact = contact;
     }
 
+    [AuthenticationAdmin]
     [HttpGet]
     public IActionResult Index(int page = 1)
     {
@@ -24,6 +26,7 @@ public class ContactManagementController : Controller
         return View("~/Views/Admin/Contact/Index.cshtml", contacts);
     }
     
+    [AuthenticationAdmin]
     [HttpGet("contact_detail")]
     public IActionResult GetContactDetail(int id)
     {

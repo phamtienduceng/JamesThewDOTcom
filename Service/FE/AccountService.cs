@@ -30,6 +30,16 @@ namespace JamesRecipes.Service.FE
             }
         }
 
+        public void ChangeRole(int id)
+        {
+            var acc = _db.Users.Find(id);
+            if (acc != null)
+            {
+                acc.RoleId = 3;
+                _db.SaveChanges();
+            }
+        }
+
         public void AddUser(User newUser)
         {
             _db.Users.Add(newUser);

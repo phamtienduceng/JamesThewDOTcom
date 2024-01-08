@@ -35,6 +35,7 @@ public class RecipeManagementController : Controller
         return View("~/Views/Admin/Recipe/Index.cshtml", recipes);
     }
     
+    [AuthenticationAdmin]
     [HttpGet("get_recipe")]
     public IActionResult GetRecipe(int id)
     {
@@ -42,6 +43,7 @@ public class RecipeManagementController : Controller
         return View("~/Views/Admin/Recipe/SingleRecipe.cshtml", rep);
     }
     
+    [AuthenticationAdmin]
     [HttpGet("export_to_excel")]
     public FileResult ExportToExcel()
     {

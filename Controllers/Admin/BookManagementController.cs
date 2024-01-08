@@ -68,18 +68,6 @@ public class BookManagementController : Controller
         return View("~/Views/Admin/BookManagement/Edit.cshtml", book);
     }
 
-    
-    /*[HttpPost("edit")]
-    public IActionResult Edit(int id, Book book)
-    {
-        if (ModelState.IsValid)
-        {
-            _book.PutBook(b);
-        }
-        return View("~/Views/Admin/BookCategories/Edit.cshtml");
-    }*/
-    
-
     public IActionResult Delete(int id)
     {
         _book.DeleteBook(id);

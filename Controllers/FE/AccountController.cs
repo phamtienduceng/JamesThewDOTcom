@@ -217,17 +217,14 @@ public class AccountController : Controller
     [HttpPost("ForgotPassword")]
     public ActionResult ForgotPassword(string email)
     {
-        // Kiểm tra xem email có tồn tại trong hệ thống hay không
         if (IsEmailValid(email))
         {
-            // Gửi email chứa đường dẫn đặt lại mật khẩu đến địa chỉ email người dùng
             SendResetPasswordEmail(email);
 
-            return RedirectToAction("ForgotPasswordConfirmation", "Account");
+            return RedirectToAction("ForgotPassword", "Account");
         }
 
-        // Nếu email không tồn tại trong hệ thống, hiển thị form quên mật khẩu lại với thông báo lỗi
-        ModelState.AddModelError("", "Email không hợp lệ.");
+        ModelState.AddModelError("", "Email is not invalid.");
         return View("~/Views/FE/Account/ForgotPassword.cshtml");
     }
     [HttpGet("ResetPassword/{email}")]
@@ -255,12 +252,6 @@ public class AccountController : Controller
         acc.Password = hashedPassword;
         _account.UpdateUser(acc);
         return View("~/Views/FE/Account/ResetPassword.cshtml");
-    }
-
-    [HttpGet("ForgotPasswordConfirmation")]
-    public ActionResult ForgotPasswordConfirmation()
-    {
-        return View("~/Views/FE/Account/ForgotPasswordConfirmation.cshtml");
     }
 
     private bool IsEmailValid(string email)

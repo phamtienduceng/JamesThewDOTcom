@@ -4,40 +4,45 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="row">
-    <div class="col-md-4 mx-auto">
-        <h1 class="text-center  ">Register</h1>
-        <hr />
-        @if (ViewData["Error"] != null)
-        {
-            <div class="alert alert-danger">@ViewData["Error"]</div>
-        }
-        <form asp-action="Register" asp-controller="Account" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
+<div class="row justify-content-center" style="margin: 150px 0 50px 0">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header text-white text-center">
+                <h1 class="text-danger">Register</h1>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" type="email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+            <div class="card-body">
+                @if (ViewData["Error"] != null)
+                {
+                    <div class="alert alert-danger">@ViewData["Error"]</div>
+                }
+                <form asp-action="Register" asp-controller="Account" method="post" onsubmit="return validateForm()">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label">Username:</label>
+                        <input asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Email:</label>
+                        <input asp-for="Email" type="email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label">Password:</label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Confirm Password:</label>
+                        <input class="form-control" type="password" name="confirm" />
+                        <span id="confirm-error" class="text-danger" style="display: none;">Confirm is required</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" type="password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Confirm</label>
-                <input class="form-control" type="password" name="confirm" />
-                <span id="confirm-error" class="text-danger" style="display: none;">Confirm is required</span>
-            </div>
-            <div class="form-group"> 
-                <input type="submit" value="Create" onclick="validateForm()" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
@@ -66,9 +71,6 @@
         }
     }
 </script>
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 
 @section scripts {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -5,77 +5,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Register</h1>
+<div class="container mt-5" >
+    <div class="row justify-content-center" style="margin: 200px 0 50px 0">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header text-white text-center">
+                    <h3 class="text-center">Register Membership</h3>
+                </div>
+                <div class="card-body">
+                    <form id="paypal-form" asp-action="Register" asp-controller="Paypal" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<h4>Membership</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form id="paypal-form" asp-action="Register" asp-controller="Paypal" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <label for="price">Giá tiền:</label>
-            <select id="price" name="price">
-                <option value="10">10 USD</option>
-                <option value="100">100 USD</option>
-            </select>
-            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+                        <div class="form-group">
+                            <label for="price">Select Membership Plan:</label>
+                            <select id="price" name="price" class="form-control">
+                                <option value="10">10 USD</option>
+                                <option value="100">100 USD</option>
+                            </select>
+                        </div>
 
-            <div id="paypal-button-container"></div>
+                        <div id="paypal-button-container" class="text-center mt-3"></div>
 
-            <script>
-                // Render the PayPal button
-                paypal.Button.render({
-                    // Set your environment
-                    env: 'sandbox', // sandbox | production
+                        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+                        <script>
+                            // Render the PayPal button
+                            paypal.Button.render({
+                                env: 'sandbox',
+                                style: {
+                                    label: 'pay',
+                                    size: 'responsive',
+                                    shape: 'rect',
+                                    color: 'gold'
+                                },
+                                client: {
+                                    sandbox: 'ATssV8Qv5X1-o9SpSDgBCwjVbUb81CJm2ZPSnnDA7fWpfySUPWKzNevwd9-QyHuS5ZI8QwpVwLenR1uI',
+                                    production: '<insert production client id>'
+                                },
+                                commit: true,
+                                payment: function (data, actions) {
+                                    var price = parseFloat(document.getElementById('price').value);
 
-                    // Specify the style of the button
-                    style: {
-                        label: 'pay',
-                        size: 'small', // small | medium | large | responsive
-                        shape: 'rect',   // pill | rect
-                        color: 'gold'   // gold | blue | silver | black
-                    },
-
-                    // PayPal Client IDs - replace with your own
-                    // Create a PayPal app: https://developer.paypal.com/developer/applications/create
-                    client: {
-                        sandbox: 'ATssV8Qv5X1-o9SpSDgBCwjVbUb81CJm2ZPSnnDA7fWpfySUPWKzNevwd9-QyHuS5ZI8QwpVwLenR1uI',
-                        production: '<insert production client id>'
-                    },
-
-                    // Show the buyer a 'Pay Now' button in the checkout flow
-                    commit: true,
-
-                    // Wait for the PayPal button to be clicked
-                    payment: function (data, actions) {
-                        var price = parseFloat(document.getElementById('price').value);
-
-                        return actions.payment.create({
-                            transactions: [{
-                                amount: {
-                                    total: price,
-                                    currency: 'USD'
+                                    return actions.payment.create({
+                                        transactions: [{
+                                            amount: {
+                                                total: price,
+                                                currency: 'USD'
+                                            }
+                                        }]
+                                    });
+                                },
+                                onAuthorize: function (data, actions) {
+                                    return actions.payment.execute().then(function () {
+                                        document.getElementById('paypal-form').submit();
+                                    });
                                 }
-                            }]
-                        });
-                    },
-
-                    // Wait for the payment to be authorized by the customer
-                    onAuthorize: function (data, actions) {
-                        return actions.payment.execute().then(function () {
-                            // Submit the form after successful payment
-                            document.getElementById('paypal-form').submit();
-                        });
-                    }
-
-                }, '#paypal-button-container');
-            </script>
-        </form>
+                            }, '#paypal-button-container');
+                        </script>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

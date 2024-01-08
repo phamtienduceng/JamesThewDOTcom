@@ -212,18 +212,18 @@
                                     <div class="message-body">
                                         @{
                                             var httpContext = Context.Request.HttpContext;
-                                            var adminJson = httpContext.Session.GetString("admin");
+                                            var adminJson = httpContext.Session.GetString("userLogged");
                                         }
 
                                         @{
                                             if (!string.IsNullOrEmpty(adminJson))
                                             {
                                                 var admin = JsonConvert.DeserializeObject<User>(adminJson);
-                                                <a href="#">@admin.Username</a>
+                                                <p class="text-center">@admin.Username</p>
                                             }
                                             else
                                             {
-                                                <a href="#">Account</a>
+                                                <p>Account</p>
                                             }
                                         }
                                         <a asp-action="LogoutAdmin" asp-controller="AccountManagement" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>

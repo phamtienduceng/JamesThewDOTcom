@@ -33,6 +33,7 @@ public class FaqManagementController : Controller
         return View("~/Views/Admin/Faq/Index.cshtml", f);
     }
     
+    [AuthenticationAdmin]
     [HttpGet("get_faq")]
     public IActionResult GetOneFaq(int id)
     {
@@ -40,6 +41,7 @@ public class FaqManagementController : Controller
         return View("~/Views/Admin/Faq/SingleFaq.cshtml", f);
     }
 
+    [AuthenticationAdmin]
     [HttpGet("create_faq")]
     public IActionResult Create()
     {
@@ -58,6 +60,7 @@ public class FaqManagementController : Controller
         return View("~/Views/Admin/Faq/Create.cshtml", faq);
     }
     
+    [AuthenticationAdmin]
     [HttpGet("update_faq")]
     public IActionResult Update(int id)
     {

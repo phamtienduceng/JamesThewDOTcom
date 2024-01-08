@@ -81,23 +81,18 @@ public class RecipeManagementService: IRecipeManagementRepository
     {
         using (SpreadsheetDocument spreadsheetDocument = SpreadsheetDocument.Create(memoryStream, SpreadsheetDocumentType.Workbook))
         {
-            // Tạo một WorkbookPart để quản lý Workbook
             WorkbookPart workbookPart = spreadsheetDocument.AddWorkbookPart();
             workbookPart.Workbook = new Workbook();
 
-            // Tạo một WorksheetPart để quản lý Sheet
             WorksheetPart worksheetPart = workbookPart.AddNewPart<WorksheetPart>();
             worksheetPart.Worksheet = new Worksheet(new SheetData());
 
-            // Thêm một Sheet vào Workbook
             Sheets sheets = spreadsheetDocument.WorkbookPart.Workbook.AppendChild(new Sheets());
             Sheet sheet = new Sheet() { Id = spreadsheetDocument.WorkbookPart.GetIdOfPart(worksheetPart), SheetId = 1, Name = "Sheet1" };
             sheets.Append(sheet);
 
-            // Tạo một danh sách các header
             var headers = new List<string> { "RecipeId", "User", "Role", "Category", "Title", "Ingredients", "Procedure", "Time", "Rating", "Date posted", "Status", "Premium" };
 
-            // Thêm header vào Sheet
             Row headerRow = new Row();
             foreach (var header in headers)
             {
@@ -106,7 +101,6 @@ public class RecipeManagementService: IRecipeManagementRepository
             }
             worksheetPart.Worksheet.Elements<SheetData>().First().Append(headerRow);
 
-            // Lặp qua dữ liệu và thêm nó vào Sheet
             foreach (var recipe in recipes)
             {
                 Row dataRow = new Row();
@@ -125,11 +119,9 @@ public class RecipeManagementService: IRecipeManagementRepository
                 worksheetPart.Worksheet.Elements<SheetData>().First().Append(dataRow);
             }
 
-            // Lưu trữ Workbook
             workbookPart.Workbook.Save();
         }
 
-        // Trả về dữ liệu như là một mảng byte
         return memoryStream.ToArray();
     }
 }

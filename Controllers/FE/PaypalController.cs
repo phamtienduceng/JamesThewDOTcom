@@ -49,9 +49,7 @@ namespace JamesRecipes.Controllers.FE
                     var user = _account.GetUserById(ID);
                     if (user != null)
                     {
-                        user.RoleId = 3;
-                        _account.UpdateUser(user);
-                        HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
+                        _account.ChangeRole(ID);
                         return View("~/Views/FE/Paypal/Register.cshtml");
                     }
                 }
@@ -72,9 +70,7 @@ namespace JamesRecipes.Controllers.FE
                     var user = _account.GetUserById(ID);
                     if (user != null)
                     {
-                        user.RoleId = 3;
-                        _account.UpdateUser(user);
-                        HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
+                        _account.ChangeRole(ID);
                         return View("~/Views/FE/Paypal/Register.cshtml");
                     }
                 }
@@ -82,32 +78,5 @@ namespace JamesRecipes.Controllers.FE
 
             return RedirectToAction("Index", "Home");
         }
-
-
-            [HttpGet("CheckMember/{ID}")]
-            public IActionResult CheckMember(int ID)
-            {
-                var membership = _paypal.MemberById(ID);
-                ViewBag.IsActive = membership.IsActive; // Truyền trạng thái IsActive vào ViewBag
-                return View("~/Views/FE/Paypal/CheckMember.cshtml", membership);
-            }
-
-            [HttpPost]
-            public IActionResult CheckMember(int id, bool isActive)
-            {
-                var membership = _paypal.MemberById(id);
-                var currentDate = DateTime.Today;
-
-                // Kiểm tra ngày kết thúc có bé hơn ngày hiện tại không
-                if (membership.EndDate < currentDate)
-                {
-                    // Ngày kết thúc bé hơn ngày hiện tại
-                    isActive = false;
-                }
-                membership.IsActive = isActive;
-                _paypal.UpdateMember(membership);
-
-                return Json(new { isActive = isActive });
-            }
     }
 }

@@ -11,5 +11,7 @@ namespace JamesRecipes.Repository.FE
         void UpdateUser(User user);
         
         void UpdateProfile(int id, User user);
+
+        void ChangeRole(int id);
     }
 }

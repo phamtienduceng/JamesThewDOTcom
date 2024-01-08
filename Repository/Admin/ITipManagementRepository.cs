@@ -16,4 +16,6 @@ public interface ITipManagementRepository
     List<Tip> Sorting(List<Tip> tips, string sortOrder);
     
     List<Tip> Search(string searchString);
+    
+    byte[] GeneratedExcel(string filename, List<Tip> tips);
 }
