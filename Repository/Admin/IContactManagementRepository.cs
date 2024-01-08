@@ -12,4 +12,6 @@ public interface IContactManagementRepository
 
     IPagedList<Contact> PagedList(int page, int pageSize, List<Contact> contacts);
 
+    Task SendEmailAsync(string toEmail, string subject, string body);
+    
 }

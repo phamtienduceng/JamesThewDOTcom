@@ -30,4 +30,15 @@ public class ContactManagementController : Controller
         var ct = _contact.GetContact(id);
         return View("~/Views/Admin/Contact/ContactDetail.cshtml", ct);
     }
+    
+    [HttpPost("reply_contact")]
+    public async Task<IActionResult> SendEMail(ContactViewModel model)
+    {
+        // Validate input data as needed
+
+        await _contact.SendEmailAsync(model.ToEmail, model.Subject, model.Body);
+
+        // You can redirect or return a response as needed
+        return RedirectToAction("Index");
+    }
 }

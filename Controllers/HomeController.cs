@@ -7,19 +7,30 @@ namespace JamesRecipes.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-    private readonly IHome _home;
+    private readonly IRecipe _recipe;
+    private readonly ITip _tips;
+    private readonly IBook _book;
 
-    public HomeController(ILogger<HomeController> logger, IHome home)
+    public HomeController(IRecipe recipe, ITip tips, IBook book)
     {
-        _logger = logger;
-        _home = home;
+        _recipe = recipe;
+        _tips = tips;
+        _book = book;
     }
 
     public IActionResult Index()
     {
-        var model = _home.GetHomepages();
-        return View("~/Views/Home/Index.cshtml", model); ;
+        var reps = _recipe.GetAllRecipes();
+        var tips = _tips.GetAllTips();
+        var books = _book.GetAllBooks();
+
+        var viewModel = new Home
+        {
+            Recipes = reps,
+            Tips = tips,
+            Books = books
+        };
+        return View("~/Views/Home/Index.cshtml", viewModel);
     }
 
 }

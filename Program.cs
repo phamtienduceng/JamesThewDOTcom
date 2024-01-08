@@ -45,7 +45,6 @@ builder.Services.AddScoped<ITip, TipService>();
 builder.Services.AddScoped<ICategoriesRecipe, CategoriesRecipeService>();
 builder.Services.AddScoped<ICategoriesTip, CategoriesTipService>();
 builder.Services.AddScoped<IFeedback, FeedbackService>();
-builder.Services.AddScoped<IHome, HomeService>();
 builder.Services.AddScoped<IContestLogin, ContestLoginService>();
 
 

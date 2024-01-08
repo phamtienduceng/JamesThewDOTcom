@@ -1,62 +1,142 @@
-﻿@model IEnumerable<JamesRecipes.Models.ViewHomepage>
+﻿@model Home
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
+@{
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("userLogged");
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<style>
+    .rating {
+        color: #ffc107;
+        font-size: 18px;
+    }
+    .membership-label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: lightskyblue;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 10px;
+        font-weight: bold;
+    }
+</style>
+
 <div class="bradcam_area bradcam_homepage">
 
-    </div>
+</div>
 
 <!-- recepie_area_start  -->
 <div class="recepie_area">
-    <div class="container">
-        <h1 class="text-center">Top rated recipes</h1>
-
+    <div class="container " style="margin-bottom: 80px" >
+        <h1 class="text-center text-danger" style="font-size: 50px">Top rated recipes</h1>
     </div>
     <div class="container">
         <div class="row">
-            @*@foreach (var item in Model)
+            @foreach (var item in Model.Recipes.OrderByDescending(r=>r.Rating).Take(3))
             {   
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="single_recepie text-center">
-
-                    <div class="recepie_thumb">
-                        <img src="~/@item.RecipeImage" alt="">
+                <div class="col-xl-4 col-lg-4 col-md-6" style="position: relative">
+                    @if (item.IsMembershipOnly)
+                    {
+                        <span class="membership-label">Membership</span>
+                    }
+                    <div class="single_recepie text-center">
+                        <div class="recepie_thumb mt-2">
+                            <a asp-action="SingleRecipe" asp-controller="Recipe" asp-route-id="@item.RecipeId">
+                                <img style="height: 280px" src="~/@item.Image" alt="@item.Title">
+                            </a>
+                        </div>
+                        <a asp-action="SingleRecipe" asp-controller="Recipe" asp-route-id="@item.RecipeId">
+                            <h3 style="font-family: sastify, sans-serif; color: indianred; ">@item.Title</h3>
+                        </a>
+                        <span>@item.CategoryRecipe.CategoryName</span>
+                        <p class="mb-2">Time Needs: @item.Timeneeds</p>
+                                    
+                        <div class="rating mb-2">
+                            @if (item.Rating != null)
+                            {
+                                for (int i = 0; i < item.Rating; i++)
+                                {
+                                    <i class="fas fa-star"></i>
+                                }
+                            }
+                            else
+                            {
+                                <h3 style="font-size: 18px">No rated yet</h3>
+                            }
+                        </div>
                     </div>
-                    <h3>@item.RecipeTitle</h3>
-                    <span>@item.RecipeRating</span>
-                    <p>Time Needs: @item.RecipeTimeNeeds</p>
-                    <a href="#" class="line_btn">View Full Recipe</a>
-                   
                 </div>
-            </div>*@
             }
         </div>
     </div>
 </div>
 <!-- /recipe_area_start  -->
 
-<!-- recepie_area_start  -->
-<div class="recepie_area">
-    <div class="container">
-        <h1 class="text-center">Top rated tips</h1>
-
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="single_recepie text-center">
-                    <div class="recepie_thumb">
-                        <img src="~/img/recepie/recpie_1.png" alt="">
+<!-- latest_trand     -->
+    <div class="latest_trand_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="trand_info text-center">
+                        <p>Thousands of recipes are waiting to be watched</p>
+                        <h3>Discover latest trending recipes</h3>
+                        <a asp-action="Index" asp-controller="Recipe" class="boxed-btn3">View all Recipes</a>
                     </div>
-                    <h3>Egg Manchurian</h3>
-                    <span>Appetizer</span>
-                    <p>Time Needs: 30 Mins</p>
-                    <a href="#" class="line_btn">View Full Recipe</a>
                 </div>
             </div>
         </div>
+    </div>
+    <!--/ latest_trand     -->
+
+<!-- recepie_area_start  -->
+<div class="recepie_area">
+    <div class="container " style="margin-bottom: 80px" >
+            <h1 class="text-center text-danger" style="font-size: 50px">TOP RATED TIPS</h1>
+        </div>
+    <div class="container">
+        <div class="row">
+                @foreach (var item in Model.Tips.OrderByDescending(r=>r.Rating).Take(3))
+                    {
+                        <div class="col-xl-4 col-lg-4 col-md-6" style="position: relative;">
+                            @if (item.IsMembershipOnly)
+                            {
+                                <span class="membership-label">Membership</span>
+                            }
+                            <div class="single_recepie text-center">
+                                <div class="recepie_thumb mt-2">
+                                    <a asp-action="SingleTip" asp-controller="Tip" asp-route-id="@item.TipId">
+                                        <img style="height: 280px" src="~/@item.Image" alt="@item.Title">
+                                    </a>
+                                </div>
+                                <a asp-action="SingleTip" asp-controller="Tip" asp-route-id="@item.TipId">
+                                    <h3 style="font-family: sastify, sans-serif; color: indianred; ">@item.Title</h3>
+                                </a>
+                                <span>@item.CategoryTip.CategoryName</span>
+                                
+                                <div class="rating mb-2">
+                                    @if (item.Rating != null)
+                                    {
+                                        for (int i = 0; i < item.Rating; i++)
+                                        {
+                                            <i class="fas fa-star"></i>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <h3 style="font-size: 18px">No rated yet</h3>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+            </div>
     </div>
 </div>
     <!-- /recipe_area_start  -->
@@ -67,9 +147,9 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="trand_info text-center">
-                        <p>Thousands of recipes are waiting to be watched</p>
-                        <h3>Discover latest trending recipes</h3>
-                        <a href="#" class="boxed-btn3">View all Recipes</a>
+                        <p>Thousands of tips are waiting to be watched</p>
+                        <h3>Discover latest trending tips</h3>
+                        <a asp-action="Index" asp-controller="Tip" class="boxed-btn3">View all Tips</a>
                     </div>
                 </div>
             </div>
@@ -77,41 +157,31 @@
     </div>
     <!--/ latest_trand     -->
 
-
 <!-- dish_area start  -->
-<div class="dish_area">
-    <div class="container">
-            <h1 class="text-center">Cookery book</h1>
-    
-        </div>
+<div class="dish_area" style="padding-top: 100px">
+    <div class="container " style="margin-bottom: 80px" >
+                <h1 class="text-center text-danger" style="font-size: 50px">Cookery Books</h1>
+            </div>
     
     <div class="container">
         <div class="row">
-            <div class="col-xl-12">
-                <div class="dish_wrap d-flex">
-                    <div class="single_dish text-center">
-                        <div class="thumb">
-                            <img src="img/recepie/recpie_4.png" alt="">
+            @foreach (var item in Model.Books.Take(3))
+            {
+                <div class="col-xl-4 col-lg-4 col-md-6" style="position: relative;">
+                    <div class="single_recepie text-center">
+                        <div class="recepie_thumb mt-2">
+                            <a asp-action="SingleBook" asp-controller="Book" asp-route-id="@item.BookId">
+                                <img style="height: 280px; width: 250px" src="~/@item.Image" alt="@item.Title">
+                            </a>
                         </div>
-                        <h3>Birthday Catering</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class="single_dish text-center">
-                        <div class="thumb">
-                            <img src="img/recepie/recpie_5.png" alt="">
-                        </div>
-                        <h3>Birthday Catering</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class="single_dish text-center">
-                        <div class="thumb">
-                            <img src="img/recepie/recpie_6.png" alt="">
-                        </div>
-                        <h3>Birthday Catering</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a asp-action="SingleTip" asp-controller="Tip" asp-route-id="@item.BookId">
+                            <h3 style="padding: 20px 0 0 0" class="text-danger">@item.Title</h3>
+                        </a>
+                        <p>Author: @item.Author</p>
+                        <p>Price: $@item.Price</p>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </div>

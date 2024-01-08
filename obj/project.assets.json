@@ -13779,6 +13779,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.13",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.13",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.11",
+      "MimeKit >= 4.3.0",
       "PagedList >= 1.17.0",
       "PagedList.EntityFramework >= 1.0.1",
       "PagedList.Mvc >= 4.5.0",
@@ -13882,6 +13883,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[7.0.11, )"
+          },
+          "MimeKit": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           },
           "PagedList": {
             "target": "Package",

@@ -97,6 +97,10 @@
               "target": "Package",
               "version": "[7.0.11, )"
             },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
             "PagedList": {
               "target": "Package",
               "version": "[1.17.0, )"

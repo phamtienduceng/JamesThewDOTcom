@@ -1,9 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using JamesRecipes.Models;
+using JamesRecipes.Repository.Admin;
+using JamesRecipes.Service.Admin;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 
 namespace JamesRecipes
 {
+    
     public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
@@ -23,13 +27,11 @@ namespace JamesRecipes
             });
 
             services.AddAuthentication()
-                    .AddGoogle(options =>
-                    {
-                        options.ClientId = "1020413070577-hrkbsnc1de3qje8etb3jpfjj2hr30ou3.apps.googleusercontent.com";
-                        options.ClientSecret = "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";
-                    });
-
-
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "1020413070577-hrkbsnc1de3qje8etb3jpfjj2hr30ou3.apps.googleusercontent.com";
+                    options.ClientSecret = "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";
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
