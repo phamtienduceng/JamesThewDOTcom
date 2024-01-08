@@ -9,5 +9,7 @@ namespace JamesRecipes.Repository.FE
         void AddUser(User newUser);
         User GetUserById(int id);
         void UpdateUser(User user);
+        
+        void UpdateProfile(int id, User user);
     }
 }

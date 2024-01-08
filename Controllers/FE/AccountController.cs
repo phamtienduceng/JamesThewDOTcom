@@ -116,51 +116,34 @@ public class AccountController : Controller
         return View("~/Views/FE/Account/Register.cshtml");
     }
 
-    [HttpGet("MyProfile/{id}")]
+    [HttpGet("MyProfile")]
     public IActionResult MyProfile(int id)
     {
         var user = _account.GetUserById(id);
-
-        if (user != null)
-        {
-            var model = new User
-            {
-                Username = user.Username,
-                PhoneNumber = user.PhoneNumber,
-                Address = user.Address
-            };
-
-            return View("~/Views/FE/Account/MyProfile.cshtml", model);
-        }
-
-        return RedirectToAction("Index", "Home");
+        return View("~/Views/FE/Account/MyProfile.cshtml", user);
     }
 
-    [HttpPost("MyProfile/{id}")]
+    [HttpPost("MyProfile")]
     public IActionResult MyProfile(int id, User model)
     {
-        var user = _account.GetUserById(id);
-        try
+        if (string.IsNullOrEmpty(model.PhoneNumber) || string.IsNullOrEmpty(model.Address))
         {
-            if (ModelState.IsValid)
+            TempData["msg"] = "Please input at least all field";
+            return RedirectToAction("MyProfile", "Account", new {id = id});
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(model.PhoneNumber))
             {
-                if (user != null)
+                if (model.PhoneNumber.Length != 10)
                 {
-                    user.Username = model.Username;
-                    user.PhoneNumber = model.PhoneNumber;
-                    user.Address = model.Address;
-                    _account.UpdateUser(user);
-                    HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
+                    TempData["msg"] = "Phone number should have 10 digits";
+                    return RedirectToAction("MyProfile", "Account", new {id = id});
                 }
             }
+            _account.UpdateProfile(id, model);
+            return RedirectToAction("Index", "Home");
         }
-        catch (Exception ex)
-        {
-            // Xử lý ngoại lệ tại đây, ví dụ ghi log lỗi
-            ModelState.AddModelError("", "An error occurred during registration.");
-        }
-
-        return View("~/Views/FE/Account/MyProfile.cshtml");
     }
 
     [HttpGet("changepassword/{id}")]
@@ -320,7 +303,7 @@ public class AccountController : Controller
         List<string> userList = new List<string>();
 
         // Kết nối và truy vấn cơ sở dữ liệu
-        using (SqlConnection connection = new SqlConnection("Server=.,1500;Database=jamesrecipes;User=sa;Password=12345678;TrustServerCertificate=True"))
+        using (SqlConnection connection = new SqlConnection("Server=.,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True"))
         {
             connection.Open();
 

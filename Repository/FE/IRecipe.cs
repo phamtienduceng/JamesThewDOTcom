@@ -33,8 +33,6 @@ public interface IRecipe
     void DeleteMyRecipe(int id);
 
     void UpdateRecipe(int id, Recipe newRecipe);
-
-    List<Recipe> RelatedRecipes();
     
     byte[] GeneratedWord(Recipe recipe);
 }

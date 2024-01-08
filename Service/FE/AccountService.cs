@@ -18,6 +18,18 @@ namespace JamesRecipes.Service.FE
             _db.SaveChanges();
         }
 
+        public void UpdateProfile(int id, User user)
+        {
+            var u = GetUserById(id);
+            if (user != null)
+            {
+                u!.PhoneNumber = user.PhoneNumber;
+                u.Address = user.Address;
+                _db.Update(u);
+                _db.SaveChanges();
+            }
+        }
+
         public void AddUser(User newUser)
         {
             _db.Users.Add(newUser);
@@ -32,7 +44,7 @@ namespace JamesRecipes.Service.FE
         public User GetUserById(int id)
         {
             return _db.Users.Include(u=>u.Role)
-                .SingleOrDefault(u => u.UserId == id);
+                .SingleOrDefault(u => u.UserId == id)!;
         }
 
         public bool VerifyPassword(string password, string hashedPassword)
