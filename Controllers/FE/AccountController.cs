@@ -185,25 +185,28 @@ public class AccountController : Controller
     public IActionResult ChangePassword(int id, string newPassword, string confirm, string oldpass)
     {
         var user = _account.GetUserById(id);
-
         if (!_account.VerifyPassword(oldpass, user.Password))
         {
             ViewData["Error"] = "The old password is incorrect!";
-            return View("~/Views/FE/Account/ChangePassword.cshtml");
-        }
-        else if (string.IsNullOrWhiteSpace(newPassword) || string.IsNullOrWhiteSpace(confirm) || string.IsNullOrWhiteSpace(oldpass))
-        {
-            ViewData["Error"] = "Please enter data.";
+            ViewBag.Oldpass = oldpass;
+            ViewBag.NewPassword = newPassword;
+            ViewBag.Confirm = confirm;
             return View("~/Views/FE/Account/ChangePassword.cshtml");
         }
         else if (newPassword == oldpass)
         {
             ViewData["Error"] = "The new and old passwords cannot be the same!";
+            ViewBag.Oldpass = oldpass;
+            ViewBag.NewPassword = newPassword;
+            ViewBag.Confirm = confirm;
             return View("~/Views/FE/Account/ChangePassword.cshtml");
         }
         else if (newPassword != confirm)
         {
             ViewData["Error"] = "The new password and confirm password do not match!";
+            ViewBag.Oldpass = oldpass;
+            ViewBag.NewPassword = newPassword;
+            ViewBag.Confirm = confirm;
             return View("~/Views/FE/Account/ChangePassword.cshtml");
         }
 
@@ -211,8 +214,8 @@ public class AccountController : Controller
         user.Password = hashedPassword;
         _account.UpdateUser(user);
         HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
-
-        return View("~/Views/FE/Account/ChangePassword.cshtml");
+        TempData["SuccessMessage"] = "Password updated successfully!";
+        return RedirectToAction("Index", "Home");
     }
 
     public IActionResult Logout()
@@ -294,7 +297,7 @@ public class AccountController : Controller
         string fromAddress = "phuhoang136@gmail.com"; // Sender email address
         string toAddress = email; // Recipient email address
         string subject = "Reset Password"; // Email subject
-        string body = "Hello, you can reset your password by accessing System.Net.Mail.SmtpExceptionthe following link: " + resetUrl; // Email body
+        string body = "Hello, you can reset your password by accessing the following link: " + resetUrl; // Email body
 
         // Send email
         using (var smtpClient = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587))

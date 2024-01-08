@@ -81,30 +81,30 @@ namespace JamesRecipes.Controllers.FE
         }
 
 
-        //[HttpGet("CheckMember/{ID}")]
-        //public IActionResult CheckMember(int ID)
-        //{
-        //    var membership = _paypal.MemberById(ID);
-        //    ViewBag.IsActive = membership.IsActive; // Truyền trạng thái IsActive vào ViewBag
-        //    return View("~/Views/FE/Paypal/CheckMember.cshtml", membership);
-        //}
+            [HttpGet("CheckMember/{ID}")]
+            public IActionResult CheckMember(int ID)
+            {
+                var membership = _paypal.MemberById(ID);
+                ViewBag.IsActive = membership.IsActive; // Truyền trạng thái IsActive vào ViewBag
+                return View("~/Views/FE/Paypal/CheckMember.cshtml", membership);
+            }
 
-        //[HttpPost]
-        //public IActionResult CheckMember(int id, bool isActive)
-        //{
-        //    var membership = _paypal.MemberById(id);
-        //    var currentDate = DateTime.Today;
+            [HttpPost]
+            public IActionResult CheckMember(int id, bool isActive)
+            {
+                var membership = _paypal.MemberById(id);
+                var currentDate = DateTime.Today;
 
-        //    // Kiểm tra ngày kết thúc có bé hơn ngày hiện tại không
-        //    if (membership.EndDate < currentDate)
-        //    {
-        //        // Ngày kết thúc bé hơn ngày hiện tại
-        //        isActive = false;
-        //    }
-        //    membership.IsActive = isActive;
-        //    _paypal.UpdateMember(membership);
+                // Kiểm tra ngày kết thúc có bé hơn ngày hiện tại không
+                if (membership.EndDate < currentDate)
+                {
+                    // Ngày kết thúc bé hơn ngày hiện tại
+                    isActive = false;
+                }
+                membership.IsActive = isActive;
+                _paypal.UpdateMember(membership);
 
-        //    return Json(new { isActive = isActive });
-        //}
+                return Json(new { isActive = isActive });
+            }
     }
 }
