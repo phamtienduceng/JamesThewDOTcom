@@ -61,7 +61,7 @@ public class AccountController : Controller
                     return View("~/Views/FE/Account/Login.cshtml");
                 }
             }
-            
+
         }
         catch (Exception ex)
         {
@@ -94,15 +94,22 @@ public class AccountController : Controller
                         newUser.Password = hashedPassword;
                         newUser.RoleId = 2;
                         _account.AddUser(newUser);
-                        return RedirectToAction("Login", "Account");
+                        ViewData["Er"] = "";
+                        ViewData["Em"] = "";
+                        ViewData["Success"] = "You have successfully registered an account.";
+                        return View("~/Views/FE/Account/Register.cshtml");
                     }
                     else
                     {
+                        ViewData["Er"] = User.Username;
+                        ViewData["Em"] = User.Email;
                         ViewData["Error"] = "Password and confirm password do not match.";
                     }
                 }
                 else
                 {
+                    ViewData["Er"] = User.Username;
+                    ViewData["Em"] = User.Email;
                     ViewData["Error"] = "Email is already registered.";
                 }
             }
@@ -125,7 +132,6 @@ public class AccountController : Controller
         {
             var model = new User
             {
-                Username = user.Username,
                 PhoneNumber = user.PhoneNumber,
                 Address = user.Address
             };
@@ -146,11 +152,11 @@ public class AccountController : Controller
             {
                 if (user != null)
                 {
-                    user.Username = model.Username;
                     user.PhoneNumber = model.PhoneNumber;
                     user.Address = model.Address;
                     _account.UpdateUser(user);
-                    HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
+                    ViewData["Success"] = "You have successfully updated your information.";
+                    return View("~/Views/FE/Account/MyProfile.cshtml", model);
                 }
             }
         }
@@ -213,9 +219,9 @@ public class AccountController : Controller
         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newPassword);
         user.Password = hashedPassword;
         _account.UpdateUser(user);
+        ViewData["Success"] = "Your password has been changed successfully.";
         HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
-        TempData["SuccessMessage"] = "Password updated successfully!";
-        return RedirectToAction("Index", "Home");
+        return View("~/Views/FE/Account/ChangePassword.cshtml");
     }
 
     public IActionResult Logout()
@@ -255,15 +261,10 @@ public class AccountController : Controller
     }
 
     [HttpPost("ResetPassword/{email}")]
-    public ActionResult ResetPassword(string email, string newpass, string conform)
+    public ActionResult ResetPassword(string email, string newpass, string confirm)
     {
         var acc = _account.GetUserByEmail(email);
-        if (string.IsNullOrWhiteSpace(newpass) || string.IsNullOrWhiteSpace(conform))
-        {
-            ViewData["Error"] = "Please enter data.";
-            return View("~/Views/FE/Account/ResetPassword.cshtml");
-        }
-        else if (newpass != conform)
+        if (newpass != confirm)
         {
             ViewData["Error"] = "The new password and conform password do not match!";
             return View("~/Views/FE/Account/ResetPassword.cshtml");
@@ -271,10 +272,11 @@ public class AccountController : Controller
         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newpass);
         acc.Password = hashedPassword;
         _account.UpdateUser(acc);
+        ViewData["Success"] = "You have successfully changed your password.";
         return View("~/Views/FE/Account/ResetPassword.cshtml");
     }
 
-    [HttpGet("ForgotPasswordConfirmation")]
+        [HttpGet("ForgotPasswordConfirmation")]
     public ActionResult ForgotPasswordConfirmation()
     {
         return View("~/Views/FE/Account/ForgotPasswordConfirmation.cshtml");
@@ -320,7 +322,7 @@ public class AccountController : Controller
         List<string> userList = new List<string>();
 
         // Kết nối và truy vấn cơ sở dữ liệu
-        using (SqlConnection connection = new SqlConnection("Server=.,1500;Database=jamesrecipes;User=sa;Password=12345678;TrustServerCertificate=True"))
+        using (SqlConnection connection = new SqlConnection("Server=.,1500;Database=s17;User=sa;Password=12345678;TrustServerCertificate=True"))
         {
             connection.Open();
 

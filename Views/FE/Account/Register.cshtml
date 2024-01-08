@@ -12,16 +12,20 @@
         {
             <div class="alert alert-danger">@ViewData["Error"]</div>
         }
+        else if (ViewData["Success"] != null)
+        {
+            <div class="alert alert-success">@ViewData["Success"]</div>
+        }
         <form asp-action="Register" asp-controller="Account" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
+                <input asp-for="Username" class="form-control" value="@ViewData["Er"]"/>
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" type="email" class="form-control" />
+                <input asp-for="Email" type="email" class="form-control" value="@ViewData["Em"]" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,7 +38,7 @@
                 <input class="form-control" type="password" name="confirm" />
                 <span id="confirm-error" class="text-danger" style="display: none;">Confirm is required</span>
             </div>
-            <div class="form-group"> 
+            <div class="form-group">
                 <input type="submit" value="Create" onclick="validateForm()" class="btn btn-primary" />
             </div>
         </form>
@@ -67,21 +71,7 @@
     }
 </script>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-
-@section scripts {
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-    function showSuccessAlert() {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: '@TempData["SuccessMessage"]',
-                confirmButtonText: 'OK'
-            }).then(function () {
-                window.location.href = '@Url.Action("Index", "Home")';
-            });
-        }
-    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
