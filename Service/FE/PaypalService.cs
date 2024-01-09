@@ -1,5 +1,6 @@
 ﻿using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
+using model.Models;
 
 namespace JamesRecipes.Service.FE
 {
@@ -20,7 +21,7 @@ namespace JamesRecipes.Service.FE
 
         public Membership MemberById(int id)
         {
-           return _db.Memberships.FirstOrDefault(m=>m.UserId==id);
+            return _db.Memberships.FirstOrDefault(m => m.UserId == id);
         }
 
         public void UpdateMember(Membership member)
@@ -28,5 +29,6 @@ namespace JamesRecipes.Service.FE
             _db.Memberships.Update(member);
             _db.SaveChanges();
         }
+        
     }
 }

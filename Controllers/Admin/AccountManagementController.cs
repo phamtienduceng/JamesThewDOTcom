@@ -15,11 +15,15 @@ public class AccountManagementController : Controller
 {
     private readonly IAccountManagementRepository _accountRepository;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IPaypal _paypal;
+    private readonly IAccount _account;
 
-    public AccountManagementController(IAccountManagementRepository accountRepository , IHttpContextAccessor httpContextAccessor)
+    public AccountManagementController(IAccount account, IAccountManagementRepository accountRepository , IHttpContextAccessor httpContextAccessor, IPaypal paypal)
     {
         _accountRepository = accountRepository;
         _httpContextAccessor = httpContextAccessor;
+        _paypal = paypal;
+        _account = account;
     }
     [AuthenticationAdmin]
     [HttpGet("Index")]
@@ -28,7 +32,13 @@ public class AccountManagementController : Controller
         var users = _accountRepository.GetAllUsers();
         return View("~/Views/Admin/AccountManagement/Index.cshtml", users);
     }
- 
+    [HttpGet("Index1")]
+    public IActionResult Index1()
+    {
+        var memberships = _accountRepository.GetAllmember();
+        return View("~/Views/Admin/AccountManagement/Index1.cshtml", memberships);
+    }
+
     [AuthenticationAdmin]
     [HttpGet("registeradmin")]
     public IActionResult Registeradmin()

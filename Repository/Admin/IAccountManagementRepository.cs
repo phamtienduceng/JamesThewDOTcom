@@ -10,4 +10,5 @@ public interface IAccountManagementRepository
     User GetAdminByEmail(string email);
 
     List<ViewUserRole> GetAllUsers();
+    List<Membership> GetAllmember();
 }

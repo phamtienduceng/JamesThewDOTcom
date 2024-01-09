@@ -12,7 +12,7 @@ namespace JamesRecipes.Controllers.FE
         private readonly IAccount _account;
         private readonly IPaypal _paypal;
 
-        public PaypalController(IAccount account,IPaypal paypal)
+        public PaypalController(IAccount account, IPaypal paypal)
         {
             _account = account;
             _paypal = paypal;
@@ -78,5 +78,6 @@ namespace JamesRecipes.Controllers.FE
 
             return RedirectToAction("Index", "Home");
         }
+        
     }
-}
+    }

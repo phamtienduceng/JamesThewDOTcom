@@ -5,38 +5,42 @@
 }
 
 <div class="row justify-content-center" style="margin: 150px 0 50px 0">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header  text-white text-center">
-                    <h1 class="text-danger">MyProfile</h1>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header  text-white text-center">
+                <h1 class="text-danger">MyProfile</h1>
+            </div>
+            <div class="card-body">
+                @if (ViewData["Success"] != null) 
+                {
+                    <div class="alert alert-success">@ViewData["Success"]</div>
+                }
+                <div>
+                    <h4 style="line-height: 0">Id: @Html.DisplayFor(u=>u.UserId)</h4><br />
+                    <h4 style="line-height: 0">Username: @Html.DisplayFor(u=>u.Username)</h4><br />
+                    <h4 style="line-height: 0">Email: @Html.DisplayFor(u=>u.Email)</h4><br />
+                    <h4 style="line-height: 0">Role: @Html.DisplayFor(u=>u.Role!.RoleName)</h4><br />
                 </div>
-                <div class="card-body">
-                    <div>
-                        <h4 style="line-height: 0">Id: @Html.DisplayFor(u=>u.UserId)</h4><br/>
-                        <h4 style="line-height: 0">Username: @Html.DisplayFor(u=>u.Username)</h4><br/>
-                        <h4 style="line-height: 0">Email: @Html.DisplayFor(u=>u.Email)</h4><br/>
-                        <h4 style="line-height: 0">Role: @Html.DisplayFor(u=>u.Role!.RoleName)</h4><br/>
+                <form asp-action="MyProfile" asp-controller="Account" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="UserId" name="id" />
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label">Phone Number:</label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
-                    <form asp-action="MyProfile" asp-controller="Account" method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <input type="hidden" asp-for="UserId" name="id" />
-                        <div class="form-group">
-                            <label asp-for="PhoneNumber" class="control-label">Phone Number:</label>
-                            <input asp-for="PhoneNumber" class="form-control" />
-                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Address" class="control-label">Address:</label>
-                            <input asp-for="Address" class="form-control" />
-                            <span asp-validation-for="Address" class="text-danger"></span>
-                        </div>
-                        <p class="text-danger">@TempData["msg"]</p>
-                        <div class="form-group text-center">
-                            <button type="submit" class="btn btn-danger">Save</button>
-                        </div>
-                    </form>
-                </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label">Address:</label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <p class="text-danger">@TempData["msg"]</p>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-danger">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
