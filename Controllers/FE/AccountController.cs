@@ -61,7 +61,7 @@ public class AccountController : Controller
                     return View("~/Views/FE/Account/Login.cshtml");
                 }
             }
-            
+
         }
         catch (Exception ex)
         {
@@ -94,15 +94,22 @@ public class AccountController : Controller
                         newUser.Password = hashedPassword;
                         newUser.RoleId = 2;
                         _account.AddUser(newUser);
-                        return RedirectToAction("Login", "Account");
+                        ViewData["Er"] = "";
+                        ViewData["Em"] = "";
+                        ViewData["Success"] = "You have successfully registered an account.";
+                        return View("~/Views/FE/Account/Register.cshtml");
                     }
                     else
                     {
+                        ViewData["Er"] = User.Username;
+                        ViewData["Em"] = User.Email;
                         ViewData["Error"] = "Password and confirm password do not match.";
                     }
                 }
                 else
                 {
+                    ViewData["Er"] = User.Username;
+                    ViewData["Em"] = User.Email;
                     ViewData["Error"] = "Email is already registered.";
                 }
             }
@@ -196,9 +203,9 @@ public class AccountController : Controller
         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newPassword);
         user.Password = hashedPassword;
         _account.UpdateUser(user);
+        ViewData["Success"] = "Your password has been changed successfully.";
         HttpContext.Session.SetString("user", JsonConvert.SerializeObject(user));
-        TempData["SuccessMessage"] = "Password updated successfully!";
-        return RedirectToAction("Index", "Home");
+        return View("~/Views/FE/Account/ChangePassword.cshtml");
     }
 
     public IActionResult Logout()
@@ -235,15 +242,10 @@ public class AccountController : Controller
     }
 
     [HttpPost("ResetPassword/{email}")]
-    public ActionResult ResetPassword(string email, string newpass, string conform)
+    public ActionResult ResetPassword(string email, string newpass, string confirm)
     {
         var acc = _account.GetUserByEmail(email);
-        if (string.IsNullOrWhiteSpace(newpass) || string.IsNullOrWhiteSpace(conform))
-        {
-            ViewData["Error"] = "Please enter data.";
-            return View("~/Views/FE/Account/ResetPassword.cshtml");
-        }
-        else if (newpass != conform)
+        if (newpass != confirm)
         {
             ViewData["Error"] = "The new password and conform password do not match!";
             return View("~/Views/FE/Account/ResetPassword.cshtml");
@@ -251,7 +253,14 @@ public class AccountController : Controller
         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newpass);
         acc.Password = hashedPassword;
         _account.UpdateUser(acc);
+        ViewData["Success"] = "You have successfully changed your password.";
         return View("~/Views/FE/Account/ResetPassword.cshtml");
+    }
+    
+    [HttpGet("ForgotPasswordConfirmation")]
+    public ActionResult ForgotPasswordConfirmation()
+    {
+        return View("~/Views/FE/Account/ForgotPasswordConfirmation.cshtml");
     }
 
     private bool IsEmailValid(string email)
