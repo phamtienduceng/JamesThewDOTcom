@@ -56,7 +56,7 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=.,1433;Database=testfinal;User=sa;Password=Abc@1234;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=.,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -75,10 +75,6 @@ public partial class JamesrecipesContext : DbContext
             entity.HasOne(d => d.Contest).WithMany(p => p.Announcements)
                 .HasForeignKey(d => d.ContestId)
                 .HasConstraintName("FK__Announcem__Conte__44FF419A");
-
-            /*entity.HasOne(d => d.WinnerNavigation).WithMany(p => p.Announcements)
-                .HasForeignKey(d => d.Winner)
-                .HasConstraintName("FK__Announcem__Winne__440B1D61");*/
         });
 
         modelBuilder.Entity<AnonymousContestEntry>(entity =>
@@ -92,16 +88,6 @@ public partial class JamesrecipesContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Image).HasMaxLength(255);
-
-            /*entity.HasOne(d => d.AnonymousRecipe).WithMany(p => p.AnonymousContestEntries)
-                .HasForeignKey(d => d.AnonymousRecipeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Anonymous__Anony__477199F1");
-
-            entity.HasOne(d => d.Contest).WithMany(p => p.AnonymousContestEntries)
-                .HasForeignKey(d => d.ContestId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Anonymous__Conte__467D75B8");*/
         });
 
         modelBuilder.Entity<AnonymousRecipe>(entity =>
