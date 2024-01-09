@@ -1,7 +1,7 @@
 @using Newtonsoft.Json
 @model Book
 @{
-  ViewData["Title"] = Model.Title;
+    ViewData["Title"] = Model.Title;
 }
 
 @{
@@ -9,42 +9,45 @@
     var userJson = httpContext.Session.GetString("userLogged");
 }
 
-<div class="container">
-  <div class="row">
-      <!-- Cột cho Hình ảnh -->
-      <div class="col-md-6">
-          <h1>@Model.Title</h1>
+<div class="container mt-5">
+    <div class="row" style="margin: 150px 0 50px 0">
+        <!-- Column for Image -->
+        <div class="col-md-6">
+            <img class="img-fluid mb-4" src="~/@Model.Image" alt="@Model.Title" />
+        </div>
 
-          <div>
-              <img class="img-fluid mb-4" src="~/@Model.Image" alt="@Model.Title" />
-          </div>
-      </div>
+        <!-- Column for Information -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">@Model.Title</h1>
 
-      <!-- Cột cho Thông tin -->
-      <div class="col-md-6">
-          <div class="mt-4">
-              <h3>Author: </h3>
-              <p>@Model.Author</p>
-          </div>
+                    <div class="mt-3">
+                        <h3>Author:</h3>
+                        <p>@Model.Author</p>
+                    </div>
 
-          <div class="mt-4">
-              <h3>Category: </h3>
-              <p>@Model.CategoryId</p>
-          </div>
+                    <div class="mt-3">
+                        <h3>Category:</h3>
+                        <p>@Model.CategoryId</p>
+                    </div>
 
-          <div class="mt-4">
-              <h3>Price: </h3>
-              <p>$@Model.Price</p>
-          </div>
+                    <div class="mt-3">
+                        <h3>Price:</h3>
+                        <p>$@Model.Price</p>
+                    </div>
 
-          <div class="mt-4">
-              <h3>Description: </h3>
-              <p>@Model.Description</p>
-          </div>
-          <div>
-              <a><button class="btn btn-info">Add to cart</button></a>
-          </div>
-      </div>
-  </div>
+                    <div class="mt-3">
+                        <h3>Description:</h3>
+                        <p>@Model.Description</p>
+                    </div>
+
+                    <div class="mt-3">
+                        <a href="@Model.AmazonLink" target="_blank" class="btn btn-primary">Buy on Amazon</a>
+                        <a href="@Model.EbayLink" target="_blank" class="btn btn-danger ml-2">Buy on Ebay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-

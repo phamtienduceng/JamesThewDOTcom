@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using JamesRecipes.Models;
+
 namespace JamesRecipes.Models;
 
 public partial class Book
@@ -20,6 +20,10 @@ public partial class Book
     public string? Image { get; set; }
 
     public int? CategoryId { get; set; }
+
+    public string? AmazonLink { get; set; }
+
+    public string? EbayLink { get; set; }
 
     public virtual CategoriesBook? Category { get; set; }
 }

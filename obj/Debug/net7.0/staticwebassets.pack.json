@@ -3577,6 +3577,10 @@
       "PackagePath": "staticwebassets/images/balancing_flavors.jpg"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/barefoot_contessa.jpg",
+      "PackagePath": "staticwebassets/images/barefoot_contessa.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/books.png",
       "PackagePath": "staticwebassets/images/books.png"
     },
@@ -3587,6 +3591,10 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/creative_plating.jpg",
       "PackagePath": "staticwebassets/images/creative_plating.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/everyday_cooking.jpg",
+      "PackagePath": "staticwebassets/images/everyday_cooking.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/flavor_enhancements.jpg",
@@ -3605,12 +3613,28 @@
       "PackagePath": "staticwebassets/images/homepage.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/how_to_cook_everything.jpg",
+      "PackagePath": "staticwebassets/images/how_to_cook_everything.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/italian_cooking.jpg",
+      "PackagePath": "staticwebassets/images/italian_cooking.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/joy_of_cooking.jpg",
+      "PackagePath": "staticwebassets/images/joy_of_cooking.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/knife_skills.jpg",
       "PackagePath": "staticwebassets/images/knife_skills.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/margherita_pizza.jpg",
       "PackagePath": "staticwebassets/images/margherita_pizza.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/mastering_french_cooking.jpg",
+      "PackagePath": "staticwebassets/images/mastering_french_cooking.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/mastering_sauces.jpg",
@@ -3621,8 +3645,16 @@
       "PackagePath": "staticwebassets/images/meal_planning.jpg"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/molecular_gastronomy.jpg",
+      "PackagePath": "staticwebassets/images/molecular_gastronomy.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/phoga.jpg",
       "PackagePath": "staticwebassets/images/phoga.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/pioneer_woman_cooks.jpg",
+      "PackagePath": "staticwebassets/images/pioneer_woman_cooks.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/quick_easy_recipes.jpg",
@@ -3633,8 +3665,16 @@
       "PackagePath": "staticwebassets/images/recipes.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/salt_fat_acid_heat.jpg",
+      "PackagePath": "staticwebassets/images/salt_fat_acid_heat.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/sushi_rolls.jpg",
       "PackagePath": "staticwebassets/images/sushi_rolls.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/thug_kitchen.jpg",
+      "PackagePath": "staticwebassets/images/thug_kitchen.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/tips.png",

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kVYHOwfhY296eMMF7P66d35YqdTT4rcyiLBBS7peu74=",
+  "Hash": "nleKnta3aqJpZ/gHTrAhIubIjKhu+lBnmK4wmBK6ztM=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -14875,6 +14875,23 @@
       "OriginalItemSpec": "wwwroot/images/Banh-Mi-Handbook.jpg"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/barefoot_contessa.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/barefoot_contessa.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/barefoot_contessa.jpg"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/books.png",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -14994,6 +15011,23 @@
       "OriginalItemSpec": "wwwroot/images/Edomae-Sushi.jpg"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/everyday_cooking.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/everyday_cooking.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/everyday_cooking.jpg"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/flavor_enhancements.jpg",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -15096,6 +15130,57 @@
       "OriginalItemSpec": "wwwroot/images/homepage.png"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/how_to_cook_everything.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/how_to_cook_everything.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/how_to_cook_everything.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/italian_cooking.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/italian_cooking.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/italian_cooking.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/joy_of_cooking.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/joy_of_cooking.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/joy_of_cooking.jpg"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/knife_skills.jpg",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -15145,6 +15230,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/margherita_pizza.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/mastering_french_cooking.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/mastering_french_cooking.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/mastering_french_cooking.jpg"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/mastering_sauces.jpg",
@@ -15215,6 +15317,23 @@
       "OriginalItemSpec": "wwwroot/images/Meat_The-Art-Of-Cooking-Meat.jpg"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/molecular_gastronomy.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/molecular_gastronomy.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/molecular_gastronomy.jpg"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/NoImage.jpg",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -15283,6 +15402,23 @@
       "OriginalItemSpec": "wwwroot/images/phoga.jpg"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/pioneer_woman_cooks.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/pioneer_woman_cooks.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/pioneer_woman_cooks.jpg"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/quick_easy_recipes.jpg",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -15332,6 +15468,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/Restaurant-Gordon-Ramsay.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/salt_fat_acid_heat.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/salt_fat_acid_heat.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/salt_fat_acid_heat.jpg"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/sushi_rolls.jpg",
@@ -15468,6 +15621,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/The-Slanted-Door.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/thug_kitchen.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/thug_kitchen.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/thug_kitchen.jpg"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/tips.png",

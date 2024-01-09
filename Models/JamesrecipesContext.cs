@@ -107,7 +107,7 @@ public partial class JamesrecipesContext : DbContext
 
         modelBuilder.Entity<Book>(entity =>
         {
-            entity.HasKey(e => e.BookId).HasName("PK__Books__3DE0C227E41EB1AA");
+            entity.HasKey(e => e.BookId).HasName("PK__tmp_ms_x__3DE0C22739C4AD65");
 
             entity.Property(e => e.BookId).HasColumnName("BookID");
             entity.Property(e => e.Author).HasMaxLength(50);

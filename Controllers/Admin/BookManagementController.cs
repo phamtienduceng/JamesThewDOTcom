@@ -67,6 +67,8 @@ public class BookManagementController : Controller
         ViewBag.CategoryId = new SelectList(_bookCategories.GetAllCategories(), "CategoryBookId", "CategoryName");
         return View("~/Views/Admin/BookManagement/Edit.cshtml", book);
     }
+    
+    
 
     public IActionResult Delete(int id)
     {
