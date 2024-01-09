@@ -5,86 +5,92 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
-<h4>AnonymousRecipe</h4>
-
-<!-- Place the first <script> tag in your HTML's <head> -->
-<script src="https://cdn.tiny.cloud/1/1bk2glw8yddruo60lxpmjfsrocs45se0sdg3plyaeyhbcgn1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
+<h1 class="text-center text-danger" style="margin: 150px 0 50px 0">Submit Recipe</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="FECreate" asp-controller="AnonymousRecipes">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
 
-            @Html.HiddenFor(model => model.ContestId)
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="FECreate" asp-controller="AnonymousRecipes">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="Ingredients" class="control-label">Ingredients</label>
-                <textarea asp-for="Ingredients" class="form-control wysiwyg-editor"></textarea>
-                <span asp-validation-for="Ingredients" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Procedure" class="control-label">Procedure</label>
-                <textarea asp-for="Procedure" class="form-control wysiwyg-editor"></textarea>
-                <span asp-validation-for="Procedure" class="text-danger"></span>
-            </div>
+                @Html.HiddenFor(model => model.ContestId)
 
-            <div class="form-group">
-                <label asp-for="Image" class="control-label">Image</label>
-                <input asp-for="Image" type="file" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
+                
 
-            <div class="form-group">
-                <label asp-for="Timeneeds" class="control-label">Time Needs</label>
-                <input asp-for="Timeneeds" type="time" class="form-control" />
-                <span asp-validation-for="Timeneeds" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="Image" class="control-label">Image</label>
+                    <input asp-for="Image" type="file" class="form-control" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
 
+                <div class="form-group">
+                    <label asp-for="Timeneeds" class="control-label">Time Needs</label>
+                    <input asp-for="Timeneeds" type="time" class="form-control" />
+                    <span asp-validation-for="Timeneeds" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                                    <label asp-for="VideoUrl" class="control-label">Video URL</label>
+                                    <input asp-for="VideoUrl" type="text" class="form-control" placeholder="http://example.com/video" />
+                                    <span asp-validation-for="VideoUrl" class="text-danger"></span>
+                                </div>
+                
+                                <div class="form-group">
+                                    <label asp-for="ContactEmail" class="control-label">Contact Email</label>
+                                    <input asp-for="ContactEmail" type="email" class="form-control" />
+                                    <span asp-validation-for="ContactEmail" class="text-danger"></span>
+                                </div>
+                
+                                <div class="form-group">
+                                    <label asp-for="ContactPhone" class="control-label">Contact Phone</label>
+                                    <input asp-for="ContactPhone" type="tel" class="form-control" />
+                                    <span asp-validation-for="ContactPhone" class="text-danger"></span>
+                                </div>
+                
+                                <div class="form-group">
+                                    <label asp-for="AnonymousName" class="control-label">Name</label>
+                                    <input asp-for="AnonymousName" class="form-control" />
+                                    <span asp-validation-for="AnonymousName" class="text-danger"></span>
+                                </div>
+                
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
 
-            <div class="form-group">
-                <label asp-for="VideoUrl" class="control-label">Video URL</label>
-                <input asp-for="VideoUrl" type="text" class="form-control" placeholder="http://example.com/video" />
-                <span asp-validation-for="VideoUrl" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="ContactEmail" class="control-label">Contact Email</label>
-                <input asp-for="ContactEmail" type="email" class="form-control" />
-                <span asp-validation-for="ContactEmail" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="ContactPhone" class="control-label">Contact Phone</label>
-                <input asp-for="ContactPhone" type="tel" class="form-control" />
-                <span asp-validation-for="ContactPhone" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="AnonymousName" class="control-label">Name</label>
-                <input asp-for="AnonymousName" class="form-control" />
-                <span asp-validation-for="AnonymousName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        <div class="col-md-6">
+            <form asp-action="FECreate" asp-controller="AnonymousRecipes">
+                <div class="form-group">
+                    <label asp-for="Ingredients" class="control-label">Ingredients</label>
+                    <textarea asp-for="Ingredients" class="form-control wysiwyg-editor" rows="5"></textarea>
+                    <span asp-validation-for="Ingredients" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Procedure" class="control-label">Procedure</label>
+                    <textarea asp-for="Procedure" class="form-control wysiwyg-editor" rows="5"></textarea>
+                    <span asp-validation-for="Procedure" class="text-danger"></span>
+                </div>
+                
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
+<div class="text-center mt-4">
     <a asp-action="Index">Back to List</a>
 </div>
 
-<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script src="https://cdn.tiny.cloud/1/1bk2glw8yddruo60lxpmjfsrocs45se0sdg3plyaeyhbcgn1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 <script>
     tinymce.init({
         selector: 'textarea',
@@ -99,4 +105,3 @@
         ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
     });
 </script>
-

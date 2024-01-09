@@ -1,70 +1,86 @@
 ﻿@using PagedList
-@using X.PagedList.Mvc.Common;
+@using X.PagedList.Mvc.Common
 @model X.PagedList.IPagedList<Contest>
-@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc.Core
 @{
     ViewData["Title"] = "Contest List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Contest List</h1>
-@using (Html.BeginForm("Index", "Contest", FormMethod.Get))
-{
-    <p>
-        Searching: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
-        <input type="submit" value="Searching" />
-    </p>
-}
-@using (Html.BeginForm("Index", "Contest", FormMethod.Get))
-{
-    <p>
-        Start Date: @Html.TextBox("startDate", ViewBag.StartDate as string, new { type = "date" })
-        End Date: @Html.TextBox("endDate", ViewBag.EndDate as string, new { type = "date" })
-        <input type="submit" value="Filter" />
-    </p>
-}
-<table class="table">
+<div class="container mt-4" >
+    <h1 class="text-center text-danger" style="margin: 150px 0 50px 0">Contest</h1>
 
-    <thead>
-        <tr>
-            <th>
-                @Html.ActionLink("Title", "Index", "Contest", new { sortOrder = ViewBag.NameSort, currentFilter = ViewBag.CurrentFilter })
-            </th>
-            <th>
-                @Html.ActionLink("StartDate", "Index", "Contest", new { sortOrder = ViewBag.DateSort, currentFilter = ViewBag.CurrentFilter })
-            </th>
-            
-            <th>@Html.DisplayNameFor(model => model.First().EndDate)</th>
-            <th>@Html.DisplayNameFor(model => model.First().Image)</th>
-            <th>Details</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <div class="row">
+        <div class="col-md-4">
+            @using (Html.BeginForm("Index", "Contest", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="form-group">
+                    <label for="searchString" class="mr-2">Search:</label>
+                    @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+                </div>
+                <button type="submit" class="btn btn-primary ml-2">Search</button>
+            }
+        </div>
+
+        <div class="col-md-4">
+            @using (Html.BeginForm("Index", "Contest", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="form-group">
+                    <label for="startDate" class="mr-2">Start Date:</label>
+                    @Html.TextBox("startDate", ViewBag.StartDate as string, new { @class = "form-control", type = "date" })
+                </div>
+
+                <div class="form-group ml-2">
+                    <label for="endDate" class="mr-2">End Date:</label>
+                    @Html.TextBox("endDate", ViewBag.EndDate as string, new { @class = "form-control", type = "date" })
+                </div>
+
+                <button type="submit" class="btn btn-primary ml-2">Filter</button>
+            }
+        </div>
+    </div>
+
+    <table class="table mt-4">
+        <thead>
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.Title)</td>
-                <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
-                <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
-                <td>
-                    <img src="@Url.Content("~/" + item.Image)" alt="Contest Image" style="width:100px; height:100px;" />
-                </td>
-                <td>
-                    <a asp-action="Details" asp-controller="Contest" asp-route-id="@item.ContestId">Details</a>
-                </td>
+                <th>
+                    @Html.ActionLink("Title", "Index", "Contest", new { sortOrder = ViewBag.NameSort, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Start Date", "Index", "Contest", new { sortOrder = ViewBag.DateSort, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>End Date</th>
+                <th>Image</th>
+                <th>Details</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                    <td>
+                        <img src="@Url.Content("~/" + item.Image)" alt="Contest Image" class="img-thumbnail" style="width: 100px; height: 100px;" />
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Contest" asp-route-id="@item.ContestId" class="btn btn-primary btn-sm">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<!-- Thêm phân trang ở đây -->
-<div class="text-center">
-    @Html.PagedListPager(Model, page => Url.Action("Index", "Contest", new { page = page }),
+    <!-- Pagination Section -->
+    <div class="text-center">
+        @Html.PagedListPager(Model, page => Url.Action("Index", "Contest", new { page = page }),
             new PagedListRenderOptions()
-    {
-        LiElementClasses = new[] { "page-item" },
-        PageClasses = new[] { "page-link" },
-        ContainerDivClasses = new[] { "pagination", "justify-content-center" },
-        UlElementClasses = new[] { "pagination" }
-    })
+            {
+                LiElementClasses = new[] { "page-item" },
+                PageClasses = new[] { "page-link" },
+                ContainerDivClasses = new[] { "pagination", "justify-content-center" },
+                UlElementClasses = new[] { "pagination" }
+            })
+    </div>
 </div>

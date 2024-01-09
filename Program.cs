@@ -36,7 +36,6 @@ builder.Services.AddScoped<IAccount, AccountService>();
 builder.Services.AddScoped<IAbout, AboutService>();
 builder.Services.AddScoped<IAnnouncement, AnnouncementService>();
 builder.Services.AddScoped<IBook, BookService>();
-builder.Services.AddScoped<ICart, CartService>();
 builder.Services.AddScoped<IContact, ContactService>();
 builder.Services.AddScoped<IContest, ContestService>();
 builder.Services.AddScoped<IFaq, FaqService>();

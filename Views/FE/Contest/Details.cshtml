@@ -7,93 +7,68 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     
 }
+
 @{
-    var userJson = Context.Session.GetString("userLogged");
-    User user = null;
-
-    if (!string.IsNullOrEmpty(userJson))
-    {
-        user = JsonConvert.DeserializeObject<User>(userJson);
-    }
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("userLogged");
 }
 
-<h1>Contest Details</h1>
-
-<div>
-    <h4>@Model.Title</h4>
+<div class="container mt-4">
+    <h1 class="text-center text-danger" style="margin: 150px 0 50px 0">@Model.Title</h1>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Guidelines)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Guidelines)
-        </dd>
+    <div class="row">
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-4">Title:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Title)</dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
+                <dt class="col-sm-4">Guidelines:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Guidelines)</dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
+                <dt class="col-sm-4">Start Date:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.StartDate)</dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
+                <dt class="col-sm-4">End Date:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.EndDate)</dd>
 
-        <dt class="col-sm-2">
-            Image:
-        </dt>
-        <dd class="col-sm-10">
-            <img src="@Url.Content("~/"+Model.Image)" alt="Contest Images" style="max-width:400px; max-height:400px;" />
-        </dd>
-    </dl>
-</div>
+                <dt class="col-sm-4">Created At:</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.CreatedAt)</dd>
 
-@if (user != null && (user.RoleId == 1 || user.RoleId == 2 || user.RoleId == 3))
-{
-    <div>
-        <a asp-action="UserContestRecipeCreatePartial" asp-controller="Recipe" asp-route-contestId="@Model.ContestId">Create New Recipe</a> ||
-        <a asp-action="CreateContestRecipe" asp-controller="ContestEntries" asp-route-contestId="@Model.ContestId">Submit Your Recipe</a>
+                <dt class="col-sm-4">Image:</dt>
+                <dd class="col-sm-8">
+                    <img src="@Url.Content("~/"+Model.Image)" alt="Contest Images" class="img-fluid" style="max-width:400px; max-height:400px;" />
+                </dd>
+            </dl>
+        </div>
+
+        <div class="col-md-4">
+            @if (!string.IsNullOrEmpty(userJson))
+                {
+                    var user = JsonConvert.DeserializeObject<User>(userJson);
+                    @if (user != null)
+                    {
+                        <div>
+                            <a asp-action="UserContestRecipeCreatePartial" asp-controller="Recipe" asp-route-contestId="@Model.ContestId" class="btn btn-primary">Create New Recipe</a>
+                            <a asp-action="CreateContestRecipe" asp-controller="ContestEntries" asp-route-contestId="@Model.ContestId" class="btn btn-success ml-2">Submit Your Recipe</a>
+                        </div>
+                    }
+                    
+                }
+            else
+            {
+                <div>
+                    <a asp-action="Login" asp-controller="Account" class="btn btn-danger">Login to submit your recipe</a>
+                </div>
+                <h3 style="margin: 5px 0; padding: 0px 0">or</h3>
+                <div class="mt-3">
+                    <a asp-action="FECreate" asp-controller="AnonymousRecipes" asp-route-contestId="@Model.ContestId" class="btn btn-info">Submit Your Recipe As Guest</a>
+                </div>
+            }
+        </div>
     </div>
-}
 
-else if (user != null)
-{
-    <div>
-        Submit Your Recipe <a asp-action="Login" asp-controller="ContestLogin" class="text-danger">Here</a>
+    <div class="text-center mt-4">
+        <a asp-action="Index" asp-controller="Contest" class="btn btn-secondary">Back to Contest List</a>
     </div>
-}
-else
-{
-    <div>
-        <a asp-action="Login" asp-controller="ContestLogin">Please login to submit your recipe</a>
-    </div>
-}
-
-<div>
-    <a asp-action="FECreate" asp-controller="AnonymousRecipes" asp-route-contestId="@Model.ContestId">Submit Your Recipe As Guest</a>
 </div>
-
-<div>
-    <a asp-action="Index" asp-controller="Contest">Back to Contest List</a>
-</div>
-
-
