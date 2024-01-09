@@ -29,7 +29,7 @@ public class ContestController : Controller
         ViewData["StartDate"] = startDate;
         ViewData["EndDate"] = endDate;
 
-        var contests = _contestRepository.GetContests();
+        var contests = _contestRepository.GetContests(true);
         if (!string.IsNullOrEmpty(searchString))
         {
             contests = _contestRepository.Search(searchString);

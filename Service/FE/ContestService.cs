@@ -15,10 +15,15 @@ public class ContestService: IContest
         _db = db;
     }
 
-    public List<Contest> GetContests()
+    public List<Contest> GetContests(bool isActive)
     {
-        return _db.Contests.ToList();
+        return _db.Contests.Where(c => c.IsActive == isActive).ToList();
     }
+
+    //public List<Contest> GetContests()
+    //{
+    //    return _db.Contests.ToList();
+    //}
     public Contest GetContest(int id)
     {
         var contest = _db.Contests.FirstOrDefault(c => c.ContestId == id);

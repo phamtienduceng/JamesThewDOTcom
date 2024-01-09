@@ -30,6 +30,14 @@ public class ContestManagementController : Controller
         return View("~/Views/Admin/Contest/Index.cshtml", contests);
     }
 
+    [HttpPost]
+    public IActionResult UpdateContest(int id, Contest contest)
+    {
+        _contestManagementRepository.UpdateContest(id, contest);
+        return RedirectToAction("Index");
+    }
+
+
     // GET: Admin/ContestManagement/Details/5
     [AuthenticationAdmin]
     [HttpGet("Create")]
@@ -103,15 +111,27 @@ public class ContestManagementController : Controller
             {
                 var folderPath = Path.Combine("wwwroot", "Admin", "images", "contest");
                 var pathToSave = Path.Combine(folderPath, file.FileName);
+
                 if (!Directory.Exists(folderPath))
                 {
                     Directory.CreateDirectory(folderPath);
                 }
+
                 using (var stream = new FileStream(pathToSave, FileMode.Create))
                 {
                     file.CopyTo(stream);
                 }
+
                 contest.Image = Path.Combine("Admin", "images", "contest", file.FileName);
+            }
+            else
+            {
+                // Kiểm tra nếu không có tệp hình ảnh mới, giữ lại hình ảnh cũ
+                var existingContest = _contestManagementRepository.GetContest(id);
+                if (existingContest != null)
+                {
+                    contest.Image = existingContest.Image;
+                }
             }
 
             _contestManagementRepository.UpdateContest(id, contest);
@@ -123,6 +143,7 @@ public class ContestManagementController : Controller
             throw;
         }
     }
+
 
     // POST: Admin/ContestManagement/Delete/5
     public IActionResult DeleteConfirmed(int id)
@@ -156,5 +177,6 @@ public class ContestManagementController : Controller
         return View("~/Views/Admin/Contest/Details.cshtml", contest);
     }
 
+   
 
 }

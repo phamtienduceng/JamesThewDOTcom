@@ -1,4 +1,6 @@
 ﻿@model JamesRecipes.Models.ContestEntry
+@using JamesRecipes.Models.ViewModels;
+
 <h1>CreateContestRecipe</h1>
 <h4>ContestEntry</h4>
 <hr />
@@ -18,13 +20,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="RecipeId" class="control-label">Recipe</label>
-                <select asp-for="RecipeId" class="form-control" asp-items="ViewBag.RecipeId"></select>
+                @if (ViewBag.RecipeSelectItems is List<ExtendedSelectListItem> recipeSelectItems)
+                {
+                    <select asp-for="RecipeId" class="form-control" id="RecipeId" onchange="updateImage()">
+                        @foreach (var item in recipeSelectItems)
+                        {
+                            <option value="@item.Value" data-img-url="@item.ImageUrl">@item.Text</option>
+                        }
+                    </select>
+                }
             </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label">Image</label>
-                <input asp-for="Image" type="file" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
+
+           
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -32,6 +39,26 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-4">
+        <!-- The img tag to display the image -->
+        <img id="recipeImage" src="" alt="Recipe Image" style="max-width:100%; height:auto;" />
+    </div>
+</div>
+
 <div>
     <a asp-action="Index" asp-controller="Contest">Back to List</a>
 </div>
+
+<script>
+    function updateImage() {
+        var selectElement = document.querySelector('#RecipeId');
+        var selectedOption = selectElement.options[selectElement.selectedIndex];
+        var imageUrl = selectedOption.getAttribute('data-img-url');
+        document.getElementById('recipeImage').src = imageUrl || 'default-placeholder-image-url';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        updateImage(); // Call immediately when the page loads to update the initial image
+    });
+</script>

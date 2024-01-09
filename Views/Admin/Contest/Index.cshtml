@@ -38,12 +38,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.Admin)
             </th>
+           
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
+          
+
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
@@ -76,6 +79,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Admin.UserId)
                 </td>
+                <td>
+              
+
                 <td>
                     <a asp-action="Edit" asp-controller="ContestManagement" asp-route-id="@item.ContestId">Edit</a> |
                     <a asp-action="Details" asp-controller="ContestManagement" asp-route-id="@item.ContestId">Details</a> |
