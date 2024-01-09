@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_FELayout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Contest Management</h1>
 
-<h4>AnonymousContestEntry</h4>
+<h4>Score</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,7 +15,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ContestId" class="control-label"></label>
-                <select asp-for="ContestId" class ="form-control" asp-items="ViewBag.ContestId"></select>
+                <input asp-for="ContestId" class="form-control" />
+                <span asp-validation-for="ContestId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AnonymousRecipeId" class="control-label"></label>
@@ -27,12 +28,7 @@
                 <span asp-validation-for="Score" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Score" class="btn btn-primary" />
             </div>
         </form>
     </div>

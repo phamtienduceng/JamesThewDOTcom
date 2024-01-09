@@ -69,6 +69,14 @@
       "PackagePath": "staticwebassets/Admin/images/contest/5.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contest/grilchicken.jpg",
+      "PackagePath": "staticwebassets/Admin/images/contest/grilchicken.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contest/pizza 2.webp",
+      "PackagePath": "staticwebassets/Admin/images/contest/pizza 2.webp"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contestentries/1.jpg",
       "PackagePath": "staticwebassets/Admin/images/contestentries/1.jpg"
     },
@@ -3057,6 +3065,14 @@
       "PackagePath": "staticwebassets/FE/img/footer_logo.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/grilchicken.jpg",
+      "PackagePath": "staticwebassets/FE/img/grilchicken.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/knifedrop.jpg",
+      "PackagePath": "staticwebassets/FE/img/knifedrop.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/knowledge_graph_logo.png",
       "PackagePath": "staticwebassets/FE/img/knowledge_graph_logo.png"
     },
@@ -3085,6 +3101,10 @@
       "PackagePath": "staticwebassets/FE/img/padthai.jpg"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pasta.jpg",
+      "PackagePath": "staticwebassets/FE/img/pasta.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pattern/patrn.png",
       "PackagePath": "staticwebassets/FE/img/pattern/patrn.png"
     },
@@ -3099,6 +3119,22 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/phone1.jpg",
       "PackagePath": "staticwebassets/FE/img/phone1.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pioneer.webp",
+      "PackagePath": "staticwebassets/FE/img/pioneer.webp"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pizza 2.webp",
+      "PackagePath": "staticwebassets/FE/img/pizza 2.webp"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pizza 3.webp",
+      "PackagePath": "staticwebassets/FE/img/pizza 3.webp"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pizza.webp",
+      "PackagePath": "staticwebassets/FE/img/pizza.webp"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/portfolio/1.png",
@@ -3251,6 +3287,10 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/svg_icon/seo_3.svg",
       "PackagePath": "staticwebassets/FE/img/svg_icon/seo_3.svg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/table.jpg",
+      "PackagePath": "staticwebassets/FE/img/table.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/testmonial/1.png",

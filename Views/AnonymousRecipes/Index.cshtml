@@ -5,51 +5,31 @@
     Layout = "~/Views/Shared/_FELayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Contest Management</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.AnonymousId)
+                ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                Score
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ingredients)
+                Image
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Procedure)
+                Contest
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Image)
+                Date posted
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Timeneeds)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VideoUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactPhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnonymousName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContestId)
-            </th>
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -60,41 +40,19 @@
                     @Html.DisplayFor(modelItem => item.AnonymousId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
                 <td>
-                    @Html.Raw(item.Ingredients)
-                </td>
-                <td>
-                    @Html.Raw(item.Procedure)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Image)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Timeneeds)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.VideoUrl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactEmail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactPhone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AnonymousName)
+                    <img src="@item.Image" alt="Contest Entry Image" class="img-thumbnail" style="max-width: 100px;" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ContestId)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.AnonymousRecipeId">Edit</a> |
+                    @Html.DisplayFor(modelItem => item.AnonymousName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
                     <a asp-action="Details" asp-route-id="@item.AnonymousRecipeId">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.AnonymousRecipeId">Delete</a>
                 </td>

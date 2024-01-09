@@ -5,41 +5,41 @@
     Layout = "~/Views/Shared/_FELayout.cshtml";
 }
 
-<h1>Contest Entries List</h1>
+<h1>Contest Management</h1>
 
 @* <p>
     <a asp-action="Create" asp-controller="ContestEntries">Create New</a>
 </p> *@
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Score)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Contest)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Recipe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Score
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Contest
+        </th>
+        <th>
+            User
+        </th>
+        <th>
+            Date posted
+        </th>
+        <th>Action</th>
+    </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                    @Html.DisplayFor(modelItem => item.EntryId)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Score)
@@ -51,10 +51,10 @@
                     @Html.DisplayFor(modelItem => item.Contest.ContestId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Recipe.RecipeId)
+                    @Html.DisplayFor(modelItem => item.User.UserId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.User.UserId)
+                    @Html.DisplayFor(modelItem => item.User.CreatedAt)
                 </td>
                 <td>
                     @* <a asp-action="Edit" asp-controller="ContestEntries" asp-route-id="@item.EntryId">Edit</a> | *@

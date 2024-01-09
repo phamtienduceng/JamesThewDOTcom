@@ -1,6 +1,5 @@
 using JamesRecipes.Models;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using System.Net;
 using System.Net.Http;

@@ -256,12 +256,6 @@ public class AccountController : Controller
         ViewData["Success"] = "You have successfully changed your password.";
         return View("~/Views/FE/Account/ResetPassword.cshtml");
     }
-    
-    [HttpGet("ForgotPasswordConfirmation")]
-    public ActionResult ForgotPasswordConfirmation()
-    {
-        return View("~/Views/FE/Account/ForgotPasswordConfirmation.cshtml");
-    }
 
     private bool IsEmailValid(string email)
     {

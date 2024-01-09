@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_FELayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Contest Management</h1>
 
 <p>
     <a asp-action="Create" asp-controller="ContestManagement">Create New</a>
@@ -18,7 +18,7 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Guidelines)
+                @Html.DisplayNameFor(model => model.ContestId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.StartDate)
@@ -35,11 +35,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Image)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Admin)
-            </th>
-           
-            <th></th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -49,17 +45,10 @@
 
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    @Html.DisplayFor(modelItem => item.ContestId)
                 </td>
                 <td>
-                    @if (item.Guidelines.Length > 100)
-                    {
-                        @Html.Raw(item.Guidelines.Substring(0, 25) + "...")
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.Guidelines)
-                    }
+                    @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.StartDate)
@@ -68,7 +57,7 @@
                     @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IsActive)
+                    @item.IsActive
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreatedAt)
@@ -76,12 +65,6 @@
                 <td>
                     <img src="@Url.Content("~/" + item.Image)" alt="Contest Image" style="width:100px; height:100px;" />
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Admin.UserId)
-                </td>
-                <td>
-              
-
                 <td>
                     <a asp-action="Edit" asp-controller="ContestManagement" asp-route-id="@item.ContestId">Edit</a> |
                     <a asp-action="Details" asp-controller="ContestManagement" asp-route-id="@item.ContestId">Details</a> |
