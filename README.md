@@ -11,6 +11,6 @@
 
 Github: https://github.com/phamtienduceng/JamesThewDOTcom
 
-Mirror: https://shorturl.at/dQSX0
+Mirror: https://bit.ly/3NS7Quk
 
 Thank you!!!
