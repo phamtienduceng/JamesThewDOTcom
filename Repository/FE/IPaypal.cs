@@ -1,4 +1,5 @@
 ﻿using JamesRecipes.Models;
+using model.Models;
 
 namespace JamesRecipes.Repository.FE
 {
@@ -7,5 +8,6 @@ namespace JamesRecipes.Repository.FE
         Membership MemberById(int id);
         void AddMember(Membership newmember);
         void UpdateMember(Membership member);
+        
     }
 }

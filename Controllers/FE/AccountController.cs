@@ -101,15 +101,11 @@ public class AccountController : Controller
                     }
                     else
                     {
-                        ViewData["Er"] = User.Username;
-                        ViewData["Em"] = User.Email;
                         ViewData["Error"] = "Password and confirm password do not match.";
                     }
                 }
                 else
                 {
-                    ViewData["Er"] = User.Username;
-                    ViewData["Em"] = User.Email;
                     ViewData["Error"] = "Email is already registered.";
                 }
             }
@@ -149,7 +145,8 @@ public class AccountController : Controller
                 }
             }
             _account.UpdateProfile(id, model);
-            return RedirectToAction("Index", "Home");
+            ViewData["Success"] = "You have successfully registered an account.";
+            return View("~/Views/FE/Account/MyProfile.cshtml");
         }
     }
 
@@ -297,7 +294,7 @@ public class AccountController : Controller
         List<string> userList = new List<string>();
 
         // Kết nối và truy vấn cơ sở dữ liệu
-        using (SqlConnection connection = new SqlConnection("Server=.,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True"))
+        using (SqlConnection connection = new SqlConnection("Server=.,1500Database=s17;User=sa;Password=12345678;TrustServerCertificate=True"))
         {
             connection.Open();
 

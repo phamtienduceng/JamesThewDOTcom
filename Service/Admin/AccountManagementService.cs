@@ -1,5 +1,6 @@
 using JamesRecipes.Models;
 using JamesRecipes.Repository.Admin;
+using Microsoft.EntityFrameworkCore;
 using model.Models;
 
 namespace JamesRecipes.Service.Admin;
@@ -26,5 +27,10 @@ public class AccountManagementService : IAccountManagementRepository
     public List<ViewUserRole> GetAllUsers()
     {
         return _db.ViewUserRoles.OrderByDescending(u => u.UserId).ToList();
+    }
+
+    public List<Membership> GetAllmember()
+    {
+        return _db.Memberships.Include(m => m.User).OrderByDescending(u => u.User.UserId).ToList();
     }
 }
