@@ -2801,6 +2801,14 @@
       "PackagePath": "staticwebassets/FE/img/ava.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/baking_mastery.jpg",
+      "PackagePath": "staticwebassets/FE/img/baking_mastery.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/balancing_flavors.jpg",
+      "PackagePath": "staticwebassets/FE/img/balancing_flavors.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/banh-mi-thit-bo-nuong-thumbnail-1.jpg",
       "PackagePath": "staticwebassets/FE/img/banh-mi-thit-bo-nuong-thumbnail-1.jpg"
     },
@@ -2933,6 +2941,10 @@
       "PackagePath": "staticwebassets/FE/img/chicken grilled.jpg"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/chicken_alfredo_pasta.jpg",
+      "PackagePath": "staticwebassets/FE/img/chicken_alfredo_pasta.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/comment/comment_1.png",
       "PackagePath": "staticwebassets/FE/img/comment/comment_1.png"
     },
@@ -2951,6 +2963,10 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/conan.png",
       "PackagePath": "staticwebassets/FE/img/conan.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/creative_plating.jpg",
+      "PackagePath": "staticwebassets/FE/img/creative_plating.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/elements/a.jpg",
@@ -3061,12 +3077,28 @@
       "PackagePath": "staticwebassets/FE/img/favicon.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/flavor_enhancements.jpg",
+      "PackagePath": "staticwebassets/FE/img/flavor_enhancements.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/food_storage.jpg",
+      "PackagePath": "staticwebassets/FE/img/food_storage.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/footer_logo.png",
       "PackagePath": "staticwebassets/FE/img/footer_logo.png"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/grilchicken.jpg",
       "PackagePath": "staticwebassets/FE/img/grilchicken.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/grilling_tips.jpg",
+      "PackagePath": "staticwebassets/FE/img/grilling_tips.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/knife_skills.jpg",
+      "PackagePath": "staticwebassets/FE/img/knife_skills.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/knifedrop.jpg",
@@ -3079,6 +3111,18 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/logo.png",
       "PackagePath": "staticwebassets/FE/img/logo.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/margherita_pizza.jpg",
+      "PackagePath": "staticwebassets/FE/img/margherita_pizza.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/mastering_sauces.jpg",
+      "PackagePath": "staticwebassets/FE/img/mastering_sauces.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/meal_planning.jpg",
+      "PackagePath": "staticwebassets/FE/img/meal_planning.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/mylove.jpg",
@@ -3111,6 +3155,10 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pattern/patrn_1.png",
       "PackagePath": "staticwebassets/FE/img/pattern/patrn_1.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/phoga.jpg",
+      "PackagePath": "staticwebassets/FE/img/phoga.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/phone.jpg",
@@ -3205,6 +3253,10 @@
       "PackagePath": "staticwebassets/FE/img/post/preview.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/quick_easy_recipes.jpg",
+      "PackagePath": "staticwebassets/FE/img/quick_easy_recipes.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/ramen.jpg",
       "PackagePath": "staticwebassets/FE/img/ramen.jpg"
     },
@@ -3251,6 +3303,10 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/special scramble eggs.jpg",
       "PackagePath": "staticwebassets/FE/img/special scramble eggs.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/sushi_rolls.jpg",
+      "PackagePath": "staticwebassets/FE/img/sushi_rolls.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/svg_icon/feature_1.svg",
@@ -3311,6 +3367,10 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/testmonial/thumb.png",
       "PackagePath": "staticwebassets/FE/img/testmonial/thumb.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/tom_yum_soup.jpg",
+      "PackagePath": "staticwebassets/FE/img/tom_yum_soup.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/js/ajax-form.js",
@@ -3509,20 +3569,80 @@
       "PackagePath": "staticwebassets/images/Vietnamese-Home-Cooking.jpg"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/baking_mastery.jpg",
+      "PackagePath": "staticwebassets/images/baking_mastery.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/balancing_flavors.jpg",
+      "PackagePath": "staticwebassets/images/balancing_flavors.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/books.png",
       "PackagePath": "staticwebassets/images/books.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/chicken_alfredo_pasta.jpg",
+      "PackagePath": "staticwebassets/images/chicken_alfredo_pasta.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/creative_plating.jpg",
+      "PackagePath": "staticwebassets/images/creative_plating.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/flavor_enhancements.jpg",
+      "PackagePath": "staticwebassets/images/flavor_enhancements.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/food_storage.jpg",
+      "PackagePath": "staticwebassets/images/food_storage.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/grilling_tips.jpg",
+      "PackagePath": "staticwebassets/images/grilling_tips.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/homepage.png",
       "PackagePath": "staticwebassets/images/homepage.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/knife_skills.jpg",
+      "PackagePath": "staticwebassets/images/knife_skills.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/margherita_pizza.jpg",
+      "PackagePath": "staticwebassets/images/margherita_pizza.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/mastering_sauces.jpg",
+      "PackagePath": "staticwebassets/images/mastering_sauces.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/meal_planning.jpg",
+      "PackagePath": "staticwebassets/images/meal_planning.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/phoga.jpg",
+      "PackagePath": "staticwebassets/images/phoga.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/quick_easy_recipes.jpg",
+      "PackagePath": "staticwebassets/images/quick_easy_recipes.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/recipes.png",
       "PackagePath": "staticwebassets/images/recipes.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/sushi_rolls.jpg",
+      "PackagePath": "staticwebassets/images/sushi_rolls.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/tips.png",
       "PackagePath": "staticwebassets/images/tips.png"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/tom_yum_soup.jpg",
+      "PackagePath": "staticwebassets/images/tom_yum_soup.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/lib/bootstrap/LICENSE",
