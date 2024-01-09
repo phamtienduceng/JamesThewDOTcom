@@ -13,15 +13,22 @@ public class ContestManagementService : IContestManagementRepository
         _db = db;
 
     }
+    //public List<Contest> GetContests(bool isActive)
+    //{
+    //    return _db.Contests.Where(c => c.IsActive == isActive).ToList();
+    //}
+
     public List<Contest> GetContests()
     {
         return _db.Contests.ToList();
     }
+
     public Contest GetContest(int id)
     {
         var contest = _db.Contests.FirstOrDefault(c => c.ContestId == id);
         return contest ?? null;
     }
+
     public void AddContest(Contest contest)
     {
         _db.Contests.Add(contest);

@@ -11,5 +11,7 @@ public interface IContestManagementRepository
     void DeleteContest(int id);
     bool CheckContest(Contest contest);
     List<ContestEntry> GetAllContestEntries(int id);
-    
+    // isActive = true => get all active contests
+    // isActive = false => get all inactive contests
+    //List<Contest> GetContests(bool isActive);
 }

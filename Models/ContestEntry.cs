@@ -15,6 +15,8 @@ public partial class ContestEntry
 
     public DateTime? CreatedAt { get; set; }
 
+    // min score is 1, max score is 100
+    [System.ComponentModel.DataAnnotations.Range(1, 100)]
     public int? Score { get; set; }
 
     public string? Image { get; set; }

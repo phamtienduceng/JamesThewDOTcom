@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using JamesRecipes.Models;
 using Newtonsoft.Json;
 using JamesRecipes.Repository.FE;
+using JamesRecipes.Models.ViewModels; // Thêm này ở đầu file nếu chưa có
 
 namespace JamesRecipes.Controllers.Admin
 {
@@ -26,6 +27,7 @@ namespace JamesRecipes.Controllers.Admin
         public async Task<IActionResult> Index()
         {
             var jamesrecipesContext = _context.ContestEntries.Include(c => c.Contest).Include(c => c.Recipe).Include(c => c.User);
+
             return View("~/Views/Admin/ContestEntries/Index.cshtml", await jamesrecipesContext.ToListAsync());
         }
 
@@ -46,7 +48,12 @@ namespace JamesRecipes.Controllers.Admin
             {
                 return NotFound();
             }
-
+            // Chỉnh sửa URL hình ảnh
+            if (contestEntry.Recipe != null && !string.IsNullOrWhiteSpace(contestEntry.Recipe.Image))
+            {
+                contestEntry.Recipe.Image = contestEntry.Recipe.Image.StartsWith("/") ?
+                    contestEntry.Recipe.Image : "/" + contestEntry.Recipe.Image;
+            }
             return View("~/Views/Admin/ContestEntries/Details.cshtml", contestEntry);
         }
 
@@ -198,11 +205,11 @@ namespace JamesRecipes.Controllers.Admin
 
             // lấy ContestId từ session 
             string contestIdSession = HttpContext.Session.GetString("contestId");
-            if(!string.IsNullOrEmpty(contestIdSession))
+            if (!string.IsNullOrEmpty(contestIdSession))
             {
                 contestId = int.Parse(contestIdSession);
             }
-            else if(!contestId.HasValue)
+            else if (!contestId.HasValue)
             {
                 return NotFound();
             }
@@ -211,7 +218,19 @@ namespace JamesRecipes.Controllers.Admin
             // Sử dụng phương thức GetRecipesByUser từ interface IRecipe để lấy công thức của người dùng
             var userRecipes = _recipe.GetRecipesByUser(userId);
 
+            // Thêm thông tin hình ảnh vào ViewData để sử dụng trong View
+            // In your Controller
+            // Create an anonymous object to pass the additional image URL data.
+            ViewBag.RecipeSelectItems = userRecipes.Select(r => new ExtendedSelectListItem
+            {
+                Value = r.RecipeId.ToString(),
+                Text = r.Title,
+                ImageUrl = r.Image.StartsWith("/") ? r.Image : "/" + r.Image // r.Image chứa URL của hình ảnh.
+            }).ToList();
+
+
             ViewData["RecipeSelectList"] = new SelectList(userRecipes, "RecipeId", "Title");
+
             ViewData["ContestTitle"] = _context.Contests.Find(contestId).Title;
             ViewData["Username"] = _context.Users.Find(userId).Username;
 
