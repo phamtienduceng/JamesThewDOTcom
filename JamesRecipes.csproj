@@ -187,6 +187,7 @@
       <_ContentIncludedByDefault Remove="Views\FE\Books\Index.cshtml" />
       <_ContentIncludedByDefault Remove="Views\FE\Cart\GetUserCart.cshtml" />
       <_ContentIncludedByDefault Remove="Views\FE\UserOrder\UserOrders.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\FE\Cart\Index.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -203,7 +204,6 @@
       <AdditionalFiles Include="Views\Admin\TipCategories\Index.cshtml" />
       <AdditionalFiles Include="Views\Admin\TipCategories\TipByCate.cshtml" />
       <AdditionalFiles Include="Views\FE\Book\Index.cshtml" />
-      <AdditionalFiles Include="Views\FE\Cart\Index.cshtml" />
     </ItemGroup>
 
     <ItemGroup>

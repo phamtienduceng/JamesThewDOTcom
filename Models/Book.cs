@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using JamesRecipes.Models;
 namespace JamesRecipes.Models;
 
 public partial class Book
@@ -13,7 +13,7 @@ public partial class Book
 
     public decimal Price { get; set; }
 
-    public int StockQuantity { get; set; }
+    public string? Description { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
@@ -21,9 +21,5 @@ public partial class Book
 
     public int? CategoryId { get; set; }
 
-    public virtual ICollection<CartDetail> CartDetails { get; set; } = new List<CartDetail>();
-
     public virtual CategoriesBook? Category { get; set; }
-
-    public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 }

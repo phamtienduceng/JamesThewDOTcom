@@ -37,7 +37,7 @@ public class BookManagementService: IBookManagementRepository
         b!.Author = book.Author;
         b.Price = book.Price;
         b.CategoryId = book.CategoryId;
-        b.StockQuantity = book.StockQuantity;
+        b.Description = book.Description;
         b.Image = book.Image;
     }
 

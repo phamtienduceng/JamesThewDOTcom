@@ -93,10 +93,6 @@
                                     <span>@item.Author</span>
                                     <p class="mb-2">$@item.Price</p>
                                     <a asp-action="SingleBook" class="line_btn" asp-controller="Book" asp-route-id="@item.BookId">View book's detail</a>
-                                    <form method="post" asp-action="AddToCart" asp-controller="Cart">
-                                        <input type="hidden" name="bookId" value="@item.BookId" />
-                                        <button type="submit" class="btn btn-info">Add to cart</button>
-                                    </form>                                
                                 </div>
                             </div>
                         }
