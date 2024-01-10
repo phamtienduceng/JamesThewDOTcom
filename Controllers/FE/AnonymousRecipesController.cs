@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using JamesRecipes.Models;
 using JamesRecipes.Models;
 using Microsoft.AspNetCore.Mvc.Razor.Compilation;
+using Microsoft.AspNetCore.Http;
+
 
 namespace JamesRecipes.Controllers.FE
 {
@@ -200,21 +202,34 @@ namespace JamesRecipes.Controllers.FE
 
 
         [HttpPost]
-        public async Task<IActionResult> FECreate([Bind("Title,Ingredients,Procedure,Image,Timeneeds,VideoUrl,ContactEmail,ContactPhone,ContestId,AnonymousName")] AnonymousRecipe anonymousRecipe)
+        public async Task<IActionResult> FECreate([Bind("Title,Ingredients,Procedure,Timeneeds,VideoUrl,ContactEmail,ContactPhone,ContestId,AnonymousName")] AnonymousRecipe anonymousRecipe, IFormFile? imageFile)
         {
-            // Bạn không cần bind AnonymousRecipeId và AnonymousId vì chúng sẽ được tạo tự động
             if (ModelState.IsValid)
             {
-                anonymousRecipe.AnonymousId = Guid.NewGuid(); // Tạo AnonymousId mới
+                if (imageFile != null && imageFile.Length > 0)
+                {
+                    var fileName = Path.GetFileName(imageFile.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Admin/images/contestentries", fileName);
+
+                    using (var fileSteam = new FileStream(filePath, FileMode.Create))
+                    {
+                        await imageFile.CopyToAsync(fileSteam);
+                    }
+
+                    // Lưu đường dẫn của hình ảnh vào cơ sở dữ liệu
+                    anonymousRecipe.Image = Path.Combine("/Admin/images/contestentries", fileName);
+                }
+
+                anonymousRecipe.AnonymousId = Guid.NewGuid();
                 _context.Add(anonymousRecipe);
                 await _context.SaveChangesAsync();
-                //return View("~/Views/AnonymousContestEntries/Create.cshtml");
-                return RedirectToAction("Create", "AnonymousContestEntries"); // Chuyển hướng đến action Create cua AnonymousContestEntries
-            }
 
+                return RedirectToAction("Create", "AnonymousContestEntries");
+            }
             // Nếu ModelState không hợp lệ, hiển thị lại form với thông tin đã nhập
             ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "Title", anonymousRecipe.ContestId);
             return View("~/Views/AnonymousRecipes/FECreate.cshtml");
         }
+
     }
 }

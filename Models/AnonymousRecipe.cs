@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JamesRecipes.Models;
 
@@ -31,6 +32,9 @@ public partial class AnonymousRecipe
     public int ContestId { get; set; }
 
     public string AnonymousName { get; set; } = null!;
+
+    [NotMapped]
+    public IFormFile? ImageFile { get; set; } // Thuộc tính mới để xử lý file hình ảnh tải lên
 
     public virtual ICollection<AnonymousContestEntry> AnonymousContestEntries { get; set; } = new List<AnonymousContestEntry>();
 
