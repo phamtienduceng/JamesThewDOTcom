@@ -132,7 +132,7 @@ public class AccountController : Controller
         if (string.IsNullOrEmpty(model.PhoneNumber) || string.IsNullOrEmpty(model.Address))
         {
             TempData["msg"] = "Please input at least all field";
-            return RedirectToAction("MyProfile", "Account", new {id = id});
+            return RedirectToAction("MyProfile", "Account", new { id = id });
         }
         else
         {
@@ -141,12 +141,12 @@ public class AccountController : Controller
                 if (model.PhoneNumber.Length != 10)
                 {
                     TempData["msg"] = "Phone number should have 10 digits";
-                    return RedirectToAction("MyProfile", "Account", new {id = id});
+                    return RedirectToAction("MyProfile", "Account", new { id = id });
                 }
             }
             _account.UpdateProfile(id, model);
             ViewData["Success"] = "You have successfully registered an account.";
-            return View("~/Views/FE/Account/MyProfile.cshtml");
+            return RedirectToAction("MyProfile", "Account", new { id = id });
         }
     }
 
@@ -224,8 +224,8 @@ public class AccountController : Controller
         if (IsEmailValid(email))
         {
             SendResetPasswordEmail(email);
-
-            return RedirectToAction("ForgotPassword", "Account");
+            ViewData["Success"] = "You have successfully sent the password verification email.";
+            return View("~/Views/FE/Account/ForgotPassword.cshtml");
         }
 
         ModelState.AddModelError("", "Email is not invalid.");
@@ -241,10 +241,16 @@ public class AccountController : Controller
     [HttpPost("ResetPassword/{email}")]
     public ActionResult ResetPassword(string email, string newpass, string confirm)
     {
+
         var acc = _account.GetUserByEmail(email);
-        if (newpass != confirm)
+        if (string.IsNullOrWhiteSpace(newpass) || string.IsNullOrWhiteSpace(confirm))
         {
-            ViewData["Error"] = "The new password and conform password do not match!";
+            ViewData["Error"] = "Please enter data.";
+            return View("~/Views/FE/Account/ResetPassword.cshtml");
+        }
+        else if (newpass != confirm)
+        {
+            ViewData["Error"] = "The new password and confirm password do not match!";
             return View("~/Views/FE/Account/ResetPassword.cshtml");
         }
         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newpass);
@@ -253,7 +259,7 @@ public class AccountController : Controller
         ViewData["Success"] = "You have successfully changed your password.";
         return View("~/Views/FE/Account/ResetPassword.cshtml");
     }
-
+   
     private bool IsEmailValid(string email)
     {
         // Kiểm tra email có tồn tại trong hệ thống hay không
@@ -294,7 +300,7 @@ public class AccountController : Controller
         List<string> userList = new List<string>();
 
         // Kết nối và truy vấn cơ sở dữ liệu
-        using (SqlConnection connection = new SqlConnection("Server=.,1500Database=s17;User=sa;Password=12345678;TrustServerCertificate=True"))
+        using (SqlConnection connection = new SqlConnection("Server=.,1500;Database=s20;User=sa;Password=12345678;TrustServerCertificate=True"))
         {
             connection.Open();
 
