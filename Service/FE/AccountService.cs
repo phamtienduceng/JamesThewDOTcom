@@ -18,13 +18,13 @@ namespace JamesRecipes.Service.FE
             _db.SaveChanges();
         }
 
-        public void UpdateProfile(int id, User user)
+        public void UpdateProfile(int id, UserMem user)
         {
             var u = GetUserById(id);
             if (user != null)
             {
-                u!.PhoneNumber = user.PhoneNumber;
-                u.Address = user.Address;
+                u!.PhoneNumber = user.User.PhoneNumber;
+                u.Address = user.User.Address;
                 _db.Update(u);
                 _db.SaveChanges();
             }
@@ -54,6 +54,12 @@ namespace JamesRecipes.Service.FE
         public User GetUserById(int id)
         {
             return _db.Users.Include(u=>u.Role)
+                .SingleOrDefault(u => u.UserId == id)!;
+        }
+        
+        public Membership GetMembershipById(int id)
+        {
+            return _db.Memberships
                 .SingleOrDefault(u => u.UserId == id)!;
         }
 

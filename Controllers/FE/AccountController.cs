@@ -123,22 +123,29 @@ public class AccountController : Controller
     public IActionResult MyProfile(int id)
     {
         var user = _account.GetUserById(id);
-        return View("~/Views/FE/Account/MyProfile.cshtml", user);
+        var mem = _account.GetMembershipById(id);
+        var viewModel = new UserMem()
+        {
+            User = user,
+            Membership = mem
+        };
+        
+        return View("~/Views/FE/Account/MyProfile.cshtml", viewModel);
     }
 
     [HttpPost("MyProfile")]
-    public IActionResult MyProfile(int id, User model)
+    public IActionResult MyProfile(int id, UserMem model)
     {
-        if (string.IsNullOrEmpty(model.PhoneNumber) || string.IsNullOrEmpty(model.Address))
+        if (string.IsNullOrEmpty(model.User.PhoneNumber) || string.IsNullOrEmpty(model.User.Address))
         {
             TempData["msg"] = "Please input at least all field";
             return RedirectToAction("MyProfile", "Account", new { id = id });
         }
         else
         {
-            if (!string.IsNullOrEmpty(model.PhoneNumber))
+            if (!string.IsNullOrEmpty(model.User.PhoneNumber))
             {
-                if (model.PhoneNumber.Length != 10)
+                if (model.User.PhoneNumber.Length != 10)
                 {
                     TempData["msg"] = "Phone number should have 10 digits";
                     return RedirectToAction("MyProfile", "Account", new { id = id });
@@ -271,7 +278,6 @@ public class AccountController : Controller
     private void SendResetPasswordEmail(string email)
     {
         string resetUrl = Url.Action("ResetPassword", "Account", new { email = email }, Request.Scheme);
-        Console.WriteLine("Đường dẫn đặt lại mật khẩu: " + resetUrl);
 
         // Set email details
         string fromAddress = "phuhoang136@gmail.com"; // Sender email address
@@ -283,7 +289,7 @@ public class AccountController : Controller
         using (var smtpClient = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587))
         {
             smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = new System.Net.NetworkCredential("phuhoang136@gmail.com", "cocw c lij nh kr sye m");
+            smtpClient.Credentials = new System.Net.NetworkCredential("jamesthrew1@gmail.com", "vmne fxfr bbof gmbb");
             smtpClient.EnableSsl = true; // Enable SSL/TLS encryption
 
             // Set email properties
@@ -300,7 +306,7 @@ public class AccountController : Controller
         List<string> userList = new List<string>();
 
         // Kết nối và truy vấn cơ sở dữ liệu
-        using (SqlConnection connection = new SqlConnection("Server=.,1500;Database=s20;User=sa;Password=12345678;TrustServerCertificate=True"))
+        using (SqlConnection connection = new SqlConnection("Server=.,1433;Database=jamesrecipes;User=sa;Password=Abc@1234;TrustServerCertificate=True"))
         {
             connection.Open();
 

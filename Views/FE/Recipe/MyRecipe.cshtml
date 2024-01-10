@@ -157,7 +157,7 @@
                                             </a>
                                         </div>
                                         <div class="col-md-6 justify-content-center">
-                                            <form asp-action="DeleteMyRecipe" asp-controller="Recipe" asp-route-recipeId="@item.RecipeId" asp-route-userId="@item.UserId" method="post" onsubmit="return confirmDelete()">
+                                            <form id="deleteForm" data-recipe-id="@item.RecipeId" data-recipe-Uid="@item.UserId" method="post" onsubmit="return confirmDelete()">
                                                 <button type="submit" class="btn btn-danger m-2">Delete</button>
                                             </form>
                                         </div>
@@ -229,12 +229,50 @@
             });
         });
     </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <script>
         function confirmDelete() {
-            var result = confirm("Are you sure you want to delete the recipe?");
-            return result;
+            var r = $('#deleteForm').data('recipe-id');
+            var u = $('#deleteForm').data('recipe-uid');
+    
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You won\'t be able to revert this!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("DeleteMyRecipe", "Recipe")',
+                        data: { recipeId: r, userId: u },
+                        success: function (data) {
+                            // Optionally handle success response
+                            Swal.fire(
+                                'Deleted!',
+                                'Your recipe has been deleted.',
+                                'success'
+                            );
+                            
+                            setTimeout(function () {
+                                window.location.href = '@Url.Action("Index", "Recipe")';
+                            }, 3000);
+                            
+                        },
+                       
+                    });
+                }
+            });
+            return false;
         }
     </script>
+
     <script>
             function redirectToSingleRecipe(recipeId) {
                 window.location.href = '/single_recipe?id=' + recipeId;

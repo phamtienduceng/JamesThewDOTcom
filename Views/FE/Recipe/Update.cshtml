@@ -6,14 +6,20 @@
 }
 
 <h2 class="text-danger text-center" style="margin-bottom: 70px; margin-top: 150px">Update Recipe</h2>
+
+
 <div class="container">
+@if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">@TempData["Success"]</div>
+                }
     <form asp-action="UpdateRecipe" asp-controller="Recipe" method="post" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input asp-for="RecipeId" name="id" type="hidden"/>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label asp-for="Title" class="control-label">Title</label>
-                <input asp-for="Title" class="form-control" />
+                <input asp-for="Title" class="form-control" required="required"/>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
@@ -28,13 +34,13 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label asp-for="Procedure" class="control-label">Procedure</label>
-                <textarea asp-for="Procedure" class="form-control" rows="4"></textarea>
+                <textarea asp-for="Procedure" class="form-control" required="required" rows="4"></textarea>
                 <span asp-validation-for="Procedure" class="text-danger"></span>
             </div>
         
             <div class="form-group col-md-6">
                 <label asp-for="Ingredients" class="control-label">Ingredients</label>
-                <textarea asp-for="Ingredients" class="form-control" rows="4"></textarea>
+                <textarea asp-for="Ingredients" class="form-control" required="required" rows="4"></textarea>
                 <span asp-validation-for="Ingredients" class="text-danger"></span>
             </div>
         </div>

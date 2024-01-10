@@ -16,7 +16,7 @@
                 {
                     <div class="alert alert-danger">@ViewData["Error"]</div>
                 }
-                else if (ViewData["Success"] != null)
+                @if (ViewData["Success"] != null)
                 {
                     <div class="alert alert-success">@ViewData["Success"]</div>
                 }

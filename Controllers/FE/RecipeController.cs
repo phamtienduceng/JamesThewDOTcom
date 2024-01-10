@@ -181,29 +181,29 @@ public class RecipeController : Controller
         ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName");
         return View("~/Views/FE/Recipe/Update.cshtml", rep);
     }
-    
+
     [HttpPost("update_recipe")]
     public IActionResult UpdateRecipe(int id, Recipe recipe, IFormFile file)
     {
         var existRecipe = _recipe.GetOneRecipe(id);
-        var userId = existRecipe.UserId;
 
-            if (file != null)
+        if (file != null)
+        {
+            var path = Path.Combine("wwwroot/fe/img", file.FileName);
+            using (var stream = new FileStream(path, FileMode.Create))
             {
-                var path = Path.Combine("wwwroot/fe/img", file.FileName);
-                var stream = new FileStream(path, FileMode.Create);
                 file.CopyToAsync(stream);
-                recipe.Image = "fe/img/" + file.FileName;
-                _recipe.UpdateRecipe(id,recipe);
-                return RedirectToAction("GetRecipesByUser", new {id = userId});
             }
-            else
-            {
-                recipe.Image = existRecipe.Image;
-                _recipe.UpdateRecipe(id, recipe);
-                return RedirectToAction("GetRecipesByUser", new {id = userId});
-            }
-        
+            recipe.Image = "fe/img/" + file.FileName;
+        }
+        else
+        {
+            recipe.Image = existRecipe.Image;
+        }
+
+        _recipe.UpdateRecipe(id, recipe);
+        TempData["Success"] = "Your password has been changed successfully.";
+        return RedirectToAction("UpdateRecipe", new { id = id });
     }
     
     [HttpGet("export-to-word/{recipeId}")]

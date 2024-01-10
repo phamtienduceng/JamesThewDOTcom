@@ -3125,6 +3125,10 @@
       "PackagePath": "staticwebassets/FE/img/meal_planning.jpg"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/meme-meo-khoc-thet-21.jpg",
+      "PackagePath": "staticwebassets/FE/img/meme-meo-khoc-thet-21.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/mylove.jpg",
       "PackagePath": "staticwebassets/FE/img/mylove.jpg"
     },

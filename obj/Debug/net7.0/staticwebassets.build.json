@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nleKnta3aqJpZ/gHTrAhIubIjKhu+lBnmK4wmBK6ztM=",
+  "Hash": "qZG4pAWC4ivYmUtY6ZP4c7VlFcpczY90hIWyRCX/2kM=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -13309,6 +13309,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/FE/img/meal_planning.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/meme-meo-khoc-thet-21.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/meme-meo-khoc-thet-21.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/meme-meo-khoc-thet-21.jpg"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/mylove.jpg",

@@ -1,7 +1,13 @@
-@model JamesRecipes.Models.User
+@using Newtonsoft.Json
+@model JamesRecipes.Models.UserMem
 
 @{
     ViewData["Title"] = "Login";
+}
+
+@{
+    var httpContext = Context.Request.HttpContext;
+    var userJson = httpContext.Session.GetString("userLogged");
 }
 
 <div class="row justify-content-center" style="margin: 150px 0 50px 0">
@@ -16,21 +22,29 @@
                     <div class="alert alert-success">@ViewData["Success"]</div>
                 }
                 <div>
-                    <h4 style="line-height: 0">Username: @Html.DisplayFor(u=>u.Username)</h4><br />
-                    <h4 style="line-height: 0">Email: @Html.DisplayFor(u=>u.Email)</h4><br />
+                    <h4 style="line-height: 0">Username: @Model.User.Username</h4><br />
+                    <h4 style="line-height: 0">Email: @Model.User.Email</h4><br />
+                    @if (!string.IsNullOrEmpty(userJson))
+                    {
+                        var user = JsonConvert.DeserializeObject<User>(userJson);
+                        if (user.RoleId == 3)
+                        {
+                            <h4 style="line-height: 0">Membership end date: @Model.Membership.EndDate</h4><br />
+                        }
+                    }
                 </div>
                 <form asp-action="MyProfile" asp-controller="Account" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="UserId" name="id" />
+                    <input type="hidden" asp-for="User.UserId" name="id" />
                     <div class="form-group">
-                        <label asp-for="PhoneNumber" class="control-label">Phone Number:</label>
-                        <input asp-for="PhoneNumber" class="form-control" />
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        <label asp-for="User.PhoneNumber" class="control-label">Phone Number:</label>
+                        <input asp-for="User.PhoneNumber" class="form-control" />
+                        <span asp-validation-for="User.PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Address" class="control-label">Address:</label>
-                        <input asp-for="Address" class="form-control" />
-                        <span asp-validation-for="Address" class="text-danger"></span>
+                        <label asp-for="User.Address" class="control-label">Address:</label>
+                        <input asp-for="User.Address" class="form-control" />
+                        <span asp-validation-for="User.Address" class="text-danger"></span>
                     </div>
                     <p class="text-danger">@TempData["msg"]</p>
                     <div class="form-group text-center">
