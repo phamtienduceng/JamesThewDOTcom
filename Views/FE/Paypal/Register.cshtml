@@ -27,6 +27,7 @@
                         <div id="paypal-button-container" class="text-center mt-3"></div>
 
                         <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+                        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                         <script>
                             // Render the PayPal button
                             paypal.Button.render({
@@ -56,7 +57,21 @@
                                 },
                                 onAuthorize: function (data, actions) {
                                     return actions.payment.execute().then(function () {
-                                        document.getElementById('paypal-form').submit();
+                                        swal({
+                                            title: "Success",
+                                            text: "Registration successful!",
+                                            icon: "success",
+                                            button: "OK"
+                                        }).then(function () {
+                                            document.getElementById('paypal-form').submit();
+                                        });
+                                    }).catch(function () {
+                                        swal({
+                                            title: "Error",
+                                            text: "Registration failed!",
+                                            icon: "error",
+                                            button: "OK"
+                                        });
                                     });
                                 }
                             }, '#paypal-button-container');

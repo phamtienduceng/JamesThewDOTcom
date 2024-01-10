@@ -1,6 +1,7 @@
 ﻿using JamesRecipes.Models;
 using JamesRecipes.Repository.FE;
 using model.Models;
+using System.Data.Entity;
 
 namespace JamesRecipes.Service.FE
 {
@@ -17,6 +18,11 @@ namespace JamesRecipes.Service.FE
         {
             _db.Memberships.Add(newmember);
             _db.SaveChanges();
+        }
+
+        public List<Membership> member()
+        {
+            return _db.Memberships.Include(m => m.User).OrderByDescending(u => u.User.UserId).ToList();
         }
 
         public Membership MemberById(int id)

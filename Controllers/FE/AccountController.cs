@@ -58,6 +58,7 @@ public class AccountController : Controller
                 {
                     ViewData["Error"] = "Wrong email or password!";
                     ViewBag.EmailValue = email;
+                    ViewBag.PassValue = pass;
                     return View("~/Views/FE/Account/Login.cshtml");
                 }
             }
@@ -94,18 +95,22 @@ public class AccountController : Controller
                         newUser.Password = hashedPassword;
                         newUser.RoleId = 2;
                         _account.AddUser(newUser);
-                        ViewData["Er"] = "";
-                        ViewData["Em"] = "";
+                        ViewBag.Er = "";
+                        ViewBag.Em = "";
                         ViewData["Success"] = "You have successfully registered an account.";
                         return View("~/Views/FE/Account/Register.cshtml");
                     }
                     else
                     {
+                        ViewBag.com = confirm;
+                        ViewBag.pass = newUser.Password;
                         ViewData["Error"] = "Password and confirm password do not match.";
                     }
                 }
                 else
                 {
+                    ViewBag.com = confirm;
+                    ViewBag.pass = newUser.Password;
                     ViewData["Error"] = "Email is already registered.";
                 }
             }
@@ -150,13 +155,29 @@ public class AccountController : Controller
                     TempData["msg"] = "Phone number should have 10 digits";
                     return RedirectToAction("MyProfile", "Account", new { id = id });
                 }
+                if (IsRepeatingDigits(model.PhoneNumber))
+                {
+                    TempData["msg"] = "Phone number is incorrect.";
+                    return RedirectToAction("MyProfile", "Account", new { id = id });
+                }
             }
             _account.UpdateProfile(id, model);
-            ViewData["Success"] = "You have successfully registered an account.";
+           TempData["Success"] = "You have successfully registered an account.";
             return RedirectToAction("MyProfile", "Account", new { id = id });
         }
     }
-
+    private bool IsRepeatingDigits(string phoneNumber)
+    {
+        char firstDigit = phoneNumber[0];
+        for (int i = 1; i < phoneNumber.Length; i++)
+        {
+            if (phoneNumber[i] != firstDigit)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     [HttpGet("changepassword/{id}")]
     public IActionResult ChangePassword(int id)
     {
@@ -235,7 +256,7 @@ public class AccountController : Controller
             return View("~/Views/FE/Account/ForgotPassword.cshtml");
         }
 
-        ModelState.AddModelError("", "Email is not invalid.");
+        ModelState.AddModelError("", "Email is not registered");
         return View("~/Views/FE/Account/ForgotPassword.cshtml");
     }
     [HttpGet("ResetPassword/{email}")]
@@ -253,11 +274,15 @@ public class AccountController : Controller
         if (string.IsNullOrWhiteSpace(newpass) || string.IsNullOrWhiteSpace(confirm))
         {
             ViewData["Error"] = "Please enter data.";
+            ViewBag.New= newpass;
+            ViewBag.Com = confirm;
             return View("~/Views/FE/Account/ResetPassword.cshtml");
         }
         else if (newpass != confirm)
         {
             ViewData["Error"] = "The new password and confirm password do not match!";
+            ViewBag.New = newpass;
+            ViewBag.Com = confirm;
             return View("~/Views/FE/Account/ResetPassword.cshtml");
         }
         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newpass);
