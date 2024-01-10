@@ -8,6 +8,6 @@ namespace JamesRecipes.Repository.FE
         Membership MemberById(int id);
         void AddMember(Membership newmember);
         void UpdateMember(Membership member);
-        
+        List<Membership> member();
     }
 }

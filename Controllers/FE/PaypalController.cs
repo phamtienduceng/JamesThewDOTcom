@@ -78,6 +78,5 @@ namespace JamesRecipes.Controllers.FE
 
             return RedirectToAction("Index", "Home");
         }
-        
     }
-    }
+}

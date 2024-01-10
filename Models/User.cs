@@ -16,6 +16,7 @@ public partial class User
     [Required(ErrorMessage = "Email is is required.")]
     [EmailAddress(ErrorMessage = "Invalid email format.")]
     public string? Email { get; set; }
+
     [RegularExpression(@"^[0-9]+\d{9}$", ErrorMessage = "Phone number must be 10 digits.")]
     public string? PhoneNumber { get; set; }
 
