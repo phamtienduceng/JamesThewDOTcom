@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qZG4pAWC4ivYmUtY6ZP4c7VlFcpczY90hIWyRCX/2kM=",
+  "Hash": "ZD4YfzbW3OlwUuSMzMbunbnOeOL8Yy7/9v6g16oB+Kg=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -661,6 +661,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/Admin/images/contestentries/footer_logo.png"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contestentries/hotdot.webp",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "Admin/images/contestentries/hotdot.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Admin/images/contestentries/hotdot.webp"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contestentries/IMG_20211027_160735.jpg",

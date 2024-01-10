@@ -56,7 +56,7 @@ public partial class JamesrecipesContext : DbContext
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=.;Database=JamesThewDOTcom;uid=sa;pwd=123;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=.,1433;Database=jamesrecipes;uid=sa;pwd=Abc@1234;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

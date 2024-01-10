@@ -161,6 +161,10 @@
       "PackagePath": "staticwebassets/Admin/images/contestentries/footer_logo.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contestentries/hotdot.webp",
+      "PackagePath": "staticwebassets/Admin/images/contestentries/hotdot.webp"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contestentries/knowledge_graph_logo.png",
       "PackagePath": "staticwebassets/Admin/images/contestentries/knowledge_graph_logo.png"
     },
