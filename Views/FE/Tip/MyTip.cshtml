@@ -46,22 +46,12 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="timeMin">Time needs:</label>
-                            <input name="timeMin" id="timeMin" class="form-control" type="time">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="timeMax">to</label>
-                            <input name="timeMax" id="timeMax" class="form-control" type="time">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
                             <label for="ratingMin">Rating:</label>
-                            <input name="ratingMin" id="ratingMin" class="form-control" type="number">
+                            <input name="ratingMin" id="ratingMin" value="@ViewData["CurrentRatingMin"]" class="form-control" type="number">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="ratingMax">to</label>
-                            <input name="ratingMax" id="ratingMax" class="form-control" type="number">
+                            <input name="ratingMax" id="ratingMax" value="@ViewData["CurrentRatingMax"]" class="form-control" type="number">
                         </div>
                     </div>
                     <div class="d-flex justify-content-around">
@@ -124,9 +114,16 @@
                                     <h3 style="font-family: sastify, sans-serif; color: indianred; " onclick="redirectToSingleTip('@item.TipId')">@item.Title</h3>
                                     <span>@item.CreatedAt</span>
                                     <div class="rating mb-2">
-                                        @for (int i = 0; i < item.Rating; i++)
+                                        @if (item.Rating != null)
                                         {
-                                            <i class="fas fa-star"></i>
+                                            for (int i = 0; i < item.Rating; i++)
+                                            {
+                                                <i class="fas fa-star"></i>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <h3 style="font-size: 18px">No rated yet</h3>
                                         }
                                     </div>
                                     @if (!string.IsNullOrEmpty(userJson))
@@ -154,7 +151,7 @@
                                                 <button class="btn btn-info" style="margin-top: 9px">Update</button></a>
                                         </div>
                                         <div class="col-md-6 justify-content-center">
-                                            <form asp-action="DeleteMyTip" asp-controller="Tip" asp-route-tipId="@item.TipId" asp-route-userId="@item.UserId" method="post" onsubmit="return confirmDelete()">
+                                            <form id="deleteForm" data-tip-id="@item.TipId" data-tip-Uid="@item.UserId" method="post" onsubmit="return confirmDelete()">
                                                 <button type="submit" class="btn btn-danger m-2">Delete</button>
                                             </form>
                                         </div>
@@ -226,12 +223,48 @@
             });
         });
     </script>
-    <script>
-        function confirmDelete() {
-            var result = confirm("Are you sure you want to delete the tip?");
-            return result;
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
+        <script>
+            var u;
+            function confirmDelete() {
+                var t = $('#deleteForm').data('tip-id');
+                var u = $('#deleteForm').data('tip-uid');
+        
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You won\'t be able to revert this!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("DeleteMyTip", "Tip")',
+                            data: { tipId: t, userId: u },
+                            success: function (data) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your tip has been deleted.',
+                                    'success'
+                                );
+                                
+                                setTimeout(function () {
+                                    window.location.href = '@Url.Action("GetTipsByUser", "Tip", new {id = "__userId__"})'.replace('__userId__', u);
+                                }, 3000);
+                            },
+                           
+                        });
+                    }
+                });
+                return false;
+            }
+        </script>
     <script>
         function redirectToSingleTip(tipId) {
             window.location.href = '/single_tip?id=' + tipId;

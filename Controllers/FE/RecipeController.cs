@@ -4,6 +4,7 @@ using JamesRecipes.Repository.FE;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Asn1.X509;
 using X.PagedList;
 
 namespace JamesRecipes.Controllers.FE;
@@ -32,6 +33,10 @@ public class RecipeController : Controller
         ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
         ViewData["RatingSort"] = sortOrder == "rating" ? "rating_desc" : "rating";
         ViewData["CurrentFilter"] = searchString;
+        ViewData["CurrentTimeMin"] = timeMin;
+        ViewData["CurrentTimeMax"] = timeMax;
+        ViewData["CurrentRatingMin"] = ratingMin;
+        ViewData["CurrentRatingMax"] = ratingMax;
         
         var userJson = HttpContext.Session.GetString("userLogged");
         
@@ -90,6 +95,10 @@ public class RecipeController : Controller
         {
             if (file != null)
             {
+                if (newRecipe.Timeneeds <= TimeSpan.FromMinutes(15))
+                {
+                    newRecipe.Timeneeds = TimeSpan.FromMinutes(15);
+                }
                 var path = Path.Combine("wwwroot/fe/img", file.FileName);
                 var stream = new FileStream(path, FileMode.Create);
                 file.CopyToAsync(stream);
@@ -145,6 +154,10 @@ public class RecipeController : Controller
         ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
         ViewData["RatingSort"] = sortOrder == "rating" ? "rating_desc" : "rating";
         ViewData["CurrentFilter"] = searchString;
+        ViewData["CurrentTimeMin"] = timeMin;
+        ViewData["CurrentTimeMax"] = timeMax;
+        ViewData["CurrentRatingMin"] = ratingMin;
+        ViewData["CurrentRatingMax"] = ratingMax;
         
         var userJson = HttpContext.Session.GetString("userLogged");
         

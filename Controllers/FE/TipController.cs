@@ -25,6 +25,8 @@ public class TipController : Controller
         ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
         ViewData["RatingSort"] = sortOrder == "rating" ? "rating_desc" : "rating";
         ViewData["CurrentFilter"] = searchString;
+        ViewData["CurrentRatingMin"] = ratingMin;
+        ViewData["CurrentRatingMax"] = ratingMax;
 
         var userJson = HttpContext.Session.GetString("userLogged");
         
@@ -135,6 +137,8 @@ public class TipController : Controller
         ViewData["DateSort"] = sortOrder == "Date" ? "date_desc" : "Date";
         ViewData["RatingSort"] = sortOrder == "rating" ? "rating_desc" : "rating";
         ViewData["CurrentFilter"] = searchString;
+        ViewData["CurrentRatingMin"] = ratingMin;
+        ViewData["CurrentRatingMax"] = ratingMax;
 
         var tips = _tip.GetTipsByUser(id);
 

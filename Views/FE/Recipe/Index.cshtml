@@ -48,21 +48,21 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="timeMin">Time needs:</label>
-                            <input name="timeMin" id="timeMin" class="form-control" type="time">
+                            <input name="timeMin" id="timeMin" value="@ViewData["CurrentTimeMin"]" class="form-control" type="time">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="timeMax">to</label>
-                            <input name="timeMax" id="timeMax" class="form-control" type="time">
+                            <input name="timeMax" id="timeMax" value="@ViewData["CurrentTimeMax"]" class="form-control" type="time">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="ratingMin">Rating:</label>
-                            <input name="ratingMin" id="ratingMin" class="form-control" type="number">
+                            <input name="ratingMin" id="ratingMin" value="@ViewData["CurrentRatingMin"]" class="form-control" type="number">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="ratingMax">to</label>
-                            <input name="ratingMax" id="ratingMax" class="form-control" type="number">
+                            <input name="ratingMax" id="ratingMax" value="@ViewData["CurrentRatingMax"]" class="form-control" type="number">
                         </div>
                     </div>
                     <div class="d-flex justify-content-around">

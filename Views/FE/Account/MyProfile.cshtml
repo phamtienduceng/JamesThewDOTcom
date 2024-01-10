@@ -17,9 +17,9 @@
                 <h1 class="text-danger">MyProfile</h1>
             </div>
             <div class="card-body">
-                @if (ViewData["Success"] != null) 
+                @if (TempData["Success"] != null) 
                 {
-                    <div class="alert alert-success">@ViewData["Success"]</div>
+                    <div class="alert alert-success">@TempData["Success"]</div>
                 }
                 <div>
                     <h4 style="line-height: 0">Username: @Model.User.Username</h4><br />

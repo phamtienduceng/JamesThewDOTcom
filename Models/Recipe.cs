@@ -23,8 +23,8 @@ public partial class Recipe
     public string Ingredients { get; set; } = null!;
 
     [Required]
-    [MinLength(10, ErrorMessage = "ErrorMessage between 10 and 250 characters")]
-    [MaxLength(250, ErrorMessage = "ErrorMessage between 10 and 250 characters")]
+    [MinLength(10, ErrorMessage = "Procedure between 10 and 250 characters")]
+    [MaxLength(250, ErrorMessage = "Procedure between 10 and 250 characters")]
     public string Procedure { get; set; } = null!;
 
     public bool IsMembershipOnly { get; set; }
@@ -33,6 +33,7 @@ public partial class Recipe
 
     public bool Status { get; set; }
     
+    [Required]
     public string? Image { get; set; }
 
     [Required]

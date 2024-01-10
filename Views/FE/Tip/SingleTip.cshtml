@@ -44,15 +44,36 @@
         </div>
         <div class="col-md-6">
             <div class="mt-0">
-                <h3>Content</h3>
+                <h3>Content: </h3>
                 <p>@Model.Content</p>
             </div>
-            <div class="mt-4">
-                <h3>Post by: @Model.User?.Username Role: @Model.User?.Role?.RoleName</h3>
+            <div class="mt-2">
+                <h3 class="d-inline">Post by: </h3>
+                <h3 class="d-inline ml-2 text-danger">@Model.User?.Username</h3>
             </div>
-            <div class="mt-4">
+            <div class="mt-2">
+                <h3 class="d-inline">Account Status: </h3>
+                <h2 class="d-inline ml-2 badge bg-success">@Model.User?.Role?.RoleName</h2>
+            </div>
+            <div class="mt-2">
+                <h3 class="d-inline">Rating: </h3>
+                <div class="rating d-inline">
+                    @if (@Model.Rating != null)
+                    {
+                        for (int i = 0; i < @Model.Rating; i++)
+                        {
+                            <i class="fas fa-star"></i>
+                        }
+                    }
+                    else
+                    {
+                        <h3 style="font-size: 18px">No rated yet</h3>
+                    }
+                </div>
+            </div>
+            <div class="mt-2">
                 <h3>Date Posted</h3>
-                <p>@Model.CreatedAt</p>
+                <h4>@Model.CreatedAt</h4>
             </div>
         </div>
     </div>
@@ -176,7 +197,7 @@
             $('#commentsList').html(partialView);
          },
          error: function () {
-            alert('Error posting comment.');
+            alert('Comment can not be blank\n' + 'Rating from 1 to 5');
          }
       });
    }

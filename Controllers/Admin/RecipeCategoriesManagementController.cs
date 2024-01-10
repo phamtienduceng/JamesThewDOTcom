@@ -90,17 +90,20 @@ public class RecipeCategoriesManagementController : Controller
     public IActionResult Delete(int id)
     {
         var model = _recipeCategories.GetCategory(id);
-        if (!_recipeCategories.CheckRecipe(model))
+
+        if (_recipeCategories.CheckRecipe(model))
         {
-            _recipeCategories.DeleteCategory(id);
-            return RedirectToAction("Index", "RecipeCategoriesManagement");
+            return Json(new { success = false, message = "Can not delete because there is a related recipe" });
+            
         }
         else
         {
-            TempData["msgDelete"] = "Can not delete because there is a related recipe";
-            return RedirectToAction("Index", "RecipeCategoriesManagement");
+            _recipeCategories.DeleteCategory(id);
+            
+            return Json(new { success = true });
         }
     }
+
 
     [AuthenticationAdmin]
     [HttpGet("get_recipe_by_cate")]

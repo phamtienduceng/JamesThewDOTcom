@@ -60,15 +60,15 @@
 
             <div class="mt-2">
                 <h3 class="d-inline">Time: </h3>
-                <h4 class="d-inline">@Model.Timeneeds minutes</h4>
+                <h4 class="d-inline">@Model.Timeneeds</h4>
             </div>
             <div class="mt-2">
                 <h3 class="d-inline">Post by: </h3>
-                <h4 class="d-inline ml-2">@Model.User?.Username</h4>
+                <h3 class="d-inline ml-2 text-danger">@Model.User?.Username</h3>
             </div>
             <div class="mt-2">
-                <h3 class="d-inline">Role: </h3>
-                <h4 class="d-inline ml-2">@Model.User?.Role?.RoleName</h4>
+                <h3 class="d-inline">Account Status: </h3>
+                <h2 class="d-inline ml-2 badge bg-success">@Model.User?.Role?.RoleName</h2>
             </div>
             <div class="mt-2">
                 <h3 class="d-inline">Rating: </h3>
@@ -225,7 +225,7 @@
             $('#commentsList').html(partialView);
          },
          error: function () {
-            alert('Error posting comment.');
+            alert('Comment can not be blank\n' + 'Rating from 1 to 5');
          }
       });
    }

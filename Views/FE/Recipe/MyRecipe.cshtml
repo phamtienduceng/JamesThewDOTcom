@@ -47,21 +47,21 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="timeMin">Time needs:</label>
-                            <input name="timeMin" id="timeMin" class="form-control" type="time">
+                            <input name="timeMin" id="timeMin" value="@ViewData["CurrentTimeMin"]" class="form-control" type="time">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="timeMax">to</label>
-                            <input name="timeMax" id="timeMax" class="form-control" type="time">
+                            <input name="timeMax" id="timeMax" value="@ViewData["CurrentTimeMax"]" class="form-control" type="time">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="ratingMin">Rating:</label>
-                            <input name="ratingMin" id="ratingMin" class="form-control" type="number">
+                            <input name="ratingMin" id="ratingMin" value="@ViewData["CurrentRatingMin"]" class="form-control" type="number">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="ratingMax">to</label>
-                            <input name="ratingMax" id="ratingMax" class="form-control" type="number">
+                            <input name="ratingMax" id="ratingMax" value="@ViewData["CurrentRatingMax"]" class="form-control" type="number">
                         </div>
                     </div>
                     <div class="d-flex justify-content-around">
@@ -126,9 +126,16 @@
                                     <span>@item.CreatedAt</span>
                                     <p class="mb-2">Time Needs: @item.Timeneeds</p>
                                     <div class="rating mb-2">
-                                        @for (int i = 0; i < item.Rating; i++)
+                                        @if (item.Rating != null)
                                         {
-                                            <i class="fas fa-star"></i>
+                                            for (int i = 0; i < item.Rating; i++)
+                                            {
+                                                <i class="fas fa-star"></i>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <h3 style="font-size: 18px">No rated yet</h3>
                                         }
                                     </div>
                                     @if (!string.IsNullOrEmpty(userJson))
@@ -234,6 +241,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
+        var u;
         function confirmDelete() {
             var r = $('#deleteForm').data('recipe-id');
             var u = $('#deleteForm').data('recipe-uid');
@@ -253,7 +261,6 @@
                         url: '@Url.Action("DeleteMyRecipe", "Recipe")',
                         data: { recipeId: r, userId: u },
                         success: function (data) {
-                            // Optionally handle success response
                             Swal.fire(
                                 'Deleted!',
                                 'Your recipe has been deleted.',
@@ -261,9 +268,8 @@
                             );
                             
                             setTimeout(function () {
-                                window.location.href = '@Url.Action("Index", "Recipe")';
+                                window.location.href = '@Url.Action("GetRecipesByUser", "Recipe", new {id = "__userId__"})'.replace('__userId__', u);
                             }, 3000);
-                            
                         },
                        
                     });

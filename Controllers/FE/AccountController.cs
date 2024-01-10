@@ -155,7 +155,7 @@ public class AccountController : Controller
                     TempData["msg"] = "Phone number should have 10 digits";
                     return RedirectToAction("MyProfile", "Account", new { id = id });
                 }
-                if (IsRepeatingDigits(model.PhoneNumber))
+                if (IsRepeatingDigits(model.User.PhoneNumber))
                 {
                     TempData["msg"] = "Phone number is incorrect.";
                     return RedirectToAction("MyProfile", "Account", new { id = id });
