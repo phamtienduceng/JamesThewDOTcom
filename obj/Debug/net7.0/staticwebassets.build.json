@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZD4YfzbW3OlwUuSMzMbunbnOeOL8Yy7/9v6g16oB+Kg=",
+  "Hash": "Lo7HDeU66Lijup49Bu3cXCGQoyBqZ63ddFZ1HQREPFM=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -12121,6 +12121,23 @@
       "OriginalItemSpec": "wwwroot/FE/img/bbq pork.jpg"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/beef_pho.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/beef_pho.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/beef_pho.jpg"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/blog/author.png",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -13481,6 +13498,23 @@
       "OriginalItemSpec": "wwwroot/FE/img/pattern/patrn.png"
     },
     {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pepperoni_pizza.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/pepperoni_pizza.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/pepperoni_pizza.jpg"
+    },
+    {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/phoga.jpg",
       "SourceId": "JamesRecipes",
       "SourceType": "Discovered",
@@ -14414,6 +14448,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/FE/img/tom_yum_soup.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/vegetable_sushi.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/vegetable_sushi.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/vegetable_sushi.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/z4915557548720_6e9184ba0941ff49a39641ebe041863a.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "FE/img/z4915557548720_6e9184ba0941ff49a39641ebe041863a.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/FE/img/z4915557548720_6e9184ba0941ff49a39641ebe041863a.jpg"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/js/ajax-form.js",

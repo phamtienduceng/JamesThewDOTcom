@@ -2861,6 +2861,10 @@
       "PackagePath": "staticwebassets/FE/img/bbq pork.jpg"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/beef_pho.jpg",
+      "PackagePath": "staticwebassets/FE/img/beef_pho.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/blog/author.png",
       "PackagePath": "staticwebassets/FE/img/blog/author.png"
     },
@@ -3165,6 +3169,10 @@
       "PackagePath": "staticwebassets/FE/img/pattern/patrn_1.png"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/pepperoni_pizza.jpg",
+      "PackagePath": "staticwebassets/FE/img/pepperoni_pizza.jpg"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/phoga.jpg",
       "PackagePath": "staticwebassets/FE/img/phoga.jpg"
     },
@@ -3379,6 +3387,14 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/tom_yum_soup.jpg",
       "PackagePath": "staticwebassets/FE/img/tom_yum_soup.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/vegetable_sushi.jpg",
+      "PackagePath": "staticwebassets/FE/img/vegetable_sushi.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/img/z4915557548720_6e9184ba0941ff49a39641ebe041863a.jpg",
+      "PackagePath": "staticwebassets/FE/img/z4915557548720_6e9184ba0941ff49a39641ebe041863a.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/FE/js/ajax-form.js",
