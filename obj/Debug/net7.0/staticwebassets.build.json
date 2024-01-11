@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Lo7HDeU66Lijup49Bu3cXCGQoyBqZ63ddFZ1HQREPFM=",
+  "Hash": "ZlrYAbKmnwF5A17/nl/6HD9cbiddSrsABM5FiInybbI=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -814,6 +814,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/Admin/images/contestentries/phone1.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contestentries/pizza 2.webp",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "Admin/images/contestentries/pizza 2.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Admin/images/contestentries/pizza 2.webp"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contestentries/pizza.webp",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "Admin/images/contestentries/pizza.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Admin/images/contestentries/pizza.webp"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contestentries/ramen.jpg",
@@ -14992,6 +15026,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/barefoot_contessa.jpg"
+    },
+    {
+      "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/bbq pork.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Applications/Development/AD/JamesRecipes/wwwroot/",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/bbq pork.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/bbq pork.jpg"
     },
     {
       "Identity": "/Applications/Development/AD/JamesRecipes/wwwroot/images/books.png",

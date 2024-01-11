@@ -13,5 +13,3 @@ public partial class CombinedContestScore
     public int? AnonymousContestId { get; set; }
     public int? AnonymousContestEntryScore { get; set; }
 }
-
-

@@ -189,6 +189,14 @@
       "PackagePath": "staticwebassets/Admin/images/contestentries/phone1.jpg"
     },
     {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contestentries/pizza 2.webp",
+      "PackagePath": "staticwebassets/Admin/images/contestentries/pizza 2.webp"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contestentries/pizza.webp",
+      "PackagePath": "staticwebassets/Admin/images/contestentries/pizza.webp"
+    },
+    {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/Admin/images/contestentries/ramen.jpg",
       "PackagePath": "staticwebassets/Admin/images/contestentries/ramen.jpg"
     },
@@ -3603,6 +3611,10 @@
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/barefoot_contessa.jpg",
       "PackagePath": "staticwebassets/images/barefoot_contessa.jpg"
+    },
+    {
+      "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/bbq pork.jpg",
+      "PackagePath": "staticwebassets/images/bbq pork.jpg"
     },
     {
       "Id": "/Applications/Development/AD/JamesRecipes/wwwroot/images/books.png",
