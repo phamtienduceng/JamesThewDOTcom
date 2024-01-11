@@ -41,11 +41,20 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.DatePost)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Image)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
+        <dd class="col-sm-10">
+            <!-- Kiểm tra xem có đường dẫn ảnh không và hiển thị nếu có -->
+            @if (!string.IsNullOrEmpty(Model.Image))
+            {
+                <!-- Giả sử bạn lưu ảnh trong wwwroot/images -->
+                <img src="@Url.Content("~/images/" + Model.Image)" alt="Announcement Image" style="max-width:100%; height:auto;">
+            }
+            else
+            {
+                <text>No image available</text>
+            }
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Contest)

@@ -14,6 +14,10 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="AnonymousEntryId" />
+            
+                @* hidden createat *@
+                <input type="hidden" asp-for="CreatedAt" />
+            
             <div class="form-group">
                 <label asp-for="ContestId" class="control-label"></label>
                 <select asp-for="ContestId" class="form-control" asp-items="ViewBag.ContestId"></select>

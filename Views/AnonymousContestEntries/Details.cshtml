@@ -6,7 +6,9 @@
 }
 
 <h1>Details</h1>
-
+<h4>
+    <a asp-action="Edit" asp-route-id="@Model?.AnonymousEntryId">Score The Entry</a>
+</h4>
 <div>
     <h4>AnonymousContestEntry</h4>
     <hr />
@@ -23,12 +25,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Score)
         </dd>
-        <dt class = "col-sm-2">
+       @*  <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Image)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Image)
-        </dd>
+        </dd> *@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.AnonymousRecipeId)
         </dt>
@@ -43,7 +45,20 @@
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.AnonymousEntryId">Edit</a> |
+    <!-- Kiểm tra xem recipe có được tải không và nếu có, hiển thị nó sử dụng partial view. -->
+    @if (ViewData["Recipe"] is JamesRecipes.Models.AnonymousRecipe recipe)
+    {
+        @Html.Partial("AnonymousRecipeDetailsPartial", recipe)
+    }
+    else
+    {
+        <p>Recipe details are not available.</p>
+    }
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AnonymousEntryId">Score The Entry</a> |
     <a asp-action="Index">Back to List</a>
 </div>

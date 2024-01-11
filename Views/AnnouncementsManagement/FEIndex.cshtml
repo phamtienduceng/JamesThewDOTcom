@@ -1,0 +1,78 @@
+﻿@model IEnumerable<JamesRecipes.Models.Announcement>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WinnerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnonymousWinnerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatePost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contest)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WinnerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnonymousWinnerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatePost)
+                </td>
+
+                <td>
+                    <!-- Kiểm tra xem có đường dẫn ảnh không và hiển thị nếu có -->
+                    @if (!string.IsNullOrEmpty(item.Image))
+                    {
+                        <!-- Giả sử bạn lưu ảnh trong wwwroot/images -->
+                        <img src="@Url.Content("~/images/" + item.Image)" alt="Announcement Image" style="height:100px;">
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contest.ContestId)
+                </td>
+                <td>
+                    @* <a asp-action="Edit" asp-route-id="@item.AnnouncementId">Edit</a> | *@
+                    <a asp-action="FEDetails" asp-route-id="@item.AnnouncementId">Details</a>
+                    @* <a asp-action="Delete" asp-route-id="@item.AnnouncementId">Delete</a> *@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -224,12 +224,14 @@ namespace JamesRecipes.Controllers.FE
                 _context.Add(anonymousRecipe);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction("Create", "AnonymousContestEntries");
+                return RedirectToAction("Create", "AnonymousContestEntries", new { contestId = anonymousRecipe.ContestId, anonymousRecipeId = anonymousRecipe.AnonymousRecipeId });
             }
             // Nếu ModelState không hợp lệ, hiển thị lại form với thông tin đã nhập
             ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "Title", anonymousRecipe.ContestId);
             return View("~/Views/AnonymousRecipes/FECreate.cshtml");
         }
+
+        // AnonymousRecipeDetailsPartial
 
     }
 }

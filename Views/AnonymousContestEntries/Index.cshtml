@@ -17,9 +17,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Score)
             </th>
-            <th>
+         @*    <th>
                 @Html.DisplayNameFor(model => model.Image)
-            </th>
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.AnonymousRecipeId)
             </th>
@@ -38,9 +38,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Score)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
+          @*   <td>
+                <img src="@Url.Content(item.Image)" alt="Anonymous Contest Image" style="width:100px; height:100px;" />
+            </td> *@
             <td>
                     @Html.DisplayFor(modelItem => item.AnonymousRecipeId)
             </td>
@@ -48,9 +48,9 @@
                     @Html.DisplayFor(modelItem => item.ContestId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.AnonymousEntryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AnonymousEntryId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AnonymousEntryId">Delete</a>
+                @* <a asp-action="Edit" asp-route-id="@item.AnonymousEntryId">Edit</a> | *@
+                <a asp-action="Details" asp-route-id="@item.AnonymousEntryId">Details</a> 
+                @* <a asp-action="Delete" asp-route-id="@item.AnonymousEntryId">Delete</a> *@
             </td>
         </tr>
 }

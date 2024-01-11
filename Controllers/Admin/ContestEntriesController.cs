@@ -284,7 +284,7 @@ namespace JamesRecipes.Controllers.Admin
                 {
                     // Nếu contestEntry đã tồn tại, trả về thông báo lỗi trên bad request
 
-                    return BadRequest("You have registered for this Contest! Please select another Contest to participate! We apologize for this inconvenience");
+                    return BadRequest("You have registered for this Contest! Please select another Contest to participate! We apologize for this inconvenience!");
                 }
                 _context.Add(contestEntry);
                 await _context.SaveChangesAsync();

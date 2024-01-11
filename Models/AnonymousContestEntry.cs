@@ -21,5 +21,5 @@ public partial class AnonymousContestEntry
 
     //public virtual Contest Contest { get; set; } = null!;
 
-    
+
 }
