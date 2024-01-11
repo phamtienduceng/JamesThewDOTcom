@@ -12,13 +12,16 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.AnonymousEntryId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.CreatedAt)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Score)
             </th>
-         @*    <th>
-                @Html.DisplayNameFor(model => model.Image)
+            @*    <th>
+            @Html.DisplayNameFor(model => model.Image)
             </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.AnonymousRecipeId)
@@ -30,29 +33,33 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Score)
-            </td>
-          @*   <td>
-                <img src="@Url.Content(item.Image)" alt="Anonymous Contest Image" style="width:100px; height:100px;" />
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnonymousEntryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Score)
+                </td>
+                @*   <td>
+            <img src="@Url.Content(item.Image)" alt="Anonymous Contest Image" style="width:100px; height:100px;" />
             </td> *@
-            <td>
+                <td>
                     @Html.DisplayFor(modelItem => item.AnonymousRecipeId)
-            </td>
-            <td>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.ContestId)
-            </td>
-            <td>
-                @* <a asp-action="Edit" asp-route-id="@item.AnonymousEntryId">Edit</a> | *@
-                <a asp-action="Details" asp-route-id="@item.AnonymousEntryId">Details</a> 
-                @* <a asp-action="Delete" asp-route-id="@item.AnonymousEntryId">Delete</a> *@
-            </td>
-        </tr>
-}
+                </td>
+                <td>
+                    @* <a asp-action="Edit" asp-route-id="@item.AnonymousEntryId">Edit</a> | *@
+                    <a asp-action="Details" asp-route-id="@item.AnonymousEntryId">Details</a>
+                    @* <a asp-action="Delete" asp-route-id="@item.AnonymousEntryId">Delete</a> *@
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

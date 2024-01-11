@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
 @{
     var httpContext = Context.Request.HttpContext;
     var userJson = httpContext.Session.GetString("userLogged");
@@ -31,6 +36,7 @@
 <div class="bradcam_area bradcam_homepage">
 
 </div>
+
 
 <!-- recepie_area_start  -->
 <div class="recepie_area">

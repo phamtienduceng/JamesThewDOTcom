@@ -79,7 +79,10 @@ namespace JamesRecipes.Controllers.Admin
             {
                 _context.Add(anonymousContestEntry);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Contest entry has been successfully submitted!";
                 return RedirectToAction("index", "home", new { id = anonymousContestEntry.ContestId });
+                
+
             }
             ViewData["AnonymousRecipeId"] = new SelectList(_context.AnonymousRecipes, "AnonymousRecipeId", "Title", anonymousContestEntry.AnonymousRecipeId);
             ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "Title", anonymousContestEntry.ContestId);

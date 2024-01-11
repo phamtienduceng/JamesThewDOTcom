@@ -75,6 +75,7 @@ namespace JamesRecipes.Controllers.Admin
             {
                 _context.Add(contestEntry);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Contest entry has been successfully submitted!";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "ContestId", contestEntry.ContestId);
@@ -293,6 +294,7 @@ namespace JamesRecipes.Controllers.Admin
                 ViewData["ContestTitle"] = _context.Contests.Find(contestEntry.ContestId).Title;
                 ViewData["Username"] = _context.Users.Find(contestEntry.UserId).Username;
 
+                TempData["SuccessMessage"] = "Contest entry has been successfully submitted!";
                 return RedirectToAction("index", "home", new { id = contestEntry.ContestId });
             }
 
