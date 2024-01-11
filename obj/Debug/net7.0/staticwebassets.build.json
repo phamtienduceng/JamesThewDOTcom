@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "eQy/htHu8X+zFSOVrzyDn9BbicrAWwhOFKks+3MKLIM=",
+  "Hash": "9/C8VJTNqi1hG3FloN9b47Q1xdUiajIp1NSJvhscAKE=",
   "Source": "JamesRecipes",
   "BasePath": "_content/JamesRecipes",
   "Mode": "Default",
@@ -17723,6 +17723,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Banh-Mi-Handbook.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\images\\bbq pork.jpg",
+      "SourceId": "JamesRecipes",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\",
+      "BasePath": "_content/JamesRecipes",
+      "RelativePath": "images/bbq pork.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\bbq pork.jpg"
     },
     {
       "Identity": "C:\\Users\\tribu\\OneDrive - DBI - VN CO., LTD\\Information Technology (IT)\\Term3\\đồ án kỳ 3\\Github\\JamesThewDOTcom\\wwwroot\\images\\books.png",

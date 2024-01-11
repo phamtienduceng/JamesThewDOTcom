@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace JamesRecipes.Models;
 
@@ -20,6 +22,10 @@ public partial class Announcement
     public DateTime? DatePost { get; set; }
 
     public string? Image { get; set; }
+
+    [NotMapped]
+    [Display(Name = "Image")]
+    public IFormFile ImageFile { get; set; }
 
     public virtual Contest? Contest { get; set; }
 }

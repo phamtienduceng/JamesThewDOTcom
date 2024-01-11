@@ -79,25 +79,34 @@
                                 <span>
                                     <i class="ti ti-chef-hat"></i>
                                 </span>
-                                <span class="hide-menu">Contest Entries</span>
+                                <span class="hide-menu">User Contest Entries</span>
                             </a>
                         </li>
 
                         @* ANONYMOUS *@
-                        <li class="sidebar-item">
+                       @*  <li class="sidebar-item">
                             <a class="sidebar-link" asp-controller="AnonymousRecipes" asp-action="Index" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-chef-hat"></i>
                                 </span>
                                 <span class="hide-menu">Anonymous Recipes</span>
                             </a>
-                        </li>
+                        </li> *@
                         <li class="sidebar-item">
                             <a class="sidebar-link" asp-controller="AnonymousContestEntries" asp-action="Index" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-chef-hat"></i>
                                 </span>
-                                <span class="hide-menu">Anonymous Contest Entries</span>
+                                <span class="hide-menu">Guest Contest Entries</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" asp-controller="CombinedContestScore" asp-action="Index" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-chef-hat"></i>
+                                </span>
+                                <span class="hide-menu">Contest Score</span>
                             </a>
                         </li>
 
@@ -106,7 +115,7 @@
                                 <span>
                                     <i class="ti ti-award"></i>
                                 </span>
-                                <span class="hide-menu">Announcement</span>
+                                <span class="hide-menu">Announcements</span>
                             </a>
                         </li>
                         <li class="nav-small-cap">

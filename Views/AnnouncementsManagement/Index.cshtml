@@ -55,9 +55,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DatePost)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
+                <td>
+                    <!-- Kiểm tra xem có đường dẫn ảnh không và hiển thị nếu có -->
+                    @if (!string.IsNullOrEmpty(item.Image))
+                    {
+                        <!-- Giả sử bạn lưu ảnh trong wwwroot/images -->
+                        <img src="@Url.Content("~/images/" + item.Image)" alt="Announcement Image" style="height:100px;">
+                    }
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Contest.ContestId)
             </td>

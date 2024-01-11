@@ -54,6 +54,8 @@ public partial class JamesrecipesContext : DbContext
 
     public virtual DbSet<ViewAnonymousContact> ViewAnonymousContacts { get; set; }
     public virtual DbSet<ViewUserRole> ViewUserRoles { get; set; }
+    
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Server=.;Database=JamesThewDOTcom;uid=sa;pwd=123;TrustServerCertificate=True");

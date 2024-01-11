@@ -1,0 +1,36 @@
+﻿@model IEnumerable<JamesRecipes.Models.CombinedContestScore>
+
+@{
+    ViewData["Title"] = "Combined Contest Scores";
+    Layout = "~/Views/Shared/_FELayout.cshtml";
+}
+
+<h1>Combined Contest Scores</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Contest ID</th>
+            <th>Entry ID</th>
+            <th>Contest Entry Score</th>
+            <th>Anonymous Entry ID</th>
+            <th>Anonymous Contest Entry Score</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ContestId)</td>
+                <td>@Html.DisplayFor(modelItem => item.EntryId)</td>
+                <td>@Html.DisplayFor(modelItem => item.ContestEntryScore)</td>
+                <td>@Html.DisplayFor(modelItem => item.AnonymousEntryId)</td>
+                <td>@Html.DisplayFor(modelItem => item.AnonymousContestEntryScore)</td>
+                <td>
+                    <a asp-action="Details" asp-route-entryId="@item.EntryId">View Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

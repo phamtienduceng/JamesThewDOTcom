@@ -1,0 +1,49 @@
+﻿@model JamesRecipes.Models.CombinedContestScore
+
+@{
+    ViewData["Title"] = "Details of Combined Contest Score";
+    Layout = "~/Views/Shared/_FELayout.cshtml";
+}
+
+<h1>Details of Combined Contest Score</h1>
+
+<div>
+    <h4>Entry @Model.EntryId</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContestId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContestId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EntryId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EntryId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContestEntryScore)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContestEntryScore)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AnonymousEntryId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AnonymousEntryId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AnonymousContestEntryScore)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AnonymousContestEntryScore)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-entryId="@Model.EntryId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

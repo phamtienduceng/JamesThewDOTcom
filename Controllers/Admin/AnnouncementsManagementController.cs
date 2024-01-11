@@ -55,12 +55,27 @@ namespace JamesRecipes.Controllers.Admin
         // POST: AnnouncementsManagement/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: AnnouncementsManagement/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AnnouncementId,WinnerId,AnonymousWinnerId,ContestId,Content,Title,DatePost,Image")] Announcement announcement)
+        public async Task<IActionResult> Create([Bind("AnnouncementId,WinnerId,AnonymousWinnerId,ContestId,Content,Title,DatePost,ImageFile")] Announcement announcement)
         {
             if (ModelState.IsValid)
             {
+                if (announcement.ImageFile != null && announcement.ImageFile.Length > 0)
+                {
+                    var fileName = Path.GetFileName(announcement.ImageFile.FileName);
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await announcement.ImageFile.CopyToAsync(fileStream);
+                    }
+
+                    // Lưu đường dẫn file vào property Image
+                    announcement.Image = fileName; // Bạn có thể muốn thêm đường dẫn tương đối nếu cần
+                }
+
                 _context.Add(announcement);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -68,6 +83,7 @@ namespace JamesRecipes.Controllers.Admin
             ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "ContestId", announcement.ContestId);
             return View(announcement);
         }
+
 
         // GET: AnnouncementsManagement/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -163,6 +179,34 @@ namespace JamesRecipes.Controllers.Admin
         private bool AnnouncementExists(int id)
         {
           return (_context.Announcements?.Any(e => e.AnnouncementId == id)).GetValueOrDefault();
+        }
+
+      
+
+        // GET: AnnouncementsManagement
+        public async Task<IActionResult> FEIndex()
+        {
+            var jamesrecipesContext = _context.Announcements.Include(a => a.Contest);
+            return View(await jamesrecipesContext.ToListAsync());
+        }
+
+        // GET: AnnouncementsManagement/Details/5
+        public async Task<IActionResult> FEDetails(int? id)
+        {
+            if (id == null || _context.Announcements == null)
+            {
+                return NotFound();
+            }
+
+            var announcement = await _context.Announcements
+                .Include(a => a.Contest)
+                .FirstOrDefaultAsync(m => m.AnnouncementId == id);
+            if (announcement == null)
+            {
+                return NotFound();
+            }
+
+            return View(announcement);
         }
     }
 }
