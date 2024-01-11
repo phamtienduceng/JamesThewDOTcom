@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JamesRecipes.Models;
 using JamesRecipes.Models;
+using JamesRecipes.Repository.FE;
 
 namespace JamesRecipes.Controllers.Admin
 {
@@ -34,20 +35,36 @@ namespace JamesRecipes.Controllers.Admin
                 return NotFound();
             }
 
-            var anonymousContestEntry = await _context.AnonymousContestEntries.FirstOrDefaultAsync(m => m.AnonymousEntryId == id);
+            var anonymousContestEntry = await _context.AnonymousContestEntries
+                .FirstOrDefaultAsync(m => m.AnonymousEntryId == id);
+
             if (anonymousContestEntry == null)
             {
                 return NotFound();
             }
 
+            // Tải thông tin recipe từ cơ sở dữ liệu dựa vào AnonymousRecipeId.
+            var recipe = await _context.AnonymousRecipes
+                .FirstOrDefaultAsync(r => r.AnonymousRecipeId == anonymousContestEntry.AnonymousRecipeId);
+
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+
+            // Chỗ này bạn sẽ truyền recipe như là một phần của ViewData hoặc ViewBag.
+            ViewData["Recipe"] = recipe;
+
+            // Trả về view cùng với anonymousContestEntry.
             return View(anonymousContestEntry);
         }
 
+
         // GET: AnonymousContestEntries/Create
-        public IActionResult Create()
+        public IActionResult Create(int contestId, int anonymousRecipeId)
         {
-            ViewData["AnonymousRecipeId"] = new SelectList(_context.AnonymousRecipes, "AnonymousRecipeId", "AnonymousRecipeId");
-            ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "ContestId");
+            ViewData["AnonymousRecipeId"] = new SelectList(_context.AnonymousRecipes, "AnonymousRecipeId", "Title");
+            ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "Title");
             return View();
         }
 
@@ -62,30 +79,35 @@ namespace JamesRecipes.Controllers.Admin
             {
                 _context.Add(anonymousContestEntry);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("index", "home", new { id = anonymousContestEntry.ContestId });
             }
-            ViewData["AnonymousRecipeId"] = new SelectList(_context.AnonymousRecipes, "AnonymousRecipeId", "AnonymousRecipeId", anonymousContestEntry.AnonymousRecipeId);
-            ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "ContestId", anonymousContestEntry.ContestId);
+            ViewData["AnonymousRecipeId"] = new SelectList(_context.AnonymousRecipes, "AnonymousRecipeId", "Title", anonymousContestEntry.AnonymousRecipeId);
+            ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "Title", anonymousContestEntry.ContestId);
             return View(anonymousContestEntry);
         }
 
-        // GET: AnonymousContestEntries/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id, int? contestId, int? anonymousRecipeId)
         {
-            if (id == null || _context.AnonymousContestEntries == null)
+            // Kiểm tra id và contestId có được cung cấp không
+            if (id == null)
             {
                 return NotFound();
             }
-
             var anonymousContestEntry = await _context.AnonymousContestEntries.FindAsync(id);
             if (anonymousContestEntry == null)
             {
                 return NotFound();
             }
-            ViewData["AnonymousRecipeId"] = new SelectList(_context.AnonymousRecipes, "AnonymousRecipeId", "AnonymousRecipeId", anonymousContestEntry.AnonymousRecipeId);
-            ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "ContestId", anonymousContestEntry.ContestId);
+            // Xử lý thông tin của anonymousRecipeId tại đây nếu cần
+
+            ViewData["ContestId"] = new SelectList(_context.Contests, "ContestId", "Title", anonymousContestEntry.ContestId);
+            ViewData["AnonymousRecipeId"] = new SelectList(_context.AnonymousRecipes, "AnonymousRecipeId", "Title", anonymousContestEntry.AnonymousRecipeId);
+
+
             return View(anonymousContestEntry);
         }
+
 
         // POST: AnonymousContestEntries/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.

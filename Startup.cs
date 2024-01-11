@@ -39,6 +39,17 @@ namespace JamesRecipes
             app.UseSession();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseRouting(); // Thêm dòng này
+
+            // Định nghĩa các endpoint cho các controller và razor page (nếu có)
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+            });
         }
     }
 }

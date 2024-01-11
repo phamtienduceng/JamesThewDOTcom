@@ -12,7 +12,10 @@
         <div class="card-body">
             <h4 class="card-title">@Model.Title</h4>
             <hr />
-
+            <div class="text-center mt-4">
+                <a asp-action="Edit" asp-controller="AnonymousContestEntries" asp-route-id="@Model?.ContestId" class="btn btn-primary">Score the Entries</a>
+                <a asp-action="Index" asp-controller="AnonymousRecipes" class="btn btn-secondary ml-2">Back to List</a>
+            </div>
             <dl class="row">
                 <div class="col-sm-6">
                     <dt>Recipe ID:</dt>
@@ -26,22 +29,9 @@
 
                     <dt>Created At:</dt>
                     <dd>@Html.DisplayFor(model => model.CreatedAt)</dd>
-                </div>
-
-                <div class="col-sm-6">
-                    <dt>Image:</dt>
-                    <dd>
-                        @if (!string.IsNullOrEmpty(Model.Image))
-                        {
-                            <img src="~/@Model.Image" alt="Recipe Image" class="img-fluid img-thumbnail" />
-                        }
-                    </dd>
 
                     <dt>Time Needs:</dt>
                     <dd>@Html.DisplayFor(model => model.Timeneeds)</dd>
-
-                    <dt>Video URL:</dt>
-                    <dd>@Html.DisplayFor(model => model.VideoUrl)</dd>
 
                     <dt>Contact Information:</dt>
                     <dd>
@@ -49,15 +39,37 @@
                         Phone: @Html.DisplayFor(model => model.ContactPhone)
                     </dd>
 
-                    <dt>Anonymous Name:</dt>
+                    <dt>Guest Name:</dt>
                     <dd>@Html.DisplayFor(model => model.AnonymousName)</dd>
+
+                </div>
+
+                <div class="col-sm-6">
+                    <dt>Image:</dt>
+                    <dd>
+                        @if (!string.IsNullOrEmpty(Model.Image))
+                        {
+                            <img src="@Model.Image" alt="Recipe Image" class="img-fluid img-thumbnail" />
+                        }
+                    </dd>
+
+                    <div class="col-sm-6">
+                        <dt>Video:</dt>
+                        <dd>
+                            @if (!string.IsNullOrEmpty(Model.VideoUrl))
+                            {
+                                @Html.Raw("<iframe width='560' height='315' src='" + Model.VideoUrl + "' frameborder='0' allowfullscreen></iframe>")
+                            }
+                        </dd>
+                    </div>
+
                 </div>
             </dl>
         </div>
     </div>
 
     <div class="text-center mt-4">
-        <a asp-action="Create" asp-controller="AnonymousContestEntries" asp-route-id="@Model?.ContestId" class="btn btn-primary">Score the Entries</a>
-        <a asp-action="Index" asp-controller="ContestEntries" class="btn btn-secondary ml-2">Back to List</a>
+        <a asp-action="Edit" asp-controller="AnonymousContestEntries" asp-route-id="@Model?.ContestId" class="btn btn-primary">Score the Entries</a>
+        <a asp-action="Index" asp-controller="AnonymousRecipes" class="btn btn-secondary ml-2">Back to List</a>
     </div>
 </div>
