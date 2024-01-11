@@ -19,7 +19,7 @@ public interface ITip
 
     List<Tip> Sorting(List<Tip> tips, string sortOrder);
     
-    List<Tip> Search(string searchString);
+    List<Tip> Search(string searchString, List<Tip> tips);
 
     void SwitchStatus(int id, bool status);
     

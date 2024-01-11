@@ -18,7 +18,7 @@ public interface IRecipe
 
     List<Recipe> Sorting(List<Recipe> recipes, string sortOrder);
     
-    List<Recipe> Search(string searchString);
+    List<Recipe> Search(string searchString, List<Recipe> recipes);
 
     void SwitchStatus(int id, bool status);
     

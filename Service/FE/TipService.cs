@@ -93,9 +93,9 @@ public class TipService: ITip
         return tips;
     }
 
-    public List<Tip> Search(string searchString)
+    public List<Tip> Search(string searchString, List<Tip> tips)
     {
-        return _db.Tips.Where(t => t.Title.Contains(searchString)).ToList();
+        return tips.Where(t => t.Title.Contains(searchString.ToLower())).ToList();
     }
 
     public void SwitchStatus(int id, bool status)

@@ -15,11 +15,14 @@
 <table class="table ">
     <thead>
     <tr>
-        <th width="30%">
+        <th width="20%">
             Id
         </th>
-        <th width="30%">
+        <th width="20%">
             Name
+        </th>
+        <th width="20%">
+            Number of recipes
         </th>
         <th width="40%">
             Action
@@ -34,14 +37,17 @@
                 @Html.DisplayFor(modelItem => item.CategoryRecipeId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
+                @item.CategoryName
             </td>
             <td>
+                @item.Recipes.Count
+            </td>
+            <td class="d-flex">
                 <a asp-action="Edit" asp-controller="RecipeCategoriesManagement" asp-route-id="@item.CategoryRecipeId">
-                    <button class="btn btn-primary">EditName</button>
+                    <button class="btn btn-primary" style="margin-right: 10px">EditName</button>
                 </a> 
                 <form id="deleteForm-@item.CategoryRecipeId" data-care-id="@item.CategoryRecipeId" method="post" onsubmit="return confirmDelete('@item.CategoryRecipeId')">
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-danger" style="margin-right: 10px">Delete</button>
                 </form>
                 <a asp-action="GetRecipeByCategory" asp-controller="RecipeCategoriesManagement" asp-route-id="@item.CategoryRecipeId">
                     <button class="btn btn-info">View recipes</button>

@@ -28,6 +28,19 @@
         border-radius: 5px;
         font-size: 10px;
         font-weight: bold;
+        margin: 5px 0 0 5px;
+    }
+    .james-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: gold;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 10px;
+        font-weight: bold;
+        margin: 5px 5px 0 0;
     }
 </style>
 <h1 class="text-center text-danger" style="margin-top: 150px">Your Tips</h1>
@@ -102,10 +115,14 @@
                     <div class="row">
                         @foreach (var item in Model)
                         {
-                            <div class="col-xl-4 col-lg-4 col-md-6" style="position: relative;">
+                            <div class="col-xl-4 col-lg-4 col-md-6 border-right" style="position: relative; margin-bottom: 10px">
                                 @if (item.IsMembershipOnly)
                                 {
                                     <span class="membership-label">Membership</span>
+                                }
+                                @if (item.UserId == 3025)
+                                {
+                                    <span class="james-label">James</span>
                                 }
                                 <div class="single_recepie text-center">
                                     <div class="recepie_thumb mt-2" onclick="redirectToSingleTip('@item.TipId')">
@@ -256,7 +273,7 @@
                                 
                                 setTimeout(function () {
                                     window.location.href = '@Url.Action("GetTipsByUser", "Tip", new {id = "__userId__"})'.replace('__userId__', u);
-                                }, 3000);
+                                }, 1000);
                             },
                            
                         });

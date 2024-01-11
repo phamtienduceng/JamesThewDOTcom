@@ -44,7 +44,7 @@ public class TipController : Controller
 
         if (!string.IsNullOrEmpty(searchString))
         {
-            tips = _tip.Search(searchString);
+            tips = _tip.Search(searchString, tips);
         }
         
         ViewBag.CategoryId = new SelectList(_categoriesTip.GetCategoriesTips(), "CategoryTipId", "CategoryName", categoryId);
@@ -55,7 +55,7 @@ public class TipController : Controller
         tips = _tip.Sorting(tips, sortOrder);
         
         page = page < 1 ? 1 : page;
-        var ts = _tip.PageList(page, 9, tips);
+        var ts = _tip.PageList(page, 6, tips);
 
         return View("~/Views/FE/Tip/Index.cshtml", ts);
     }
@@ -144,7 +144,7 @@ public class TipController : Controller
 
         if (!string.IsNullOrEmpty(searchString))
         {
-            tips = _tip.Search(searchString);
+            tips = _tip.Search(searchString, tips);
         }
         
         ViewBag.CategoryId = new SelectList(_categoriesTip.GetCategoriesTips(), "CategoryTipId", "CategoryName", categoryId);
@@ -155,7 +155,7 @@ public class TipController : Controller
         tips = _tip.Sorting(tips, sortOrder);
         
         page = page < 1 ? 1 : page;
-        var ts = _tip.PageList(page, 9, tips);
+        var ts = _tip.PageList(page, 6, tips);
 
         return View("~/Views/FE/Tip/MyTip.cshtml", ts);
     }

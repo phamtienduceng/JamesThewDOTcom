@@ -93,9 +93,9 @@ public class RecipeService: IRecipe
         return recipes;
     }
 
-    public List<Recipe> Search(string searchString)
+    public List<Recipe> Search(string searchString, List<Recipe> recipes)
     {
-        return _db.Recipes.Where(r => r.Title.Contains(searchString)).ToList();
+        return recipes.Where(r => r.Title.Contains(searchString.ToLower())).ToList();
     }
 
     public void SwitchStatus(int id, bool status)

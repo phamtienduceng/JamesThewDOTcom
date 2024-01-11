@@ -16,7 +16,9 @@ public class RecipeCategoriesManagementService: IRecipeCategoriesManagementRepos
     
     public List<CategoriesRecipe> GetAllCategories()
     {
-        return _db.CategoriesRecipes.ToList();
+        return _db.CategoriesRecipes
+            .Include(r=>r.Recipes)
+            .ToList();
     }
 
     public CategoriesRecipe GetCategory(int id)

@@ -41,11 +41,11 @@ public class TipCategoriesManagementController : Controller
             if (!isNameUsed)
             {
                 _tipCategories.PostCategory(newCategoriesTip);
-                return RedirectToAction("Index", "TipCategoriesManagement");
+                return Json(new { success = true });
             }
             else
             {
-                ViewBag.msg = "Name is already used";
+                return Json(new { success = false, message = "Name is already in used" });
             }
         }
         return View("~/Views/Admin/TipCategories/Create.cshtml");
@@ -90,15 +90,17 @@ public class TipCategoriesManagementController : Controller
     public IActionResult Delete(int id)
     {
         var model = _tipCategories.GetCategory(id);
-        if (!_tipCategories.CheckTip(model))
+        
+        if (_tipCategories.CheckTip(model))
         {
-            _tipCategories.DeleteCategory(id);
-            return RedirectToAction("Index", "TipCategoriesManagement");
+            return Json(new { success = false, message = "Can not delete because there is a related tip" });
+            
         }
         else
         {
-            TempData["msgDelete"] = "Can not delete because there is a related recipe";
-            return RedirectToAction("Index", "TipCategoriesManagement");
+            _tipCategories.DeleteCategory(id);
+            
+            return Json(new { success = true });
         }
     }
 

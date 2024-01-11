@@ -54,7 +54,7 @@ public class RecipeController : Controller
 
         if (!string.IsNullOrEmpty(searchString))
         {
-            reps = _recipe.Search(searchString);
+            reps = _recipe.Search(searchString, reps);
         }
         
         ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName", categoryId);
@@ -65,7 +65,7 @@ public class RecipeController : Controller
         reps = _recipe.Sorting(reps, sortOrder);
         
         page = page < 1 ? 1 : page;
-        var recipes = _recipe.PageList(page, 9, reps);
+        var recipes = _recipe.PageList(page, 6, reps);
 
         return View("~/Views/FE/Recipe/Index.cshtml", recipes);
     }
@@ -159,13 +159,11 @@ public class RecipeController : Controller
         ViewData["CurrentRatingMin"] = ratingMin;
         ViewData["CurrentRatingMax"] = ratingMax;
         
-        var userJson = HttpContext.Session.GetString("userLogged");
-        
         var reps = _recipe.GetRecipesByUser(id);
 
         if (!string.IsNullOrEmpty(searchString))
         {
-            reps = _recipe.Search(searchString);
+            reps = _recipe.Search(searchString, reps);
         }
         
         ViewBag.CategoryId = new SelectList(_categoriesRecipe.GetCategoriesRecipes(), "CategoryRecipeId", "CategoryName", categoryId);
@@ -176,7 +174,7 @@ public class RecipeController : Controller
         reps = _recipe.Sorting(reps, sortOrder);
         
         page = page < 1 ? 1 : page;
-        var recipes = _recipe.PageList(page, 9, reps);
+        var recipes = _recipe.PageList(page, 6, reps);
         
         return View("~/Views/FE/Recipe/MyRecipe.cshtml", recipes);
     }

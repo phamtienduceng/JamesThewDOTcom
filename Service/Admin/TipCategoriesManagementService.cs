@@ -15,12 +15,16 @@ public class TipCategoriesManagementService: ITipCategoriesManagementRepository
     }
     public List<CategoriesTip> GetAllCategories()
     {
-        return _db.CategoriesTips.ToList();
+        return _db.CategoriesTips
+            .Include(r=>r.Tips)
+            .ToList();
     }
 
     public CategoriesTip GetCategory(int id)
     {
-        var rep = _db.CategoriesTips.SingleOrDefault(c => c.CategoryTipId == id);
+        var rep = _db.CategoriesTips
+            .Include(r=>r.Tips)
+            .SingleOrDefault(c => c.CategoryTipId == id);
         return rep!;
     }
 
@@ -39,7 +43,8 @@ public class TipCategoriesManagementService: ITipCategoriesManagementRepository
 
     public void DeleteCategory(int id)
     {
-        var model = _db.CategoriesTips.SingleOrDefault(c => c.CategoryTipId == id);
+        var model = _db.CategoriesTips
+            .SingleOrDefault(c => c.CategoryTipId == id);
         if (model != null)
         {
             _db.CategoriesTips.Remove(model);
